@@ -1,0 +1,11 @@
+# Opakování R - pokračování 
+
+## Práce s daty
+
+Chybějící záznamy a speciální numerické případy `NA`, `NaN`, `NULL`, `Inf`, `-Inf` jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz `NA` je tvořen v datovém typu `logical`, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech `NA_real_` (odpovídá double), `NA_integer_`, `NA_complex_` a `NA_character_`, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. `NULL` je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky `NaN` a `±Inf` pochází z aritmetických operací $\dfrac{1}{0}$ resp. $\dfrac{\pm0}{1}$ .
+`na.omit()`, `is.na()`, `complete.cases()`.
+
+:::{.callout-note}
+Note that there are five types of callouts, including: 
+`note`, `tip`, `warning`, `caution`, and `important`.
+:::

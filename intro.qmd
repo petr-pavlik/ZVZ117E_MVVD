@@ -1,0 +1,83 @@
+::: {.download_btn}
+
+```{css}
+#| echo: false
+
+.btn-default,
+.btn-default:hover,
+.btn-default:active {
+  font-size: 20px;
+  color: orangered;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-default:hover {
+  color: grey;
+  transition: 0.2s;
+}
+
+```
+
+
+```{r}
+#| echo: false
+
+library(downloadthis)
+
+mtcars %>%
+  download_this(
+    output_name = "mtcars data set",
+    output_extension = ".csv",
+    button_label = "mtcars.csv",
+    button_type = "default",
+    has_icon = TRUE,
+    icon = "fa fa-file-csv"
+  )
+```
+
+
+```{r}
+#| echo: false
+
+iris %>%
+  download_this(
+    output_name = "Iris data set",
+    output_extension = ".csv",
+    button_label = "iris.csv",
+    button_type = "default",
+    has_icon = TRUE,
+    icon = "fa fa-file-csv"
+  )
+```
+
+```{r}
+#| echo: false
+
+palmerpenguins::penguins %>%
+  download_this(
+    output_name = "penguins data set",
+    output_extension = ".csv",
+    button_label = "penguins.csv",
+    button_type = "default",
+    has_icon = TRUE,
+    icon = "fa fa-file-csv"
+  )
+```
+
+:::
+
+
+# Úvod
+
+Tento text je webový průvodce pro cvičení kurzu **ZVZ117E Metody vyhodnocování vodohospodářských dat**.
+Jeho obsahuje materiály ke všem jednotlivým cvičením spolu se zkrácenou teoretickou 
+částí. Text nemá za ambici vyložit látku komplexně, nenahrazuje přednášky kurzu ani skripta ke kurzu určená. Jedná se o průvodce cvičeními. Vzhledem k tomu, že je tento text orientován 
+na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny
+jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony, které jsou prováděny jsou prováděny s didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na které je čtenář občas doplňkově upozorněn.
+
+## Doporučená literatura 
+See @knuth84 for additional discussion of literate programming.
+
+
+

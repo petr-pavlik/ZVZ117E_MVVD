@@ -1,0 +1,49 @@
+# Práce v prostředí RStudio
+
+RStuido (Posit Inc.) je grafické uživatelské prostředí, specializované pro pro práci s R (nejen). Obsahuje řadu užitečných nástrojů usnadňujících organizaci práce, tvorbu reportů, práci s SQL databázemi, vývojem balíků a mnoho dalšího. V základním zobrazení bychom měil v levém horním panelu vidět **skript** a v panelu pod ním vstup **konzole**.
+
+# Opakovaní jazyka R
+
+Kurz MVVD navazuje na kurz "Výpočetní metody", který je vyučován v prvním semestru studia Vodního hospodářství. Opakování znalostí jazyka R jsou věnovány dvě celá úvodní cvičení.
+
+## Nápověda
+
+Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(jmeno funkce)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` funkce pod zkratkou `??`, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. 
+je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`.
+
+## Aritmetické operace
+
+```{r základní aritmetické operace}
+1 + 1     # přičítání
+2 - 1     # odečítání
+1 * 3.    # násobení
+1 * (-1)  # násobení
+1 / 6.    # dělení
+10 %% 3.  # modulo
+7 %/% 3   # celočíselné dělení
+10 ** 3   # mocninné operace
+10 %*% 3  # vnejší produkt 
+sum(1:10)
+prod(1:10)
+cumsum(1:10)
+cumprod(1:10)
+```
+
+## Jmenné konvence
+
+
+## Základní datové struktury
+
+### Atomické datové struktury
+
+#### Vektor
+
+**Vektor** je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv **datového typu**, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce `vector(mode = "numeric", length = 10)` a funkce `c()`, případně vzniká pomocí opetárorů `[` nebo `[[`.
+
+### Úlohy
+
+Spočítejte pomocí R následující výrazy:
+
+a.  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
+b.  $\dfrac{2}{35}^{0.5} \cdot 3 \cdot (2 / 3)$\
+c.  $\sum\limits_{i = 1}^{53}x_i$\

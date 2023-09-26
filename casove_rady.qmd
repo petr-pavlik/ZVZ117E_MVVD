@@ -1,0 +1,18 @@
+# Popisná statistika
+
+Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`,
+jehož jmenný prostor je připojen po otevření R. 
+
+```{r}
+x <- 1:50
+mean(x)
+sum(x)
+median(x)
+
+```
+
+Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.
+
+```{r}
+curve(sin(x))
+```

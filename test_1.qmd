@@ -1,0 +1,17 @@
+# Vzorový test 1
+
+První test je orientován na opakování základní práce v R, to jest znalost a práce s **datovými typy**, **datovými strukturami**, **řídícími strukturami** a **grafickým výstupem**. Dále pak tematicky obsahuje otázky na **statistická rozdělení**, **bodový a intervalový odhad** a **testování hypotéz**. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.
+
+```{r}
+x <- 1:50
+mean(x)
+sum(x)
+median(x)
+
+```
+
+Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.
+
+```{r}
+curve(sin(x))
+```

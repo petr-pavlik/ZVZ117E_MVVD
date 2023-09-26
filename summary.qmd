@@ -1,0 +1,20 @@
+# Grafický výstup
+
+V jazyce R se nejvíce používají dva systémy grafického výstupu. Ten první je součástí základní instalace R, jedná se o balíček `base`, který využívá funkce `plot()`. Druhý systém je založen na balíčku `grid` a jmenuje se `ggplot2`. Ten je nutné doinstalovat a nahrát. 
+
+## Začínáme s `base`
+
+Budeme postupovat od nejjednoduššího grafu Opět budeme pracovat s datovou sadou `mtcars`
+
+```{r}
+# zpřístupníme datovou sadu
+data(mtcars)
+
+plot(x = mtcars$mpg)
+```
+Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.
+
+```{r}
+curve(sin(x))
+```
+

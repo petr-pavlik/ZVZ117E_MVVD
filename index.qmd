@@ -1,0 +1,11 @@
+# Struktura knihy {.unnumbered}
+
+Tento text byl vytvořen s pomocí verze R `r stringr::str_flatten(c(version$major, ".", version$minor))` a jmenných prostorů balíků ve verzích:
+
+```{r, echo=FALSE}
+installed.packages()[installed.packages()[, 1] %in% loadedNamespaces(), ][, c("Version")] |> 
+  data.frame() |> 
+  setNames("Version") 
+```
+
+K reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia. 

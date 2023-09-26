@@ -1,0 +1,33 @@
+# Statistické rozdělení
+
+V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí 
+
+```{r eval=FALSE}
+rxxx() # náhodná čísla
+dxxx() # 
+pxxx()
+qxxx()
+```
+
+## Empirické vs. teoretické rozdělení
+
+### Úkol
+
+Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
+
+## Diskrétní rozdělení
+
+```{r}
+x <- rnorm(n = 10, mean = 1.25, sd = 5.36)
+mean(x)
+sum(x)
+median(x)
+IQR(x)
+fivenum(x)
+```
+
+## Spojitá rozdělení
+
+```{r}
+curve(sin(x))
+```

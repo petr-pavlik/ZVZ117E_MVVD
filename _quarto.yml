@@ -1,0 +1,65 @@
+project:
+  type: book
+
+book:
+  title: "Metody vyhodnocování vodohospodářských dat"
+  subtitle: "MVVD ZS 23/24"
+  author: "Petr Pavlík"
+  favicon: cover.png
+  repo-actions: [edit]
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - uvod_do_R_1.qmd
+    - uvod_do_R_2.qmd
+    - summary.qmd
+    - popisna.qmd
+    - rozdeleni.qmd
+    - odhad.qmd
+    - test_1.qmd
+    - casove_rady.qmd
+    - hydro_index.qmd
+    - test_2.qmd
+    - references.qmd
+    
+  
+  downloads: [pdf, epub]
+  sidebar:
+    title: "Metody vyhodnocování VH dat"
+    pinned: true
+    tools:
+      - icon: save
+        menu:
+          - text: "mtcars.csv"
+            url:  "#"
+          - text: ""
+            url:  "#"
+          - text: ""
+            url:  "#"
+
+  search: 
+    location: sidebar
+    type: textbox
+  
+bibliography: references.bib
+
+format:
+  html:
+    page-layout: article
+    include-after-body: custom.html
+    theme: 
+      - cosmo
+      - theme.css
+    max-width: 1600px
+    css: style.css
+    code-fold: show
+    highlight-style: gruvbox
+
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+lang: cs-CZ
+
+

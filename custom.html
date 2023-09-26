@@ -1,0 +1,11 @@
+<script>
+var all_btns = document.querySelectorAll(".download_btn a");
+var data_nav = document.querySelectorAll('[aria-labelledby="sidebar-tool-dropdown-0"] li')
+
+for (let i = 0; i < data_nav.length; i++) {
+  let li = document.createElement("li");
+  li.appendChild(all_btns[i]);
+  data_nav[i].parentElement.replaceChild(li, data_nav[i])
+}
+
+</script>

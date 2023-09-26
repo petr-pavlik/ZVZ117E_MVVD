@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cs-CZ" xml:lang="cs-CZ"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Metody vyhodnocování vodohospodářských dat - 1&nbsp; Úvod</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./uvod_do_R_1.html" rel="next">
+<link href="./index.html" rel="prev">
+<link href="./cover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Žádný výsledek",
+    "search-matching-documents-text": "Nalezené výsledky",
+    "search-copy-link-title": "Zkopírovat odkaz pro vyhledávání",
+    "search-hide-matches-text": "Skrýt další výsledky",
+    "search-more-match-text": "další výsledek v tomto dokumentu",
+    "search-more-matches-text": "dalších výsledků v tomto dokumentu",
+    "search-clear-button-title": "Vymazat",
+    "search-detached-cancel-button-title": "Zrušit",
+    "search-submit-button-title": "Odeslat"
+  }
+}</script>
+<script src="site_libs/font-awesome-5.13.0/js/script.js"></script>
+
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Úvod</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Hledat" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Metody vyhodnocování VH dat</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-save"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            mtcars.csv
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Metody-vyhodnocování-vodohospodářských-dat.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Metody-vyhodnocování-vodohospodářských-dat.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Hledat"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Struktura knihy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Úvod</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Práce v prostředí RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Opakování R - pokračování</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./popisna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rozdeleni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistické rozdělení</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./odhad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./test_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./casove_rady.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hydro_index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistické rozdělení</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./test_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vzorový test 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literatura</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Obsah</h2>
+   
+  <ul>
+  <li><a href="#doporučená-literatura" id="toc-doporučená-literatura" class="nav-link active" data-scroll-target="#doporučená-literatura"><span class="header-section-number">1.1</span> Doporučená literatura</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Úvod</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="download_btn">
+<div class="cell">
+<style type="text/css">
+.btn-default,
+.btn-default:hover,
+.btn-default:active {
+  font-size: 20px;
+  color: orangered;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-default:hover {
+  color: grey;
+  transition: 0.2s;
+}
+
+</style>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<a onclick="fetch('data:text/csv;base64,bXBnO2N5bDtkaXNwO2hwO2RyYXQ7d3Q7cXNlYzt2czthbTtnZWFyO2NhcmIKMjEsMDs2OzE2MCwwOzExMDszLDkwOzIsNjIwOzE2LDQ2OzA7MTs0OzQKMjEsMDs2OzE2MCwwOzExMDszLDkwOzIsODc1OzE3LDAyOzA7MTs0OzQKMjIsODs0OzEwOCwwOzkzOzMsODU7MiwzMjA7MTgsNjE7MTsxOzQ7MQoyMSw0OzY7MjU4LDA7MTEwOzMsMDg7MywyMTU7MTksNDQ7MTswOzM7MQoxOCw3Ozg7MzYwLDA7MTc1OzMsMTU7Myw0NDA7MTcsMDI7MDswOzM7MgoxOCwxOzY7MjI1LDA7MTA1OzIsNzY7Myw0NjA7MjAsMjI7MTswOzM7MQoxNCwzOzg7MzYwLDA7MjQ1OzMsMjE7Myw1NzA7MTUsODQ7MDswOzM7NAoyNCw0OzQ7MTQ2LDc7NjI7Myw2OTszLDE5MDsyMCwwMDsxOzA7NDsyCjIyLDg7NDsxNDAsODs5NTszLDkyOzMsMTUwOzIyLDkwOzE7MDs0OzIKMTksMjs2OzE2Nyw2OzEyMzszLDkyOzMsNDQwOzE4LDMwOzE7MDs0OzQKMTcsODs2OzE2Nyw2OzEyMzszLDkyOzMsNDQwOzE4LDkwOzE7MDs0OzQKMTYsNDs4OzI3NSw4OzE4MDszLDA3OzQsMDcwOzE3LDQwOzA7MDszOzMKMTcsMzs4OzI3NSw4OzE4MDszLDA3OzMsNzMwOzE3LDYwOzA7MDszOzMKMTUsMjs4OzI3NSw4OzE4MDszLDA3OzMsNzgwOzE4LDAwOzA7MDszOzMKMTAsNDs4OzQ3MiwwOzIwNTsyLDkzOzUsMjUwOzE3LDk4OzA7MDszOzQKMTAsNDs4OzQ2MCwwOzIxNTszLDAwOzUsNDI0OzE3LDgyOzA7MDszOzQKMTQsNzs4OzQ0MCwwOzIzMDszLDIzOzUsMzQ1OzE3LDQyOzA7MDszOzQKMzIsNDs0Ozc4LDc7NjY7NCwwODsyLDIwMDsxOSw0NzsxOzE7NDsxCjMwLDQ7NDs3NSw3OzUyOzQsOTM7MSw2MTU7MTgsNTI7MTsxOzQ7MgozMyw5OzQ7NzEsMTs2NTs0LDIyOzEsODM1OzE5LDkwOzE7MTs0OzEKMjEsNTs0OzEyMCwxOzk3OzMsNzA7Miw0NjU7MjAsMDE7MTswOzM7MQoxNSw1Ozg7MzE4LDA7MTUwOzIsNzY7Myw1MjA7MTYsODc7MDswOzM7MgoxNSwyOzg7MzA0LDA7MTUwOzMsMTU7Myw0MzU7MTcsMzA7MDswOzM7MgoxMywzOzg7MzUwLDA7MjQ1OzMsNzM7Myw4NDA7MTUsNDE7MDswOzM7NAoxOSwyOzg7NDAwLDA7MTc1OzMsMDg7Myw4NDU7MTcsMDU7MDswOzM7MgoyNywzOzQ7NzksMDs2Njs0LDA4OzEsOTM1OzE4LDkwOzE7MTs0OzEKMjYsMDs0OzEyMCwzOzkxOzQsNDM7MiwxNDA7MTYsNzA7MDsxOzU7MgozMCw0OzQ7OTUsMTsxMTM7Myw3NzsxLDUxMzsxNiw5MDsxOzE7NTsyCjE1LDg7ODszNTEsMDsyNjQ7NCwyMjszLDE3MDsxNCw1MDswOzE7NTs0CjE5LDc7NjsxNDUsMDsxNzU7Myw2MjsyLDc3MDsxNSw1MDswOzE7NTs2CjE1LDA7ODszMDEsMDszMzU7Myw1NDszLDU3MDsxNCw2MDswOzE7NTs4CjIxLDQ7NDsxMjEsMDsxMDk7NCwxMTsyLDc4MDsxOCw2MDsxOzE7NDsyCg==').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'mtcars data set.csv'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+    });">
+<button class="btn btn-default" has_icon="TRUE"><i class="fa fa-file-csv"></i> mtcars.csv</button>
+</a>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<a onclick="fetch('data:text/csv;base64,U2VwYWwuTGVuZ3RoO1NlcGFsLldpZHRoO1BldGFsLkxlbmd0aDtQZXRhbC5XaWR0aDtTcGVjaWVzCjUsMTszLDU7MSw0OzAsMjtzZXRvc2EKNCw5OzMsMDsxLDQ7MCwyO3NldG9zYQo0LDc7MywyOzEsMzswLDI7c2V0b3NhCjQsNjszLDE7MSw1OzAsMjtzZXRvc2EKNSwwOzMsNjsxLDQ7MCwyO3NldG9zYQo1LDQ7Myw5OzEsNzswLDQ7c2V0b3NhCjQsNjszLDQ7MSw0OzAsMztzZXRvc2EKNSwwOzMsNDsxLDU7MCwyO3NldG9zYQo0LDQ7Miw5OzEsNDswLDI7c2V0b3NhCjQsOTszLDE7MSw1OzAsMTtzZXRvc2EKNSw0OzMsNzsxLDU7MCwyO3NldG9zYQo0LDg7Myw0OzEsNjswLDI7c2V0b3NhCjQsODszLDA7MSw0OzAsMTtzZXRvc2EKNCwzOzMsMDsxLDE7MCwxO3NldG9zYQo1LDg7NCwwOzEsMjswLDI7c2V0b3NhCjUsNzs0LDQ7MSw1OzAsNDtzZXRvc2EKNSw0OzMsOTsxLDM7MCw0O3NldG9zYQo1LDE7Myw1OzEsNDswLDM7c2V0b3NhCjUsNzszLDg7MSw3OzAsMztzZXRvc2EKNSwxOzMsODsxLDU7MCwzO3NldG9zYQo1LDQ7Myw0OzEsNzswLDI7c2V0b3NhCjUsMTszLDc7MSw1OzAsNDtzZXRvc2EKNCw2OzMsNjsxLDA7MCwyO3NldG9zYQo1LDE7MywzOzEsNzswLDU7c2V0b3NhCjQsODszLDQ7MSw5OzAsMjtzZXRvc2EKNSwwOzMsMDsxLDY7MCwyO3NldG9zYQo1LDA7Myw0OzEsNjswLDQ7c2V0b3NhCjUsMjszLDU7MSw1OzAsMjtzZXRvc2EKNSwyOzMsNDsxLDQ7MCwyO3NldG9zYQo0LDc7MywyOzEsNjswLDI7c2V0b3NhCjQsODszLDE7MSw2OzAsMjtzZXRvc2EKNSw0OzMsNDsxLDU7MCw0O3NldG9zYQo1LDI7NCwxOzEsNTswLDE7c2V0b3NhCjUsNTs0LDI7MSw0OzAsMjtzZXRvc2EKNCw5OzMsMTsxLDU7MCwyO3NldG9zYQo1LDA7MywyOzEsMjswLDI7c2V0b3NhCjUsNTszLDU7MSwzOzAsMjtzZXRvc2EKNCw5OzMsNjsxLDQ7MCwxO3NldG9zYQo0LDQ7MywwOzEsMzswLDI7c2V0b3NhCjUsMTszLDQ7MSw1OzAsMjtzZXRvc2EKNSwwOzMsNTsxLDM7MCwzO3NldG9zYQo0LDU7MiwzOzEsMzswLDM7c2V0b3NhCjQsNDszLDI7MSwzOzAsMjtzZXRvc2EKNSwwOzMsNTsxLDY7MCw2O3NldG9zYQo1LDE7Myw4OzEsOTswLDQ7c2V0b3NhCjQsODszLDA7MSw0OzAsMztzZXRvc2EKNSwxOzMsODsxLDY7MCwyO3NldG9zYQo0LDY7MywyOzEsNDswLDI7c2V0b3NhCjUsMzszLDc7MSw1OzAsMjtzZXRvc2EKNSwwOzMsMzsxLDQ7MCwyO3NldG9zYQo3LDA7MywyOzQsNzsxLDQ7dmVyc2ljb2xvcgo2LDQ7MywyOzQsNTsxLDU7dmVyc2ljb2xvcgo2LDk7MywxOzQsOTsxLDU7dmVyc2ljb2xvcgo1LDU7MiwzOzQsMDsxLDM7dmVyc2ljb2xvcgo2LDU7Miw4OzQsNjsxLDU7dmVyc2ljb2xvcgo1LDc7Miw4OzQsNTsxLDM7dmVyc2ljb2xvcgo2LDM7MywzOzQsNzsxLDY7dmVyc2ljb2xvcgo0LDk7Miw0OzMsMzsxLDA7dmVyc2ljb2xvcgo2LDY7Miw5OzQsNjsxLDM7dmVyc2ljb2xvcgo1LDI7Miw3OzMsOTsxLDQ7dmVyc2ljb2xvcgo1LDA7MiwwOzMsNTsxLDA7dmVyc2ljb2xvcgo1LDk7MywwOzQsMjsxLDU7dmVyc2ljb2xvcgo2LDA7MiwyOzQsMDsxLDA7dmVyc2ljb2xvcgo2LDE7Miw5OzQsNzsxLDQ7dmVyc2ljb2xvcgo1LDY7Miw5OzMsNjsxLDM7dmVyc2ljb2xvcgo2LDc7MywxOzQsNDsxLDQ7dmVyc2ljb2xvcgo1LDY7MywwOzQsNTsxLDU7dmVyc2ljb2xvcgo1LDg7Miw3OzQsMTsxLDA7dmVyc2ljb2xvcgo2LDI7MiwyOzQsNTsxLDU7dmVyc2ljb2xvcgo1LDY7Miw1OzMsOTsxLDE7dmVyc2ljb2xvcgo1LDk7MywyOzQsODsxLDg7dmVyc2ljb2xvcgo2LDE7Miw4OzQsMDsxLDM7dmVyc2ljb2xvcgo2LDM7Miw1OzQsOTsxLDU7dmVyc2ljb2xvcgo2LDE7Miw4OzQsNzsxLDI7dmVyc2ljb2xvcgo2LDQ7Miw5OzQsMzsxLDM7dmVyc2ljb2xvcgo2LDY7MywwOzQsNDsxLDQ7dmVyc2ljb2xvcgo2LDg7Miw4OzQsODsxLDQ7dmVyc2ljb2xvcgo2LDc7MywwOzUsMDsxLDc7dmVyc2ljb2xvcgo2LDA7Miw5OzQsNTsxLDU7dmVyc2ljb2xvcgo1LDc7Miw2OzMsNTsxLDA7dmVyc2ljb2xvcgo1LDU7Miw0OzMsODsxLDE7dmVyc2ljb2xvcgo1LDU7Miw0OzMsNzsxLDA7dmVyc2ljb2xvcgo1LDg7Miw3OzMsOTsxLDI7dmVyc2ljb2xvcgo2LDA7Miw3OzUsMTsxLDY7dmVyc2ljb2xvcgo1LDQ7MywwOzQsNTsxLDU7dmVyc2ljb2xvcgo2LDA7Myw0OzQsNTsxLDY7dmVyc2ljb2xvcgo2LDc7MywxOzQsNzsxLDU7dmVyc2ljb2xvcgo2LDM7MiwzOzQsNDsxLDM7dmVyc2ljb2xvcgo1LDY7MywwOzQsMTsxLDM7dmVyc2ljb2xvcgo1LDU7Miw1OzQsMDsxLDM7dmVyc2ljb2xvcgo1LDU7Miw2OzQsNDsxLDI7dmVyc2ljb2xvcgo2LDE7MywwOzQsNjsxLDQ7dmVyc2ljb2xvcgo1LDg7Miw2OzQsMDsxLDI7dmVyc2ljb2xvcgo1LDA7MiwzOzMsMzsxLDA7dmVyc2ljb2xvcgo1LDY7Miw3OzQsMjsxLDM7dmVyc2ljb2xvcgo1LDc7MywwOzQsMjsxLDI7dmVyc2ljb2xvcgo1LDc7Miw5OzQsMjsxLDM7dmVyc2ljb2xvcgo2LDI7Miw5OzQsMzsxLDM7dmVyc2ljb2xvcgo1LDE7Miw1OzMsMDsxLDE7dmVyc2ljb2xvcgo1LDc7Miw4OzQsMTsxLDM7dmVyc2ljb2xvcgo2LDM7MywzOzYsMDsyLDU7dmlyZ2luaWNhCjUsODsyLDc7NSwxOzEsOTt2aXJnaW5pY2EKNywxOzMsMDs1LDk7MiwxO3ZpcmdpbmljYQo2LDM7Miw5OzUsNjsxLDg7dmlyZ2luaWNhCjYsNTszLDA7NSw4OzIsMjt2aXJnaW5pY2EKNyw2OzMsMDs2LDY7MiwxO3ZpcmdpbmljYQo0LDk7Miw1OzQsNTsxLDc7dmlyZ2luaWNhCjcsMzsyLDk7NiwzOzEsODt2aXJnaW5pY2EKNiw3OzIsNTs1LDg7MSw4O3ZpcmdpbmljYQo3LDI7Myw2OzYsMTsyLDU7dmlyZ2luaWNhCjYsNTszLDI7NSwxOzIsMDt2aXJnaW5pY2EKNiw0OzIsNzs1LDM7MSw5O3ZpcmdpbmljYQo2LDg7MywwOzUsNTsyLDE7dmlyZ2luaWNhCjUsNzsyLDU7NSwwOzIsMDt2aXJnaW5pY2EKNSw4OzIsODs1LDE7Miw0O3ZpcmdpbmljYQo2LDQ7MywyOzUsMzsyLDM7dmlyZ2luaWNhCjYsNTszLDA7NSw1OzEsODt2aXJnaW5pY2EKNyw3OzMsODs2LDc7MiwyO3ZpcmdpbmljYQo3LDc7Miw2OzYsOTsyLDM7dmlyZ2luaWNhCjYsMDsyLDI7NSwwOzEsNTt2aXJnaW5pY2EKNiw5OzMsMjs1LDc7MiwzO3ZpcmdpbmljYQo1LDY7Miw4OzQsOTsyLDA7dmlyZ2luaWNhCjcsNzsyLDg7Niw3OzIsMDt2aXJnaW5pY2EKNiwzOzIsNzs0LDk7MSw4O3ZpcmdpbmljYQo2LDc7MywzOzUsNzsyLDE7dmlyZ2luaWNhCjcsMjszLDI7NiwwOzEsODt2aXJnaW5pY2EKNiwyOzIsODs0LDg7MSw4O3ZpcmdpbmljYQo2LDE7MywwOzQsOTsxLDg7dmlyZ2luaWNhCjYsNDsyLDg7NSw2OzIsMTt2aXJnaW5pY2EKNywyOzMsMDs1LDg7MSw2O3ZpcmdpbmljYQo3LDQ7Miw4OzYsMTsxLDk7dmlyZ2luaWNhCjcsOTszLDg7Niw0OzIsMDt2aXJnaW5pY2EKNiw0OzIsODs1LDY7MiwyO3ZpcmdpbmljYQo2LDM7Miw4OzUsMTsxLDU7dmlyZ2luaWNhCjYsMTsyLDY7NSw2OzEsNDt2aXJnaW5pY2EKNyw3OzMsMDs2LDE7MiwzO3ZpcmdpbmljYQo2LDM7Myw0OzUsNjsyLDQ7dmlyZ2luaWNhCjYsNDszLDE7NSw1OzEsODt2aXJnaW5pY2EKNiwwOzMsMDs0LDg7MSw4O3ZpcmdpbmljYQo2LDk7MywxOzUsNDsyLDE7dmlyZ2luaWNhCjYsNzszLDE7NSw2OzIsNDt2aXJnaW5pY2EKNiw5OzMsMTs1LDE7MiwzO3ZpcmdpbmljYQo1LDg7Miw3OzUsMTsxLDk7dmlyZ2luaWNhCjYsODszLDI7NSw5OzIsMzt2aXJnaW5pY2EKNiw3OzMsMzs1LDc7Miw1O3ZpcmdpbmljYQo2LDc7MywwOzUsMjsyLDM7dmlyZ2luaWNhCjYsMzsyLDU7NSwwOzEsOTt2aXJnaW5pY2EKNiw1OzMsMDs1LDI7MiwwO3ZpcmdpbmljYQo2LDI7Myw0OzUsNDsyLDM7dmlyZ2luaWNhCjUsOTszLDA7NSwxOzEsODt2aXJnaW5pY2EK').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'Iris data set.csv'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+    });">
+<button class="btn btn-default" has_icon="TRUE"><i class="fa fa-file-csv"></i> iris.csv</button>
+</a>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<a onclick="fetch('data:text/csv;base64,c3BlY2llcztpc2xhbmQ7YmlsbF9sZW5ndGhfbW07YmlsbF9kZXB0aF9tbTtmbGlwcGVyX2xlbmd0aF9tbTtib2R5X21hc3NfZztzZXg7eWVhcgpBZGVsaWU7VG9yZ2Vyc2VuOzM5LDE7MTgsNzsxODE7Mzc1MDttYWxlOzIwMDcKQWRlbGllO1RvcmdlcnNlbjszOSw1OzE3LDQ7MTg2OzM4MDA7ZmVtYWxlOzIwMDcKQWRlbGllO1RvcmdlcnNlbjs0MCwzOzE4LDA7MTk1OzMyNTA7ZmVtYWxlOzIwMDcKQWRlbGllO1RvcmdlcnNlbjtOQTtOQTtOQTtOQTtOQTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47MzYsNzsxOSwzOzE5MzszNDUwO2ZlbWFsZTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47MzksMzsyMCw2OzE5MDszNjUwO21hbGU7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzM4LDk7MTcsODsxODE7MzYyNTtmZW1hbGU7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzM5LDI7MTksNjsxOTU7NDY3NTttYWxlOzIwMDcKQWRlbGllO1RvcmdlcnNlbjszNCwxOzE4LDE7MTkzOzM0NzU7TkE7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzQyLDA7MjAsMjsxOTA7NDI1MDtOQTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47MzcsODsxNywxOzE4NjszMzAwO05BOzIwMDcKQWRlbGllO1RvcmdlcnNlbjszNyw4OzE3LDM7MTgwOzM3MDA7TkE7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzQxLDE7MTcsNjsxODI7MzIwMDtmZW1hbGU7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzM4LDY7MjEsMjsxOTE7MzgwMDttYWxlOzIwMDcKQWRlbGllO1RvcmdlcnNlbjszNCw2OzIxLDE7MTk4OzQ0MDA7bWFsZTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47MzYsNjsxNyw4OzE4NTszNzAwO2ZlbWFsZTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47MzgsNzsxOSwwOzE5NTszNDUwO2ZlbWFsZTsyMDA3CkFkZWxpZTtUb3JnZXJzZW47NDIsNTsyMCw3OzE5Nzs0NTAwO21hbGU7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzM0LDQ7MTgsNDsxODQ7MzMyNTtmZW1hbGU7MjAwNwpBZGVsaWU7VG9yZ2Vyc2VuOzQ2LDA7MjEsNTsxOTQ7NDIwMDttYWxlOzIwMDcKQWRlbGllO0Jpc2NvZTszNyw4OzE4LDM7MTc0OzM0MDA7ZmVtYWxlOzIwMDcKQWRlbGllO0Jpc2NvZTszNyw3OzE4LDc7MTgwOzM2MDA7bWFsZTsyMDA3CkFkZWxpZTtCaXNjb2U7MzUsOTsxOSwyOzE4OTszODAwO2ZlbWFsZTsyMDA3CkFkZWxpZTtCaXNjb2U7MzgsMjsxOCwxOzE4NTszOTUwO21hbGU7MjAwNwpBZGVsaWU7QmlzY29lOzM4LDg7MTcsMjsxODA7MzgwMDttYWxlOzIwMDcKQWRlbGllO0Jpc2NvZTszNSwzOzE4LDk7MTg3OzM4MDA7ZmVtYWxlOzIwMDcKQWRlbGllO0Jpc2NvZTs0MCw2OzE4LDY7MTgzOzM1NTA7bWFsZTsyMDA3CkFkZWxpZTtCaXNjb2U7NDAsNTsxNyw5OzE4NzszMjAwO2ZlbWFsZTsyMDA3CkFkZWxpZTtCaXNjb2U7MzcsOTsxOCw2OzE3MjszMTUwO2ZlbWFsZTsyMDA3CkFkZWxpZTtCaXNjb2U7NDAsNTsxOCw5OzE4MDszOTUwO21hbGU7MjAwNwpBZGVsaWU7RHJlYW07MzksNTsxNiw3OzE3ODszMjUwO2ZlbWFsZTsyMDA3CkFkZWxpZTtEcmVhbTszNywyOzE4LDE7MTc4OzM5MDA7bWFsZTsyMDA3CkFkZWxpZTtEcmVhbTszOSw1OzE3LDg7MTg4OzMzMDA7ZmVtYWxlOzIwMDcKQWRlbGllO0RyZWFtOzQwLDk7MTgsOTsxODQ7MzkwMDttYWxlOzIwMDcKQWRlbGllO0RyZWFtOzM2LDQ7MTcsMDsxOTU7MzMyNTtmZW1hbGU7MjAwNwpBZGVsaWU7RHJlYW07MzksMjsyMSwxOzE5Njs0MTUwO21hbGU7MjAwNwpBZGVsaWU7RHJlYW07MzgsODsyMCwwOzE5MDszOTUwO21hbGU7MjAwNwpBZGVsaWU7RHJlYW07NDIsMjsxOCw1OzE4MDszNTUwO2ZlbWFsZTsyMDA3CkFkZWxpZTtEcmVhbTszNyw2OzE5LDM7MTgxOzMzMDA7ZmVtYWxlOzIwMDcKQWRlbGllO0RyZWFtOzM5LDg7MTksMTsxODQ7NDY1MDttYWxlOzIwMDcKQWRlbGllO0RyZWFtOzM2LDU7MTgsMDsxODI7MzE1MDtmZW1hbGU7MjAwNwpBZGVsaWU7RHJlYW07NDAsODsxOCw0OzE5NTszOTAwO21hbGU7MjAwNwpBZGVsaWU7RHJlYW07MzYsMDsxOCw1OzE4NjszMTAwO2ZlbWFsZTsyMDA3CkFkZWxpZTtEcmVhbTs0NCwxOzE5LDc7MTk2OzQ0MDA7bWFsZTsyMDA3CkFkZWxpZTtEcmVhbTszNywwOzE2LDk7MTg1OzMwMDA7ZmVtYWxlOzIwMDcKQWRlbGllO0RyZWFtOzM5LDY7MTgsODsxOTA7NDYwMDttYWxlOzIwMDcKQWRlbGllO0RyZWFtOzQxLDE7MTksMDsxODI7MzQyNTttYWxlOzIwMDcKQWRlbGllO0RyZWFtOzM3LDU7MTgsOTsxNzk7Mjk3NTtOQTsyMDA3CkFkZWxpZTtEcmVhbTszNiwwOzE3LDk7MTkwOzM0NTA7ZmVtYWxlOzIwMDcKQWRlbGllO0RyZWFtOzQyLDM7MjEsMjsxOTE7NDE1MDttYWxlOzIwMDcKQWRlbGllO0Jpc2NvZTszOSw2OzE3LDc7MTg2OzM1MDA7ZmVtYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTs0MCwxOzE4LDk7MTg4OzQzMDA7bWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7MzUsMDsxNyw5OzE5MDszNDUwO2ZlbWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7NDIsMDsxOSw1OzIwMDs0MDUwO21hbGU7MjAwOApBZGVsaWU7QmlzY29lOzM0LDU7MTgsMTsxODc7MjkwMDtmZW1hbGU7MjAwOApBZGVsaWU7QmlzY29lOzQxLDQ7MTgsNjsxOTE7MzcwMDttYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTszOSwwOzE3LDU7MTg2OzM1NTA7ZmVtYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTs0MCw2OzE4LDg7MTkzOzM4MDA7bWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7MzYsNTsxNiw2OzE4MTsyODUwO2ZlbWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7MzcsNjsxOSwxOzE5NDszNzUwO21hbGU7MjAwOApBZGVsaWU7QmlzY29lOzM1LDc7MTYsOTsxODU7MzE1MDtmZW1hbGU7MjAwOApBZGVsaWU7QmlzY29lOzQxLDM7MjEsMTsxOTU7NDQwMDttYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTszNyw2OzE3LDA7MTg1OzM2MDA7ZmVtYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTs0MSwxOzE4LDI7MTkyOzQwNTA7bWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7MzYsNDsxNywxOzE4NDsyODUwO2ZlbWFsZTsyMDA4CkFkZWxpZTtCaXNjb2U7NDEsNjsxOCwwOzE5MjszOTUwO21hbGU7MjAwOApBZGVsaWU7QmlzY29lOzM1LDU7MTYsMjsxOTU7MzM1MDtmZW1hbGU7MjAwOApBZGVsaWU7QmlzY29lOzQxLDE7MTksMTsxODg7NDEwMDttYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjszNSw5OzE2LDY7MTkwOzMwNTA7ZmVtYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjs0MSw4OzE5LDQ7MTk4OzQ0NTA7bWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47MzMsNTsxOSwwOzE5MDszNjAwO2ZlbWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47MzksNzsxOCw0OzE5MDszOTAwO21hbGU7MjAwOApBZGVsaWU7VG9yZ2Vyc2VuOzM5LDY7MTcsMjsxOTY7MzU1MDtmZW1hbGU7MjAwOApBZGVsaWU7VG9yZ2Vyc2VuOzQ1LDg7MTgsOTsxOTc7NDE1MDttYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjszNSw1OzE3LDU7MTkwOzM3MDA7ZmVtYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjs0Miw4OzE4LDU7MTk1OzQyNTA7bWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47NDAsOTsxNiw4OzE5MTszNzAwO2ZlbWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47MzcsMjsxOSw0OzE4NDszOTAwO21hbGU7MjAwOApBZGVsaWU7VG9yZ2Vyc2VuOzM2LDI7MTYsMTsxODc7MzU1MDtmZW1hbGU7MjAwOApBZGVsaWU7VG9yZ2Vyc2VuOzQyLDE7MTksMTsxOTU7NDAwMDttYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjszNCw2OzE3LDI7MTg5OzMyMDA7ZmVtYWxlOzIwMDgKQWRlbGllO1RvcmdlcnNlbjs0Miw5OzE3LDY7MTk2OzQ3MDA7bWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47MzYsNzsxOCw4OzE4NzszODAwO2ZlbWFsZTsyMDA4CkFkZWxpZTtUb3JnZXJzZW47MzUsMTsxOSw0OzE5Mzs0MjAwO21hbGU7MjAwOApBZGVsaWU7RHJlYW07MzcsMzsxNyw4OzE5MTszMzUwO2ZlbWFsZTsyMDA4CkFkZWxpZTtEcmVhbTs0MSwzOzIwLDM7MTk0OzM1NTA7bWFsZTsyMDA4CkFkZWxpZTtEcmVhbTszNiwzOzE5LDU7MTkwOzM4MDA7bWFsZTsyMDA4CkFkZWxpZTtEcmVhbTszNiw5OzE4LDY7MTg5OzM1MDA7ZmVtYWxlOzIwMDgKQWRlbGllO0RyZWFtOzM4LDM7MTksMjsxODk7Mzk1MDttYWxlOzIwMDgKQWRlbGllO0RyZWFtOzM4LDk7MTgsODsxOTA7MzYwMDtmZW1hbGU7MjAwOApBZGVsaWU7RHJlYW07MzUsNzsxOCwwOzIwMjszNTUwO2ZlbWFsZTsyMDA4CkFkZWxpZTtEcmVhbTs0MSwxOzE4LDE7MjA1OzQzMDA7bWFsZTsyMDA4CkFkZWxpZTtEcmVhbTszNCwwOzE3LDE7MTg1OzM0MDA7ZmVtYWxlOzIwMDgKQWRlbGllO0RyZWFtOzM5LDY7MTgsMTsxODY7NDQ1MDttYWxlOzIwMDgKQWRlbGllO0RyZWFtOzM2LDI7MTcsMzsxODc7MzMwMDtmZW1hbGU7MjAwOApBZGVsaWU7RHJlYW07NDAsODsxOCw5OzIwODs0MzAwO21hbGU7MjAwOApBZGVsaWU7RHJlYW07MzgsMTsxOCw2OzE5MDszNzAwO2ZlbWFsZTsyMDA4CkFkZWxpZTtEcmVhbTs0MCwzOzE4LDU7MTk2OzQzNTA7bWFsZTsyMDA4CkFkZWxpZTtEcmVhbTszMywxOzE2LDE7MTc4OzI5MDA7ZmVtYWxlOzIwMDgKQWRlbGllO0RyZWFtOzQzLDI7MTgsNTsxOTI7NDEwMDttYWxlOzIwMDgKQWRlbGllO0Jpc2NvZTszNSwwOzE3LDk7MTkyOzM3MjU7ZmVtYWxlOzIwMDkKQWRlbGllO0Jpc2NvZTs0MSwwOzIwLDA7MjAzOzQ3MjU7bWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7MzcsNzsxNiwwOzE4MzszMDc1O2ZlbWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7MzcsODsyMCwwOzE5MDs0MjUwO21hbGU7MjAwOQpBZGVsaWU7QmlzY29lOzM3LDk7MTgsNjsxOTM7MjkyNTtmZW1hbGU7MjAwOQpBZGVsaWU7QmlzY29lOzM5LDc7MTgsOTsxODQ7MzU1MDttYWxlOzIwMDkKQWRlbGllO0Jpc2NvZTszOCw2OzE3LDI7MTk5OzM3NTA7ZmVtYWxlOzIwMDkKQWRlbGllO0Jpc2NvZTszOCwyOzIwLDA7MTkwOzM5MDA7bWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7MzgsMTsxNywwOzE4MTszMTc1O2ZlbWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7NDMsMjsxOSwwOzE5Nzs0Nzc1O21hbGU7MjAwOQpBZGVsaWU7QmlzY29lOzM4LDE7MTYsNTsxOTg7MzgyNTtmZW1hbGU7MjAwOQpBZGVsaWU7QmlzY29lOzQ1LDY7MjAsMzsxOTE7NDYwMDttYWxlOzIwMDkKQWRlbGllO0Jpc2NvZTszOSw3OzE3LDc7MTkzOzMyMDA7ZmVtYWxlOzIwMDkKQWRlbGllO0Jpc2NvZTs0MiwyOzE5LDU7MTk3OzQyNzU7bWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7MzksNjsyMCw3OzE5MTszOTAwO2ZlbWFsZTsyMDA5CkFkZWxpZTtCaXNjb2U7NDIsNzsxOCwzOzE5Njs0MDc1O21hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzM4LDY7MTcsMDsxODg7MjkwMDtmZW1hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzM3LDM7MjAsNTsxOTk7Mzc3NTttYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjszNSw3OzE3LDA7MTg5OzMzNTA7ZmVtYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjs0MSwxOzE4LDY7MTg5OzMzMjU7bWFsZTsyMDA5CkFkZWxpZTtUb3JnZXJzZW47MzYsMjsxNywyOzE4NzszMTUwO2ZlbWFsZTsyMDA5CkFkZWxpZTtUb3JnZXJzZW47MzcsNzsxOSw4OzE5ODszNTAwO21hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzQwLDI7MTcsMDsxNzY7MzQ1MDtmZW1hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzQxLDQ7MTgsNTsyMDI7Mzg3NTttYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjszNSwyOzE1LDk7MTg2OzMwNTA7ZmVtYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjs0MCw2OzE5LDA7MTk5OzQwMDA7bWFsZTsyMDA5CkFkZWxpZTtUb3JnZXJzZW47MzgsODsxNyw2OzE5MTszMjc1O2ZlbWFsZTsyMDA5CkFkZWxpZTtUb3JnZXJzZW47NDEsNTsxOCwzOzE5NTs0MzAwO21hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzM5LDA7MTcsMTsxOTE7MzA1MDtmZW1hbGU7MjAwOQpBZGVsaWU7VG9yZ2Vyc2VuOzQ0LDE7MTgsMDsyMTA7NDAwMDttYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjszOCw1OzE3LDk7MTkwOzMzMjU7ZmVtYWxlOzIwMDkKQWRlbGllO1RvcmdlcnNlbjs0MywxOzE5LDI7MTk3OzM1MDA7bWFsZTsyMDA5CkFkZWxpZTtEcmVhbTszNiw4OzE4LDU7MTkzOzM1MDA7ZmVtYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM3LDU7MTgsNTsxOTk7NDQ3NTttYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM4LDE7MTcsNjsxODc7MzQyNTtmZW1hbGU7MjAwOQpBZGVsaWU7RHJlYW07NDEsMTsxNyw1OzE5MDszOTAwO21hbGU7MjAwOQpBZGVsaWU7RHJlYW07MzUsNjsxNyw1OzE5MTszMTc1O2ZlbWFsZTsyMDA5CkFkZWxpZTtEcmVhbTs0MCwyOzIwLDE7MjAwOzM5NzU7bWFsZTsyMDA5CkFkZWxpZTtEcmVhbTszNywwOzE2LDU7MTg1OzM0MDA7ZmVtYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM5LDc7MTcsOTsxOTM7NDI1MDttYWxlOzIwMDkKQWRlbGllO0RyZWFtOzQwLDI7MTcsMTsxOTM7MzQwMDtmZW1hbGU7MjAwOQpBZGVsaWU7RHJlYW07NDAsNjsxNywyOzE4NzszNDc1O21hbGU7MjAwOQpBZGVsaWU7RHJlYW07MzIsMTsxNSw1OzE4ODszMDUwO2ZlbWFsZTsyMDA5CkFkZWxpZTtEcmVhbTs0MCw3OzE3LDA7MTkwOzM3MjU7bWFsZTsyMDA5CkFkZWxpZTtEcmVhbTszNywzOzE2LDg7MTkyOzMwMDA7ZmVtYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM5LDA7MTgsNzsxODU7MzY1MDttYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM5LDI7MTgsNjsxOTA7NDI1MDttYWxlOzIwMDkKQWRlbGllO0RyZWFtOzM2LDY7MTgsNDsxODQ7MzQ3NTtmZW1hbGU7MjAwOQpBZGVsaWU7RHJlYW07MzYsMDsxNyw4OzE5NTszNDUwO2ZlbWFsZTsyMDA5CkFkZWxpZTtEcmVhbTszNyw4OzE4LDE7MTkzOzM3NTA7bWFsZTsyMDA5CkFkZWxpZTtEcmVhbTszNiwwOzE3LDE7MTg3OzM3MDA7ZmVtYWxlOzIwMDkKQWRlbGllO0RyZWFtOzQxLDU7MTgsNTsyMDE7NDAwMDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0NiwxOzEzLDI7MjExOzQ1MDA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs1MCwwOzE2LDM7MjMwOzU3MDA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDgsNzsxNCwxOzIxMDs0NDUwO2ZlbWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NTAsMDsxNSwyOzIxODs1NzAwO21hbGU7MjAwNwpHZW50b287QmlzY29lOzQ3LDY7MTQsNTsyMTU7NTQwMDttYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0Niw1OzEzLDU7MjEwOzQ1NTA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0NSw0OzE0LDY7MjExOzQ4MDA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0Niw3OzE1LDM7MjE5OzUyMDA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDMsMzsxMyw0OzIwOTs0NDAwO2ZlbWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDYsODsxNSw0OzIxNTs1MTUwO21hbGU7MjAwNwpHZW50b287QmlzY29lOzQwLDk7MTMsNzsyMTQ7NDY1MDtmZW1hbGU7MjAwNwpHZW50b287QmlzY29lOzQ5LDA7MTYsMTsyMTY7NTU1MDttYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0NSw1OzEzLDc7MjE0OzQ2NTA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0OCw0OzE0LDY7MjEzOzU4NTA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDUsODsxNCw2OzIxMDs0MjAwO2ZlbWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDksMzsxNSw3OzIxNzs1ODUwO21hbGU7MjAwNwpHZW50b287QmlzY29lOzQyLDA7MTMsNTsyMTA7NDE1MDtmZW1hbGU7MjAwNwpHZW50b287QmlzY29lOzQ5LDI7MTUsMjsyMjE7NjMwMDttYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0NiwyOzE0LDU7MjA5OzQ4MDA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0OCw3OzE1LDE7MjIyOzUzNTA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NTAsMjsxNCwzOzIxODs1NzAwO21hbGU7MjAwNwpHZW50b287QmlzY29lOzQ1LDE7MTQsNTsyMTU7NTAwMDtmZW1hbGU7MjAwNwpHZW50b287QmlzY29lOzQ2LDU7MTQsNTsyMTM7NDQwMDtmZW1hbGU7MjAwNwpHZW50b287QmlzY29lOzQ2LDM7MTUsODsyMTU7NTA1MDttYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0Miw5OzEzLDE7MjE1OzUwMDA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0NiwxOzE1LDE7MjE1OzUxMDA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDQsNTsxNCwzOzIxNjs0MTAwO05BOzIwMDcKR2VudG9vO0Jpc2NvZTs0Nyw4OzE1LDA7MjE1OzU2NTA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDgsMjsxNCwzOzIxMDs0NjAwO2ZlbWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NTAsMDsxNSwzOzIyMDs1NTUwO21hbGU7MjAwNwpHZW50b287QmlzY29lOzQ3LDM7MTUsMzsyMjI7NTI1MDttYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0Miw4OzE0LDI7MjA5OzQ3MDA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs0NSwxOzE0LDU7MjA3OzUwNTA7ZmVtYWxlOzIwMDcKR2VudG9vO0Jpc2NvZTs1OSw2OzE3LDA7MjMwOzYwNTA7bWFsZTsyMDA3CkdlbnRvbztCaXNjb2U7NDksMTsxNCw4OzIyMDs1MTUwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDgsNDsxNiwzOzIyMDs1NDAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQyLDY7MTMsNzsyMTM7NDk1MDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ0LDQ7MTcsMzsyMTk7NTI1MDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0NCwwOzEzLDY7MjA4OzQzNTA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0OCw3OzE1LDc7MjA4OzUzNTA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDIsNzsxMyw3OzIwODszOTUwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDksNjsxNiwwOzIyNTs1NzAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ1LDM7MTMsNzsyMTA7NDMwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ5LDY7MTUsMDsyMTY7NDc1MDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs1MCw1OzE1LDk7MjIyOzU1NTA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDMsNjsxMyw5OzIxNzs0OTAwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDUsNTsxMyw5OzIxMDs0MjAwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NTAsNTsxNSw5OzIyNTs1NDAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ0LDk7MTMsMzsyMTM7NTEwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ1LDI7MTUsODsyMTU7NTMwMDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0Niw2OzE0LDI7MjEwOzQ4NTA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0OCw1OzE0LDE7MjIwOzUzMDA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDUsMTsxNCw0OzIxMDs0NDAwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NTAsMTsxNSwwOzIyNTs1MDAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ2LDU7MTQsNDsyMTc7NDkwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ1LDA7MTUsNDsyMjA7NTA1MDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0Myw4OzEzLDk7MjA4OzQzMDA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0NSw1OzE1LDA7MjIwOzUwMDA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDMsMjsxNCw1OzIwODs0NDUwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NTAsNDsxNSwzOzIyNDs1NTUwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ1LDM7MTMsODsyMDg7NDIwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ2LDI7MTQsOTsyMjE7NTMwMDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0NSw3OzEzLDk7MjE0OzQ0MDA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs1NCwzOzE1LDc7MjMxOzU2NTA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDUsODsxNCwyOzIxOTs0NzAwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDksODsxNiw4OzIzMDs1NzAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ2LDI7MTQsNDsyMTQ7NDY1MDtOQTsyMDA4CkdlbnRvbztCaXNjb2U7NDksNTsxNiwyOzIyOTs1ODAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQzLDU7MTQsMjsyMjA7NDcwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzUwLDc7MTUsMDsyMjM7NTU1MDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0Nyw3OzE1LDA7MjE2OzQ3NTA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0Niw0OzE1LDY7MjIxOzUwMDA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDgsMjsxNSw2OzIyMTs1MTAwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ2LDU7MTQsODsyMTc7NTIwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ2LDQ7MTUsMDsyMTY7NDcwMDtmZW1hbGU7MjAwOApHZW50b287QmlzY29lOzQ4LDY7MTYsMDsyMzA7NTgwMDttYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs0Nyw1OzE0LDI7MjA5OzQ2MDA7ZmVtYWxlOzIwMDgKR2VudG9vO0Jpc2NvZTs1MSwxOzE2LDM7MjIwOzYwMDA7bWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDUsMjsxMyw4OzIxNTs0NzUwO2ZlbWFsZTsyMDA4CkdlbnRvbztCaXNjb2U7NDUsMjsxNiw0OzIyMzs1OTUwO21hbGU7MjAwOApHZW50b287QmlzY29lOzQ5LDE7MTQsNTsyMTI7NDYyNTtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUyLDU7MTUsNjsyMjE7NTQ1MDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0Nyw0OzE0LDY7MjEyOzQ3MjU7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs1MCwwOzE1LDk7MjI0OzUzNTA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDQsOTsxMyw4OzIxMjs0NzUwO2ZlbWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NTAsODsxNywzOzIyODs1NjAwO21hbGU7MjAwOQpHZW50b287QmlzY29lOzQzLDQ7MTQsNDsyMTg7NDYwMDtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUxLDM7MTQsMjsyMTg7NTMwMDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0Nyw1OzE0LDA7MjEyOzQ4NzU7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs1MiwxOzE3LDA7MjMwOzU1NTA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDcsNTsxNSwwOzIxODs0OTUwO2ZlbWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NTIsMjsxNywxOzIyODs1NDAwO21hbGU7MjAwOQpHZW50b287QmlzY29lOzQ1LDU7MTQsNTsyMTI7NDc1MDtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzQ5LDU7MTYsMTsyMjQ7NTY1MDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0NCw1OzE0LDc7MjE0OzQ4NTA7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs1MCw4OzE1LDc7MjI2OzUyMDA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDksNDsxNSw4OzIxNjs0OTI1O21hbGU7MjAwOQpHZW50b287QmlzY29lOzQ2LDk7MTQsNjsyMjI7NDg3NTtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzQ4LDQ7MTQsNDsyMDM7NDYyNTtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUxLDE7MTYsNTsyMjU7NTI1MDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0OCw1OzE1LDA7MjE5OzQ4NTA7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs1NSw5OzE3LDA7MjI4OzU2MDA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDcsMjsxNSw1OzIxNTs0OTc1O2ZlbWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDksMTsxNSwwOzIyODs1NTAwO21hbGU7MjAwOQpHZW50b287QmlzY29lOzQ3LDM7MTMsODsyMTY7NDcyNTtOQTsyMDA5CkdlbnRvbztCaXNjb2U7NDYsODsxNiwxOzIxNTs1NTAwO21hbGU7MjAwOQpHZW50b287QmlzY29lOzQxLDc7MTQsNzsyMTA7NDcwMDtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUzLDQ7MTUsODsyMTk7NTUwMDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0MywzOzE0LDA7MjA4OzQ1NzU7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0OCwxOzE1LDE7MjA5OzU1MDA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NTAsNTsxNSwyOzIxNjs1MDAwO2ZlbWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDksODsxNSw5OzIyOTs1OTUwO21hbGU7MjAwOQpHZW50b287QmlzY29lOzQzLDU7MTUsMjsyMTM7NDY1MDtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUxLDU7MTYsMzsyMzA7NTUwMDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0NiwyOzE0LDE7MjE3OzQzNzU7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs1NSwxOzE2LDA7MjMwOzU4NTA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDQsNTsxNSw3OzIxNzs0ODc1O05BOzIwMDkKR2VudG9vO0Jpc2NvZTs0OCw4OzE2LDI7MjIyOzYwMDA7bWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7NDcsMjsxMyw3OzIxNDs0OTI1O2ZlbWFsZTsyMDA5CkdlbnRvbztCaXNjb2U7TkE7TkE7TkE7TkE7TkE7MjAwOQpHZW50b287QmlzY29lOzQ2LDg7MTQsMzsyMTU7NDg1MDtmZW1hbGU7MjAwOQpHZW50b287QmlzY29lOzUwLDQ7MTUsNzsyMjI7NTc1MDttYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0NSwyOzE0LDg7MjEyOzUyMDA7ZmVtYWxlOzIwMDkKR2VudG9vO0Jpc2NvZTs0OSw5OzE2LDE7MjEzOzU0MDA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0Niw1OzE3LDk7MTkyOzM1MDA7ZmVtYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUwLDA7MTksNTsxOTY7MzkwMDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUxLDM7MTksMjsxOTM7MzY1MDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzQ1LDQ7MTgsNzsxODg7MzUyNTtmZW1hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NTIsNzsxOSw4OzE5NzszNzI1O21hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NDUsMjsxNyw4OzE5ODszOTUwO2ZlbWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs0NiwxOzE4LDI7MTc4OzMyNTA7ZmVtYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUxLDM7MTgsMjsxOTc7Mzc1MDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzQ2LDA7MTgsOTsxOTU7NDE1MDtmZW1hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NTEsMzsxOSw5OzE5ODszNzAwO21hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NDYsNjsxNyw4OzE5MzszODAwO2ZlbWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs1MSw3OzIwLDM7MTk0OzM3NzU7bWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs0NywwOzE3LDM7MTg1OzM3MDA7ZmVtYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUyLDA7MTgsMTsyMDE7NDA1MDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzQ1LDk7MTcsMTsxOTA7MzU3NTtmZW1hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NTAsNTsxOSw2OzIwMTs0MDUwO21hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NTAsMzsyMCwwOzE5NzszMzAwO21hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NTgsMDsxNyw4OzE4MTszNzAwO2ZlbWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs0Niw0OzE4LDY7MTkwOzM0NTA7ZmVtYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzQ5LDI7MTgsMjsxOTU7NDQwMDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzQyLDQ7MTcsMzsxODE7MzYwMDtmZW1hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NDgsNTsxNyw1OzE5MTszNDAwO21hbGU7MjAwNwpDaGluc3RyYXA7RHJlYW07NDMsMjsxNiw2OzE4NzsyOTAwO2ZlbWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs1MCw2OzE5LDQ7MTkzOzM4MDA7bWFsZTsyMDA3CkNoaW5zdHJhcDtEcmVhbTs0Niw3OzE3LDk7MTk1OzMzMDA7ZmVtYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUyLDA7MTksMDsxOTc7NDE1MDttYWxlOzIwMDcKQ2hpbnN0cmFwO0RyZWFtOzUwLDU7MTgsNDsyMDA7MzQwMDtmZW1hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDksNTsxOSwwOzIwMDszODAwO21hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDYsNDsxNyw4OzE5MTszNzAwO2ZlbWFsZTsyMDA4CkNoaW5zdHJhcDtEcmVhbTs1Miw4OzIwLDA7MjA1OzQ1NTA7bWFsZTsyMDA4CkNoaW5zdHJhcDtEcmVhbTs0MCw5OzE2LDY7MTg3OzMyMDA7ZmVtYWxlOzIwMDgKQ2hpbnN0cmFwO0RyZWFtOzU0LDI7MjAsODsyMDE7NDMwMDttYWxlOzIwMDgKQ2hpbnN0cmFwO0RyZWFtOzQyLDU7MTYsNzsxODc7MzM1MDtmZW1hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NTEsMDsxOCw4OzIwMzs0MTAwO21hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDksNzsxOCw2OzE5NTszNjAwO21hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDcsNTsxNiw4OzE5OTszOTAwO2ZlbWFsZTsyMDA4CkNoaW5zdHJhcDtEcmVhbTs0Nyw2OzE4LDM7MTk1OzM4NTA7ZmVtYWxlOzIwMDgKQ2hpbnN0cmFwO0RyZWFtOzUyLDA7MjAsNzsyMTA7NDgwMDttYWxlOzIwMDgKQ2hpbnN0cmFwO0RyZWFtOzQ2LDk7MTYsNjsxOTI7MjcwMDtmZW1hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NTMsNTsxOSw5OzIwNTs0NTAwO21hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDksMDsxOSw1OzIxMDszOTUwO21hbGU7MjAwOApDaGluc3RyYXA7RHJlYW07NDYsMjsxNyw1OzE4NzszNjUwO2ZlbWFsZTsyMDA4CkNoaW5zdHJhcDtEcmVhbTs1MCw5OzE5LDE7MTk2OzM1NTA7bWFsZTsyMDA4CkNoaW5zdHJhcDtEcmVhbTs0NSw1OzE3LDA7MTk2OzM1MDA7ZmVtYWxlOzIwMDgKQ2hpbnN0cmFwO0RyZWFtOzUwLDk7MTcsOTsxOTY7MzY3NTtmZW1hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NTAsODsxOCw1OzIwMTs0NDUwO21hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NTAsMTsxNyw5OzE5MDszNDAwO2ZlbWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0OSwwOzE5LDY7MjEyOzQzMDA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs1MSw1OzE4LDc7MTg3OzMyNTA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0OSw4OzE3LDM7MTk4OzM2NzU7ZmVtYWxlOzIwMDkKQ2hpbnN0cmFwO0RyZWFtOzQ4LDE7MTYsNDsxOTk7MzMyNTtmZW1hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NTEsNDsxOSwwOzIwMTszOTUwO21hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NDUsNzsxNywzOzE5MzszNjAwO2ZlbWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs1MCw3OzE5LDc7MjAzOzQwNTA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0Miw1OzE3LDM7MTg3OzMzNTA7ZmVtYWxlOzIwMDkKQ2hpbnN0cmFwO0RyZWFtOzUyLDI7MTgsODsxOTc7MzQ1MDttYWxlOzIwMDkKQ2hpbnN0cmFwO0RyZWFtOzQ1LDI7MTYsNjsxOTE7MzI1MDtmZW1hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NDksMzsxOSw5OzIwMzs0MDUwO21hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NTAsMjsxOCw4OzIwMjszODAwO21hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NDUsNjsxOSw0OzE5NDszNTI1O2ZlbWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs1MSw5OzE5LDU7MjA2OzM5NTA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0Niw4OzE2LDU7MTg5OzM2NTA7ZmVtYWxlOzIwMDkKQ2hpbnN0cmFwO0RyZWFtOzQ1LDc7MTcsMDsxOTU7MzY1MDtmZW1hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NTUsODsxOSw4OzIwNzs0MDAwO21hbGU7MjAwOQpDaGluc3RyYXA7RHJlYW07NDMsNTsxOCwxOzIwMjszNDAwO2ZlbWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs0OSw2OzE4LDI7MTkzOzM3NzU7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs1MCw4OzE5LDA7MjEwOzQxMDA7bWFsZTsyMDA5CkNoaW5zdHJhcDtEcmVhbTs1MCwyOzE4LDc7MTk4OzM3NzU7ZmVtYWxlOzIwMDkK').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'penguins data set.csv'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+    });">
+<button class="btn btn-default" has_icon="TRUE"><i class="fa fa-file-csv"></i> penguins.csv</button>
+</a>
+</div>
+</div>
+</div>
+<p>Tento text je webový průvodce pro cvičení kurzu <strong>ZVZ117E Metody vyhodnocování vodohospodářských dat</strong>. Jeho obsahuje materiály ke všem jednotlivým cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici vyložit látku komplexně, nenahrazuje přednášky kurzu ani skripta ke kurzu určená. Jedná se o průvodce cvičeními. Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony, které jsou prováděny jsou prováděny s didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na které je čtenář občas doplňkově upozorněn.</p>
+<section id="doporučená-literatura" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="doporučená-literatura"><span class="header-section-number">1.1</span> Doporučená literatura</h2>
+<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-knuth84" class="csl-entry" role="listitem">
+Knuth, Donald E. 1984. <span>„Literate Programming"</span>. <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script>
+var all_btns = document.querySelectorAll(".download_btn a");
+var data_nav = document.querySelectorAll('[aria-labelledby="sidebar-tool-dropdown-0"] li')
+
+for (let i = 0; i < data_nav.length; i++) {
+  let li = document.createElement("li");
+  li.appendChild(all_btns[i]);
+  data_nav[i].parentElement.replaceChild(li, data_nav[i])
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Zkopírováno!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Zkopírováno!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Struktura knihy</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./uvod_do_R_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Práce v prostředí RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

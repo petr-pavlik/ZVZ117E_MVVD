@@ -1,0 +1,40 @@
+# Vzorový test 2
+
+Druhý test je orientován na **hydroklimatické indexy**, **lineární model**, **řídícími strukturami** a **grafickým výstupem**. Mimo to může test obsahovat i otázky z Testu 1. Test obsahuje jak praktické, tak teoretické otázky, celkem je tvořen 8 úlohami s časovou náročností 60 min.
+
+## Zadání
+
+### Úloha 1
+
+Nahrajte datovou sadu `clim1960.rds` a proveďte následující úkony EDA
+
+-   spočítejte celkovou roční srážku
+-   spočítejte průměrnou teplotu v květnu
+-   spočítejte medián nenulových srážek
+
+```{r}
+x <- 1:50
+mean(x)
+sum(x)
+median(x)
+
+```
+
+### Úloha 2
+
+```{r}
+par(mfrow = c(1,2))
+curve(expr = sin(x), from = -pi, to = pi)
+curve(expr = cos(x), from = -pi, to = pi)
+```
+
+## Řešení
+
+### Úloha 1
+### Úloha 2
+### Úloha 3
+### Úloha 4
+### Úloha 5
+### Úloha 6
+### Úloha 7
+### Úloha 8
