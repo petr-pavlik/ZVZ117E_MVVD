@@ -1,5 +1,13 @@
 project:
-  type: book
+  type: website
+
+website:
+  title: "Metody vyhodnocování vodohospodářských dat"
+  navbar: 
+    left:
+      - href: index.qmd
+      - text: Home
+      - intro.qmd
 
 book:
   title: "Metody vyhodnocování vodohospodářských dat"
