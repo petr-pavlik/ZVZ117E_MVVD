@@ -1,5 +1,6 @@
 project:
-  type: website
+  type: book
+  output-dir: docs
 
 website:
   title: "Metody vyhodnocování vodohospodářských dat"
@@ -8,6 +9,7 @@ website:
       - href: index.qmd
       - text: Home
       - intro.qmd
+  
 
 book:
   title: "Metody vyhodnocování vodohospodářských dat"
