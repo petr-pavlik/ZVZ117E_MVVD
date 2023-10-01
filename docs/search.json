@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Metody vyhodnocování vodohospodářských dat",
     "section": "",
-    "text": "Struktura knihy\nTento text byl vytvořen s pomocí verze R 4.2.2 a jmenných prostorů balíků ve verzích:\n\n\n            Version\ncli           3.6.1\ndigest       0.6.31\nevaluate       0.21\nfastmap       1.1.1\nglue          1.6.2\nhtmltools     0.5.5\nhtmlwidgets   1.6.2\njsonlite      1.8.5\nknitr          1.43\nlifecycle     1.0.3\nmagrittr      2.0.3\nrlang         1.1.1\nrmarkdown      2.22\nrstudioapi     0.14\nstringi      1.7.12\nstringr       1.5.0\nxfun           0.39\nbase          4.2.2\ncompiler      4.2.2\ndatasets      4.2.2\ngraphics      4.2.2\ngrDevices     4.2.2\nmethods       4.2.2\nstats         4.2.2\ntools         4.2.2\nutils         4.2.2\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
+    "text": "Struktura knihy\nTento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:\n\n\n            Version\nbase          4.3.0\ncli           3.6.1\ncompiler      4.3.0\ndatasets      4.3.0\ndigest       0.6.33\nevaluate       0.21\nfastmap       1.1.1\nglue          1.6.2\ngraphics      4.3.0\ngrDevices     4.3.0\nhtmltools     0.5.6\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.43\nlifecycle     1.0.3\nmagrittr      2.0.3\nmethods       4.3.0\nrlang         1.1.1\nrmarkdown      2.24\nrstudioapi     0.14\nstats         4.3.0\nstringi      1.7.12\nstringr       1.5.0\ntools         4.3.0\nutils         4.3.0\nxfun           0.40\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
   },
   {
     "objectID": "intro.html#doporučená-literatura",
@@ -25,7 +25,7 @@
     "href": "uvod_do_R_1.html#nápověda",
     "title": "2  Práce v prostředí RStudio",
     "section": "3.1 Nápověda",
-    "text": "3.1 Nápověda\nZadává se do konzole ve tvaru help(<jméno funkce>), nebo <jmeno funkce>. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu View(jmeno funkce). Kromě toho existuje v R také help.search(<jméno funkce>) funkce pod zkratkou ??, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce RSiteSearch(), která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: ?Logical, ?Constants, ?Control, ?Arithmetic, ?Syntax."
+    "text": "3.1 Nápověda\nZadává se do konzole ve tvaru help(&lt;jméno funkce&gt;), nebo &lt;jmeno funkce&gt;. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu View(jmeno funkce). Kromě toho existuje v R také help.search(&lt;jméno funkce&gt;) funkce pod zkratkou ??, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce RSiteSearch(), která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: ?Logical, ?Constants, ?Control, ?Arithmetic, ?Syntax."
   },
   {
     "objectID": "uvod_do_R_1.html#aritmetické-operace",
@@ -67,7 +67,7 @@
     "href": "popisna.html",
     "title": "5  Popisná statistika",
     "section": "",
-    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\n\nKód\nx <- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
+    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\nTerminologie\n\nMinimum, maximum\n\nRozpětí\n\\[\n\\max-\\min\n\\]\nAritmetický průměr\n\\[\n\\dfrac{1}{n}\\sum\\limits_{i=1}^{n}x_i\n\\]\nMedián\n\nModus\nTermínem modus označujeme nejčastější hodnotu v souboru\nHarmonický průměr\n\nRozptyl \\[\n\\dfrac{1}{n}(x_i - \\bar{x})^2\n\\]\nSměrodatná odchylka\n\\[\n\\dfrac{1}{n}\\sqrt{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}\n\\]\n\n\n\nKód\nsqrt(x)\n\n\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))\n\n\n\n\n\n\n\n5.0.1 Klíčové znalosti"
   },
   {
     "objectID": "rozdeleni.html#empirické-vs.-teoretické-rozdělení",
@@ -81,7 +81,7 @@
     "href": "rozdeleni.html#diskrétní-rozdělení",
     "title": "6  Statistické rozdělení",
     "section": "6.2 Diskrétní rozdělení",
-    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx <- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 3.872847\n\n\nKód\nsum(x)\n\n\n[1] 38.72847\n\n\nKód\nmedian(x)\n\n\n[1] 4.483918\n\n\nKód\nIQR(x)\n\n\n[1] 5.476813\n\n\nKód\nfivenum(x)\n\n\n[1] -5.413884  1.984767  4.483918  7.778269 10.565127"
+    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 4.866286\n\n\nKód\nsum(x)\n\n\n[1] 48.66286\n\n\nKód\nmedian(x)\n\n\n[1] 5.362409\n\n\nKód\nIQR(x)\n\n\n[1] 4.483929\n\n\nKód\nfivenum(x)\n\n\n[1] -0.7559531  1.3653083  5.3624092  6.6530420 10.8082585"
   },
   {
     "objectID": "rozdeleni.html#spojitá-rozdělení",
@@ -102,7 +102,7 @@
     "href": "odhad.html#bodový-odhad",
     "title": "7  Odhad",
     "section": "7.1 Bodový odhad",
-    "text": "7.1 Bodový odhad\n\n\nKód\nx <- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\n\n7.1.1 Odhad parametru \\(\\mu\\), neboli střední hodnoty normálního rozdělení\nNejprve bodovým odhadem zjistíme výběrový průměr souboru.\n\n\nKód\nx <- mean(mtcars$hp)\nx\n\n\n[1] 146.6875\n\n\nVidíme, že \\(x =\\) 146.6875. Pro tento průmer následně spočítáme interval spolehlivosti."
+    "text": "7.1 Bodový odhad\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\n\n7.1.1 Odhad parametru \\(\\mu\\), neboli střední hodnoty normálního rozdělení\nNejprve bodovým odhadem zjistíme výběrový průměr souboru.\n\n\nKód\nx &lt;- mean(mtcars$hp)\nx\n\n\n[1] 146.6875\n\n\nVidíme, že \\(x =\\) 146.6875. Pro tento průmer následně spočítáme interval spolehlivosti."
   },
   {
     "objectID": "odhad.html#intervalový-odhad",
@@ -116,21 +116,21 @@
     "href": "test_1.html",
     "title": "8  Vzorový test 1",
     "section": "",
-    "text": "První test je orientován na opakování základní práce v R, to jest znalost a práce s datovými typy, datovými strukturami, řídícími strukturami a grafickým výstupem. Dále pak tematicky obsahuje otázky na statistická rozdělení, bodový a intervalový odhad a testování hypotéz. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.\n\n\nKód\nx <- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
+    "text": "První test je orientován na opakování základní práce v R, to jest znalost a práce s datovými typy, datovými strukturami, řídícími strukturami a grafickým výstupem. Dále pak tematicky obsahuje otázky na statistická rozdělení, bodový a intervalový odhad a testování hypotéz. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
   },
   {
     "objectID": "casove_rady.html",
     "href": "casove_rady.html",
     "title": "9  Popisná statistika",
     "section": "",
-    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\n\nKód\nx <- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
+    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
   },
   {
     "objectID": "hydro_index.html#diskrétní-rozdělení",
     "href": "hydro_index.html#diskrétní-rozdělení",
     "title": "10  Statistické rozdělení",
     "section": "10.1 Diskrétní rozdělení",
-    "text": "10.1 Diskrétní rozdělení\n\n\nKód\nx <- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] -0.1015755\n\n\nKód\nsum(x)\n\n\n[1] -1.015755\n\n\nKód\nmedian(x)\n\n\n[1] 0.1498126\n\n\nKód\nIQR(x)\n\n\n[1] 6.758035\n\n\nKód\nfivenum(x)\n\n\n[1] -8.5019775 -3.5275229  0.1498126  4.1586282  9.2555372"
+    "text": "10.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] -2.089082\n\n\nKód\nsum(x)\n\n\n[1] -20.89082\n\n\nKód\nmedian(x)\n\n\n[1] -2.93116\n\n\nKód\nIQR(x)\n\n\n[1] 4.33533\n\n\nKód\nfivenum(x)\n\n\n[1] -8.0697846 -4.8791219 -2.9311597 -0.0116692  7.7429713"
   },
   {
     "objectID": "hydro_index.html#spojitá-rozdělení",
@@ -144,7 +144,7 @@
     "href": "test_2.html#zadání",
     "title": "11  Vzorový test 2",
     "section": "11.1 Zadání",
-    "text": "11.1 Zadání\n\n11.1.1 Úloha 1\nNahrajte datovou sadu clim1960.rds a proveďte následující úkony EDA\n\nspočítejte celkovou roční srážku\nspočítejte průměrnou teplotu v květnu\nspočítejte medián nenulových srážek\n\n\n\nKód\nx <- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\n\n\n11.1.2 Úloha 2\n\n\nKód\npar(mfrow = c(1,2))\ncurve(expr = sin(x), from = -pi, to = pi)\ncurve(expr = cos(x), from = -pi, to = pi)"
+    "text": "11.1 Zadání\n\n11.1.1 Úloha 1\nNahrajte datovou sadu clim1960.rds a proveďte následující úkony EDA\n\nspočítejte celkovou roční srážku\nspočítejte průměrnou teplotu v květnu\nspočítejte medián nenulových srážek\n\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\n\n\n11.1.2 Úloha 2\n\n\nKód\npar(mfrow = c(1,2))\ncurve(expr = sin(x), from = -pi, to = pi)\ncurve(expr = cos(x), from = -pi, to = pi)"
   },
   {
     "objectID": "test_2.html#řešení",

@@ -1,7 +1,33 @@
 # Popisná statistika
 
-Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`,
-jehož jmenný prostor je připojen po otevření R. 
+Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.
+
+#### Terminologie {-}
+ - Minimum, maximum\
+ - Rozpětí\
+ $$
+ \max-\min 
+ $$
+ - Aritmetický průměr\
+ $$
+ \dfrac{1}{n}\sum\limits_{i=1}^{n}x_i
+ $$
+ - Medián\
+ - Modus\
+ Termínem **modus** označujeme nejčastější hodnotu v souboru
+ - Harmonický průměr\
+ - Rozptyl
+ $$
+ \dfrac{1}{n}(x_i - \bar{x})^2
+ $$
+ 
+ - Směrodatná odchylka\
+ $$
+ \dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}
+ $$
+```{r, eval=FALSE}
+sqrt(x)
+```
 
 ```{r}
 x <- 1:50
@@ -16,3 +42,6 @@ Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně 
 ```{r}
 curve(sin(x))
 ```
+
+### Klíčové znalosti
+ - 
