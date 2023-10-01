@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500&display=swap');
+
+/*-- scss:defaults --*/
+// Base document colors
+$body-bg: #fff;
+$body-color: #333;
+$link-color: #000066;
+
+/*-- scss:variables --*/
+$primary-color: #333;
+
+/*-- scss:rules --*/
+h1, h2 {
+  /* text-shadow: -4px 4px 5px rgba(0,0,0,0.05); */
+  font-family: 'Markazi Text', serif;;
+}
+
+
+$code-color: #660033;

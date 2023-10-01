@@ -1,8 +1,0 @@
-/*-- scss:variables --*/
-$primary-color: #333;
-
-/*-- scss:rules --*/
-h1, h2 {
-  text-shadow: -4px 4px 5px rgba(0,0,0,0.05);
-}
-

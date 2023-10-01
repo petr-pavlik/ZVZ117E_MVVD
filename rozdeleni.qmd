@@ -1,19 +1,19 @@
 # Statistické rozdělení
 
-V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí 
+V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí
 
 ```{r eval=FALSE}
-rxxx() # náhodná čísla
+rxxx() # generování náhodných čísel
 dxxx() # 
 pxxx()
 qxxx()
 ```
 
+#### Generování náhodných čísel z rozdělení
+
 ## Empirické vs. teoretické rozdělení
 
-### Úkol
 
-Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
 
 ## Diskrétní rozdělení
 
@@ -31,3 +31,13 @@ fivenum(x)
 ```{r}
 curve(sin(x))
 ```
+
+#### Cvičení {-}
+
+1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
+
+2.  Generujte 50 čísel  $X\sim\mathsf{Po}(\lambda = 2.3)$.
+
+3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat hodnot menších než 6?
+
+## 

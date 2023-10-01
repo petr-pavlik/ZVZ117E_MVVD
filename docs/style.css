@@ -11,15 +11,15 @@ h1 {
 }
 
 a {
-  color: #16213e;
+  color: #8570c2;
 }
 
 a:hover {
-  color: #150050;
+  color: #db9957;
 }
 
 a:active, a:focus {
-  color: #509fbd;
+  color: #db9957;
 }
 
 pre, code {

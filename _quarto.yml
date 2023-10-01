@@ -60,7 +60,7 @@ format:
     include-after-body: custom.html
     theme: 
       - cosmo
-      - theme.css
+      - theme.scss
     max-width: 1600px
     css: style.css
     code-fold: show
