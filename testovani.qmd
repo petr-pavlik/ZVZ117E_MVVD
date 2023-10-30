@@ -1,0 +1,29 @@
+# Testování hypotéz
+
+## Postup testování statistické hypotézy:
+ 1. Formulace nulové $H_0$ a alternativní $H_a$ hypotézy.   
+ 2. Volba hladiny významnosti $\alpha$.    
+ 3. Volba testovací statistiky.    
+ 4. Určení kritického oboru testové statistiky
+ 5. 
+ 
+Výsledkem tetování je buď a) zamítnutní nulové hypotézy^[Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí] b) nezamítnutní nulové hypotézy.
+
+
+## 100(1-$\alpha$)% inteval spolehlivosti
+
+$$
+\bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
+$$
+
+
+$$
+\bar{x} - t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}
+$$
+
+kde $\nu=n-1$ je počet stupňů volnosti.
+
+#### P-hodnota
+Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. p-hodnotu (p-value). 
+
+Pravděpodobnost platnosti hypotézy

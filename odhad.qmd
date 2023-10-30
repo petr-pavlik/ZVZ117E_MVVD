@@ -1,14 +1,15 @@
 # Odhad
 
 Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. $\mu$, $\sigma$, $\ldots$), pro výběrové charakteristiky volíme analogická písmena z latinky ($\bar{x}, s_x, \ldots$). 
-
 ## Bodový odhad
+
+Bodovým odjhade
 
 ```{r}
 x <- 1:50
 mean(x)
-sum(x)
-median(x)
+
+
 
 ```
 
@@ -25,12 +26,11 @@ Vidíme, že $x =$ `r x`. Pro tento průmer následně spočítáme interval spo
 
 ## Intervalový odhad
 
-
 V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností,
-můžeme se pokusit zkonstruovat tzv. **intervalový odhad**.
+můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. $100(1-\alpha)%$ interval spolehlivosti pro $\bar{X} = - z_{1-\alpha/2} $. 
 
 $$
-\bar{X} \pm \dfrac{\mu}{\sigma}qt(\alpha)_{0.05}
+\bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
 $$
 
 ### Interval spolehlivosti odhadu střední hodnoty $\mu$ souboru s neznámou střední hodnotou.
@@ -38,5 +38,11 @@ $$
 Rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.
 
 ```{r}
-
+alpha <- 0.05
+qt(p = 1 - alpha/2, df = length(x) - 1)
 ```
+
+
+##### Cvičení {-}
+- Sestrojte 95 % interval spolehlivosti pro střední hodnotu
+

@@ -65,7 +65,7 @@ palmerpenguins::penguins %>%
 
 # Úvod
 
-Tento text je webový průvodce pro cvičení kurzu **ZVZ117E Metody vyhodnocování vodohospodářských dat**. Jeho obsahuje materiály ke všem jednotlivým cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici vyložit látku komplexně, nenahrazuje přednášky kurzu ani skripta ke kurzu určená. Jedná se o průvodce cvičeními. Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony, které jsou prováděny jsou prováděny s didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na které je čtenář občas doplňkově upozorněn.
+Tento text je webový průvodce pro cvičení kurzu **ZVZ117E Metody vyhodnocování vodohospodářských dat**. Jeho obsahuje materiály ke všem jednotlivým cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici vyložit látku komplexně, nenahrazuje přednášky kurzu ani skripta ke kurzu určená. Jedná se o **průvodce cvičeními**. Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony, které jsou prováděny jsou prováděny s didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na které je čtenář občas doplňkově upozorněn.
 
 ## Doporučená literatura
 

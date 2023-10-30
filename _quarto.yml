@@ -27,9 +27,11 @@ book:
     - popisna.qmd
     - rozdeleni.qmd
     - odhad.qmd
+    - testovani.qmd
     - test_1.qmd
     - casove_rady.qmd
     - hydro_index.qmd
+    - korelace_regrese.qmd
     - test_2.qmd
     - references.qmd
     

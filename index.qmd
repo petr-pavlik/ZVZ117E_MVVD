@@ -8,4 +8,4 @@ installed.packages()[installed.packages()[, 1] %in% loadedNamespaces(), ][, c("V
   setNames("Version") 
 ```
 
-K reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia. 
+K reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia.

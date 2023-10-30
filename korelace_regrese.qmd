@@ -1,0 +1,38 @@
+## Korelace
+
+Alternativně můžeme použít výpočet založený na diferencích pořadí pozorovaných hodnot, které definujeme jako $d_i = x_{ri} - y_{ri}$
+
+$$
+r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)} 
+$$ {#eq-spearman}
+
+#### Cvičení {.unnumbered}
+
+-   Napište vlastní funkci, které pro dané vektory `x` a `y` spočítá korelační Spearmanův koeficient. Řešení:
+
+```{r}
+sp_k <- function(x, y) {
+  nx <- length(x)
+  ny <- length(y)
+  n <- nx + ny
+  
+  1 - ((6 * sum((x - mean(x))^2 + (y - mean(y))^2)) / (n*(n^2 - 1)))
+  
+}
+sp_k(10:1, 1.5 + 1:10)
+cor(10:1, 1.5 + 1:10, method = "spearman")
+
+```
+
+| Povodí  | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ |
+|---------|----------------|--------|-------------|------|----------------|---------|
+| 1       |                |        |             |      |                |         |
+| 2       |                |        |             |      |                |         |
+| 3       |                |        |             |      |                |         |
+| 4       |                |        |             |      |                |         |
+| 5       |                |        |             |      |                |         |
+| 6       |                |        |             |      |                |         |
+| 7       |                |        |             |      |                |         |
+| 8       |                |        |             |      |                |         |
+| 9       |                |        |             |      |                |         |
+| 10      |                |        |             |      |                |         |
