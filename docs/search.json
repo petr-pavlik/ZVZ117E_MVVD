@@ -39,21 +39,21 @@
     "href": "uvod_do_R_1.html#jmenné-konvence",
     "title": "2  Práce v prostředí RStudio",
     "section": "3.3 Jmenné konvence",
-    "text": "3.3 Jmenné konvence"
+    "text": "3.3 Jmenné konvence\nObjekty, které vznikají při práci s R musí splňovat následující jmenné konvence.\n- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo if, else, repeat, while, function, for, for, in, next, repeat, break, TRUE, FALSE, NULL, Inf, Nan, NA, NA_integer_, NA_real_, NA_complex_, NA_character_. - speciální znak: _\nDále se nedoporučuje vkládat do názvu proměnné tečku ., např. ``"
   },
   {
     "objectID": "uvod_do_R_1.html#operátory",
     "href": "uvod_do_R_1.html#operátory",
     "title": "2  Práce v prostředí RStudio",
-    "section": "3.4 Operátory",
-    "text": "3.4 Operátory\nKromě aritmetických operátorů\n\n\nKód\n&lt;        # větší než \n&gt;        # větší než \n&gt;=       # větší nebo rovno \n&lt;=       # menší nebo rovno \n==       # rovná se\n!=       # nerovná se\n&        # a zároveň\n&&       # a zároveň vektorově\n|        # nebo\n||       # nebo vektorově\nxor()    #  \nisTRUE() # \n\n\n\n\nKód\nany()\n\n\n[1] FALSE\n\n\nKód\nall()\n\n\n[1] TRUE"
+    "section": "3.5 Operátory",
+    "text": "3.5 Operátory\nKromě aritmetických operátorů, zmíněných Sekce 3.2\n\n\nKód\n&lt;        # větší než \n&gt;        # větší než \n&gt;=       # větší nebo rovno \n&lt;=       # menší nebo rovno \n==       # rovná se\n!=       # nerovná se\n&        # a zároveň\n&&       # a zároveň vektorově\n|        # nebo\n||       # nebo vektorově\nxor()    # \nisTRUE() # \n\n\n\n\nKód\nany()\n\n\n[1] FALSE\n\n\nKód\nall()\n\n\n[1] TRUE"
   },
   {
     "objectID": "uvod_do_R_1.html#základní-datové-struktury",
     "href": "uvod_do_R_1.html#základní-datové-struktury",
     "title": "2  Práce v prostředí RStudio",
-    "section": "3.5 Základní datové struktury",
-    "text": "3.5 Základní datové struktury\nZákladní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.\n\n3.5.1 Homogenní datové struktury\nHomogenní datové struktury obsahují atomické vektory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.\n\n3.5.1.1 Vektor\nVektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce vector(mode = \"numeric\", length = 10) a funkce c(), případně vzniká pomocí opetárorů [ nebo [[. Zde je na místě\n\n\n\n3.5.2 Heterogenní datové struktury\n\n3.5.2.1 Datová tabulka\ndata.frame je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.\n\n\nKód\nDF &lt;- data.frame(name = letters[1:5], \n                 value = rnorm(5))\nDF\n##   name       value\n## 1    a -0.05140543\n## 2    b  1.08136626\n## 3    c -1.89445742\n## 4    d -1.13858884\n## 5    e -0.49109006\nDF[\"name\"]        # podvýběr do data.frame\n##   name\n## 1    a\n## 2    b\n## 3    c\n## 4    d\n## 5    e\nDF[[\"name\"]]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\nDF[, \"name\"]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\n\n\nPráce uvnitř data.frame\n\n\nKód\nDF &lt;- data.frame(\n  mon = rep(month.abb, \n            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), \n  value = rnorm(365), \n  yr = 2001)\nstr(DF)\n## 'data.frame':    365 obs. of  3 variables:\n##  $ mon  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n##  $ value: num  0.244 -0.863 1.076 -0.698 -1.11 ...\n##  $ yr   : num  2001 2001 2001 2001 2001 ...\nnames(DF)\n## [1] \"mon\"   \"value\" \"yr\"\nnrow(DF)\n## [1] 365\nncol(DF)\n## [1] 3\n\n\n\n\n\n3.5.3 Úlohy\n\nSpočítejte pomocí R následující výrazy:\n\n\n\n\\(1 + 3 \\cdot (2 / 3)\\:\\mathrm{mod}\\:3\\)\n\n\\(\\left(\\dfrac{2}{35}\\right)^{0.5} \\cdot 3 \\cdot (2 / 3)\\)\n\n\\(\\sum\\limits_{i = 1}^{53}x_i\\) \n\n\\(\\dfrac{-\\infty}{0}\\), \\(\\dfrac{-\\infty}{\\infty}\\), \\(\\dfrac{0}{0}\\) \n\n\n\n\n\nProveďte následující úkony:\n\n\n\nVytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci seq().\nSpočtěte rozdíl matic \\(A\\), \\(B\\).\n\\[\n  A = \\left(\n  \\begin{matrix}\n  2 & 2 & 5\\\\\n  9 & 2 & 7\\\\\n  1 & 3 & 18\\\\\n  \\end{matrix}\n  \\right),\\qquad\n  B = \\left(\n  \\begin{matrix}\n  5 & 4 & 5\\\\\n  -7 & 2 & 4\\\\\n  10 & 1 & 5\\\\\n  \\end{matrix}\n  \\right)\n  \\]\nS pomocí hodnot TRUE/FALSE vytvořte matici \\(3\\times3\\), změňte typ prvku na pozici M[1, 1] na textový řetězec. Ovlivní tato změna ostatní prvky v matici?"
+    "section": "3.6 Základní datové struktury",
+    "text": "3.6 Základní datové struktury\nZákladní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.\n\n3.6.1 Homogenní datové struktury\nHomogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.\n\n3.6.1.1 Vektor\nVektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce vector(mode = \"numeric\", length = 10) a funkce c(), případně vzniká pomocí opetárorů [ nebo [[. Zde je na místě\n\n\n\n3.6.2 Heterogenní datové struktury\nZa heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou data.frame a list, dále pak S4, nebo R6 třídy, případně další uživatelem vytvořené struktury.\n\n3.6.2.1 Datová tabulka\ndata.frame je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.\n\n\nKód\nDF &lt;- data.frame(name = letters[1:5], \n                 value = rnorm(5))\nDF\n##   name       value\n## 1    a  1.23845783\n## 2    b -0.05363113\n## 3    c  0.67832261\n## 4    d -0.74569570\n## 5    e  0.12367039\nDF[\"name\"]        # podvýběr do data.frame\n##   name\n## 1    a\n## 2    b\n## 3    c\n## 4    d\n## 5    e\nDF[[\"name\"]]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\nDF[, \"name\"]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\n\n\nPráce uvnitř data.frame\n\n\nKód\nDF &lt;- data.frame(\n  mon = rep(month.abb, \n            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), \n  value = rnorm(365), \n  yr = 2001)\nstr(DF)\n## 'data.frame':    365 obs. of  3 variables:\n##  $ mon  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n##  $ value: num  -0.86977 0.05158 0.22402 -0.00353 -1.64727 ...\n##  $ yr   : num  2001 2001 2001 2001 2001 ...\nnames(DF)\n## [1] \"mon\"   \"value\" \"yr\"\nnrow(DF)\n## [1] 365\nncol(DF)\n## [1] 3\n\n\n\n\n\n3.6.3 Úlohy\n\nSpočítejte pomocí R následující výrazy:\n\n\n\n\\(1 + 3 \\cdot (2 / 3)\\:\\mathrm{mod}\\:3\\)\n\n\\(\\left(\\dfrac{2}{35}\\right)^{0.5} \\cdot 3 \\cdot (2 / 3)\\)\n\n\\(\\sum\\limits_{i = 1}^{53}x_i\\) \n\n\\(\\dfrac{-\\infty}{0}\\), \\(\\dfrac{-\\infty}{\\infty}\\), \\(\\dfrac{0}{0}\\) \n\n\n\n\n\nProveďte následující úkony:\n\n\n\nVytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci seq().\nSpočtěte rozdíl matic \\(A\\), \\(B\\).\n\\[\n  A = \\left(\n  \\begin{matrix}\n  2 & 2 & 5\\\\\n  9 & 2 & 7\\\\\n  1 & 3 & 18\\\\\n  \\end{matrix}\n  \\right),\\qquad\n  B = \\left(\n  \\begin{matrix}\n  5 & 4 & 5\\\\\n  -7 & 2 & 4\\\\\n  10 & 1 & 5\\\\\n  \\end{matrix}\n  \\right)\n  \\]\nS pomocí hodnot TRUE/FALSE vytvořte matici \\(3\\times3\\), změňte typ prvku na pozici M[1, 1] na textový řetězec. Ovlivní tato změna ostatní prvky v matici?"
   },
   {
     "objectID": "uvod_do_R_2.html#práce-s-daty",
@@ -88,7 +88,7 @@
     "href": "rozdeleni.html#diskrétní-rozdělení",
     "title": "6  Rozdělení pravděpodobnosti",
     "section": "6.2 Diskrétní rozdělení",
-    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 1.301146\n\n\nKód\nsum(x)\n\n\n[1] 13.01146\n\n\nKód\nmedian(x)\n\n\n[1] 0.1879677\n\n\nKód\nIQR(x)\n\n\n[1] 6.891923\n\n\nKód\nfivenum(x)\n\n\n[1] -5.9852684 -1.1381479  0.1879677  6.4451661  8.5597159"
+    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 2.63353\n\n\nKód\nsum(x)\n\n\n[1] 26.3353\n\n\nKód\nmedian(x)\n\n\n[1] 4.468513\n\n\nKód\nIQR(x)\n\n\n[1] 8.989677\n\n\nKód\nfivenum(x)\n\n\n[1] -12.062461  -2.840337   4.468513   8.052474  13.176971"
   },
   {
     "objectID": "rozdeleni.html#spojitá-rozdělení",
@@ -151,7 +151,7 @@
     "href": "hydro_index.html#diskrétní-rozdělení",
     "title": "11  Statistické rozdělení",
     "section": "11.1 Diskrétní rozdělení",
-    "text": "11.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 1.139977\n\n\nKód\nsum(x)\n\n\n[1] 11.39977\n\n\nKód\nmedian(x)\n\n\n[1] 2.135579\n\n\nKód\nIQR(x)\n\n\n[1] 3.423707\n\n\nKód\nfivenum(x)\n\n\n[1] -6.6012123 -0.7209622  2.1355792  3.1240149  6.5414965"
+    "text": "11.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 1.734213\n\n\nKód\nsum(x)\n\n\n[1] 17.34213\n\n\nKód\nmedian(x)\n\n\n[1] 1.171254\n\n\nKód\nIQR(x)\n\n\n[1] 2.418436\n\n\nKód\nfivenum(x)\n\n\n[1] -1.9298773  0.1847897  1.1712537  2.8789443  6.9741419"
   },
   {
     "objectID": "hydro_index.html#spojitá-rozdělení",
@@ -187,5 +187,19 @@
     "title": "Literatura",
     "section": "",
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "uvod_do_R_1.html#uvozovky-a-závorky",
+    "href": "uvod_do_R_1.html#uvozovky-a-závorky",
+    "title": "2  Práce v prostředí RStudio",
+    "section": "3.4 Uvozovky a závorky",
+    "text": "3.4 Uvozovky a závorky\nNení nunté rozlišovat mezi dvojitými \" a jednoduchými ' uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou ."
+  },
+  {
+    "objectID": "uvod_do_R_1.html#sec-aritmeticke-operace",
+    "href": "uvod_do_R_1.html#sec-aritmeticke-operace",
+    "title": "2  Práce v prostředí RStudio",
+    "section": "3.2 Aritmetické operace",
+    "text": "3.2 Aritmetické operace\n\n\nKód\n1 + 1          # přičítání\n2 - 1          # odečítání\n1 * 3.         # násobení\n1 * (-1)       # násobení\n1 / 6.         # dělení\n10 %% 3.       # modulo\n7 %/% 3        # celočíselné dělení\n10 ** 3        # mocninné operace\n10 %*% 3       # vnejší produkt \nsum(1:10)      # součet prvků od 1 do 10\nprod(1:10)     # součin prvků od 1 do 10\ncumsum(1:10)   # i + (i - 1)\ncumprod(1:10)  # i(i - 1)"
   }
 ]

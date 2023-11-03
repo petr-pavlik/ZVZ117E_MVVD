@@ -276,14 +276,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#opakovaní-jazyka-r" id="toc-opakovaní-jazyka-r" class="nav-link active" data-scroll-target="#opakovaní-jazyka-r"><span class="header-section-number">3</span> Opakovaní jazyka R</a>
   <ul class="collapse">
   <li><a href="#nápověda" id="toc-nápověda" class="nav-link" data-scroll-target="#nápověda"><span class="header-section-number">3.1</span> Nápověda</a></li>
-  <li><a href="#aritmetické-operace" id="toc-aritmetické-operace" class="nav-link" data-scroll-target="#aritmetické-operace"><span class="header-section-number">3.2</span> Aritmetické operace</a></li>
+  <li><a href="#sec-aritmeticke-operace" id="toc-sec-aritmeticke-operace" class="nav-link" data-scroll-target="#sec-aritmeticke-operace"><span class="header-section-number">3.2</span> Aritmetické operace</a></li>
   <li><a href="#jmenné-konvence" id="toc-jmenné-konvence" class="nav-link" data-scroll-target="#jmenné-konvence"><span class="header-section-number">3.3</span> Jmenné konvence</a></li>
-  <li><a href="#operátory" id="toc-operátory" class="nav-link" data-scroll-target="#operátory"><span class="header-section-number">3.4</span> Operátory</a></li>
-  <li><a href="#základní-datové-struktury" id="toc-základní-datové-struktury" class="nav-link" data-scroll-target="#základní-datové-struktury"><span class="header-section-number">3.5</span> Základní datové struktury</a>
+  <li><a href="#uvozovky-a-závorky" id="toc-uvozovky-a-závorky" class="nav-link" data-scroll-target="#uvozovky-a-závorky"><span class="header-section-number">3.4</span> Uvozovky a závorky</a></li>
+  <li><a href="#operátory" id="toc-operátory" class="nav-link" data-scroll-target="#operátory"><span class="header-section-number">3.5</span> Operátory</a></li>
+  <li><a href="#základní-datové-struktury" id="toc-základní-datové-struktury" class="nav-link" data-scroll-target="#základní-datové-struktury"><span class="header-section-number">3.6</span> Základní datové struktury</a>
   <ul class="collapse">
-  <li><a href="#homogenní-datové-struktury" id="toc-homogenní-datové-struktury" class="nav-link" data-scroll-target="#homogenní-datové-struktury"><span class="header-section-number">3.5.1</span> Homogenní datové struktury</a></li>
-  <li><a href="#heterogenní-datové-struktury" id="toc-heterogenní-datové-struktury" class="nav-link" data-scroll-target="#heterogenní-datové-struktury"><span class="header-section-number">3.5.2</span> Heterogenní datové struktury</a></li>
-  <li><a href="#úlohy" id="toc-úlohy" class="nav-link" data-scroll-target="#úlohy"><span class="header-section-number">3.5.3</span> Úlohy</a></li>
+  <li><a href="#homogenní-datové-struktury" id="toc-homogenní-datové-struktury" class="nav-link" data-scroll-target="#homogenní-datové-struktury"><span class="header-section-number">3.6.1</span> Homogenní datové struktury</a></li>
+  <li><a href="#heterogenní-datové-struktury" id="toc-heterogenní-datové-struktury" class="nav-link" data-scroll-target="#heterogenní-datové-struktury"><span class="header-section-number">3.6.2</span> Heterogenní datové struktury</a></li>
+  <li><a href="#úlohy" id="toc-úlohy" class="nav-link" data-scroll-target="#úlohy"><span class="header-section-number">3.6.3</span> Úlohy</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -317,48 +318,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="3.1" class="anchored" data-anchor-id="nápověda"><span class="header-section-number">3.1</span> Nápověda</h2>
 <p>Zadává se do konzole ve tvaru <code>help(&lt;jméno funkce&gt;)</code>, nebo <code>&lt;jmeno funkce&gt;</code>. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu <code>View(jmeno funkce)</code>. Kromě toho existuje v R také <code>help.search(&lt;jméno funkce&gt;)</code> funkce pod zkratkou <code>??</code>, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce <code>RSiteSearch()</code>, která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: <code>?Logical</code>, <code>?Constants</code>, <code>?Control</code>, <code>?Arithmetic</code>, <code>?Syntax</code>.</p>
 </section>
-<section id="aritmetické-operace" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="aritmetické-operace"><span class="header-section-number">3.2</span> Aritmetické operace</h2>
+<section id="sec-aritmeticke-operace" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-aritmeticke-operace"><span class="header-section-number">3.2</span> Aritmetické operace</h2>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span>          <span class="co"># přičítání</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>          <span class="co"># odečítání</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> <span class="fl">3.</span>         <span class="co"># násobení</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> (<span class="sc">-</span><span class="dv">1</span>)       <span class="co"># násobení</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fl">6.</span>         <span class="co"># dělení</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1666667</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="fl">3.</span>       <span class="co"># modulo</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span>        <span class="co"># celočíselné dělení</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">**</span> <span class="dv">3</span>        <span class="co"># mocninné operace</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1000</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%*%</span> <span class="dv">3</span>       <span class="co"># vnejší produkt </span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   30</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)      <span class="co"># součet prvků od 1 do 10</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 55</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)     <span class="co"># součin prvků od 1 do 10</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3628800</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)   <span class="co"># i + (i - 1)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  3  6 10 15 21 28 36 45 55</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cumprod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)  <span class="co"># i(i - 1)</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]       1       2       6      24     120     720    5040   40320  362880</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] 3628800</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>          <span class="co"># odečítání</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> <span class="fl">3.</span>         <span class="co"># násobení</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> (<span class="sc">-</span><span class="dv">1</span>)       <span class="co"># násobení</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fl">6.</span>         <span class="co"># dělení</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="fl">3.</span>       <span class="co"># modulo</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span>        <span class="co"># celočíselné dělení</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">**</span> <span class="dv">3</span>        <span class="co"># mocninné operace</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%*%</span> <span class="dv">3</span>       <span class="co"># vnejší produkt </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)      <span class="co"># součet prvků od 1 do 10</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)     <span class="co"># součin prvků od 1 do 10</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)   <span class="co"># i + (i - 1)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cumprod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)  <span class="co"># i(i - 1)</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="jmenné-konvence" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="jmenné-konvence"><span class="header-section-number">3.3</span> Jmenné konvence</h2>
+<p>Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence.<br>
+- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo <code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>repeat</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>Nan</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>, <code>NA_character_</code>. - speciální znak: <code>_</code></p>
+<p>Dále se nedoporučuje vkládat do názvu proměnné tečku <code>.</code>, např. ``</p>
 </section>
-<section id="operátory" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="operátory"><span class="header-section-number">3.4</span> Operátory</h2>
-<p>Kromě aritmetických operátorů</p>
+<section id="uvozovky-a-závorky" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="uvozovky-a-závorky"><span class="header-section-number">3.4</span> Uvozovky a závorky</h2>
+<p>Není nunté rozlišovat mezi dvojitými <code>"</code> a jednoduchými <code>'</code> uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou .<br>
+</p>
+</section>
+<section id="operátory" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="operátory"><span class="header-section-number">3.5</span> Operátory</h2>
+<p>Kromě aritmetických operátorů, zmíněných <a href="#sec-aritmeticke-operace"><span>Sekce&nbsp;3.2</span></a></p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -372,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="er">&amp;&amp;</span>       <span class="co"># a zároveň vektorově</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="er">|</span>        <span class="co"># nebo</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="er">||</span>       <span class="co"># nebo vektorově</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>()    <span class="co">#  </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>()    <span class="co"># </span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>() <span class="co"># </span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -393,21 +387,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="základní-datové-struktury" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="základní-datové-struktury"><span class="header-section-number">3.5</span> Základní datové struktury</h2>
+<section id="základní-datové-struktury" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="základní-datové-struktury"><span class="header-section-number">3.6</span> Základní datové struktury</h2>
 <p>Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.</p>
-<section id="homogenní-datové-struktury" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="homogenní-datové-struktury"><span class="header-section-number">3.5.1</span> Homogenní datové struktury</h3>
-<p>Homogenní datové struktury obsahují atomické vektory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.</p>
-<section id="vektor" class="level4" data-number="3.5.1.1">
-<h4 data-number="3.5.1.1" class="anchored" data-anchor-id="vektor"><span class="header-section-number">3.5.1.1</span> Vektor</h4>
+<section id="homogenní-datové-struktury" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="homogenní-datové-struktury"><span class="header-section-number">3.6.1</span> Homogenní datové struktury</h3>
+<p>Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.</p>
+<section id="vektor" class="level4" data-number="3.6.1.1">
+<h4 data-number="3.6.1.1" class="anchored" data-anchor-id="vektor"><span class="header-section-number">3.6.1.1</span> Vektor</h4>
 <p><strong>Vektor</strong> je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv <strong>datového typu</strong>, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce <code>vector(mode = "numeric", length = 10)</code> a funkce <code>c()</code>, případně vzniká pomocí opetárorů <code>[</code> nebo <code>[[</code>. Zde je na místě</p>
 </section>
 </section>
-<section id="heterogenní-datové-struktury" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="heterogenní-datové-struktury"><span class="header-section-number">3.5.2</span> Heterogenní datové struktury</h3>
-<section id="datová-tabulka" class="level4" data-number="3.5.2.1">
-<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="datová-tabulka"><span class="header-section-number">3.5.2.1</span> Datová tabulka</h4>
+<section id="heterogenní-datové-struktury" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="heterogenní-datové-struktury"><span class="header-section-number">3.6.2</span> Heterogenní datové struktury</h3>
+<p>Za heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou <code>data.frame</code> a <code>list</code>, dále pak <code>S4</code>, nebo <code>R6</code> třídy, případně další uživatelem vytvořené struktury.</p>
+<section id="datová-tabulka" class="level4" data-number="3.6.2.1">
+<h4 data-number="3.6.2.1" class="anchored" data-anchor-id="datová-tabulka"><span class="header-section-number">3.6.2.1</span> Datová tabulka</h4>
 <p><code>data.frame</code> je <em>de facto</em> vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.</p>
 <div class="cell">
 <details open="">
@@ -416,11 +411,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>DF</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name       value</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -0.05140543</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b  1.08136626</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c -1.89445742</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -1.13858884</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -0.49109006</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a  1.23845783</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b -0.05363113</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  0.67832261</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -0.74569570</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e  0.12367039</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
@@ -446,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  0.244 -0.863 1.076 -0.698 -1.11 ...</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  -0.86977 0.05158 0.22402 -0.00353 -1.64727 ...</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
@@ -458,8 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="úlohy" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="úlohy"><span class="header-section-number">3.5.3</span> Úlohy</h3>
+<section id="úlohy" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="úlohy"><span class="header-section-number">3.6.3</span> Úlohy</h3>
 <ol type="1">
 <li><strong>Spočítejte pomocí R následující výrazy</strong>:<br>
 </li>
