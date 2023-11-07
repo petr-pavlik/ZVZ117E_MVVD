@@ -1,7 +1,6 @@
-# Popisná statistika
+# Časové řady
 
-Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`,
-jehož jmenný prostor je připojen po otevření R. 
+Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.
 
 ```{r}
 x <- 1:50

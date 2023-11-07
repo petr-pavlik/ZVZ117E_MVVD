@@ -1,0 +1,125 @@
+# Popisná statistika
+
+Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.\
+
+Popisná statistika má za cíle **souhrnně popsat soubor** (spíše než použít data k získání informací o populaci, o které se předpokládá, že vzorek dat reprezentuje). 
+
+#### Cíle cvičení {.unnumbered}
+ - Být schopen popsat číselné proměnné v datech popsat s
+ pomocí uvedených statistik\
+
+Níže uvedené funkce jsou počítané s pomocí následujícího vektoru
+```{r, collapse=TRUE, echo=TRUE}
+set.seed(1)
+x <- round(rnorm(30), 2)
+x
+```
+
+## Míry polohy
+
+#### Minimum, maximum {-}
+
+Pro oba extrémy jsou v R stejnojmenné funkce. 
+
+$$
+ \max(x)\\
+ \min(x)\\
+ \min(x) - \max(x)
+$$
+#### Výběrový kvantil
+
+
+```{r, collapse=TRUE}
+min(x)
+max(x)
+max(x) - min(x)
+```
+
+     
+#### Aritmetický průměr {-}
+
+
+$$
+  \bar{x} = \frac{1}{n}(x_1 + x_2 + \ldots + x_n) = \dfrac{1}{n}\sum\limits_{i=1}^{n}x_i
+$$
+
+#### Medián {-}
+Artitmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2+1}$ v seřazeném souboru.
+
+#### Modus {-}
+Za modus se označuje nejčastěji se vyskytující hodnota v souboru
+    
+    
+    
+#### Harmonický průměr {-}
+
+Aritmetický průměr převrácených hodnot.
+
+$$
+\bar{x_h} = \dfrac{n}{\sum\limits_{i=1}^{n}\frac{1}{x_i}}
+$$
+
+
+#### Průměr stupně \alpha
+```{r}
+
+```
+
+
+### Míry variability
+
+#### Varianční rozpětí {-}
+
+Je definováno jako rozdíl **maxima** a **minima** v souboru.
+
+```{r}
+range(x)
+```
+
+#### Mezikvartilové rozpětí {-}
+
+Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené $Q3$ a $Q1$ neboli $q_{75}$ a $q_{25}$.
+
+$$
+\mathrm{IQR} = Q3 - Q1
+$$
+```{r}
+IQR(x)
+```
+
+#### Rozptyl {-}
+$$
+     \sigma^2 =\sum\limits_{1}^{n}\sqrt{\dfrac{1}{n}(x_i - \bar{x})^2}
+$$
+
+#### Směrodatná odchylka {-}
+
+$$
+   \dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}
+$$
+
+Rozptyl i směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*.
+
+```{r, collapse=TRUE}
+var(x)
+sd(x)
+```
+
+#### Variační koeficient {-}
+
+$$
+V = 100 \frac{s}{x}
+$$
+
+#### Střední chyba aritmetického průměru
+
+$$
+s_x = \dfrac{s}{\sqrt{n}}
+$$
+
+### Cvičení {-}
+
+```{r}
+
+```
+

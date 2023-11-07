@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Metody vyhodnocování vodohospodářských dat",
     "section": "",
-    "text": "Struktura knihy\nTento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:\n\n\n            Version\nbase          4.3.0\ncli           3.6.1\ncompiler      4.3.0\ndatasets      4.3.0\ndigest       0.6.33\nevaluate       0.21\nfastmap       1.1.1\nglue          1.6.2\ngraphics      4.3.0\ngrDevices     4.3.0\nhtmltools     0.5.6\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.43\nlifecycle     1.0.3\nmagrittr      2.0.3\nmethods       4.3.0\nrlang         1.1.1\nrmarkdown      2.24\nrstudioapi     0.14\nstats         4.3.0\nstringi      1.7.12\nstringr       1.5.0\ntools         4.3.0\nutils         4.3.0\nxfun           0.40\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
+    "text": "Struktura textu\nJetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.\nTento text byl vytvořen s pomocí verze R 4.2.2 a jmenných prostorů balíků ve verzích:\n\n\n            Version\ncli           3.6.1\ndigest       0.6.33\nevaluate       0.22\nfastmap       1.1.1\nglue          1.6.2\nhtmltools   0.5.6.1\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.44\nlifecycle     1.0.3\nmagrittr      2.0.3\nrlang         1.1.1\nrmarkdown      2.25\nrstudioapi   0.15.0\nstringi      1.7.12\nstringr       1.5.0\nxfun           0.40\nbase          4.2.2\ncompiler      4.2.2\ndatasets      4.2.2\ngraphics      4.2.2\ngrDevices     4.2.2\nmethods       4.2.2\nstats         4.2.2\ntools         4.2.2\nutils         4.2.2\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
   },
   {
     "objectID": "intro.html#doporučená-literatura",
@@ -28,11 +28,11 @@
     "text": "3.1 Nápověda\nZadává se do konzole ve tvaru help(&lt;jméno funkce&gt;), nebo &lt;jmeno funkce&gt;. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu View(jmeno funkce). Kromě toho existuje v R také help.search(&lt;jméno funkce&gt;) funkce pod zkratkou ??, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce RSiteSearch(), která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: ?Logical, ?Constants, ?Control, ?Arithmetic, ?Syntax."
   },
   {
-    "objectID": "uvod_do_R_1.html#aritmetické-operace",
-    "href": "uvod_do_R_1.html#aritmetické-operace",
+    "objectID": "uvod_do_R_1.html#sec-aritmeticke-operace",
+    "href": "uvod_do_R_1.html#sec-aritmeticke-operace",
     "title": "2  Práce v prostředí RStudio",
     "section": "3.2 Aritmetické operace",
-    "text": "3.2 Aritmetické operace\n\n\nKód\n1 + 1          # přičítání\n## [1] 2\n2 - 1          # odečítání\n## [1] 1\n1 * 3.         # násobení\n## [1] 3\n1 * (-1)       # násobení\n## [1] -1\n1 / 6.         # dělení\n## [1] 0.1666667\n10 %% 3.       # modulo\n## [1] 1\n7 %/% 3        # celočíselné dělení\n## [1] 2\n10 ** 3        # mocninné operace\n## [1] 1000\n10 %*% 3       # vnejší produkt \n##      [,1]\n## [1,]   30\nsum(1:10)      # součet prvků od 1 do 10\n## [1] 55\nprod(1:10)     # součin prvků od 1 do 10\n## [1] 3628800\ncumsum(1:10)   # i + (i - 1)\n##  [1]  1  3  6 10 15 21 28 36 45 55\ncumprod(1:10)  # i(i - 1)\n##  [1]       1       2       6      24     120     720    5040   40320  362880\n## [10] 3628800"
+    "text": "3.2 Aritmetické operace\n\n\nKód\n1 + 1          # přičítání\n2 - 1          # odečítání\n1 * 3.         # násobení\n1 * (-1)       # násobení\n1 / 6.         # dělení\n10 %% 3.       # modulo\n7 %/% 3        # celočíselné dělení\n10 ** 3        # mocninné operace\n10 %*% 3       # vnejší produkt \nsum(1:10)      # součet prvků od 1 do 10\nprod(1:10)     # součin prvků od 1 do 10\ncumsum(1:10)   # i + (i - 1)\ncumprod(1:10)  # i(i - 1)"
   },
   {
     "objectID": "uvod_do_R_1.html#jmenné-konvence",
@@ -42,18 +42,25 @@
     "text": "3.3 Jmenné konvence\nObjekty, které vznikají při práci s R musí splňovat následující jmenné konvence.\n- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo if, else, repeat, while, function, for, for, in, next, repeat, break, TRUE, FALSE, NULL, Inf, Nan, NA, NA_integer_, NA_real_, NA_complex_, NA_character_. - speciální znak: _\nDále se nedoporučuje vkládat do názvu proměnné tečku ., např. ``"
   },
   {
+    "objectID": "uvod_do_R_1.html#uvozovky-a-závorky",
+    "href": "uvod_do_R_1.html#uvozovky-a-závorky",
+    "title": "2  Práce v prostředí RStudio",
+    "section": "3.4 Uvozovky a závorky",
+    "text": "3.4 Uvozovky a závorky\nNení nunté rozlišovat mezi dvojitými \" a jednoduchými ' uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou ."
+  },
+  {
     "objectID": "uvod_do_R_1.html#operátory",
     "href": "uvod_do_R_1.html#operátory",
     "title": "2  Práce v prostředí RStudio",
     "section": "3.5 Operátory",
-    "text": "3.5 Operátory\nKromě aritmetických operátorů, zmíněných Sekce 3.2\n\n\nKód\n&lt;        # větší než \n&gt;        # větší než \n&gt;=       # větší nebo rovno \n&lt;=       # menší nebo rovno \n==       # rovná se\n!=       # nerovná se\n&        # a zároveň\n&&       # a zároveň vektorově\n|        # nebo\n||       # nebo vektorově\nxor()    # \nisTRUE() # \n\n\n\n\nKód\nany()\n\n\n[1] FALSE\n\n\nKód\nall()\n\n\n[1] TRUE"
+    "text": "3.5 Operátory\nKromě aritmetických operátorů, zmíněných Sekce 3.2\n\n\nKód\n&lt;        # větší než \n&gt;        # větší než \n&gt;=       # větší nebo rovno \n&lt;=       # menší nebo rovno \n==       # rovná se\n!=       # nerovná se\n&        # a zároveň\n&&       # a zároveň vektorově\n|        # nebo\n||       # nebo vektorově\nxor()    # \nisTRUE() # je platné\n\n\n\n\nKód\nany()\n\n\n[1] FALSE\n\n\nKód\nall()\n\n\n[1] TRUE"
   },
   {
     "objectID": "uvod_do_R_1.html#základní-datové-struktury",
     "href": "uvod_do_R_1.html#základní-datové-struktury",
     "title": "2  Práce v prostředí RStudio",
     "section": "3.6 Základní datové struktury",
-    "text": "3.6 Základní datové struktury\nZákladní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.\n\n3.6.1 Homogenní datové struktury\nHomogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.\n\n3.6.1.1 Vektor\nVektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce vector(mode = \"numeric\", length = 10) a funkce c(), případně vzniká pomocí opetárorů [ nebo [[. Zde je na místě\n\n\n\n3.6.2 Heterogenní datové struktury\nZa heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou data.frame a list, dále pak S4, nebo R6 třídy, případně další uživatelem vytvořené struktury.\n\n3.6.2.1 Datová tabulka\ndata.frame je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.\n\n\nKód\nDF &lt;- data.frame(name = letters[1:5], \n                 value = rnorm(5))\nDF\n##   name       value\n## 1    a  1.23845783\n## 2    b -0.05363113\n## 3    c  0.67832261\n## 4    d -0.74569570\n## 5    e  0.12367039\nDF[\"name\"]        # podvýběr do data.frame\n##   name\n## 1    a\n## 2    b\n## 3    c\n## 4    d\n## 5    e\nDF[[\"name\"]]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\nDF[, \"name\"]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\n\n\nPráce uvnitř data.frame\n\n\nKód\nDF &lt;- data.frame(\n  mon = rep(month.abb, \n            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), \n  value = rnorm(365), \n  yr = 2001)\nstr(DF)\n## 'data.frame':    365 obs. of  3 variables:\n##  $ mon  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n##  $ value: num  -0.86977 0.05158 0.22402 -0.00353 -1.64727 ...\n##  $ yr   : num  2001 2001 2001 2001 2001 ...\nnames(DF)\n## [1] \"mon\"   \"value\" \"yr\"\nnrow(DF)\n## [1] 365\nncol(DF)\n## [1] 3\n\n\n\n\n\n3.6.3 Úlohy\n\nSpočítejte pomocí R následující výrazy:\n\n\n\n\\(1 + 3 \\cdot (2 / 3)\\:\\mathrm{mod}\\:3\\)\n\n\\(\\left(\\dfrac{2}{35}\\right)^{0.5} \\cdot 3 \\cdot (2 / 3)\\)\n\n\\(\\sum\\limits_{i = 1}^{53}x_i\\) \n\n\\(\\dfrac{-\\infty}{0}\\), \\(\\dfrac{-\\infty}{\\infty}\\), \\(\\dfrac{0}{0}\\) \n\n\n\n\n\nProveďte následující úkony:\n\n\n\nVytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci seq().\nSpočtěte rozdíl matic \\(A\\), \\(B\\).\n\\[\n  A = \\left(\n  \\begin{matrix}\n  2 & 2 & 5\\\\\n  9 & 2 & 7\\\\\n  1 & 3 & 18\\\\\n  \\end{matrix}\n  \\right),\\qquad\n  B = \\left(\n  \\begin{matrix}\n  5 & 4 & 5\\\\\n  -7 & 2 & 4\\\\\n  10 & 1 & 5\\\\\n  \\end{matrix}\n  \\right)\n  \\]\nS pomocí hodnot TRUE/FALSE vytvořte matici \\(3\\times3\\), změňte typ prvku na pozici M[1, 1] na textový řetězec. Ovlivní tato změna ostatní prvky v matici?"
+    "text": "3.6 Základní datové struktury\nZákladní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.\n\n3.6.1 Homogenní datové struktury\nHomogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.\n\n3.6.1.1 Vektor\nVektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce vector(mode = \"numeric\", length = 10) a funkce c(), případně vzniká pomocí opetárorů [ nebo [[. Zde je na místě\n\n\n\n3.6.2 Heterogenní datové struktury\nZa heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou data.frame a list, dále pak S4, nebo R6 třídy, případně další uživatelem vytvořené struktury.\n\n3.6.2.1 Datová tabulka\ndata.frame je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.\n\n\nKód\nDF &lt;- data.frame(name = letters[1:5], \n                 value = rnorm(5))\nDF\n##   name      value\n## 1    a  0.5686484\n## 2    b -1.2080515\n## 3    c  0.8654415\n## 4    d  0.6327252\n## 5    e  0.6608516\nDF[\"name\"]        # podvýběr do data.frame\n##   name\n## 1    a\n## 2    b\n## 3    c\n## 4    d\n## 5    e\nDF[[\"name\"]]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\nDF[, \"name\"]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\n\n\nPráce uvnitř data.frame\n\n\nKód\nDF &lt;- data.frame(\n  mon = rep(month.abb, \n            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), \n  value = rnorm(365), \n  yr = 2001)\nstr(DF)\n## 'data.frame':    365 obs. of  3 variables:\n##  $ mon  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n##  $ value: num  -0.703 1.098 -1.564 0.388 -0.835 ...\n##  $ yr   : num  2001 2001 2001 2001 2001 ...\nnames(DF)\n## [1] \"mon\"   \"value\" \"yr\"\nnrow(DF)\n## [1] 365\nncol(DF)\n## [1] 3\n\n\n\n\n\n3.6.3 Úlohy\n\nSpočítejte pomocí R následující výrazy:\n\n\n\n\\(1 + 3 \\cdot (2 / 3)\\:\\mathrm{mod}\\:3\\)\n\n\\(\\left(\\dfrac{2}{35}\\right)^{0.5} \\cdot 3 \\cdot (2 / 3)\\)\n\n\\(\\sum\\limits_{i = 1}^{53}x_i\\) \n\n\\(\\dfrac{-\\infty}{0}\\), \\(\\dfrac{-\\infty}{\\infty}\\), \\(\\dfrac{0}{0}\\) \n\n\n\n\n\nProveďte následující úkony:\n\n\n\nVytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci seq().\nSpočtěte rozdíl matic \\(A\\), \\(B\\).\n\\[\n  A = \\left(\n  \\begin{matrix}\n  2 & 2 & 5\\\\\n  9 & 2 & 7\\\\\n  1 & 3 & 18\\\\\n  \\end{matrix}\n  \\right),\\qquad\n  B = \\left(\n  \\begin{matrix}\n  5 & 4 & 5\\\\\n  -7 & 2 & 4\\\\\n  10 & 1 & 5\\\\\n  \\end{matrix}\n  \\right)\n  \\]\nS pomocí hodnot TRUE/FALSE vytvořte matici \\(3\\times3\\), změňte typ prvku na pozici M[1, 1] na textový řetězec. Ovlivní tato změna ostatní prvky v matici?"
   },
   {
     "objectID": "uvod_do_R_2.html#práce-s-daty",
@@ -74,7 +81,7 @@
     "href": "popisna.html",
     "title": "5  Popisná statistika",
     "section": "",
-    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\nTerminologie\n\nMinimum, maximum\n\nRozpětí\n\\[\n\\max-\\min\n\\]\nAritmetický průměr\n\\[\n\\dfrac{1}{n}\\sum\\limits_{i=1}^{n}x_i\n\\]\nMedián\n\nModus\nTermínem modus označujeme nejčastější hodnotu v souboru\nHarmonický průměr\n\nRozptyl \\[\n\\dfrac{1}{n}(x_i - \\bar{x})^2\n\\]\nSměrodatná odchylka\n\\[\n\\dfrac{1}{n}\\sqrt{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}\n\\]\n\n\n\nKód\nsqrt(x)\n\n\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))\n\n\n\n\n\n\n\n5.0.1 Klíčové znalosti"
+    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\nPopisná statistika má za cíle souhrnně popsat soubor (spíše než použít data k získání informací o populaci, o které se předpokládá, že vzorek dat reprezentuje).\n\nCíle cvičení\n\nBýt schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik\n\n\nNíže uvedené funkce jsou počítané s pomocí následujícího vektoru\n\n\nKód\nset.seed(1)\nx &lt;- rnorm(1000)\n\n\n\n\n5.0.1 Míry polohy\n\nMinimum, maximum, rozpětí\n\\[\n\\max(x)\\\\\n\\min(x)\\\\\n\\min(x) - \\max(x)\n\\]\n\n\nKód\nmin(x)\n## [1] -3.008049\nmax(x)\n## [1] 3.810277\nmax(x) - min(x)\n## [1] 6.818325\n\n\n\n\nAritmetický průměr\n\\[\n  \\bar{x} = \\frac{1}{n}(x_1 + x_2 + \\ldots + x_n) = \\dfrac{1}{n}\\sum\\limits_{i=1}^{n}x_i\n\\]\n\n\nMedián\nArtitmetický průměr hodnot na pozicích \\(\\frac{n}{2}\\) a \\(\\frac{n}{2+1}\\) v seřazeném souboru.\n\n\nModus\nZa modus se označuje nejčastěji se vyskytující hodnota v souboru\n\n\nHarmonický průměr\n\n\n\n5.0.2 Míry variability\n\nRozptyl \\[\n\\dfrac{1}{n}(x_i - \\bar{x})^2\n\\]\nSměrodatná odchylka\n\\[\n   \\dfrac{1}{n}\\sqrt{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}\n\\] Rozptyl i směrodatnou odchylku spočteme v R pomocí funkcí var() (variance) a sd() standard deviation.\n\n\n\nKód\nvar(x)\n## [1] 1.071051\nsd(x)\n## [1] 1.034916\n\n\n\n\nKód\nsqrt(x)\n\n\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))\n\n\n\n\n\n\n\n5.0.3 Klíčové znalosti"
   },
   {
     "objectID": "rozdeleni.html#empirické-vs.-teoretické-rozdělení",
@@ -88,7 +95,7 @@
     "href": "rozdeleni.html#diskrétní-rozdělení",
     "title": "6  Rozdělení pravděpodobnosti",
     "section": "6.2 Diskrétní rozdělení",
-    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 2.63353\n\n\nKód\nsum(x)\n\n\n[1] 26.3353\n\n\nKód\nmedian(x)\n\n\n[1] 4.468513\n\n\nKód\nIQR(x)\n\n\n[1] 8.989677\n\n\nKód\nfivenum(x)\n\n\n[1] -12.062461  -2.840337   4.468513   8.052474  13.176971"
+    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 3.637026\n\n\nKód\nsum(x)\n\n\n[1] 36.37026\n\n\nKód\nmedian(x)\n\n\n[1] 4.600606\n\n\nKód\nIQR(x)\n\n\n[1] 8.864688\n\n\nKód\nfivenum(x)\n\n\n[1] -5.069548 -2.137238  4.600606  8.335486  9.676329"
   },
   {
     "objectID": "rozdeleni.html#spojitá-rozdělení",
@@ -142,21 +149,21 @@
   {
     "objectID": "casove_rady.html",
     "href": "casove_rady.html",
-    "title": "10  Popisná statistika",
+    "title": "10  Časové řady",
     "section": "",
     "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
   },
   {
     "objectID": "hydro_index.html#diskrétní-rozdělení",
     "href": "hydro_index.html#diskrétní-rozdělení",
-    "title": "11  Statistické rozdělení",
+    "title": "11  Hydroklimatické indexy",
     "section": "11.1 Diskrétní rozdělení",
-    "text": "11.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 1.734213\n\n\nKód\nsum(x)\n\n\n[1] 17.34213\n\n\nKód\nmedian(x)\n\n\n[1] 1.171254\n\n\nKód\nIQR(x)\n\n\n[1] 2.418436\n\n\nKód\nfivenum(x)\n\n\n[1] -1.9298773  0.1847897  1.1712537  2.8789443  6.9741419"
+    "text": "11.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 3.159018\n\n\nKód\nsum(x)\n\n\n[1] 31.59018\n\n\nKód\nmedian(x)\n\n\n[1] 4.082357\n\n\nKód\nIQR(x)\n\n\n[1] 6.925475\n\n\nKód\nfivenum(x)\n\n\n[1] -6.783161 -1.653882  4.082357  5.936380 10.789412"
   },
   {
     "objectID": "hydro_index.html#spojitá-rozdělení",
     "href": "hydro_index.html#spojitá-rozdělení",
-    "title": "11  Statistické rozdělení",
+    "title": "11  Hydroklimatické indexy",
     "section": "11.2 Spojitá rozdělení",
     "text": "11.2 Spojitá rozdělení\n\n\nKód\ncurve(sin(x))"
   },
@@ -189,17 +196,10 @@
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   },
   {
-    "objectID": "uvod_do_R_1.html#uvozovky-a-závorky",
-    "href": "uvod_do_R_1.html#uvozovky-a-závorky",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.4 Uvozovky a závorky",
-    "text": "3.4 Uvozovky a závorky\nNení nunté rozlišovat mezi dvojitými \" a jednoduchými ' uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou ."
-  },
-  {
-    "objectID": "uvod_do_R_1.html#sec-aritmeticke-operace",
-    "href": "uvod_do_R_1.html#sec-aritmeticke-operace",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.2 Aritmetické operace",
-    "text": "3.2 Aritmetické operace\n\n\nKód\n1 + 1          # přičítání\n2 - 1          # odečítání\n1 * 3.         # násobení\n1 * (-1)       # násobení\n1 / 6.         # dělení\n10 %% 3.       # modulo\n7 %/% 3        # celočíselné dělení\n10 ** 3        # mocninné operace\n10 %*% 3       # vnejší produkt \nsum(1:10)      # součet prvků od 1 do 10\nprod(1:10)     # součin prvků od 1 do 10\ncumsum(1:10)   # i + (i - 1)\ncumprod(1:10)  # i(i - 1)"
+    "objectID": "popisna.html#míry-polohy",
+    "href": "popisna.html#míry-polohy",
+    "title": "5  Popisná statistika",
+    "section": "5.1 Míry polohy",
+    "text": "5.1 Míry polohy\n\nMinimum, maximum\nPro oba extrémy jsou v R stejnojmenné funkce.\n\\[\n\\max(x)\\\\\n\\min(x)\\\\\n\\min(x) - \\max(x)\n\\] #### Výběrový kvantil\n\n\nKód\nmin(x)\n## [1] -2.21\nmax(x)\n## [1] 1.6\nmax(x) - min(x)\n## [1] 3.81\n\n\n\n\nAritmetický průměr\n\\[\n  \\bar{x} = \\frac{1}{n}(x_1 + x_2 + \\ldots + x_n) = \\dfrac{1}{n}\\sum\\limits_{i=1}^{n}x_i\n\\]\n\n\nMedián\nArtitmetický průměr hodnot na pozicích \\(\\frac{n}{2}\\) a \\(\\frac{n}{2+1}\\) v seřazeném souboru.\n\n\nModus\nZa modus se označuje nejčastěji se vyskytující hodnota v souboru\n\n\nHarmonický průměr\nAritmetický průměr převrácených hodnot.\n\\[\n\\bar{x_h} = \\dfrac{n}{\\sum\\limits_{i=1}^{n}\\frac{1}{x_i}}\n\\]\n\n\n5.1.0.1 Průměr stupně \n\n\n5.1.1 Míry variability\n\nVarianční rozpětí\nJe definováno jako rozdíl maxima a minima v souboru.\n\n\nKód\nrange(x)\n\n\n[1] -2.21  1.60\n\n\n\n\nMezikvartilové rozpětí\nZatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené \\(Q3\\) a \\(Q1\\) neboli \\(q_{75}\\) a \\(q_{25}\\).\n\\[\n\\mathrm{IQR} = Q3 - Q1\n\\]\n\n\nKód\nIQR(x)\n\n\n[1] 1.1475\n\n\n\n\nRozptyl\n\\[\n     \\sigma^2 =\\sum\\limits_{1}^{n}\\sqrt{\\dfrac{1}{n}(x_i - \\bar{x})^2}\n\\]\n\n\nSměrodatná odchylka\n\\[\n   \\dfrac{1}{n}\\sqrt{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}\n\\]\nRozptyl i směrodatnou odchylku spočteme v R pomocí funkcí var() (variance) a sd() standard deviation.\n\n\nKód\nvar(x)\n## [1] 0.8537454\nsd(x)\n## [1] 0.9239834\n\n\n\n\nVariační koeficient\n\\[\nV = 100 \\frac{s}{x}\n\\]\n\n\n5.1.1.1 Střední chyba aritmetického průměru\n\\[\ns_x = \\dfrac{s}{\\sqrt{n}}\n\\]\n\n\n\nCvičení"
   }
 ]

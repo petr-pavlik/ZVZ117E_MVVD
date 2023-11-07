@@ -21,18 +21,18 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - uvod_do_R_1.qmd
-    - uvod_do_R_2.qmd
-    - summary.qmd
-    - popisna.qmd
-    - rozdeleni.qmd
-    - odhad.qmd
-    - testovani.qmd
-    - test_1.qmd
-    - casove_rady.qmd
-    - hydro_index.qmd
-    - korelace_regrese.qmd
-    - test_2.qmd
+    - 01_uvod_do_R_1.qmd
+    - 02_uvod_do_R_2.qmd
+    - 03_summary.qmd
+    - 04_popisna.qmd
+    - 05_rozdeleni.qmd
+    - 06_odhad.qmd
+    - 07_testovani.qmd
+    - 08_test_1.qmd
+    - 09_casove_rady.qmd
+    - 10_hydro_index.qmd
+    - 11_korelace_regrese.qmd
+    - 12_test_2.qmd
     - references.qmd
     
   
@@ -62,11 +62,12 @@ format:
     include-after-body: custom.html
     theme: 
       - cosmo
-      - theme.scss
+      - style.scss
     max-width: 1600px
-    css: style.css
+    #css: style.css
     code-fold: show
-    highlight-style: gruvbox
+    linkcolor: "#006666"
+    highlight-style: syntax.theme
 
   pdf:
     documentclass: scrreprt

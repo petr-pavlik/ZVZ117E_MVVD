@@ -31,10 +31,17 @@ curve(expr = cos(x), from = -pi, to = pi)
 ## Řešení
 
 ### Úloha 1
+
 ### Úloha 2
+
 ### Úloha 3
+
 ### Úloha 4
+
 ### Úloha 5
+
 ### Úloha 6
+
 ### Úloha 7
+
 ### Úloha 8

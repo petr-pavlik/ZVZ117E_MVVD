@@ -1,4 +1,6 @@
-# Struktura knihy {.unnumbered}
+# Struktura textu {.unnumbered}
+
+Jetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.
 
 Tento text byl vytvořen s pomocí verze R `r stringr::str_flatten(c(version$major, ".", version$minor))` a jmenných prostorů balíků ve verzích:
 

@@ -1,8 +1,6 @@
-# Statistické rozdělení
+# Hydroklimatické indexy
 
-V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby:
- - budeme generovat náhodná čísla z rozdělení
- - budeme pracovat s kvantilovou funkcí daného rozdělení 
+V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení
 
 ```{r eval=FALSE}
 rxxx() # náhodná čísla
@@ -11,7 +9,7 @@ pxxx()
 qxxx()
 ```
 
-#### Úkol 
+#### Úkol
 
 Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
 

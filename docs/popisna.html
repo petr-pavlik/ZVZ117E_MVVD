@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="cs-CZ" xml:lang="cs-CZ"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -99,7 +99,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -176,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Struktura knihy</span></a>
+ <span class="menu-text">Struktura textu</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,13 +235,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistické rozdělení</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -273,7 +272,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#klíčové-znalosti" id="toc-klíčové-znalosti" class="nav-link active" data-scroll-target="#klíčové-znalosti"><span class="header-section-number">5.0.1</span> Klíčové znalosti</a></li>
+  <li><a href="#míry-polohy" id="toc-míry-polohy" class="nav-link active" data-scroll-target="#míry-polohy"><span class="header-section-number">5.1</span> Míry polohy</a>
+  <ul class="collapse">
+  <li><a href="#míry-variability" id="toc-míry-variability" class="nav-link" data-scroll-target="#míry-variability"><span class="header-section-number">5.1.1</span> Míry variability</a></li>
+  <li><a href="#cvičení" id="toc-cvičení" class="nav-link" data-scroll-target="#cvičení">Cvičení</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -297,82 +300,145 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Funkce pro statistické zpracování datového souboru nalezneme v balíčku <code>stats</code>, jehož jmenný prostor je připojen po otevření R.</p>
-<section id="terminologie" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="terminologie">Terminologie</h4>
+<p>Funkce pro statistické zpracování datového souboru nalezneme v balíčku <code>stats</code>, jehož jmenný prostor je připojen po otevření R.<br>
+</p>
+<p>Popisná statistika má za cíle <strong>souhrnně popsat soubor</strong> (spíše než použít data k získání informací o populaci, o které se předpokládá, že vzorek dat reprezentuje).</p>
+<section id="cíle-cvičení" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cíle-cvičení">Cíle cvičení</h4>
 <ul>
-<li><p>Minimum, maximum<br>
-</p></li>
-<li><p>Rozpětí<br>
-<span class="math display">\[
-\max-\min
-\]</span></p></li>
-<li><p>Aritmetický průměr<br>
-<span class="math display">\[
-\dfrac{1}{n}\sum\limits_{i=1}^{n}x_i
-\]</span></p></li>
-<li><p>Medián<br>
-</p></li>
-<li><p>Modus<br>
-Termínem <strong>modus</strong> označujeme nejčastější hodnotu v souboru</p></li>
-<li><p>Harmonický průměr<br>
-</p></li>
-<li><p>Rozptyl <span class="math display">\[
-\dfrac{1}{n}(x_i - \bar{x})^2
-\]</span></p></li>
-<li><p>Směrodatná odchylka<br>
-<span class="math display">\[
-\dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}
-\]</span></p></li>
+<li>Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik<br>
+</li>
 </ul>
+<p>Níže uvedené funkce jsou počítané s pomocí následujícího vektoru</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>), <span class="dv">2</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] -0.63  0.18 -0.84  1.60  0.33 -0.82  0.49  0.74  0.58 -0.31  1.51  0.39</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] -0.62 -2.21  1.12 -0.04 -0.02  0.94  0.82  0.59  0.92  0.78  0.07 -1.99</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [25]  0.62 -0.06 -0.16 -1.47 -0.48  0.42</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="míry-polohy" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="míry-polohy"><span class="header-section-number">5.1</span> Míry polohy</h2>
+<section id="minimum-maximum" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="minimum-maximum">Minimum, maximum</h4>
+<p>Pro oba extrémy jsou v R stejnojmenné funkce.</p>
+<p><span class="math display">\[
+\max(x)\\
+\min(x)\\
+\min(x) - \max(x)
+\]</span> #### Výběrový kvantil</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -2.21</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.6</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.81</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.5</code></pre>
 </div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1275</code></pre>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.5</code></pre>
-</div>
-</div>
-<p>Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.</p>
+</section>
+<section id="aritmetický-průměr" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="aritmetický-průměr">Aritmetický průměr</h4>
+<p><span class="math display">\[
+  \bar{x} = \frac{1}{n}(x_1 + x_2 + \ldots + x_n) = \dfrac{1}{n}\sum\limits_{i=1}^{n}x_i
+\]</span></p>
+</section>
+<section id="medián" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="medián">Medián</h4>
+<p>Artitmetický průměr hodnot na pozicích <span class="math inline">\(\frac{n}{2}\)</span> a <span class="math inline">\(\frac{n}{2+1}\)</span> v seřazeném souboru.</p>
+</section>
+<section id="modus" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="modus">Modus</h4>
+<p>Za modus se označuje nejčastěji se vyskytující hodnota v souboru</p>
+</section>
+<section id="harmonický-průměr" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="harmonický-průměr">Harmonický průměr</h4>
+<p>Aritmetický průměr převrácených hodnot.</p>
+<p><span class="math display">\[
+\bar{x_h} = \dfrac{n}{\sum\limits_{i=1}^{n}\frac{1}{x_i}}
+\]</span></p>
+</section>
+<section id="průměr-stupně" class="level4" data-number="5.1.0.1">
+<h4 data-number="5.1.0.1" class="anchored" data-anchor-id="průměr-stupně"><span class="header-section-number">5.1.0.1</span> Průměr stupně </h4>
+</section>
+<section id="míry-variability" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="míry-variability"><span class="header-section-number">5.1.1</span> Míry variability</h3>
+<section id="varianční-rozpětí" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="varianční-rozpětí">Varianční rozpětí</h4>
+<p>Je definováno jako rozdíl <strong>maxima</strong> a <strong>minima</strong> v souboru.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<p><img src="popisna_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.21  1.60</code></pre>
 </div>
 </div>
 </section>
-<section id="klíčové-znalosti" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="klíčové-znalosti"><span class="header-section-number">5.0.1</span> Klíčové znalosti</h3>
-<ul>
-<li></li>
-</ul>
+<section id="mezikvartilové-rozpětí" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mezikvartilové-rozpětí">Mezikvartilové rozpětí</h4>
+<p>Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené <span class="math inline">\(Q3\)</span> a <span class="math inline">\(Q1\)</span> neboli <span class="math inline">\(q_{75}\)</span> a <span class="math inline">\(q_{25}\)</span>.</p>
+<p><span class="math display">\[
+\mathrm{IQR} = Q3 - Q1
+\]</span></p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.1475</code></pre>
+</div>
+</div>
+</section>
+<section id="rozptyl" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="rozptyl">Rozptyl</h4>
+<p><span class="math display">\[
+     \sigma^2 =\sum\limits_{1}^{n}\sqrt{\dfrac{1}{n}(x_i - \bar{x})^2}
+\]</span></p>
+</section>
+<section id="směrodatná-odchylka" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="směrodatná-odchylka">Směrodatná odchylka</h4>
+<p><span class="math display">\[
+   \dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}
+\]</span></p>
+<p>Rozptyl i směrodatnou odchylku spočteme v R pomocí funkcí <code>var()</code> (<em>variance</em>) a <code>sd()</code> <em>standard deviation</em>.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.8537454</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.9239834</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="variační-koeficient" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="variační-koeficient">Variační koeficient</h4>
+<p><span class="math display">\[
+V = 100 \frac{s}{x}
+\]</span></p>
+</section>
+<section id="střední-chyba-aritmetického-průměru" class="level4" data-number="5.1.1.1">
+<h4 data-number="5.1.1.1" class="anchored" data-anchor-id="střední-chyba-aritmetického-průměru"><span class="header-section-number">5.1.1.1</span> Střední chyba aritmetického průměru</h4>
+<p><span class="math display">\[
+s_x = \dfrac{s}{\sqrt{n}}
+\]</span></p>
+</section>
+</section>
+<section id="cvičení" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cvičení">Cvičení</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
