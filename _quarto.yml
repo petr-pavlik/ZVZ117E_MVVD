@@ -21,19 +21,19 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - 01_uvod_do_R_1.qmd
-    - 02_uvod_do_R_2.qmd
-    - 03_summary.qmd
-    - 04_popisna.qmd
-    - 05_rozdeleni.qmd
+    # - 01_uvod_do_R_1.qmd
+    # - 02_uvod_do_R_2.qmd
+    # - 03_summary.qmd
+    # - 04_popisna.qmd
+    # - 05_rozdeleni.qmd
     - 06_odhad.qmd
-    - 07_testovani.qmd
-    - 08_test_1.qmd
-    - 09_casove_rady.qmd
-    - 10_hydro_index.qmd
-    - 11_korelace_regrese.qmd
-    - 12_test_2.qmd
-    - references.qmd
+    # - 07_testovani.qmd
+    # - 08_test_1.qmd
+    # - 09_casove_rady.qmd
+    # - 10_hydro_index.qmd
+    # - 11_korelace_regrese.qmd
+    # - 12_test_2.qmd
+    # - references.qmd
     
   
   downloads: [pdf, epub]

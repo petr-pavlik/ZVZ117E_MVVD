@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="cs-CZ" xml:lang="cs-CZ"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 7&nbsp; Odhad</title>
+<title>Metody vyhodnocování vodohospodářských dat - 2&nbsp; Odhad</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_testovani.html" rel="next">
-<link href="./05_rozdeleni.html" rel="prev">
+<link href="./intro.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_odhad.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_odhad.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Odhad</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -186,80 +185,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Práce v prostředí RStudio</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Opakování R - pokračování</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./03_summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04_popisna.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05_rozdeleni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rozdělení pravděpodobnosti</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./06_odhad.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07_testovani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08_test_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Korelace</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12_test_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vzorový test 2</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literatura</span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Odhad</span></span></a>
   </div>
 </li>
     </ul>
@@ -272,17 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#nestrannost-odhadu" id="toc-nestrannost-odhadu" class="nav-link active" data-scroll-target="#nestrannost-odhadu"><span class="header-section-number">7.1</span> Nestrannost odhadu</a></li>
-  <li><a href="#bodový-odhad" id="toc-bodový-odhad" class="nav-link" data-scroll-target="#bodový-odhad"><span class="header-section-number">7.2</span> Bodový odhad</a>
+  <li><a href="#nestrannost-odhadu" id="toc-nestrannost-odhadu" class="nav-link active" data-scroll-target="#nestrannost-odhadu"><span class="header-section-number">2.1</span> Nestrannost odhadu</a></li>
+  <li><a href="#bodový-odhad" id="toc-bodový-odhad" class="nav-link" data-scroll-target="#bodový-odhad"><span class="header-section-number">2.2</span> Bodový odhad</a>
   <ul class="collapse">
-  <li><a href="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" id="toc-odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" class="nav-link" data-scroll-target="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení"><span class="header-section-number">7.2.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení</a></li>
+  <li><a href="#zákon-velkých-čísel" id="toc-zákon-velkých-čísel" class="nav-link" data-scroll-target="#zákon-velkých-čísel"><span class="header-section-number">2.2.1</span> Zákon velkých čísel</a></li>
+  <li><a href="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" id="toc-odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="nav-link" data-scroll-target="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">2.2.2</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</a></li>
   </ul></li>
-  <li><a href="#intervalový-odhad" id="toc-intervalový-odhad" class="nav-link" data-scroll-target="#intervalový-odhad"><span class="header-section-number">7.3</span> Intervalový odhad</a>
-  <ul class="collapse">
-  <li><a href="#interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." id="toc-interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." class="nav-link" data-scroll-target="#interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou."><span class="header-section-number">7.3.1</span> Interval spolehlivosti odhadu střední hodnoty <span class="math inline">\(\mu\)</span> souboru s neznámou střední hodnotou.</a></li>
-  </ul></li>
-  <li><a href="#maximálně-věrohodný-odhad" id="toc-maximálně-věrohodný-odhad" class="nav-link" data-scroll-target="#maximálně-věrohodný-odhad"><span class="header-section-number">7.4</span> Maximálně věrohodný odhad</a></li>
-  <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test"><span class="header-section-number">7.5</span> <span class="math inline">\(t\)</span>-test</a></li>
+  <li><a href="#intervalový-odhad" id="toc-intervalový-odhad" class="nav-link" data-scroll-target="#intervalový-odhad"><span class="header-section-number">2.3</span> Intervalový odhad</a></li>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test"><span class="header-section-number">2.4</span> <span class="math inline">\(t\)</span>-test</a></li>
   </ul>
 </nav>
     </div>
@@ -291,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Odhad</span></h1>
 </div>
 
 
@@ -310,14 +234,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="unnumbered anchored" data-anchor-id="cíle-cvičení">Cíle cvičení</h4>
 <ul>
 <li>Nestrannost odhadu</li>
-<li></li>
-<li></li>
+<li>Zákon velkých čísel</li>
+<li>Bodový a intervalový odhad</li>
+<li><span class="math inline">\(t\)</span>-test</li>
 </ul>
 <p>Obecně je odhadem v matematické statistice nazýváno určení parametru rozdělení hodnoty určitého znaku <strong>základního souboru</strong> s pomocí <strong>výběrového souboru</strong>.</p>
 <p>Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\ldots\)</span>), pro výběrové charakteristiky volíme analogická písmena z latinky (<span class="math inline">\(\bar{x}, s_x, \ldots\)</span>).</p>
 </section>
-<section id="nestrannost-odhadu" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="nestrannost-odhadu"><span class="header-section-number">7.1</span> Nestrannost odhadu</h2>
+<section id="nestrannost-odhadu" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="nestrannost-odhadu"><span class="header-section-number">2.1</span> Nestrannost odhadu</h2>
 <p>V mnoha situacích potřebujeme odhadnout určitý parametr (střední hodnotu, <span class="math inline">\(90\%\)</span> kvantil atp.) neznámé náhodné veličiny. Tento parametr odhadujeme pomocí nějaké statistiky výběru z této veličiny. Například odhadujeme střední hodnotu veličiny pomocí průměru. Abychom mohli určit hodnotu parametru (např. střední hodnotu) přesně, musel by být výběr nekonečně velký. Jelikož toto v praxi nenastane, náš odhad je vždy více či méně odlišný od skutečné hodnoty parametru (např. střední hodnoty) neznámé veličiny. Důležitou vlastností odhadu je nestrannost - o nestranném odhadu mluvíme pokud střední hodnota odhadu je rovna neznámému parametru.</p>
 <p>V přednáškách o charakteristikách náhodné veličiny a jejich odhadech je zmíněna rovnice</p>
 <p><span class="math display">\[
@@ -325,16 +250,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \]</span></p>
 <p>jako nestranný odhad veličiny <span class="math inline">\(X\)</span>. Z definice rozptylu <span class="math inline">\(\mathbb{E}[(X - \mathbb{E}(X^2))]\)</span> však vyplývá odhad</p>
 <p><span class="math display">\[
-\dfrac{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}{n}
+\dfrac{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}{n}.
 \]</span></p>
 <section id="cvičení" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="cvičení">Cvičení</h4>
+<p><strong>7.1</strong> Doplňte následující kód.<br>
+</p>
 <ul>
-<li>Napište funkce pro odhad ropztylu.</li>
-<li>Zamyslete se, které proměnné nejsou určeny a doplňte je.</li>
-<li>Spočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.</li>
-<li>Který odhad je nejméně vychýlený a v jaké situaci?</li>
-<li>Doplňte následující kód.</li>
+<li>Napište funkce pro odhad ropztylu.<br>
+</li>
+<li>Zamyslete se, které proměnné nejsou určeny a doplňte je.<br>
+</li>
+<li>Spočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.<br>
+</li>
+<li>Který odhad je nejméně vychýlený a v jaké situaci?<br>
+</li>
 </ul>
 <div class="cell">
 <details open="">
@@ -353,116 +283,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="bodový-odhad" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="bodový-odhad"><span class="header-section-number">7.2</span> Bodový odhad</h2>
-<p>Bodovým odhadem</p>
+<section id="bodový-odhad" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="bodový-odhad"><span class="header-section-number">2.2</span> Bodový odhad</h2>
+<p>Bodovým odhadem se se rozumí jednočíselná hodnota, která reprezentuje vybraný moment statistického souboru jako celek. Bodovým odhadem je například výběrový průměr nebo výběrový rozptyl.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9.820428</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31.48541</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.5</code></pre>
 </div>
-</div>
-<section id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení"><span class="header-section-number">7.2.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení</h3>
-<p>Nejprve bodovým odhadem zjistíme <strong>výběrový průměr</strong> souboru.</p>
+<section id="zákon-velkých-čísel" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="zákon-velkých-čísel"><span class="header-section-number">2.2.1</span> Zákon velkých čísel</h3>
+<p>Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.</p>
+<section id="cvičení-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cvičení-1">Cvičení</h4>
+<p><strong>7.2</strong> Generujte s pomocí funkce <code>rnorm</code> postupně <span class="math inline">\(10\)</span>, <span class="math inline">\(10^2\)</span>, <span class="math inline">\(10^3\)</span>, <span class="math inline">\(10^4\)</span> čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte <span class="math inline">\(\bar{x}\)</span> a <span class="math inline">\({s^2}\)</span> Okomentujte výsledky. Použijte nápovědu.</p>
+</section>
+</section>
+<section id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">2.2.2</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</h3>
+<p>Takto formulovaný bodový a intervalový je jednou z nejčastěji prováděných úloh. Nejprve bodovým odhadem zjistíme <strong>výběrový průměr</strong> souboru.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 146.6875</code></pre>
+<pre><code>[1] 9.820428</code></pre>
 </div>
 </div>
-<p>Vidíme, že <span class="math inline">\(x =\)</span> 146.6875. Pro tento průmer následně spočítáme interval spolehlivosti.</p>
+<p>Vidíme, že <span class="math inline">\(x =\)</span> 4.9780765, 11.3153117, 9.2108291, 18.8678481, 11.1697127, 13.1863009, 4.1820932, 17.1453271, 1.7474057, 6.4013787. Pro tento průmer následně spočítáme interval spolehlivosti.</p>
 </section>
 </section>
-<section id="intervalový-odhad" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="intervalový-odhad"><span class="header-section-number">7.3</span> Intervalový odhad</h2>
-<p>V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. <strong>intervalový odhad</strong>. <span class="math inline">\(100(1-\alpha)%\)</span> interval spolehlivosti pro <span class="math inline">\(\bar{X} = - z_{1-\alpha/2}\)</span>.</p>
+<section id="intervalový-odhad" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="intervalový-odhad"><span class="header-section-number">2.3</span> Intervalový odhad</h2>
+<p>V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. <strong>intervalový odhad</strong>.</p>
 <p><span class="math display">\[
 \bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
 \]</span></p>
-<section id="interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou."><span class="header-section-number">7.3.1</span> Interval spolehlivosti odhadu střední hodnoty <span class="math inline">\(\mu\)</span> souboru s neznámou střední hodnotou.</h3>
-<p>Rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.</p>
+<p><span class="math inline">\(100(1-\alpha)%\)</span> interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in qt(p = 1 - alpha/2, df = length(x) - 1): NaNs produced</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NaN</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="maximálně-věrohodný-odhad" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="maximálně-věrohodný-odhad"><span class="header-section-number">7.4</span> Maximálně věrohodný odhad</h2>
-<p>Maximálně věrohodný odhad je takový, který maximalizuje věrohodnostní funkci <span class="math inline">\(L\)</span> pro výběr <span class="math inline">\((x_1, x_2, \ldots, x_n)\)</span></p>
-<p><span class="math display">\[
-L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ldots p(x_n, \theta) = \prod\limits_{i=1}^{n}p(x_i, \theta)
-\]</span> Konstrukce věrohodnostní funkce</p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">prod</span>(x[i]<span class="sc">*</span><span class="fu">pnorm</span>(x[i], <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> n)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)<span class="sc">*</span><span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)<span class="sc">*</span><span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.914707</code></pre>
+<pre><code>        [,1]     [,2]
+[1,] 8.55109 11.08977</code></pre>
 </div>
 </div>
-<p>Spočítejte hodnotu věrohodnostní funkce pro <span class="math inline">\(X = 4\)</span></p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(L)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.7615</code></pre>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="dv">4</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dlnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<!-- ## Maximálně věrohodný odhad -->
+<!-- Maximálně věrohodný odhad je takový, který maximalizuje věrohodnostní funkci $L$ pro výběr $(x_1, x_2, \ldots, x_n)$ -->
+<!-- $$ -->
+<!-- L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ldots p(x_n, \theta) = \prod\limits_{i=1}^{n}p(x_i, \theta) -->
+<!-- $$ Konstrukce věrohodnostní funkce -->
+<!-- ```{r} -->
+<!-- # Set the parameters -->
+<!-- mean_true <- 5 -->
+<!-- sd_true <- 1 -->
+<!-- # Generate random data from a normal distribution -->
+<!-- set.seed(123) -->
+<!-- n <- 10000 -->
+<!-- x <- rnorm(n, mean_true, sd_true) -->
+<!-- # Define the likelihood function -->
+<!-- likelihood <- function(params) { -->
+<!--   mean_param <- params[1] -->
+<!--   sd_param <- params[2] -->
+<!--   return(prod(dnorm(x, mean = mean_param, sd = sd_param))) -->
+<!-- } -->
+<!-- # Use optim() to find the maximum likelihood estimates -->
+<!-- result <- optim(par = c(0, 1), fn = function(params) -likelihood(params), hessian = TRUE) -->
+<!-- # Maximum Likelihood Estimates -->
+<!-- mle_mean <- result$par[1] -->
+<!-- mle_sd <- result$par[2] -->
+<!-- cat("MLE for mean:", mle_mean, "\n") -->
+<!-- cat("MLE for standard deviation:", mle_sd, "\n") -->
+<!-- ``` -->
+<!-- Spočítejte hodnotu věrohodnostní funkce pro $X = 4$ -->
+<!-- ```{r} -->
+<!-- n <- 10000 -->
+<!-- x <- rnorm(n, 5, 1) -->
+<!-- L <- x*pnorm(x, mean = 5, sd = 1) -->
+<!-- max(L) -->
+<!-- boxplot(x) -->
+<!-- curve(dnorm(x, 4, 1), xlim = c(0,8)) -->
+<!-- curve(dlnorm(x, 1, 0.5), add = TRUE) -->
+<!-- ``` -->
 </section>
-<section id="t-test" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="t-test"><span class="header-section-number">7.5</span> <span class="math inline">\(t\)</span>-test</h2>
+<section id="t-test" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="t-test"><span class="header-section-number">2.4</span> <span class="math inline">\(t\)</span>-test</h2>
 <p>Nejjednodušší aplikací <span class="math inline">\(t\)</span>-testu je Testovací statistika pro oboustrannou alternativu má hodnotu</p>
 <p><span class="math display">\[
 \dfrac{|\bar{x} - \mu_0|}{s}\sqrt{n} &gt; t_{\alpha/2}(n-1)
@@ -473,9 +391,10 @@ L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ld
 <p><span class="math display">\[
 \dfrac{\bar{x} - \mu_0}{s}\sqrt{n} &lt; t_{\alpha}(n-1)
 \]</span> pro <span class="math inline">\(\mu &lt; \mu_0\)</span>. <span class="math inline">\(n-1\)</span> je počet stupňů volnosti.</p>
-<section id="cvičení-1" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="cvičení-1">Cvičení</h5>
-<p><strong>7.4</strong> Spočítejte, zda můžeme s pravděpodobností <span class="math inline">\(90\:\%\)</span> zamítnout hypotézu, že střední hodnota veličiny generující výběr <code>x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)</code> je menší než 1.<br>
+<section id="cvičení-2" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="cvičení-2">Cvičení</h5>
+<p><strong>7.3</strong> Spočítejte pomocí funkce <code>t.test</code> intervalový odhad pro <code>x = rnorm(100)</code> a <code>set.seed(100)</code>.<br>
+<strong>7.4</strong> Spočítejte, zda můžeme s pravděpodobností <span class="math inline">\(90\:\%\)</span> zamítnout hypotézu, že střední hodnota veličiny generující výběr <code>x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)</code> je menší než 1.<br>
 <strong>7.5</strong> Pro stejný výběr spočítejte, zda je možné na hladině významnosti <span class="math inline">\(0.05\)</span> zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna <span class="math inline">\(1\)</span>.</p>
 
 
@@ -729,14 +648,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_rozdeleni.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rozdělení pravděpodobnosti</span></span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Úvod</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_testovani.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

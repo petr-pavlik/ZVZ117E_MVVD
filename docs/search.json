@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Metody vyhodnocování vodohospodářských dat",
     "section": "",
-    "text": "Struktura textu\nJetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.\nTento text byl vytvořen s pomocí verze R 4.2.2 a jmenných prostorů balíků ve verzích:\n\n\n            Version\ncli           3.6.1\ndigest       0.6.33\nevaluate       0.22\nfastmap       1.1.1\nglue          1.6.2\nhtmltools   0.5.6.1\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.44\nlifecycle     1.0.3\nmagrittr      2.0.3\nrlang         1.1.1\nrmarkdown      2.25\nrstudioapi   0.15.0\nstringi      1.7.12\nstringr       1.5.0\nxfun           0.40\nbase          4.2.2\ncompiler      4.2.2\ndatasets      4.2.2\ngraphics      4.2.2\ngrDevices     4.2.2\nmethods       4.2.2\nstats         4.2.2\ntools         4.2.2\nutils         4.2.2\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
+    "text": "Struktura textu\nJetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.\nTento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:\n\n\n            Version\nbase          4.3.0\ncli           3.6.1\ncompiler      4.3.0\ndatasets      4.3.0\ndigest       0.6.33\nevaluate       0.21\nfastmap       1.1.1\nglue          1.6.2\ngraphics      4.3.0\ngrDevices     4.3.0\nhtmltools     0.5.6\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.43\nlifecycle     1.0.3\nmagrittr      2.0.3\nmethods       4.3.0\nrlang         1.1.1\nrmarkdown      2.24\nrstudioapi     0.14\nstats         4.3.0\nstringi      1.7.12\nstringr       1.5.0\ntools         4.3.0\nutils         4.3.0\nxfun           0.40\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
   },
   {
     "objectID": "intro.html#doporučená-literatura",
@@ -14,220 +14,31 @@
     "text": "1.1 Doporučená literatura\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. „Literate Programming\". Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   },
   {
-    "objectID": "01_uvod_do_R_1.html",
-    "href": "01_uvod_do_R_1.html",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "",
-    "text": "3 Opakovaní jazyka R\nKurz MVVD navazuje na kurz “Výpočetní metody”, který je vyučován v prvním semestru studia Vodního hospodářství. Opakování znalostí jazyka R jsou věnovány dvě celá úvodní cvičení."
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#nápověda",
-    "href": "01_uvod_do_R_1.html#nápověda",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.1 Nápověda",
-    "text": "3.1 Nápověda\nZadává se do konzole ve tvaru help(&lt;jméno funkce&gt;), nebo &lt;jmeno funkce&gt;. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu View(jmeno funkce). Kromě toho existuje v R také help.search(&lt;jméno funkce&gt;) funkce pod zkratkou ??, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce RSiteSearch(), která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: ?Logical, ?Constants, ?Control, ?Arithmetic, ?Syntax."
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#sec-aritmeticke-operace",
-    "href": "01_uvod_do_R_1.html#sec-aritmeticke-operace",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.2 Aritmetické operace",
-    "text": "3.2 Aritmetické operace\n\n\nKód\n1 + 1          # přičítání\n2 - 1          # odečítání\n1 * 3.         # násobení\n1 * (-1)       # násobení\n1 / 6.         # dělení\n10 %% 3.       # modulo\n7 %/% 3        # celočíselné dělení\n10 ** 3        # mocninné operace\n10 %*% 3       # vnejší produkt \nsum(1:10)      # součet prvků od 1 do 10\nprod(1:10)     # součin prvků od 1 do 10\ncumsum(1:10)   # i + (i - 1)\ncumprod(1:10)  # i(i - 1)"
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#jmenné-konvence",
-    "href": "01_uvod_do_R_1.html#jmenné-konvence",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.3 Jmenné konvence",
-    "text": "3.3 Jmenné konvence\nObjekty, které vznikají při práci s R musí splňovat následující jmenné konvence.\n- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo if, else, repeat, while, function, for, for, in, next, repeat, break, TRUE, FALSE, NULL, Inf, Nan, NA, NA_integer_, NA_real_, NA_complex_, NA_character_. - speciální znak: _\nDále se nedoporučuje vkládat do názvu proměnné tečku ., např. ``"
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#uvozovky-a-závorky",
-    "href": "01_uvod_do_R_1.html#uvozovky-a-závorky",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.4 Uvozovky a závorky",
-    "text": "3.4 Uvozovky a závorky\nNení nunté rozlišovat mezi dvojitými \" a jednoduchými ' uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou ."
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#operátory",
-    "href": "01_uvod_do_R_1.html#operátory",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.5 Operátory",
-    "text": "3.5 Operátory\nKromě aritmetických operátorů, zmíněných Sekce 3.2\n\n\nKód\n&lt;        # větší než \n&gt;        # větší než \n&gt;=       # větší nebo rovno \n&lt;=       # menší nebo rovno \n==       # rovná se\n!=       # nerovná se\n&        # a zároveň\n&&       # a zároveň vektorově\n|        # nebo\n||       # nebo vektorově\nxor()    # \nisTRUE() # je platné\n\n\n\n\nKód\nany()\n\n\n[1] FALSE\n\n\nKód\nall()\n\n\n[1] TRUE"
-  },
-  {
-    "objectID": "01_uvod_do_R_1.html#základní-datové-struktury",
-    "href": "01_uvod_do_R_1.html#základní-datové-struktury",
-    "title": "2  Práce v prostředí RStudio",
-    "section": "3.6 Základní datové struktury",
-    "text": "3.6 Základní datové struktury\nZákladní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.\n\n3.6.1 Homogenní datové struktury\nHomogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.\n\n3.6.1.1 Vektor\nVektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce vector(mode = \"numeric\", length = 10) a funkce c(), případně vzniká pomocí opetárorů [ nebo [[. Zde je na místě\n\n\n\n3.6.2 Heterogenní datové struktury\nZa heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou data.frame a list, dále pak S4, nebo R6 třídy, případně další uživatelem vytvořené struktury.\n\n3.6.2.1 Datová tabulka\ndata.frame je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.\n\n\nKód\nDF &lt;- data.frame(name = letters[1:5], \n                 value = rnorm(5))\nDF\n##   name      value\n## 1    a  0.3822710\n## 2    b -0.1947149\n## 3    c -0.1188800\n## 4    d -0.8821319\n## 5    e -0.2087218\nDF[\"name\"]        # podvýběr do data.frame\n##   name\n## 1    a\n## 2    b\n## 3    c\n## 4    d\n## 5    e\nDF[[\"name\"]]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\nDF[, \"name\"]      # podvýběr do vektoru\n## [1] \"a\" \"b\" \"c\" \"d\" \"e\"\n\n\nPráce uvnitř data.frame\n\n\nKód\nDF &lt;- data.frame(\n  mon = rep(month.abb, \n            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), \n  value = rnorm(365), \n  yr = 2001)\nstr(DF)\n## 'data.frame':    365 obs. of  3 variables:\n##  $ mon  : chr  \"Jan\" \"Jan\" \"Jan\" \"Jan\" ...\n##  $ value: num  0.257 0.2527 0.0678 0.259 0.3243 ...\n##  $ yr   : num  2001 2001 2001 2001 2001 ...\nnames(DF)\n## [1] \"mon\"   \"value\" \"yr\"\nnrow(DF)\n## [1] 365\nncol(DF)\n## [1] 3\n\n\n\n\n\n3.6.3 Úlohy\n\nSpočítejte pomocí R následující výrazy:\n\n\n\n\\(1 + 3 \\cdot (2 / 3)\\:\\mathrm{mod}\\:3\\)\n\n\\(\\left(\\dfrac{2}{35}\\right)^{0.5} \\cdot 3 \\cdot (2 / 3)\\)\n\n\\(\\sum\\limits_{i = 1}^{53}x_i\\) \n\n\\(\\dfrac{-\\infty}{0}\\), \\(\\dfrac{-\\infty}{\\infty}\\), \\(\\dfrac{0}{0}\\) \n\n\n\n\n\nProveďte následující úkony:\n\n\n\nVytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci seq().\nSpočtěte rozdíl matic \\(A\\), \\(B\\).\n\\[\n  A = \\left(\n  \\begin{matrix}\n  2 & 2 & 5\\\\\n  9 & 2 & 7\\\\\n  1 & 3 & 18\\\\\n  \\end{matrix}\n  \\right),\\qquad\n  B = \\left(\n  \\begin{matrix}\n  5 & 4 & 5\\\\\n  -7 & 2 & 4\\\\\n  10 & 1 & 5\\\\\n  \\end{matrix}\n  \\right)\n  \\]\nS pomocí hodnot TRUE/FALSE vytvořte matici \\(3\\times3\\), změňte typ prvku na pozici M[1, 1] na textový řetězec. Ovlivní tato změna ostatní prvky v matici?"
-  },
-  {
-    "objectID": "02_uvod_do_R_2.html#práce-s-daty",
-    "href": "02_uvod_do_R_2.html#práce-s-daty",
-    "title": "3  Opakování R - pokračování",
-    "section": "3.1 Práce s daty",
-    "text": "3.1 Práce s daty\nChybějící záznamy a speciální numerické případy NA, NaN, NULL, Inf, -Inf jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz NA je tvořen v datovém typu logical, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech NA_real_ (odpovídá double), NA_integer_, NA_complex_ a NA_character_, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. NULL je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky NaN a ±Inf pochází z aritmetických operací \\(\\dfrac{1}{0}\\) resp. \\(\\dfrac{\\pm0}{1}\\) . na.omit(), is.na(), complete.cases().\n\n\n\n\n\n\nPoznámka\n\n\n\nNote that there are five types of callouts, including: note, tip, warning, caution, and important."
-  },
-  {
-    "objectID": "03_summary.html#začínáme-s-base",
-    "href": "03_summary.html#začínáme-s-base",
-    "title": "4  Grafický výstup",
-    "section": "4.1 Začínáme s base",
-    "text": "4.1 Začínáme s base\nBudeme postupovat od nejjednoduššího grafu Opět budeme pracovat s datovou sadou mtcars\n\n\nKód\n# zpřístupníme datovou sadu\ndata(mtcars)\n\nplot(x = mtcars$mpg)\n\n\n\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
-  },
-  {
-    "objectID": "04_popisna.html#míry-polohy",
-    "href": "04_popisna.html#míry-polohy",
-    "title": "5  Popisná statistika",
-    "section": "5.1 Míry polohy",
-    "text": "5.1 Míry polohy\n\nMinimum, maximum\nPro oba extrémy jsou v R stejnojmenné funkce.\n\\[\n\\max(x)\\\\\n\\min(x)\\\\\n\\min(x) - \\max(x)\n\\] #### Výběrový kvantil\n\n\nKód\nmin(x)\n## [1] -2.21\nmax(x)\n## [1] 1.6\nmax(x) - min(x)\n## [1] 3.81\n\n\n\n\nAritmetický průměr\n\\[\n  \\bar{x} = \\frac{1}{n}(x_1 + x_2 + \\ldots + x_n) = \\dfrac{1}{n}\\sum\\limits_{i=1}^{n}x_i\n\\]\n\n\nMedián\nArtitmetický průměr hodnot na pozicích \\(\\frac{n}{2}\\) a \\(\\frac{n}{2+1}\\) v seřazeném souboru.\n\n\nModus\nZa modus se označuje nejčastěji se vyskytující hodnota v souboru\n\n\nHarmonický průměr\nAritmetický průměr převrácených hodnot.\n\\[\n\\bar{x_h} = \\dfrac{n}{\\sum\\limits_{i=1}^{n}\\frac{1}{x_i}}\n\\]\n\n\n5.1.0.1 Průměr stupně \n\n\n5.1.1 Míry variability\n\nVarianční rozpětí\nJe definováno jako rozdíl maxima a minima v souboru.\n\n\nKód\nrange(x)\n\n\n[1] -2.21  1.60\n\n\n\n\nMezikvartilové rozpětí\nZatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené \\(Q3\\) a \\(Q1\\) neboli \\(q_{75}\\) a \\(q_{25}\\).\n\\[\n\\mathrm{IQR} = Q3 - Q1\n\\]\n\n\nKód\nIQR(x)\n\n\n[1] 1.1475\n\n\n\n\nRozptyl\n\\[\n     \\sigma^2 =\\sum\\limits_{1}^{n}\\sqrt{\\dfrac{1}{n}(x_i - \\bar{x})^2}\n\\]\n\n\nSměrodatná odchylka\n\\[\n   \\dfrac{1}{n}\\sqrt{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}\n\\]\nRozptyl i směrodatnou odchylku spočteme v R pomocí funkcí var() (variance) a sd() standard deviation.\n\n\nKód\nvar(x)\n## [1] 0.8537454\nsd(x)\n## [1] 0.9239834\n\n\n\n\nVariační koeficient\n\\[\nV = 100 \\frac{s}{x}\n\\]\n\n\n5.1.1.1 Střední chyba aritmetického průměru\n\\[\ns_x = \\dfrac{s}{\\sqrt{n}}\n\\]\n\n\n\nCvičení"
-  },
-  {
-    "objectID": "05_rozdeleni.html#empirické-vs.-teoretické-rozdělení",
-    "href": "05_rozdeleni.html#empirické-vs.-teoretické-rozdělení",
-    "title": "6  Rozdělení pravděpodobnosti",
-    "section": "6.1 Empirické vs. teoretické rozdělení",
-    "text": "6.1 Empirické vs. teoretické rozdělení"
-  },
-  {
-    "objectID": "05_rozdeleni.html#diskrétní-rozdělení",
-    "href": "05_rozdeleni.html#diskrétní-rozdělení",
-    "title": "6  Rozdělení pravděpodobnosti",
-    "section": "6.2 Diskrétní rozdělení",
-    "text": "6.2 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 0.9428756\n\n\nKód\nsum(x)\n\n\n[1] 9.428756\n\n\nKód\nmedian(x)\n\n\n[1] 1.055814\n\n\nKód\nIQR(x)\n\n\n[1] 4.969492\n\n\nKód\nfivenum(x)\n\n\n[1] -5.711657 -2.973012  1.055814  3.118132 11.590455"
-  },
-  {
-    "objectID": "05_rozdeleni.html#spojitá-rozdělení",
-    "href": "05_rozdeleni.html#spojitá-rozdělení",
-    "title": "6  Rozdělení pravděpodobnosti",
-    "section": "6.3 Spojitá rozdělení",
-    "text": "6.3 Spojitá rozdělení\n\n\nKód\ncurve(sin(x))\n\n\n\n\n\n\nCvičení\n\nGenerujte 10 čísel s pomocí normálního rozdělení s parametry \\(\\mu = 2.3\\) a \\(\\sigma = 4.23\\).\nGenerujte 50 čísel \\(X\\sim\\mathsf{Po}(\\lambda = 2.3)\\).\nJaká je pravděpodobnost, že veličina \\(X\\sim\\mathsf{N}(1.3, 4)\\), bude nabývat hodnot menších než 6?"
-  },
-  {
-    "objectID": "05_rozdeleni.html#section",
-    "href": "05_rozdeleni.html#section",
-    "title": "6  Rozdělení pravděpodobnosti",
-    "section": "6.4 ",
-    "text": "6.4"
-  },
-  {
     "objectID": "06_odhad.html#nestrannost-odhadu",
     "href": "06_odhad.html#nestrannost-odhadu",
-    "title": "7  Odhad",
-    "section": "7.1 Nestrannost odhadu",
-    "text": "7.1 Nestrannost odhadu\nV mnoha situacích potřebujeme odhadnout určitý parametr (střední hodnotu, \\(90\\%\\) kvantil atp.) neznámé náhodné veličiny. Tento parametr odhadujeme pomocí nějaké statistiky výběru z této veličiny. Například odhadujeme střední hodnotu veličiny pomocí průměru. Abychom mohli určit hodnotu parametru (např. střední hodnotu) přesně, musel by být výběr nekonečně velký. Jelikož toto v praxi nenastane, náš odhad je vždy více či méně odlišný od skutečné hodnoty parametru (např. střední hodnoty) neznámé veličiny. Důležitou vlastností odhadu je nestrannost - o nestranném odhadu mluvíme pokud střední hodnota odhadu je rovna neznámému parametru.\nV přednáškách o charakteristikách náhodné veličiny a jejich odhadech je zmíněna rovnice\n\\[\n\\dfrac{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}{n-1}\n\\]\njako nestranný odhad veličiny \\(X\\). Z definice rozptylu \\(\\mathbb{E}[(X - \\mathbb{E}(X^2))]\\) však vyplývá odhad\n\\[\n\\dfrac{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}{n}\n\\]\n\nCvičení\n\nNapište funkce pro odhad ropztylu.\nZamyslete se, které proměnné nejsou určeny a doplňte je.\nSpočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.\nKterý odhad je nejméně vychýlený a v jaké situaci?\nDoplňte následující kód.\n\n\n\nKód\nX &lt;- data.frame()\nfor (i in 1:nsim) {\n  x &lt;- rnorm(n)\n  s_unb &lt;- 1/(n-1)\n  s_bia &lt;- 1/n\n  s_unb2 &lt;- 1/(n-1)\n  s_bia2 &lt;- 1/n\n  X &lt;- rbind(X, c(s_unb, s_bia, s_unb2, s_bia2))\n}\nnames(X) = c('UNB', 'BIA' , 'UNB2' ,'BIA2')"
+    "title": "2  Odhad",
+    "section": "2.1 Nestrannost odhadu",
+    "text": "2.1 Nestrannost odhadu\nV mnoha situacích potřebujeme odhadnout určitý parametr (střední hodnotu, \\(90\\%\\) kvantil atp.) neznámé náhodné veličiny. Tento parametr odhadujeme pomocí nějaké statistiky výběru z této veličiny. Například odhadujeme střední hodnotu veličiny pomocí průměru. Abychom mohli určit hodnotu parametru (např. střední hodnotu) přesně, musel by být výběr nekonečně velký. Jelikož toto v praxi nenastane, náš odhad je vždy více či méně odlišný od skutečné hodnoty parametru (např. střední hodnoty) neznámé veličiny. Důležitou vlastností odhadu je nestrannost - o nestranném odhadu mluvíme pokud střední hodnota odhadu je rovna neznámému parametru.\nV přednáškách o charakteristikách náhodné veličiny a jejich odhadech je zmíněna rovnice\n\\[\n\\dfrac{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}{n-1}\n\\]\njako nestranný odhad veličiny \\(X\\). Z definice rozptylu \\(\\mathbb{E}[(X - \\mathbb{E}(X^2))]\\) však vyplývá odhad\n\\[\n\\dfrac{\\sum\\limits_{i=1}^{n}(x_i - \\bar{x})^2}{n}.\n\\]\n\nCvičení\n7.1 Doplňte následující kód.\n\n\nNapište funkce pro odhad ropztylu.\n\nZamyslete se, které proměnné nejsou určeny a doplňte je.\n\nSpočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.\n\nKterý odhad je nejméně vychýlený a v jaké situaci?\n\n\n\n\nKód\nX &lt;- data.frame()\nfor (i in 1:nsim) {\n  x &lt;- rnorm(n)\n  s_unb &lt;- 1/(n-1)\n  s_bia &lt;- 1/n\n  s_unb2 &lt;- 1/(n-1)\n  s_bia2 &lt;- 1/n\n  X &lt;- rbind(X, c(s_unb, s_bia, s_unb2, s_bia2))\n}\nnames(X) = c('UNB', 'BIA' , 'UNB2' ,'BIA2')"
   },
   {
     "objectID": "06_odhad.html#bodový-odhad",
     "href": "06_odhad.html#bodový-odhad",
-    "title": "7  Odhad",
-    "section": "7.2 Bodový odhad",
-    "text": "7.2 Bodový odhad\nBodovým odhadem\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\n\n7.2.1 Odhad parametru \\(\\mu\\), neboli střední hodnoty normálního rozdělení\nNejprve bodovým odhadem zjistíme výběrový průměr souboru.\n\n\nKód\nx &lt;- mean(mtcars$hp)\nx\n\n\n[1] 146.6875\n\n\nVidíme, že \\(x =\\) 146.6875. Pro tento průmer následně spočítáme interval spolehlivosti."
+    "title": "2  Odhad",
+    "section": "2.2 Bodový odhad",
+    "text": "2.2 Bodový odhad\nBodovým odhadem se se rozumí jednočíselná hodnota, která reprezentuje vybraný moment statistického souboru jako celek. Bodovým odhadem je například výběrový průměr nebo výběrový rozptyl.\n\n\nKód\nset.seed(100)\nx &lt;- rnorm(10, 10, 10)\nmean(x)\n## [1] 9.820428\nvar(x)\n## [1] 31.48541\n\n\n\n2.2.1 Zákon velkých čísel\nZákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.\n\nCvičení\n7.2 Generujte s pomocí funkce rnorm postupně \\(10\\), \\(10^2\\), \\(10^3\\), \\(10^4\\) čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte \\(\\bar{x}\\) a \\({s^2}\\) Okomentujte výsledky. Použijte nápovědu.\n\n\n\n2.2.2 Odhad parametru \\(\\mu\\), neboli střední hodnoty normálního rozdělení s neznámým rozptylem\nTakto formulovaný bodový a intervalový je jednou z nejčastěji prováděných úloh. Nejprve bodovým odhadem zjistíme výběrový průměr souboru.\n\n\nKód\nmean(x)\n\n\n[1] 9.820428\n\n\nVidíme, že \\(x =\\) 4.9780765, 11.3153117, 9.2108291, 18.8678481, 11.1697127, 13.1863009, 4.1820932, 17.1453271, 1.7474057, 6.4013787. Pro tento průmer následně spočítáme interval spolehlivosti."
   },
   {
     "objectID": "06_odhad.html#intervalový-odhad",
     "href": "06_odhad.html#intervalový-odhad",
-    "title": "7  Odhad",
-    "section": "7.3 Intervalový odhad",
-    "text": "7.3 Intervalový odhad\nV případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. intervalový odhad. \\(100(1-\\alpha)%\\) interval spolehlivosti pro \\(\\bar{X} = - z_{1-\\alpha/2}\\).\n\\[\n\\bar{X} \\pm \\dfrac{s}{\\sqrt{n}}t_{1-\\alpha/2}(n-1)\n\\]\n\n7.3.1 Interval spolehlivosti odhadu střední hodnoty \\(\\mu\\) souboru s neznámou střední hodnotou.\nRozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.\n\n\nKód\nalpha &lt;- 0.05\nqt(p = 1 - alpha/2, df = length(x) - 1)\n\n\nWarning in qt(p = 1 - alpha/2, df = length(x) - 1): NaNs produced\n\n\n[1] NaN"
-  },
-  {
-    "objectID": "06_odhad.html#maximalne-verohodny-odhad",
-    "href": "06_odhad.html#maximalne-verohodny-odhad",
-    "title": "7  Odhad",
-    "section": "7.4 Maximalne verohodny odhad",
-    "text": "7.4 Maximalne verohodny odhad\nMaximálně věrohodný odhad je takový, který maximalizuje věrohodnostní funkci \\(L\\) pro výběr \\((x_1, x_2, \\ldots, x_n)\\)\n\\[\nL(\\theta, x_1, x_2, \\ldots, x_n) = p(x_1, \\theta) \\cdot p(x_2, \\theta) \\cdot \\ldots p(x_n, \\theta) = \\prod\\limits_{i=1}^{n}p(x_i, \\theta)\n\\] Konstrukce verohodnostní funkce\n\n\nKód\nn &lt;- 100\nx &lt;- rnorm(n, 5, 1)\ni &lt;- 1\nL &lt;- prod(x[i]*pnorm(x[i], mean = 5, sd = 1))\nhist(x, breaks = n)\n\n\n\n\n\nKód\nmean(x)\n\n\n[1] 4.994194\n\n\nSpocitejte hodnotu verohodnostni funkce pro \\(X = 4\\)\n\n\nKód\nn &lt;- 10000\nx &lt;- rnorm(n, 5, 1)\nL &lt;- x*pnorm(x, mean = 5, sd = 1)\nmax(L)\n\n\n[1] 8.481945\n\n\nKód\nboxplot(x)\n\n\n\n\n\nKód\ncurve(dnorm(x, 4, 1), xlim = c(0,8))\ncurve(dlnorm(x, 1, 0.5), add = TRUE)"
+    "title": "2  Odhad",
+    "section": "2.3 Intervalový odhad",
+    "text": "2.3 Intervalový odhad\nV případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. intervalový odhad.\n\\[\n\\bar{X} \\pm \\dfrac{s}{\\sqrt{n}}t_{1-\\alpha/2}(n-1)\n\\]\n\\(100(1-\\alpha)%\\) interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.\n\n\nKód\nalpha &lt;- 0.05\ncbind(\n  mean(x) - sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1),\n  mean(x) + sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1)\n)\n\n\n        [,1]     [,2]\n[1,] 8.55109 11.08977"
   },
   {
     "objectID": "06_odhad.html#t-test",
     "href": "06_odhad.html#t-test",
-    "title": "7  Odhad",
-    "section": "7.5 \\(t\\)-test",
-    "text": "7.5 \\(t\\)-test\nNejjednodušší aplikací \\(t\\)-testu je Testovací statistika pro oboustrannou alternativu má hodnotu\n\\[\n\\dfrac{|\\bar{x} - \\mu_0|}{s}\\sqrt{n} &gt; t_{\\alpha/2}(n-1)\n\\] a pro jednostrannou alternativu \\(\\mu &gt; \\mu_0\\)\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &gt; t_{\\alpha}(n-1)\n\\] respektive\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &lt; t_{\\alpha}(n-1)\n\\] pro \\(\\mu &lt; \\mu_0\\). \\(n-1\\) je počet stupňů volnosti.\n\nCvičení\n7.4 Spočítejte, zda můžeme s pravděpodobností \\(90\\:\\%\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49) je menší než 1.\n7.5 Pro stejný výběr spočítejte, zda je možné na hladině významnosti \\(0.05\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna \\(1\\)."
-  },
-  {
-    "objectID": "07_testovani.html#postup-testování-statistické-hypotézy",
-    "href": "07_testovani.html#postup-testování-statistické-hypotézy",
-    "title": "8  Testování hypotéz",
-    "section": "8.1 Postup testování statistické hypotézy:",
-    "text": "8.1 Postup testování statistické hypotézy:\n\nFormulace nulové \\(H_0\\) a alternativní \\(H_a\\) hypotézy.\n\nVolba hladiny významnosti \\(\\alpha\\).\n\nVolba testovací statistiky.\n\nUrčení kritického oboru testové statistiky\n\n\nVýsledkem tetování je buď a) zamítnutní nulové hypotézy1 b) nezamítnutní nulové hypotézy."
-  },
-  {
-    "objectID": "07_testovani.html#alpha-inteval-spolehlivosti",
-    "href": "07_testovani.html#alpha-inteval-spolehlivosti",
-    "title": "8  Testování hypotéz",
-    "section": "8.2 100(1-\\(\\alpha\\))% inteval spolehlivosti",
-    "text": "8.2 100(1-\\(\\alpha\\))% inteval spolehlivosti\n\\[\n\\bar{x} - 1.96\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + 1.96\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\n\\[\n\\bar{x} - t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\nkde \\(\\nu=n-1\\) je počet stupňů volnosti.\n\n8.2.0.1 P-hodnota\nMísto porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. p-hodnotu (p-value).\nPravděpodobnost platnosti hypotézy"
-  },
-  {
-    "objectID": "07_testovani.html#footnotes",
-    "href": "07_testovani.html#footnotes",
-    "title": "8  Testování hypotéz",
-    "section": "",
-    "text": "Zamítnutí nulové hypotézy neznamená, že nulová hypotéza neplatí, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí↩︎"
-  },
-  {
-    "objectID": "08_test_1.html",
-    "href": "08_test_1.html",
-    "title": "9  Vzorový test 1",
-    "section": "",
-    "text": "První test je orientován na opakování základní práce v R, to jest znalost a práce s datovými typy, datovými strukturami, řídícími strukturami a grafickým výstupem. Dále pak tematicky obsahuje otázky na statistická rozdělení, bodový a intervalový odhad a testování hypotéz. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
-  },
-  {
-    "objectID": "09_casove_rady.html",
-    "href": "09_casove_rady.html",
-    "title": "10  Časové řady",
-    "section": "",
-    "text": "Funkce pro statistické zpracování datového souboru nalezneme v balíčku stats, jehož jmenný prostor je připojen po otevření R.\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\nDále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.\n\n\nKód\ncurve(sin(x))"
-  },
-  {
-    "objectID": "10_hydro_index.html#diskrétní-rozdělení",
-    "href": "10_hydro_index.html#diskrétní-rozdělení",
-    "title": "11  Hydroklimatické indexy",
-    "section": "11.1 Diskrétní rozdělení",
-    "text": "11.1 Diskrétní rozdělení\n\n\nKód\nx &lt;- rnorm(n = 10, mean = 1.25, sd = 5.36)\nmean(x)\n\n\n[1] 1.458882\n\n\nKód\nsum(x)\n\n\n[1] 14.58882\n\n\nKód\nmedian(x)\n\n\n[1] 0.6605324\n\n\nKód\nIQR(x)\n\n\n[1] 4.72461\n\n\nKód\nfivenum(x)\n\n\n[1] -5.2661286 -2.6416864  0.6605324  2.5038799 13.8029814"
-  },
-  {
-    "objectID": "10_hydro_index.html#spojitá-rozdělení",
-    "href": "10_hydro_index.html#spojitá-rozdělení",
-    "title": "11  Hydroklimatické indexy",
-    "section": "11.2 Spojitá rozdělení",
-    "text": "11.2 Spojitá rozdělení\n\n\nKód\ncurve(sin(x))"
-  },
-  {
-    "objectID": "11_korelace_regrese.html",
-    "href": "11_korelace_regrese.html",
-    "title": "12  Korelace",
-    "section": "",
-    "text": "Alternativně můžeme použít výpočet založený na diferencích pořadí pozorovaných hodnot, které definujeme jako \\(d_i = x_{ri} - y_{ri}\\)\n\\[\nr_s = 1 - \\dfrac{6\\sum_{i=1}^{n}d_i^2}{n(n^2-1)}\n\\tag{12.1}\\]\n\nCvičení\n\nNapište vlastní funkci, které pro dané vektory x a y spočítá korelační Spearmanův koeficient. Řešení:\n\n\n\nKód\nsp_k &lt;- function(x, y) {\n  nx &lt;- length(x)\n  ny &lt;- length(y)\n  n &lt;- nx + ny\n  \n  1 - ((6 * sum((x - mean(x))^2 + (y - mean(y))^2)) / (n*(n^2 - 1)))\n  \n}\nsp_k(10:1, 1.5 + 1:10)\n\n\n[1] 0.8759398\n\n\nKód\ncor(10:1, 1.5 + 1:10, method = \"spearman\")\n\n\n[1] -1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPovodí\nvelikost \\(x_i\\)\npořadí\nodtok \\(y_i\\)\npořadí\nrozdíl \\(d_i\\)\n\\(d_i^2\\)\n\n\n\n\n1\n\n\n\n\n\n\n\n\n2\n\n\n\n\n\n\n\n\n3\n\n\n\n\n\n\n\n\n4\n\n\n\n\n\n\n\n\n5\n\n\n\n\n\n\n\n\n6\n\n\n\n\n\n\n\n\n7\n\n\n\n\n\n\n\n\n8\n\n\n\n\n\n\n\n\n9\n\n\n\n\n\n\n\n\n10"
-  },
-  {
-    "objectID": "12_test_2.html#zadání",
-    "href": "12_test_2.html#zadání",
-    "title": "13  Vzorový test 2",
-    "section": "13.1 Zadání",
-    "text": "13.1 Zadání\n\n13.1.1 Úloha 1\nNahrajte datovou sadu clim1960.rds a proveďte následující úkony EDA\n\nspočítejte celkovou roční srážku\nspočítejte průměrnou teplotu v květnu\nspočítejte medián nenulových srážek\n\n\n\nKód\nx &lt;- 1:50\nmean(x)\n\n\n[1] 25.5\n\n\nKód\nsum(x)\n\n\n[1] 1275\n\n\nKód\nmedian(x)\n\n\n[1] 25.5\n\n\n\n\n13.1.2 Úloha 2\n\n\nKód\npar(mfrow = c(1,2))\ncurve(expr = sin(x), from = -pi, to = pi)\ncurve(expr = cos(x), from = -pi, to = pi)"
-  },
-  {
-    "objectID": "12_test_2.html#řešení",
-    "href": "12_test_2.html#řešení",
-    "title": "13  Vzorový test 2",
-    "section": "13.2 Řešení",
-    "text": "13.2 Řešení\n\n13.2.1 Úloha 1\n\n\n13.2.2 Úloha 2\n\n\n13.2.3 Úloha 3\n\n\n13.2.4 Úloha 4\n\n\n13.2.5 Úloha 5\n\n\n13.2.6 Úloha 6\n\n\n13.2.7 Úloha 7\n\n\n13.2.8 Úloha 8"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "Literatura",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
-  },
-  {
-    "objectID": "06_odhad.html#maximálně-věrohodný-odhad",
-    "href": "06_odhad.html#maximálně-věrohodný-odhad",
-    "title": "7  Odhad",
-    "section": "7.4 Maximálně věrohodný odhad",
-    "text": "7.4 Maximálně věrohodný odhad\nMaximálně věrohodný odhad je takový, který maximalizuje věrohodnostní funkci \\(L\\) pro výběr \\((x_1, x_2, \\ldots, x_n)\\)\n\\[\nL(\\theta, x_1, x_2, \\ldots, x_n) = p(x_1, \\theta) \\cdot p(x_2, \\theta) \\cdot \\ldots p(x_n, \\theta) = \\prod\\limits_{i=1}^{n}p(x_i, \\theta)\n\\] Konstrukce věrohodnostní funkce\n\n\nKód\nn &lt;- 100\nx &lt;- rnorm(n, 5, 1)\ni &lt;- 1\nL &lt;- prod(x[i]*pnorm(x[i], mean = 5, sd = 1))\nhist(x, breaks = n)\n\n\n\n\n\nKód\nmean(x)\n\n\n[1] 4.914707\n\n\nSpočítejte hodnotu věrohodnostní funkce pro \\(X = 4\\)\n\n\nKód\nn &lt;- 10000\nx &lt;- rnorm(n, 5, 1)\nL &lt;- x*pnorm(x, mean = 5, sd = 1)\nmax(L)\n\n\n[1] 8.7615\n\n\nKód\nboxplot(x)\n\n\n\n\n\nKód\ncurve(dnorm(x, 4, 1), xlim = c(0,8))\ncurve(dlnorm(x, 1, 0.5), add = TRUE)"
+    "title": "2  Odhad",
+    "section": "2.4 \\(t\\)-test",
+    "text": "2.4 \\(t\\)-test\nNejjednodušší aplikací \\(t\\)-testu je Testovací statistika pro oboustrannou alternativu má hodnotu\n\\[\n\\dfrac{|\\bar{x} - \\mu_0|}{s}\\sqrt{n} &gt; t_{\\alpha/2}(n-1)\n\\] a pro jednostrannou alternativu \\(\\mu &gt; \\mu_0\\)\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &gt; t_{\\alpha}(n-1)\n\\] respektive\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &lt; t_{\\alpha}(n-1)\n\\] pro \\(\\mu &lt; \\mu_0\\). \\(n-1\\) je počet stupňů volnosti.\n\nCvičení\n7.3 Spočítejte pomocí funkce t.test intervalový odhad pro x = rnorm(100) a set.seed(100).\n7.4 Spočítejte, zda můžeme s pravděpodobností \\(90\\:\\%\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49) je menší než 1.\n7.5 Pro stejný výběr spočítejte, zda je možné na hladině významnosti \\(0.05\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna \\(1\\)."
   }
 ]
