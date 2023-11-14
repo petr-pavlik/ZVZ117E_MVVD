@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 7&nbsp; Odhad</title>
+<title>Metody vyhodnocování vodohospodářských dat - 11&nbsp; Hydroklimatické indexy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./testovani.html" rel="next">
-<link href="./rozdeleni.html" rel="prev">
+<link href="./11_korelace_regrese.html" rel="next">
+<link href="./09_casove_rady.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./odhad.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_hydro_index.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -186,73 +186,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Práce v prostředí RStudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Opakování R - pokračování</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./03_summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./popisna.html" class="sidebar-item-text sidebar-link">
+  <a href="./04_popisna.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rozdeleni.html" class="sidebar-item-text sidebar-link">
+  <a href="./05_rozdeleni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rozdělení pravděpodobnosti</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./odhad.html" class="sidebar-item-text sidebar-link active">
+  <a href="./06_odhad.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testovani.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_testovani.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./test_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./08_test_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
+  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistické rozdělení</span></span></a>
+  <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./korelace_regrese.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Korelace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./test_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_test_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vzorový test 2</span></span></a>
   </div>
 </li>
@@ -272,11 +272,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" id="toc-odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" class="nav-link active" data-scroll-target="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení"><span class="header-section-number">7.0.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení</a></li>
-  <li><a href="#intervalový-odhad" id="toc-intervalový-odhad" class="nav-link" data-scroll-target="#intervalový-odhad"><span class="header-section-number">7.1</span> Intervalový odhad</a>
-  <ul class="collapse">
-  <li><a href="#interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." id="toc-interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." class="nav-link" data-scroll-target="#interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou."><span class="header-section-number">7.1.1</span> Interval spolehlivosti odhadu střední hodnoty <span class="math inline">\(\mu\)</span> souboru s neznámou střední hodnotou.</a></li>
-  </ul></li>
+  <li><a href="#diskrétní-rozdělení" id="toc-diskrétní-rozdělení" class="nav-link active" data-scroll-target="#diskrétní-rozdělení"><span class="header-section-number">11.1</span> Diskrétní rozdělení</a></li>
+  <li><a href="#spojitá-rozdělení" id="toc-spojitá-rozdělení" class="nav-link" data-scroll-target="#spojitá-rozdělení"><span class="header-section-number">11.2</span> Spojitá rozdělení</a></li>
   </ul>
 </nav>
     </div>
@@ -285,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></h1>
 </div>
 
 
@@ -300,64 +297,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\ldots\)</span>), pro výběrové charakteristiky volíme analogická písmena z latinky (<span class="math inline">\(\bar{x}, s_x, \ldots\)</span>). ## Bodový odhad</p>
-<p>Bodovým odjhade</p>
+<p>V software R jsou všechna základní rozdělení součástí balíku <code>stats</code>. A jejich výčet získáme vyvoláním nápovědy <code>?distributions</code>. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rxxx</span>() <span class="co"># náhodná čísla</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dxxx</span>() <span class="co"># </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pxxx</span>()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qxxx</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.5</code></pre>
 </div>
-</div>
-<section id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení"><span class="header-section-number">7.0.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení</h3>
-<p>Nejprve bodovým odhadem zjistíme <strong>výběrový průměr</strong> souboru.</p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 146.6875</code></pre>
-</div>
-</div>
-<p>Vidíme, že <span class="math inline">\(x =\)</span> 146.6875. Pro tento průmer následně spočítáme interval spolehlivosti.</p>
+<section id="úkol" class="level4" data-number="11.0.0.1">
+<h4 data-number="11.0.0.1" class="anchored" data-anchor-id="úkol"><span class="header-section-number">11.0.0.1</span> Úkol</h4>
+<p>Generujte 10 čísel s pomocí normálního rozdělení s parametry <span class="math inline">\(\mu = 2.3\)</span> a <span class="math inline">\(\sigma = 4.23\)</span>.</p>
 </section>
-<section id="intervalový-odhad" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="intervalový-odhad"><span class="header-section-number">7.1</span> Intervalový odhad</h2>
-<p>V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. <strong>intervalový odhad</strong>. <span class="math inline">\(100(1-\alpha)%\)</span> interval spolehlivosti pro ${X} = - z_{1-/2} $.</p>
-<p><span class="math display">\[
-\bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
-\]</span></p>
-<section id="interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou." class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="interval-spolehlivosti-odhadu-střední-hodnoty-mu-souboru-s-neznámou-střední-hodnotou."><span class="header-section-number">7.1.1</span> Interval spolehlivosti odhadu střední hodnoty <span class="math inline">\(\mu\)</span> souboru s neznámou střední hodnotou.</h3>
-<p>Rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.</p>
+<section id="diskrétní-rozdělení" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="diskrétní-rozdělení"><span class="header-section-number">11.1</span> Diskrétní rozdělení</h2>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.25</span>, <span class="at">sd =</span> <span class="fl">5.36</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in qt(p = 1 - alpha/2, df = length(x) - 1): NaNs produced</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] NaN</code></pre>
+<pre><code>[1] 1.458882</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.58882</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6605324</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.72461</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fivenum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -5.2661286 -2.6416864  0.6605324  2.5038799 13.8029814</code></pre>
 </div>
 </div>
-<section id="cvičení" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="cvičení">Cvičení</h5>
-<ul>
-<li>Sestrojte 95 % interval spolehlivosti pro střední hodnotu</li>
-</ul>
+</section>
+<section id="spojitá-rozdělení" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="spojitá-rozdělení"><span class="header-section-number">11.2</span> Spojitá rozdělení</h2>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="10_hydro_index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -607,13 +614,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./rozdeleni.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rozdělení pravděpodobnosti</span></span>
+      <a href="./09_casove_rady.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./testovani.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./11_korelace_regrese.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Korelace</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

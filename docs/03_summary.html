@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 8&nbsp; Testování hypotéz</title>
+<title>Metody vyhodnocování vodohospodářských dat - 4&nbsp; Grafický výstup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,8 +63,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./test_1.html" rel="next">
-<link href="./odhad.html" rel="prev">
+<link href="./04_popisna.html" rel="next">
+<link href="./02_uvod_do_R_2.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -62,8 +96,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -76,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testovani.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_summary.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,73 +184,73 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_uvod_do_R_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Práce v prostředí RStudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_uvod_do_R_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Opakování R - pokračování</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./03_summary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./popisna.html" class="sidebar-item-text sidebar-link">
+  <a href="./04_popisna.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rozdeleni.html" class="sidebar-item-text sidebar-link">
+  <a href="./05_rozdeleni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rozdělení pravděpodobnosti</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./odhad.html" class="sidebar-item-text sidebar-link">
+  <a href="./06_odhad.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testovani.html" class="sidebar-item-text sidebar-link active">
+  <a href="./07_testovani.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./test_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./08_test_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span></a>
+  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Statistické rozdělení</span></span></a>
+  <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./korelace_regrese.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Korelace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./test_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./12_test_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vzorový test 2</span></span></a>
   </div>
 </li>
@@ -238,8 +270,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#postup-testování-statistické-hypotézy" id="toc-postup-testování-statistické-hypotézy" class="nav-link active" data-scroll-target="#postup-testování-statistické-hypotézy"><span class="header-section-number">8.1</span> Postup testování statistické hypotézy:</a></li>
-  <li><a href="#alpha-inteval-spolehlivosti" id="toc-alpha-inteval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-inteval-spolehlivosti"><span class="header-section-number">8.2</span> 100(1-<span class="math inline">\(\alpha\)</span>)% inteval spolehlivosti</a></li>
+  <li><a href="#začínáme-s-base" id="toc-začínáme-s-base" class="nav-link active" data-scroll-target="#začínáme-s-base"><span class="header-section-number">4.1</span> Začínáme s <code>base</code></a></li>
   </ul>
 </nav>
     </div>
@@ -248,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Grafický výstup</span></h1>
 </div>
 
 
@@ -263,42 +294,34 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="postup-testování-statistické-hypotézy" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="postup-testování-statistické-hypotézy"><span class="header-section-number">8.1</span> Postup testování statistické hypotézy:</h2>
-<ol type="1">
-<li>Formulace nulové <span class="math inline">\(H_0\)</span> a alternativní <span class="math inline">\(H_a\)</span> hypotézy.<br>
-</li>
-<li>Volba hladiny významnosti <span class="math inline">\(\alpha\)</span>.<br>
-</li>
-<li>Volba testovací statistiky.<br>
-</li>
-<li>Určení kritického oboru testové statistiky</li>
-<li></li>
-</ol>
-<p>Výsledkem tetování je buď a) zamítnutní nulové hypotézy<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> b) nezamítnutní nulové hypotézy.</p>
-</section>
-<section id="alpha-inteval-spolehlivosti" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="alpha-inteval-spolehlivosti"><span class="header-section-number">8.2</span> 100(1-<span class="math inline">\(\alpha\)</span>)% inteval spolehlivosti</h2>
-<p><span class="math display">\[
-\bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
-\]</span></p>
-<p><span class="math display">\[
-\bar{x} - t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}
-\]</span></p>
-<p>kde <span class="math inline">\(\nu=n-1\)</span> je počet stupňů volnosti.</p>
-<section id="p-hodnota" class="level4" data-number="8.2.0.1">
-<h4 data-number="8.2.0.1" class="anchored" data-anchor-id="p-hodnota"><span class="header-section-number">8.2.0.1</span> P-hodnota</h4>
-<p>Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. p-hodnotu (p-value).</p>
-<p>Pravděpodobnost platnosti hypotézy</p>
+<p>V jazyce R se nejvíce používají dva systémy grafického výstupu. Ten první je součástí základní instalace R, jedná se o balíček <code>base</code>, který využívá funkce <code>plot()</code>. Druhý systém je založen na balíčku <code>grid</code> a jmenuje se <code>ggplot2</code>. Ten je nutné doinstalovat a nahrát.</p>
+<section id="začínáme-s-base" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="začínáme-s-base"><span class="header-section-number">4.1</span> Začínáme s <code>base</code></h2>
+<p>Budeme postupovat od nejjednoduššího grafu Opět budeme pracovat s datovou sadou <code>mtcars</code></p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zpřístupníme datovou sadu</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> mtcars<span class="sc">$</span>mpg)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="03_summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="03_summary_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Zamítnutí nulové hypotézy <strong>neznamená, že nulová hypotéza neplatí</strong>, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -548,13 +571,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./odhad.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Odhad</span></span>
+      <a href="./02_uvod_do_R_2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Opakování R - pokračování</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./test_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04_popisna.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Popisná statistika</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

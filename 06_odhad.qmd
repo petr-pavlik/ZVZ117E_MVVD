@@ -1,9 +1,60 @@
 # Odhad
 
-Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. $\mu$, $\sigma$, $\ldots$), pro výběrové charakteristiky volíme analogická písmena z latinky ($\bar{x}, s_x, \ldots$). 
+
+#### Cíle cvičení {.unnumbered}
+ - Nestrannost odhadu
+ - 
+ - 
+
+
+
+Obecně je odhadem v matematické statistice nazýváno určení parametru rozdělení hodnoty určitého znaku **základního souboru** s pomocí **výběrového souboru**. 
+
+Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. $\mu$, $\sigma$, $\ldots$), pro výběrové charakteristiky volíme analogická písmena z latinky ($\bar{x}, s_x, \ldots$).
+
+## Nestrannost odhadu
+
+V mnoha situacích potřebujeme odhadnout určitý parametr (střední hodnotu, $90\%$ kvantil atp.) neznámé náhodné veličiny. Tento parametr odhadujeme pomocí nějaké statistiky výběru z této veličiny. Například odhadujeme střední hodnotu veličiny pomocí průměru. Abychom mohli určit hodnotu parametru (např. střední hodnotu) přesně, musel by být výběr nekonečně velký. Jelikož toto v praxi nenastane, náš odhad je vždy více či méně odlišný od skutečné hodnoty parametru (např. střední hodnoty) neznámé veličiny. Důležitou vlastností odhadu je nestrannost - o nestranném odhadu mluvíme
+pokud střední hodnota odhadu je rovna neznámému parametru.
+
+V přednáškách o charakteristikách náhodné veličiny a jejich odhadech je zmíněna
+rovnice 
+
+$$
+\dfrac{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}{n-1}
+$$
+
+jako nestranný odhad veličiny $X$. Z definice rozptylu $\mathbb{E}[(X - \mathbb{E}(X^2))]$ však vyplývá odhad
+
+$$
+\dfrac{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}{n}
+$$
+
+#### Cvičení {-}
+ 
+ - Napište funkce pro odhad ropztylu.
+ - Zamyslete se, které proměnné nejsou určeny a doplňte je.
+ - Spočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.
+ - Který odhad je nejméně vychýlený a v jaké situaci?
+ - Doplňte následující kód.
+
+```{r, eval=FALSE}
+X <- data.frame()
+for (i in 1:nsim) {
+  x <- rnorm(n)
+  s_unb <- 1/(n-1)
+  s_bia <- 1/n
+  s_unb2 <- 1/(n-1)
+  s_bia2 <- 1/n
+  X <- rbind(X, c(s_unb, s_bia, s_unb2, s_bia2))
+}
+names(X) = c('UNB', 'BIA' , 'UNB2' ,'BIA2')
+```
+
+
 ## Bodový odhad
 
-Bodovým odjhade
+Bodovým odhadem
 
 ```{r}
 x <- 1:50
@@ -26,8 +77,7 @@ Vidíme, že $x =$ `r x`. Pro tento průmer následně spočítáme interval spo
 
 ## Intervalový odhad
 
-V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností,
-můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. $100(1-\alpha)%$ interval spolehlivosti pro $\bar{X} = - z_{1-\alpha/2} $. 
+V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. $100(1-\alpha)%$ interval spolehlivosti pro $\bar{X} = - z_{1-\alpha/2}$.
 
 $$
 \bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
@@ -42,7 +92,60 @@ alpha <- 0.05
 qt(p = 1 - alpha/2, df = length(x) - 1)
 ```
 
+## Maximálně věrohodný odhad
 
-##### Cvičení {-}
-- Sestrojte 95 % interval spolehlivosti pro střední hodnotu
+Maximálně věrohodný odhad je takový, který maximalizuje věrohodnostní funkci $L$ 
+pro výběr $(x_1, x_2, \ldots, x_n)$
 
+$$
+L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ldots p(x_n, \theta) = \prod\limits_{i=1}^{n}p(x_i, \theta)
+$$
+Konstrukce věrohodnostní funkce
+
+```{r}
+n <- 100
+x <- rnorm(n, 5, 1)
+i <- 1
+L <- prod(x[i]*pnorm(x[i], mean = 5, sd = 1))
+hist(x, breaks = n)
+mean(x)
+```
+
+Spočítejte hodnotu věrohodnostní funkce pro $X = 4$
+
+```{r}
+n <- 10000
+x <- rnorm(n, 5, 1)
+L <- x*pnorm(x, mean = 5, sd = 1)
+max(L)
+boxplot(x)
+curve(dnorm(x, 4, 1), xlim = c(0,8))
+curve(dlnorm(x, 1, 0.5), add = TRUE)
+```
+
+## $t$-test
+
+Nejjednodušší aplikací $t$-testu je 
+Testovací statistika pro oboustrannou alternativu má hodnotu
+
+$$
+\dfrac{|\bar{x} - \mu_0|}{s}\sqrt{n} > t_{\alpha/2}(n-1)
+$$
+a pro jednostrannou alternativu $\mu > \mu_0$
+
+$$
+\dfrac{\bar{x} - \mu_0}{s}\sqrt{n} > t_{\alpha}(n-1)
+$$
+respektive 
+
+$$
+\dfrac{\bar{x} - \mu_0}{s}\sqrt{n} < t_{\alpha}(n-1)
+$$
+pro $\mu < \mu_0$. $n-1$ je počet stupňů volnosti.
+
+##### Cvičení {.unnumbered}
+
+ **7.4**  Spočítejte, zda můžeme s pravděpodobností $90\:\%$ zamítnout hypotézu, 
+    že střední hodnota veličiny generující výběr `x <- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)` je menší než 1.\
+ **7.5**  Pro stejný výběr spočítejte, zda je možné na hladině významnosti $0.05$ 
+zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna $1$.
