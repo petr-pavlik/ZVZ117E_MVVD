@@ -27,9 +27,9 @@ book:
     # - 04_popisna.qmd
     # - 05_rozdeleni.qmd
     - 06_odhad.qmd
-    # - 07_testovani.qmd
+    #- 07_testovani.qmd
     # - 08_test_1.qmd
-    # - 09_casove_rady.qmd
+    - 09_casove_rady.qmd
     # - 10_hydro_index.qmd
     # - 11_korelace_regrese.qmd
     # - 12_test_2.qmd
@@ -43,7 +43,7 @@ book:
     tools:
       - icon: save
         menu:
-          - text: "mtcars.csv"
+          - text: "data.csv"
             url:  "#"
           - text: ""
             url:  "#"

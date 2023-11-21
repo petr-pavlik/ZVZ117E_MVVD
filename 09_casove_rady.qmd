@@ -1,17 +1,96 @@
 # Časové řady
 
-Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.
+Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.
+
+Budeme pracovat se dvěma datovými sadami:
+  
+  1. Naše již připravená data z MOPEX
+  2. Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`
 
 ```{r}
-x <- 1:50
-mean(x)
-sum(x)
-median(x)
+dataset <- readRDS("data/data.rds")[1:15000,]
+data("co2")
+```
+
+## Autokorelační funkce
+
+ACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.
+
+```{r, fig.cap="Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"}
+par(mfrow = c(1, 2))
+acf(dataset$R)
+acf(co2)
+```
+
+
+
+## Dekompozice časové řady
+
+Dekompozicí časové řady rozumíme rozklad na složky:
+  
+  1. Trendovou $T_t$
+  2. Sezónní $S_t$
+  3. Cyklickou $C_t$
+  4. Náhodnou $\epsilon_t$
+
+### Aditivní dekompozice
+
+Předpokládáme, že řadu lze rozložit na součet složek
+
+$$
+Y_t =T_t +S_t +C_t +\epsilon_t,
+$$
+
+```{r}
+dec_co2 <- decompose(co2)
+plot(dec_co2)
+plot(dec_co2$trend)
+```
+
+### Residua
+
+Ověřte, zda po dekompozici `co2` residua $\epsilon_t$ splňují definici *bílého šumu* 
+tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.
+
+```{r}
+shapiro.test(dec_co2$random)
+mean(dec_co2$random, na.rm = TRUE)
+var(dec_co2$random, na.rm = TRUE)
+# ...
+```
+
+## Zhlazovací funkce
+
+```{r}
+par(mfrow = c(1, 2))
+plot(dataset$Tmin, type = "l", 
+     col = "slategray", 
+     lwd = 0.5)
+md1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), 
+             data = dataset, 
+             degree = 1)
+lines(md1$fitted, col = "darkred")
+
+plot(filter(x = dataset$R, 
+             method = "convolution", 
+             filter = c(rep(1/365.25, 365.25)), 
+             sides = 1), 
+      col = "dodgerblue3", 
+     type = "l")
+```
+
+```{r}
+md2 <- lm(Tmin ~ DTM, data = dataset)
+plot(dataset$Tmin, type = "l", 
+     col = "slategray", 
+     lwd = 0.5)
+lines(md1$fitted, col = "darkred")
+abline(coef(md2), col = "red")
 
 ```
 
-Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.
 
-```{r}
-curve(sin(x))
-```
+
+
+
+

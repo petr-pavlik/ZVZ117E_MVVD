@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Metody vyhodnocování vodohospodářských dat",
     "section": "",
-    "text": "Struktura textu\nJetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.\nTento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:\n\n\n            Version\nbase          4.3.0\ncli           3.6.1\ncompiler      4.3.0\ndatasets      4.3.0\ndigest       0.6.33\nevaluate       0.21\nfastmap       1.1.1\nglue          1.6.2\ngraphics      4.3.0\ngrDevices     4.3.0\nhtmltools     0.5.6\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.43\nlifecycle     1.0.3\nmagrittr      2.0.3\nmethods       4.3.0\nrlang         1.1.1\nrmarkdown      2.24\nrstudioapi     0.14\nstats         4.3.0\nstringi      1.7.12\nstringr       1.5.0\ntools         4.3.0\nutils         4.3.0\nxfun           0.40\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
+    "text": "Struktura textu\nJetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.\nTento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:\n\n\n            Version\nbase          4.3.0\ncli           3.6.1\ncompiler      4.3.0\ndatasets      4.3.0\ndigest       0.6.33\nevaluate       0.23\nfastmap       1.1.1\nglue          1.6.2\ngraphics      4.3.0\ngrDevices     4.3.0\nhtmltools     0.5.7\nhtmlwidgets   1.6.2\njsonlite      1.8.7\nknitr          1.45\nlifecycle     1.0.4\nmagrittr      2.0.3\nmethods       4.3.0\nrlang         1.1.2\nrmarkdown      2.25\nrstudioapi   0.15.0\nstats         4.3.0\nstringi       1.8.1\nstringr       1.5.1\ntools         4.3.0\nutils         4.3.0\nxfun           0.41\n\n\nK reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia."
   },
   {
     "objectID": "intro.html#doporučená-literatura",
@@ -32,7 +32,7 @@
     "href": "06_odhad.html#intervalový-odhad",
     "title": "2  Odhad",
     "section": "2.3 Intervalový odhad",
-    "text": "2.3 Intervalový odhad\nV případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. intervalový odhad.\n\\[\n\\bar{X} \\pm \\dfrac{s}{\\sqrt{n}}t_{1-\\alpha/2}(n-1)\n\\]\n\\(100(1-\\alpha)%\\) interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.\n\n\nKód\nalpha &lt;- 0.05\ncbind(\n  mean(x) - sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1),\n  mean(x) + sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1)\n)\n\n\n        [,1]     [,2]\n[1,] 8.55109 11.08977"
+    "text": "2.3 Intervalový odhad\nV případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. intervalový odhad.\n\\[\n\\bar{X} \\pm \\dfrac{s}{\\sqrt{n}}t_{1-\\alpha/2}(n-1)\n\\]\n\\(100(1-\\alpha)\\%\\) interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.\n\n\nKód\nalpha &lt;- 0.05\ncbind(\n  mean(x) - sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1),\n  mean(x) + sd(x)/length(x)*qt(p = 1 - alpha/2, df = length(x) - 1)\n)\n\n\n        [,1]     [,2]\n[1,] 8.55109 11.08977"
   },
   {
     "objectID": "06_odhad.html#t-test",
@@ -40,5 +40,47 @@
     "title": "2  Odhad",
     "section": "2.4 \\(t\\)-test",
     "text": "2.4 \\(t\\)-test\nNejjednodušší aplikací \\(t\\)-testu je Testovací statistika pro oboustrannou alternativu má hodnotu\n\\[\n\\dfrac{|\\bar{x} - \\mu_0|}{s}\\sqrt{n} &gt; t_{\\alpha/2}(n-1)\n\\] a pro jednostrannou alternativu \\(\\mu &gt; \\mu_0\\)\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &gt; t_{\\alpha}(n-1)\n\\] respektive\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &lt; t_{\\alpha}(n-1)\n\\] pro \\(\\mu &lt; \\mu_0\\). \\(n-1\\) je počet stupňů volnosti.\n\nCvičení\n7.3 Spočítejte pomocí funkce t.test intervalový odhad pro x = rnorm(100) a set.seed(100).\n7.4 Spočítejte, zda můžeme s pravděpodobností \\(90\\:\\%\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49) je menší než 1.\n7.5 Pro stejný výběr spočítejte, zda je možné na hladině významnosti \\(0.05\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna \\(1\\)."
+  },
+  {
+    "objectID": "07_testovani.html#postup-testování-statistické-hypotézy",
+    "href": "07_testovani.html#postup-testování-statistické-hypotézy",
+    "title": "3  Testování hypotéz",
+    "section": "3.1 Postup testování statistické hypotézy:",
+    "text": "3.1 Postup testování statistické hypotézy:\n\nFormulace nulové \\(H_0\\) a alternativní \\(H_a\\) hypotézy.\n\nVolba hladiny významnosti \\(\\alpha\\).\n\nVolba testovací statistiky.\n\nUrčení kritického oboru testové statistiky\n\n\nVýsledkem tetování je buď a) zamítnutní nulové hypotézy1 b) nezamítnutní nulové hypotézy."
+  },
+  {
+    "objectID": "07_testovani.html#alpha-inteval-spolehlivosti",
+    "href": "07_testovani.html#alpha-inteval-spolehlivosti",
+    "title": "3  Testování hypotéz",
+    "section": "3.2 100(1-\\(\\alpha\\))% inteval spolehlivosti",
+    "text": "3.2 100(1-\\(\\alpha\\))% inteval spolehlivosti\n\\[\n\\bar{x} - 1.96\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + 1.96\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\n\\[\n\\bar{x} - t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\nkde \\(\\nu=n-1\\) je počet stupňů volnosti.\n\n3.2.0.1 P-hodnota\nMísto porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. p-hodnotu (p-value). Definice p-hodnoty je poněkud obšírná - je to odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá.\nPravděpodobnost platnosti hypotézy"
+  },
+  {
+    "objectID": "07_testovani.html#footnotes",
+    "href": "07_testovani.html#footnotes",
+    "title": "3  Testování hypotéz",
+    "section": "",
+    "text": "Zamítnutí nulové hypotézy neznamená, že nulová hypotéza neplatí, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí↩︎"
+  },
+  {
+    "objectID": "09_casove_rady.html#autokorelační-funkce",
+    "href": "09_casove_rady.html#autokorelační-funkce",
+    "title": "3  Časové řady",
+    "section": "3.1 Autokorelační funkce",
+    "text": "3.1 Autokorelační funkce\nACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.\n\n\nKód\npar(mfrow = c(1, 2))\nacf(dataset$R)\nacf(co2)\n\n\n\n\n\nVlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"
+  },
+  {
+    "objectID": "09_casove_rady.html#dekompozice-časové-řady",
+    "href": "09_casove_rady.html#dekompozice-časové-řady",
+    "title": "3  Časové řady",
+    "section": "3.2 Dekompozice časové řady",
+    "text": "3.2 Dekompozice časové řady\nDekompozicí časové řady rozumíme rozklad na složky:\n\nTrendovou \\(T_t\\)\nSezónní \\(S_t\\)\nCyklickou \\(C_t\\)\nNáhodnou \\(\\epsilon_t\\)\n\n\n3.2.1 Aditivní dekompozice\nPředpokládáme, že řadu lze rozložit na součet složek\n\\[\nY_t =T_t +S_t +C_t +\\epsilon_t,\n\\]\n\n\nKód\ndec_co2 &lt;- decompose(co2)\nplot(dec_co2)\n\n\n\n\n\nKód\nplot(dec_co2$trend)\n\n\n\n\n\n\n\n3.2.2 Residua\nOvěřte, zda po dekompozici co2 residua \\(\\epsilon_t\\) splňují definici bílého šumu tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.\n\n\nKód\nshapiro.test(dec_co2$random)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  dec_co2$random\nW = 0.99506, p-value = 0.1549\n\n\nKód\nmean(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.001743421\n\n\nKód\nvar(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.07028142\n\n\nKód\n# ..."
+  },
+  {
+    "objectID": "09_casove_rady.html#zhlazovací-funkce",
+    "href": "09_casove_rady.html#zhlazovací-funkce",
+    "title": "3  Časové řady",
+    "section": "3.3 Zhlazovací funkce",
+    "text": "3.3 Zhlazovací funkce\n\n\nKód\npar(mfrow = c(1, 2))\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nmd1 &lt;- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), \n             data = dataset, \n             degree = 1)\nlines(md1$fitted, col = \"darkred\")\n\nplot(filter(x = dataset$R, \n             method = \"convolution\", \n             filter = c(rep(1/365.25, 365.25)), \n             sides = 1), \n      col = \"dodgerblue3\", \n     type = \"l\")\n\n\n\n\n\n\n\nKód\nmd2 &lt;- lm(Tmin ~ DTM, data = dataset)\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nlines(md1$fitted, col = \"darkred\")\nabline(coef(md2), col = \"red\")"
   }
 ]

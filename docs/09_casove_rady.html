@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Petr Pavlík">
 
-<title>Metody vyhodnocování vodohospodářských dat</title>
+<title>Metody vyhodnocování vodohospodářských dat - 3&nbsp; Časové řady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./06_odhad.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -62,6 +95,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Struktura textu</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_casove_rady.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -138,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Struktura textu</span></a>
   </div>
 </li>
@@ -156,14 +191,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_testovani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
+  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
   </div>
 </li>
     </ul>
@@ -176,7 +205,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#struktura-textu" id="toc-struktura-textu" class="nav-link active" data-scroll-target="#struktura-textu">Struktura textu</a></li>
+  <li><a href="#autokorelační-funkce" id="toc-autokorelační-funkce" class="nav-link active" data-scroll-target="#autokorelační-funkce"><span class="header-section-number">3.1</span> Autokorelační funkce</a></li>
+  <li><a href="#dekompozice-časové-řady" id="toc-dekompozice-časové-řady" class="nav-link" data-scroll-target="#dekompozice-časové-řady"><span class="header-section-number">3.2</span> Dekompozice časové řady</a>
+  <ul class="collapse">
+  <li><a href="#aditivní-dekompozice" id="toc-aditivní-dekompozice" class="nav-link" data-scroll-target="#aditivní-dekompozice"><span class="header-section-number">3.2.1</span> Aditivní dekompozice</a></li>
+  <li><a href="#residua" id="toc-residua" class="nav-link" data-scroll-target="#residua"><span class="header-section-number">3.2.2</span> Residua</a></li>
+  </ul></li>
+  <li><a href="#zhlazovací-funkce" id="toc-zhlazovací-funkce" class="nav-link" data-scroll-target="#zhlazovací-funkce"><span class="header-section-number">3.3</span> Zhlazovací funkce</a></li>
   </ul>
 </nav>
     </div>
@@ -185,27 +220,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Metody vyhodnocování vodohospodářských dat</h1>
-<p class="subtitle lead">MVVD ZS 23/24</p>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Petr Pavlík </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Publikováno</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">21. listopadu 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -213,42 +235,147 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="struktura-textu" class="level1 unnumbered">
-<h1 class="unnumbered">Struktura textu</h1>
-<p>Jetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.</p>
-<p>Tento text byl vytvořen s pomocí verze R 4.3.0 a jmenných prostorů balíků ve verzích:</p>
+<p>Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku <code>stats</code>, jehož jmenný prostor je připojen po otevření R.</p>
+<p>Budeme pracovat se dvěma datovými sadami:</p>
+<ol type="1">
+<li>Naše již připravená data z MOPEX</li>
+<li>Vnitřní datová sada R <code>co2</code>, kterou nahrajete pomocí funkce <code>data()</code></li>
+</ol>
 <div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/data.rds"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">15000</span>,]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"co2"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="autokorelační-funkce" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="autokorelační-funkce"><span class="header-section-number">3.1</span> Autokorelační funkce</h2>
+<p>ACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(dataset<span class="sc">$</span>R)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(co2)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dekompozice-časové-řady" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dekompozice-časové-řady"><span class="header-section-number">3.2</span> Dekompozice časové řady</h2>
+<p>Dekompozicí časové řady rozumíme rozklad na složky:</p>
+<ol type="1">
+<li>Trendovou <span class="math inline">\(T_t\)</span></li>
+<li>Sezónní <span class="math inline">\(S_t\)</span></li>
+<li>Cyklickou <span class="math inline">\(C_t\)</span></li>
+<li>Náhodnou <span class="math inline">\(\epsilon_t\)</span></li>
+</ol>
+<section id="aditivní-dekompozice" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="aditivní-dekompozice"><span class="header-section-number">3.2.1</span> Aditivní dekompozice</h3>
+<p>Předpokládáme, že řadu lze rozložit na součet složek</p>
+<p><span class="math display">\[
+Y_t =T_t +S_t +C_t +\epsilon_t,
+\]</span></p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dec_co2 <span class="ot">&lt;-</span> <span class="fu">decompose</span>(co2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_co2)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_co2<span class="sc">$</span>trend)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="residua" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="residua"><span class="header-section-number">3.2.2</span> Residua</h3>
+<p>Ověřte, zda po dekompozici <code>co2</code> residua <span class="math inline">\(\epsilon_t\)</span> splňují definici <em>bílého šumu</em> tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(dec_co2<span class="sc">$</span>random)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Version
-base          4.3.0
-cli           3.6.1
-compiler      4.3.0
-datasets      4.3.0
-digest       0.6.33
-evaluate       0.23
-fastmap       1.1.1
-glue          1.6.2
-graphics      4.3.0
-grDevices     4.3.0
-htmltools     0.5.7
-htmlwidgets   1.6.2
-jsonlite      1.8.7
-knitr          1.45
-lifecycle     1.0.4
-magrittr      2.0.3
-methods       4.3.0
-rlang         1.1.2
-rmarkdown      2.25
-rstudioapi   0.15.0
-stats         4.3.0
-stringi       1.8.1
-stringr       1.5.1
-tools         4.3.0
-utils         4.3.0
-xfun           0.41</code></pre>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  dec_co2$random
+W = 0.99506, p-value = 0.1549</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dec_co2<span class="sc">$</span>random, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001743421</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(dec_co2<span class="sc">$</span>random, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07028142</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="zhlazovací-funkce" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="zhlazovací-funkce"><span class="header-section-number">3.3</span> Zhlazovací funkce</h2>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dataset<span class="sc">$</span>Tmin, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"slategray"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>md1 <span class="ot">&lt;-</span> <span class="fu">loess</span>(Tmin <span class="sc">~</span> <span class="fu">na.omit</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dataset<span class="sc">$</span>Tmin)), </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> dataset, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">degree =</span> <span class="dv">1</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(md1<span class="sc">$</span>fitted, <span class="at">col =</span> <span class="st">"darkred"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">filter</span>(<span class="at">x =</span> dataset<span class="sc">$</span>R, </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"convolution"</span>, </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">filter =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fl">365.25</span>, <span class="fl">365.25</span>)), </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">sides =</span> <span class="dv">1</span>), </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"dodgerblue3"</span>, </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>K reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>md2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Tmin <span class="sc">~</span> DTM, <span class="at">data =</span> dataset)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dataset<span class="sc">$</span>Tmin, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"slategray"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(md1<span class="sc">$</span>fitted, <span class="at">col =</span> <span class="st">"darkred"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">coef</span>(md2), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
@@ -500,11 +627,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./06_odhad.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Odhad</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Úvod</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
