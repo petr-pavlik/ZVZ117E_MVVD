@@ -27,7 +27,7 @@ book:
     # - 04_popisna.qmd
     # - 05_rozdeleni.qmd
     - 06_odhad.qmd
-    #- 07_testovani.qmd
+    # - 07_testovani.qmd
     # - 08_test_1.qmd
     - 09_casove_rady.qmd
     # - 10_hydro_index.qmd
@@ -44,11 +44,7 @@ book:
       - icon: save
         menu:
           - text: "data.csv"
-            url:  "#"
-          - text: ""
-            url:  "#"
-          - text: ""
-            url:  "#"
+            url:  "data/data.csv"
 
   search: 
     location: sidebar
