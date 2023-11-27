@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 3&nbsp; Časové řady</title>
+<title>Metody vyhodnocování vodohospodářských dat - 4&nbsp; Časové řady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06_odhad.html" rel="prev">
+<link href="./08_test_1.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_casove_rady.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_casove_rady.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Časové řady</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -130,16 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-save"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            <a class="dropdown-item sidebar-tools-main-item" href="./data/data.csv">
             data.csv
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
             </a>
           </li>
       </ul>
@@ -191,8 +183,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./08_test_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
   </div>
 </li>
     </ul>
@@ -205,13 +203,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#autokorelační-funkce" id="toc-autokorelační-funkce" class="nav-link active" data-scroll-target="#autokorelační-funkce"><span class="header-section-number">3.1</span> Autokorelační funkce</a></li>
-  <li><a href="#dekompozice-časové-řady" id="toc-dekompozice-časové-řady" class="nav-link" data-scroll-target="#dekompozice-časové-řady"><span class="header-section-number">3.2</span> Dekompozice časové řady</a>
+  <li><a href="#autokorelační-funkce" id="toc-autokorelační-funkce" class="nav-link active" data-scroll-target="#autokorelační-funkce"><span class="header-section-number">4.1</span> Autokorelační funkce</a></li>
+  <li><a href="#dekompozice-časové-řady" id="toc-dekompozice-časové-řady" class="nav-link" data-scroll-target="#dekompozice-časové-řady"><span class="header-section-number">4.2</span> Dekompozice časové řady</a>
   <ul class="collapse">
-  <li><a href="#aditivní-dekompozice" id="toc-aditivní-dekompozice" class="nav-link" data-scroll-target="#aditivní-dekompozice"><span class="header-section-number">3.2.1</span> Aditivní dekompozice</a></li>
-  <li><a href="#residua" id="toc-residua" class="nav-link" data-scroll-target="#residua"><span class="header-section-number">3.2.2</span> Residua</a></li>
+  <li><a href="#aditivní-dekompozice" id="toc-aditivní-dekompozice" class="nav-link" data-scroll-target="#aditivní-dekompozice"><span class="header-section-number">4.2.1</span> Aditivní dekompozice</a></li>
+  <li><a href="#residua" id="toc-residua" class="nav-link" data-scroll-target="#residua"><span class="header-section-number">4.2.2</span> Residua</a></li>
   </ul></li>
-  <li><a href="#zhlazovací-funkce" id="toc-zhlazovací-funkce" class="nav-link" data-scroll-target="#zhlazovací-funkce"><span class="header-section-number">3.3</span> Zhlazovací funkce</a></li>
+  <li><a href="#zhlazovací-funkce" id="toc-zhlazovací-funkce" class="nav-link" data-scroll-target="#zhlazovací-funkce"><span class="header-section-number">4.3</span> Zhlazovací funkce</a></li>
   </ul>
 </nav>
     </div>
@@ -220,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Časové řady</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Časové řady</span></h1>
 </div>
 
 
@@ -248,8 +246,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"co2"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="autokorelační-funkce" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="autokorelační-funkce"><span class="header-section-number">3.1</span> Autokorelační funkce</h2>
+<section id="autokorelační-funkce" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="autokorelační-funkce"><span class="header-section-number">4.1</span> Autokorelační funkce</h2>
 <p>ACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.</p>
 <div class="cell">
 <details open="">
@@ -268,8 +266,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="dekompozice-časové-řady" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="dekompozice-časové-řady"><span class="header-section-number">3.2</span> Dekompozice časové řady</h2>
+<section id="dekompozice-časové-řady" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="dekompozice-časové-řady"><span class="header-section-number">4.2</span> Dekompozice časové řady</h2>
 <p>Dekompozicí časové řady rozumíme rozklad na složky:</p>
 <ol type="1">
 <li>Trendovou <span class="math inline">\(T_t\)</span></li>
@@ -277,8 +275,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Cyklickou <span class="math inline">\(C_t\)</span></li>
 <li>Náhodnou <span class="math inline">\(\epsilon_t\)</span></li>
 </ol>
-<section id="aditivní-dekompozice" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="aditivní-dekompozice"><span class="header-section-number">3.2.1</span> Aditivní dekompozice</h3>
+<section id="aditivní-dekompozice" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="aditivní-dekompozice"><span class="header-section-number">4.2.1</span> Aditivní dekompozice</h3>
 <p>Předpokládáme, že řadu lze rozložit na součet složek</p>
 <p><span class="math display">\[
 Y_t =T_t +S_t +C_t +\epsilon_t,
@@ -301,8 +299,8 @@ Y_t =T_t +S_t +C_t +\epsilon_t,
 </div>
 </div>
 </section>
-<section id="residua" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="residua"><span class="header-section-number">3.2.2</span> Residua</h3>
+<section id="residua" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="residua"><span class="header-section-number">4.2.2</span> Residua</h3>
 <p>Ověřte, zda po dekompozici <code>co2</code> residua <span class="math inline">\(\epsilon_t\)</span> splňují definici <em>bílého šumu</em> tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.</p>
 <div class="cell">
 <details open="">
@@ -337,8 +335,8 @@ W = 0.99506, p-value = 0.1549</code></pre>
 </div>
 </section>
 </section>
-<section id="zhlazovací-funkce" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="zhlazovací-funkce"><span class="header-section-number">3.3</span> Zhlazovací funkce</h2>
+<section id="zhlazovací-funkce" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="zhlazovací-funkce"><span class="header-section-number">4.3</span> Zhlazovací funkce</h2>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -627,8 +625,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06_odhad.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Odhad</span></span>
+      <a href="./08_test_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

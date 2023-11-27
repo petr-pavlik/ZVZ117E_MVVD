@@ -42,45 +42,87 @@
     "text": "2.4 \\(t\\)-test\nNejjednodušší aplikací \\(t\\)-testu je Testovací statistika pro oboustrannou alternativu má hodnotu\n\\[\n\\dfrac{|\\bar{x} - \\mu_0|}{s}\\sqrt{n} &gt; t_{\\alpha/2}(n-1)\n\\] a pro jednostrannou alternativu \\(\\mu &gt; \\mu_0\\)\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &gt; t_{\\alpha}(n-1)\n\\] respektive\n\\[\n\\dfrac{\\bar{x} - \\mu_0}{s}\\sqrt{n} &lt; t_{\\alpha}(n-1)\n\\] pro \\(\\mu &lt; \\mu_0\\). \\(n-1\\) je počet stupňů volnosti.\n\nCvičení\n7.3 Spočítejte pomocí funkce t.test intervalový odhad pro x = rnorm(100) a set.seed(100).\n7.4 Spočítejte, zda můžeme s pravděpodobností \\(90\\:\\%\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49) je menší než 1.\n7.5 Pro stejný výběr spočítejte, zda je možné na hladině významnosti \\(0.05\\) zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna \\(1\\)."
   },
   {
-    "objectID": "07_testovani.html#postup-testování-statistické-hypotézy",
-    "href": "07_testovani.html#postup-testování-statistické-hypotézy",
-    "title": "3  Testování hypotéz",
-    "section": "3.1 Postup testování statistické hypotézy:",
-    "text": "3.1 Postup testování statistické hypotézy:\n\nFormulace nulové \\(H_0\\) a alternativní \\(H_a\\) hypotézy.\n\nVolba hladiny významnosti \\(\\alpha\\).\n\nVolba testovací statistiky.\n\nUrčení kritického oboru testové statistiky\n\n\nVýsledkem tetování je buď a) zamítnutní nulové hypotézy1 b) nezamítnutní nulové hypotézy."
+    "objectID": "08_test_1.html#teoretické-otázky",
+    "href": "08_test_1.html#teoretické-otázky",
+    "title": "3  Vzorový test 1",
+    "section": "3.1 1. Teoretické otázky",
+    "text": "3.1 1. Teoretické otázky\n\nRozdělte struktury dle definice na homogenní a heterogenní\n\nmatice, list, faktor\n\nCo znamenají ... mezi argumenty funkce?\nProč je TRUE výsledek vyhodnocení výrazu (2.14 == TRUE)?"
   },
   {
-    "objectID": "07_testovani.html#alpha-inteval-spolehlivosti",
-    "href": "07_testovani.html#alpha-inteval-spolehlivosti",
-    "title": "3  Testování hypotéz",
-    "section": "3.2 100(1-\\(\\alpha\\))% inteval spolehlivosti",
-    "text": "3.2 100(1-\\(\\alpha\\))% inteval spolehlivosti\n\\[\n\\bar{x} - 1.96\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + 1.96\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\n\\[\n\\bar{x} - t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\\leq\\mu\\leq \\bar{x} + t_{1-\\alpha/2(\\nu)}\\dfrac{\\sigma}{\\sqrt{n}}\n\\]\nkde \\(\\nu=n-1\\) je počet stupňů volnosti.\n\n3.2.0.1 P-hodnota\nMísto porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. p-hodnotu (p-value). Definice p-hodnoty je poněkud obšírná - je to odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá.\nPravděpodobnost platnosti hypotézy"
+    "objectID": "08_test_1.html#vytvořte-funkci-která-provede-přepočet-průtoku-z-m3s-1-na-mmrok-1",
+    "href": "08_test_1.html#vytvořte-funkci-která-provede-přepočet-průtoku-z-m3s-1-na-mmrok-1",
+    "title": "3  Vzorový test 1",
+    "section": "3.2 2. Vytvořte funkci, která provede přepočet průtoku z [m\\(^3\\)s\\(^{-1}\\)] na [mmrok\\(^{-1}\\)]",
+    "text": "3.2 2. Vytvořte funkci, která provede přepočet průtoku z [m\\(^3\\)s\\(^{-1}\\)] na [mmrok\\(^{-1}\\)]\n\n3.2.0.1 3. {-} Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5.\nPokud tomu tak není, vypíše tuto informaci na konzoli. Pokud tomu tak je, tak dodatečně ověří, zda je dělitelné 10 a opět vypíše na konzoli.\n\n\n4. Jaká je pravděpodobnost, že veličina \\(X\\sim\\mathsf{N}(5, 7)\\) je menší než 2.3?\n\n\n5. Vykreslete hustotu funkce normálního rozdělení s parametry \\(\\mu = 4 a \\sigma^2 = 5\\). Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu.\n\n\n6. Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru \\(\\{2.3, 5.8, 0, 1.2, 1.9, 5.3, 1.2, 9, 8.7, 6, 2, 3.2, 1.5\\}\\)"
   },
   {
-    "objectID": "07_testovani.html#footnotes",
-    "href": "07_testovani.html#footnotes",
-    "title": "3  Testování hypotéz",
-    "section": "",
-    "text": "Zamítnutí nulové hypotézy neznamená, že nulová hypotéza neplatí, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí↩︎"
+    "objectID": "08_test_1.html#napište-úryvek-kódu-který-ověří-zda-je-číslo-beze-zbytku-dělitelné-5.",
+    "href": "08_test_1.html#napište-úryvek-kódu-který-ověří-zda-je-číslo-beze-zbytku-dělitelné-5.",
+    "title": "3  Vzorový test 1",
+    "section": "3.3 3. Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5.",
+    "text": "3.3 3. Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5.\nPokud tomu tak není, vypíše tuto informaci na konzoli. Pokud tomu tak je, tak dodatečně ověří, zda je dělitelné 10 a opět vypíše na konzoli."
+  },
+  {
+    "objectID": "08_test_1.html#jaká-je-pravděpodobnost-že-veličina-xsimmathsfn5-7-je-menší-než-2.3",
+    "href": "08_test_1.html#jaká-je-pravděpodobnost-že-veličina-xsimmathsfn5-7-je-menší-než-2.3",
+    "title": "3  Vzorový test 1",
+    "section": "3.4 4. Jaká je pravděpodobnost, že veličina \\(X\\sim\\mathsf{N}(5, 7)\\) je menší než 2.3?",
+    "text": "3.4 4. Jaká je pravděpodobnost, že veličina \\(X\\sim\\mathsf{N}(5, 7)\\) je menší než 2.3?"
+  },
+  {
+    "objectID": "08_test_1.html#vykreslete-hustotu-funkce-normálního-rozdělení-s-parametry-mu-4-a-sigma2-5.-stejné-rozdělení-použijte-k-vygenerování-10-čísel-a-zobrazte-vše-v-jedno-grafu.",
+    "href": "08_test_1.html#vykreslete-hustotu-funkce-normálního-rozdělení-s-parametry-mu-4-a-sigma2-5.-stejné-rozdělení-použijte-k-vygenerování-10-čísel-a-zobrazte-vše-v-jedno-grafu.",
+    "title": "3  Vzorový test 1",
+    "section": "3.3 5. Vykreslete hustotu funkce normálního rozdělení s parametry \\(\\mu = 4 a \\sigma^2 = 5\\). Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu.",
+    "text": "3.3 5. Vykreslete hustotu funkce normálního rozdělení s parametry \\(\\mu = 4 a \\sigma^2 = 5\\). Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu."
+  },
+  {
+    "objectID": "08_test_1.html#odhadněte-s-90-pravděpodobností-skutečnou-střední-hodnotu-souboru",
+    "href": "08_test_1.html#odhadněte-s-90-pravděpodobností-skutečnou-střední-hodnotu-souboru",
+    "title": "3  Vzorový test 1",
+    "section": "3.4 6. Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru",
+    "text": "3.4 6. Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru\n\\(\\{2.3, 5.8, 0, 1.2, 1.9, 5.3, 1.2, 9, 8.7, 6, 2, 3.2, 1.5\\}\\)"
+  },
+  {
+    "objectID": "08_test_1.html#t-testem-vyhodnoťte-zda-střední-hodnota-souboru-z-úlohy-6-je-vyšší-než-0.",
+    "href": "08_test_1.html#t-testem-vyhodnoťte-zda-střední-hodnota-souboru-z-úlohy-6-je-vyšší-než-0.",
+    "title": "3  Vzorový test 1",
+    "section": "3.3 7. t-testem vyhodnoťte, zda střední hodnota souboru z úlohy 6 je vyšší než 0.",
+    "text": "3.3 7. t-testem vyhodnoťte, zda střední hodnota souboru z úlohy 6 je vyšší než 0.\nUveďte slovně znění H0 a výsledek testu."
+  },
+  {
+    "objectID": "08_test_1.html#máte-matici-m4-4-pomocí-cyklu-tuto-matici-naplňte-libovolnými-hodnotami.",
+    "href": "08_test_1.html#máte-matici-m4-4-pomocí-cyklu-tuto-matici-naplňte-libovolnými-hodnotami.",
+    "title": "3  Vzorový test 1",
+    "section": "3.4 8. Máte matici M(4, 4) pomocí cyklu tuto matici naplňte libovolnými hodnotami.",
+    "text": "3.4 8. Máte matici M(4, 4) pomocí cyklu tuto matici naplňte libovolnými hodnotami."
   },
   {
     "objectID": "09_casove_rady.html#autokorelační-funkce",
     "href": "09_casove_rady.html#autokorelační-funkce",
-    "title": "3  Časové řady",
-    "section": "3.1 Autokorelační funkce",
-    "text": "3.1 Autokorelační funkce\nACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.\n\n\nKód\npar(mfrow = c(1, 2))\nacf(dataset$R)\nacf(co2)\n\n\n\n\n\nVlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"
+    "title": "4  Časové řady",
+    "section": "4.1 Autokorelační funkce",
+    "text": "4.1 Autokorelační funkce\nACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.\n\n\nKód\npar(mfrow = c(1, 2))\nacf(dataset$R)\nacf(co2)\n\n\n\n\n\nVlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"
   },
   {
     "objectID": "09_casove_rady.html#dekompozice-časové-řady",
     "href": "09_casove_rady.html#dekompozice-časové-řady",
-    "title": "3  Časové řady",
-    "section": "3.2 Dekompozice časové řady",
-    "text": "3.2 Dekompozice časové řady\nDekompozicí časové řady rozumíme rozklad na složky:\n\nTrendovou \\(T_t\\)\nSezónní \\(S_t\\)\nCyklickou \\(C_t\\)\nNáhodnou \\(\\epsilon_t\\)\n\n\n3.2.1 Aditivní dekompozice\nPředpokládáme, že řadu lze rozložit na součet složek\n\\[\nY_t =T_t +S_t +C_t +\\epsilon_t,\n\\]\n\n\nKód\ndec_co2 &lt;- decompose(co2)\nplot(dec_co2)\n\n\n\n\n\nKód\nplot(dec_co2$trend)\n\n\n\n\n\n\n\n3.2.2 Residua\nOvěřte, zda po dekompozici co2 residua \\(\\epsilon_t\\) splňují definici bílého šumu tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.\n\n\nKód\nshapiro.test(dec_co2$random)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  dec_co2$random\nW = 0.99506, p-value = 0.1549\n\n\nKód\nmean(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.001743421\n\n\nKód\nvar(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.07028142\n\n\nKód\n# ..."
+    "title": "4  Časové řady",
+    "section": "4.2 Dekompozice časové řady",
+    "text": "4.2 Dekompozice časové řady\nDekompozicí časové řady rozumíme rozklad na složky:\n\nTrendovou \\(T_t\\)\nSezónní \\(S_t\\)\nCyklickou \\(C_t\\)\nNáhodnou \\(\\epsilon_t\\)\n\n\n4.2.1 Aditivní dekompozice\nPředpokládáme, že řadu lze rozložit na součet složek\n\\[\nY_t =T_t +S_t +C_t +\\epsilon_t,\n\\]\n\n\nKód\ndec_co2 &lt;- decompose(co2)\nplot(dec_co2)\n\n\n\n\n\nKód\nplot(dec_co2$trend)\n\n\n\n\n\n\n\n4.2.2 Residua\nOvěřte, zda po dekompozici co2 residua \\(\\epsilon_t\\) splňují definici bílého šumu tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.\n\n\nKód\nshapiro.test(dec_co2$random)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  dec_co2$random\nW = 0.99506, p-value = 0.1549\n\n\nKód\nmean(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.001743421\n\n\nKód\nvar(dec_co2$random, na.rm = TRUE)\n\n\n[1] 0.07028142\n\n\nKód\n# ..."
   },
   {
     "objectID": "09_casove_rady.html#zhlazovací-funkce",
     "href": "09_casove_rady.html#zhlazovací-funkce",
-    "title": "3  Časové řady",
-    "section": "3.3 Zhlazovací funkce",
-    "text": "3.3 Zhlazovací funkce\n\n\nKód\npar(mfrow = c(1, 2))\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nmd1 &lt;- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), \n             data = dataset, \n             degree = 1)\nlines(md1$fitted, col = \"darkred\")\n\nplot(filter(x = dataset$R, \n             method = \"convolution\", \n             filter = c(rep(1/365.25, 365.25)), \n             sides = 1), \n      col = \"dodgerblue3\", \n     type = \"l\")\n\n\n\n\n\n\n\nKód\nmd2 &lt;- lm(Tmin ~ DTM, data = dataset)\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nlines(md1$fitted, col = \"darkred\")\nabline(coef(md2), col = \"red\")"
+    "title": "4  Časové řady",
+    "section": "4.3 Zhlazovací funkce",
+    "text": "4.3 Zhlazovací funkce\n\n\nKód\npar(mfrow = c(1, 2))\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nmd1 &lt;- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), \n             data = dataset, \n             degree = 1)\nlines(md1$fitted, col = \"darkred\")\n\nplot(filter(x = dataset$R, \n             method = \"convolution\", \n             filter = c(rep(1/365.25, 365.25)), \n             sides = 1), \n      col = \"dodgerblue3\", \n     type = \"l\")\n\n\n\n\n\n\n\nKód\nmd2 &lt;- lm(Tmin ~ DTM, data = dataset)\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nlines(md1$fitted, col = \"darkred\")\nabline(coef(md2), col = \"red\")"
+  },
+  {
+    "objectID": "08_test_1.html",
+    "href": "08_test_1.html",
+    "title": "3  Vzorový test 1",
+    "section": "",
+    "text": "První test je orientován na opakování základní práce v R, to jest znalost a práce s datovými typy, datovými strukturami, řídícími strukturami a grafickým výstupem. Dále pak tematicky obsahuje otázky na statistická rozdělení, bodový a intervalový odhad a testování hypotéz. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.\n\n1. Teoretické otázky\n\nRozdělte struktury dle definice na homogenní a heterogenní\n\nmatice, list, faktor\n\nCo znamenají ... mezi argumenty funkce?\nProč je TRUE výsledek vyhodnocení výrazu as.logical(2.1), ale nikoliv (2.14 == TRUE)?\n\n\n\n2. Vytvořte funkci, která provede přepočet průtoku z [m\\(^3\\)s\\(^{-1}\\)] na [mm\\(\\cdot\\) rok\\(^{-1}\\)]\n\n\n3. Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5. Pokud tomu tak není, vypíše tuto informaci na konzoli. Pokud tomu tak je, tak dodatečně ověří, zda je dělitelné 10 a opět vypíše na konzoli.\n\n\n4. Jaká je pravděpodobnost, že veličina \\(X\\sim\\mathsf{N}(5, 7)\\) je menší než 2.3?\n\n\n5. Vykreslete hustotu funkce normálního rozdělení s parametry \\(\\mu = 4\\) a \\(\\sigma^2 = 5\\). Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu.\n\n\n6. Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru \\(\\{2.3, 5.8, 0, 1.2, 1.9, 5.3, 1.2, 9, 8.7, 6, 2, 3.2, 1.5\\}\\)\n\n\n7. t-testem vyhodnoťte, zda střední hodnota souboru z úlohy 6 je vyšší než 0. Uveďte slovně znění H0 a výsledek testu.\n\n\n8. Máte matici M(4, 4) pomocí cyklu tuto matici naplňte libovolnými hodnotami."
   }
 ]

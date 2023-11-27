@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 3&nbsp; Testování hypotéz</title>
+<title>Metody vyhodnocování vodohospodářských dat - 3&nbsp; Vzorový test 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_testovani.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_test_1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -97,16 +97,8 @@ ul.task-list li input[type="checkbox"] {
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-save"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
+            <a class="dropdown-item sidebar-tools-main-item" href="./data/data.csv">
             data.csv
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./#">
             </a>
           </li>
       </ul>
@@ -158,8 +150,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_testovani.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span></a>
+  <a href="./08_test_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -174,21 +166,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Obsah</h2>
-   
-  <ul>
-  <li><a href="#postup-testování-statistické-hypotézy" id="toc-postup-testování-statistické-hypotézy" class="nav-link active" data-scroll-target="#postup-testování-statistické-hypotézy"><span class="header-section-number">3.1</span> Postup testování statistické hypotézy:</a></li>
-  <li><a href="#alpha-inteval-spolehlivosti" id="toc-alpha-inteval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-inteval-spolehlivosti"><span class="header-section-number">3.2</span> 100(1-<span class="math inline">\(\alpha\)</span>)% inteval spolehlivosti</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vzorový test 1</span></h1>
 </div>
 
 
@@ -203,42 +188,40 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="postup-testování-statistické-hypotézy" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="postup-testování-statistické-hypotézy"><span class="header-section-number">3.1</span> Postup testování statistické hypotézy:</h2>
-<ol type="1">
-<li>Formulace nulové <span class="math inline">\(H_0\)</span> a alternativní <span class="math inline">\(H_a\)</span> hypotézy.<br>
-</li>
-<li>Volba hladiny významnosti <span class="math inline">\(\alpha\)</span>.<br>
-</li>
-<li>Volba testovací statistiky.<br>
-</li>
-<li>Určení kritického oboru testové statistiky</li>
-<li></li>
-</ol>
-<p>Výsledkem tetování je buď a) zamítnutní nulové hypotézy<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> b) nezamítnutní nulové hypotézy.</p>
+<p>První test je orientován na opakování základní práce v R, to jest znalost a práce s <strong>datovými typy</strong>, <strong>datovými strukturami</strong>, <strong>řídícími strukturami</strong> a <strong>grafickým výstupem</strong>. Dále pak tematicky obsahuje otázky na <strong>statistická rozdělení</strong>, <strong>bodový a intervalový odhad</strong> a <strong>testování hypotéz</strong>. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.</p>
+<section id="teoretické-otázky" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="teoretické-otázky"><strong>1.</strong> Teoretické otázky</h4>
+<ul>
+<li>Rozdělte struktury dle definice na homogenní a heterogenní
+<ul>
+<li>matice, list, faktor</li>
+</ul></li>
+<li>Co znamenají <code>...</code> mezi argumenty funkce?</li>
+<li>Proč je <code>TRUE</code> výsledek vyhodnocení výrazu <code>as.logical(2.1)</code>, ale nikoliv <code>(2.14 == TRUE)</code>?</li>
+</ul>
 </section>
-<section id="alpha-inteval-spolehlivosti" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="alpha-inteval-spolehlivosti"><span class="header-section-number">3.2</span> 100(1-<span class="math inline">\(\alpha\)</span>)% inteval spolehlivosti</h2>
-<p><span class="math display">\[
-\bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
-\]</span></p>
-<p><span class="math display">\[
-\bar{x} - t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}
-\]</span></p>
-<p>kde <span class="math inline">\(\nu=n-1\)</span> je počet stupňů volnosti.</p>
-<section id="p-hodnota" class="level4" data-number="3.2.0.1">
-<h4 data-number="3.2.0.1" class="anchored" data-anchor-id="p-hodnota"><span class="header-section-number">3.2.0.1</span> P-hodnota</h4>
-<p>Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. <strong>p-hodnotu</strong> (p-value). Definice p-hodnoty je poněkud obšírná - <em>je to odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá</em>.</p>
-<p>Pravděpodobnost platnosti hypotézy</p>
+<section id="vytvořte-funkci-která-provede-přepočet-průtoku-z-m3s-1-na-mmcdot-rok-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="vytvořte-funkci-která-provede-přepočet-průtoku-z-m3s-1-na-mmcdot-rok-1"><strong>2.</strong> Vytvořte funkci, která provede přepočet průtoku z [m<span class="math inline">\(^3\)</span>s<span class="math inline">\(^{-1}\)</span>] na [mm<span class="math inline">\(\cdot\)</span> rok<span class="math inline">\(^{-1}\)</span>]</h4>
+</section>
+<section id="napište-úryvek-kódu-který-ověří-zda-je-číslo-beze-zbytku-dělitelné-5.-pokud-tomu-tak-není-vypíše-tuto-informaci-na-konzoli.-pokud-tomu-tak-je-tak-dodatečně-ověří-zda-je-dělitelné-10-a-opět-vypíše-na-konzoli." class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="napište-úryvek-kódu-který-ověří-zda-je-číslo-beze-zbytku-dělitelné-5.-pokud-tomu-tak-není-vypíše-tuto-informaci-na-konzoli.-pokud-tomu-tak-je-tak-dodatečně-ověří-zda-je-dělitelné-10-a-opět-vypíše-na-konzoli."><strong>3.</strong> Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5. Pokud tomu tak není, vypíše tuto informaci na konzoli. Pokud tomu tak je, tak dodatečně ověří, zda je dělitelné 10 a opět vypíše na konzoli.</h4>
+</section>
+<section id="jaká-je-pravděpodobnost-že-veličina-xsimmathsfn5-7-je-menší-než-2.3" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="jaká-je-pravděpodobnost-že-veličina-xsimmathsfn5-7-je-menší-než-2.3"><strong>4.</strong> Jaká je pravděpodobnost, že veličina <span class="math inline">\(X\sim\mathsf{N}(5, 7)\)</span> je menší než 2.3?</h4>
+</section>
+<section id="vykreslete-hustotu-funkce-normálního-rozdělení-s-parametry-mu-4-a-sigma2-5.-stejné-rozdělení-použijte-k-vygenerování-10-čísel-a-zobrazte-vše-v-jedno-grafu." class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="vykreslete-hustotu-funkce-normálního-rozdělení-s-parametry-mu-4-a-sigma2-5.-stejné-rozdělení-použijte-k-vygenerování-10-čísel-a-zobrazte-vše-v-jedno-grafu."><strong>5.</strong> Vykreslete hustotu funkce normálního rozdělení s parametry <span class="math inline">\(\mu = 4\)</span> a <span class="math inline">\(\sigma^2 = 5\)</span>. Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu.</h4>
+</section>
+<section id="odhadněte-s-90-pravděpodobností-skutečnou-střední-hodnotu-souboru-2.3-5.8-0-1.2-1.9-5.3-1.2-9-8.7-6-2-3.2-1.5" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="odhadněte-s-90-pravděpodobností-skutečnou-střední-hodnotu-souboru-2.3-5.8-0-1.2-1.9-5.3-1.2-9-8.7-6-2-3.2-1.5"><strong>6.</strong> Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru <span class="math inline">\(\{2.3, 5.8, 0, 1.2, 1.9, 5.3, 1.2, 9, 8.7, 6, 2, 3.2, 1.5\}\)</span></h4>
+</section>
+<section id="t-testem-vyhodnoťte-zda-střední-hodnota-souboru-z-úlohy-6-je-vyšší-než-0.-uveďte-slovně-znění-h0-a-výsledek-testu." class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="t-testem-vyhodnoťte-zda-střední-hodnota-souboru-z-úlohy-6-je-vyšší-než-0.-uveďte-slovně-znění-h0-a-výsledek-testu."><strong>7.</strong> t-testem vyhodnoťte, zda střední hodnota souboru z úlohy 6 je vyšší než 0. Uveďte slovně znění H0 a výsledek testu.</h4>
+</section>
+<section id="máte-matici-m4-4-pomocí-cyklu-tuto-matici-naplňte-libovolnými-hodnotami." class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="máte-matici-m4-4-pomocí-cyklu-tuto-matici-naplňte-libovolnými-hodnotami."><strong>8.</strong> Máte matici M(4, 4) pomocí cyklu tuto matici naplňte libovolnými hodnotami.</h4>
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Zamítnutí nulové hypotézy <strong>neznamená, že nulová hypotéza neplatí</strong>, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->

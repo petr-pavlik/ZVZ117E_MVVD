@@ -2,16 +2,45 @@
 
 První test je orientován na opakování základní práce v R, to jest znalost a práce s **datovými typy**, **datovými strukturami**, **řídícími strukturami** a **grafickým výstupem**. Dále pak tematicky obsahuje otázky na **statistická rozdělení**, **bodový a intervalový odhad** a **testování hypotéz**. Test je tvořen 8 úlohami s časovou náročností 60 min a obsahuje jak praktické, tak teoretické otázky.
 
+#### **1.** Teoretické otázky {-}
+
+  - Rozdělte struktury dle definice na homogenní a heterogenní
+    - matice, list, faktor
+  - Co znamenají `...` mezi argumenty funkce?
+  - Proč je `TRUE` výsledek vyhodnocení výrazu `as.logical(2.1)`, ale nikoliv `(2.14 == TRUE)`?
+
+#### **2.** Vytvořte funkci, která provede přepočet průtoku z [m$^3$s$^{-1}$] na [mm$\cdot$ rok$^{-1}$] {-}
+
 ```{r}
-x <- 1:50
-mean(x)
-sum(x)
-median(x)
 
 ```
 
-Dále je možné vykreslovat průběhy funkcí, s tím, že za x je implicitně dosazeno softwarem.
+#### **3.** Napište úryvek kódu, který ověří, zda je číslo beze zbytku dělitelné 5. Pokud tomu tak není, vypíše tuto informaci na konzoli. Pokud tomu tak je, tak dodatečně ověří, zda je dělitelné 10 a opět vypíše na konzoli. {-}
 
 ```{r}
-curve(sin(x))
+
 ```
+
+#### **4.** Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(5, 7)$ je menší než 2.3? {-}
+
+```{r}
+
+```
+
+#### **5.** Vykreslete hustotu funkce normálního rozdělení s parametry $\mu = 4$ a $\sigma^2 = 5$. Stejné rozdělení použijte k vygenerování 10 čísel a zobrazte vše v jedno grafu. {-}
+
+```{r}
+
+```
+
+
+#### **6.** Odhadněte s 90% pravděpodobností skutečnou střední hodnotu souboru $\{2.3, 5.8, 0, 1.2, 1.9, 5.3, 1.2, 9, 8.7, 6, 2, 3.2, 1.5\}$ {-}
+
+
+#### **7.** t-testem vyhodnoťte, zda střední hodnota souboru z úlohy 6 je vyšší než 0. Uveďte slovně znění H0 a výsledek testu. {-}
+
+#### **8.** Máte matici M(4, 4) pomocí cyklu tuto matici naplňte libovolnými hodnotami. {-}
+
+
+
+
