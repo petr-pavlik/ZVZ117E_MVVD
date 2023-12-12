@@ -30,8 +30,8 @@ book:
     # - 07_testovani.qmd
     - 08_test_1.qmd
     - 09_casove_rady.qmd
-    # - 10_hydro_index.qmd
-    # - 11_korelace_regrese.qmd
+    - 10_hydro_index.qmd
+    - 11_korelace_regrese.qmd
     # - 12_test_2.qmd
     # - references.qmd
     
