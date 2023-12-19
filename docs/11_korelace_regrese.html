@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 6&nbsp; Závislost dvou veličin</title>
+<title>Metody vyhodnocování vodohospodářských dat - 5&nbsp; Závislost dvou veličin</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10_hydro_index.html" rel="prev">
+<link href="./09_casove_rady.html" rel="prev">
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_korelace_regrese.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_korelace_regrese.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -195,14 +195,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
   </div>
 </li>
     </ul>
@@ -215,8 +209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#korelace" id="toc-korelace" class="nav-link active" data-scroll-target="#korelace"><span class="header-section-number">6.1</span> Korelace</a></li>
-  <li><a href="#regrese" id="toc-regrese" class="nav-link" data-scroll-target="#regrese"><span class="header-section-number">6.2</span> Regrese</a></li>
+  <li><a href="#korelace" id="toc-korelace" class="nav-link active" data-scroll-target="#korelace"><span class="header-section-number">5.1</span> Korelace</a></li>
+  <li><a href="#regrese" id="toc-regrese" class="nav-link" data-scroll-target="#regrese"><span class="header-section-number">5.2</span> Regrese</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></h1>
 </div>
 
 
@@ -240,8 +234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="korelace" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="korelace"><span class="header-section-number">6.1</span> Korelace</h2>
+<section id="korelace" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="korelace"><span class="header-section-number">5.1</span> Korelace</h2>
 <p>Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá.Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.</p>
 <p>Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít <strong>Paersonův</strong> korelační koeficient,</p>
 <p><span class="math display">\[
@@ -249,7 +243,7 @@ r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}
 \]</span> přičemž platí <span class="math inline">\(r_{xy}\in\langle-1;1\rangle\)</span>. Alternativně můžeme použít neparametrický výpočet <strong>Spearmana</strong>, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako <span class="math inline">\(d_i = x_{ri} - y_{ri}\)</span></p>
 <p><span id="eq-spearman"><span class="math display">\[
 \rho = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)}
-\tag{6.1}\]</span></span></p>
+\tag{5.1}\]</span></span></p>
 <section id="cvičení" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="cvičení">Cvičení</h4>
 <ul>
@@ -319,8 +313,8 @@ r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}
 <!-- | 10     |                |        |             |        |              |         | -->
 </section>
 </section>
-<section id="regrese" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="regrese"><span class="header-section-number">6.2</span> Regrese</h2>
+<section id="regrese" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="regrese"><span class="header-section-number">5.2</span> Regrese</h2>
 <p>Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme <strong>nezávislou proměnnou</strong> a <strong>závislou proměnnou</strong>. Míru závislosti posuzujeme pomocí lineárního regresního modelu. Cílem regrese je proložit naměřenými body přímku, která nejlépe vystihuje vztah mezi proměnnými.</p>
 <p><span class="math display">\[
 y = \beta_0 + \beta_1x
@@ -787,8 +781,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10_hydro_index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span>
+      <a href="./09_casove_rady.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Časové řady</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
