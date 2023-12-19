@@ -2,19 +2,13 @@
 
 ## Korelace
 
-Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných
-veličin mění, pokud se zároveň mění i druhá.Korelace nezkoumá příčinnost, nelze tedy 
-jednoznačně určit závislou a nezávislou proměnnou.
+Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá.Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
 
-Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality
-u obou veličin lze použít **Paersonův** korelační koeficient,
+Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít **Paersonův** korelační koeficient,
 
 $$
 r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}\sqrt{\sum(y_i - \bar{y})^2}}
-$$
-přičemž platí $r_{xy}\in\langle-1;1\rangle$.
-Alternativně můžeme použít neparametrický výpočet **Spearmana**, založený na diferencích pořadí 
-pozorovaných hodnot, které definujeme jako $d_i = x_{ri} - y_{ri}$
+$$ přičemž platí $r_{xy}\in\langle-1;1\rangle$. Alternativně můžeme použít neparametrický výpočet **Spearmana**, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako $d_i = x_{ri} - y_{ri}$
 
 $$
 \rho = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)} 
@@ -23,7 +17,7 @@ $$ {#eq-spearman}
 #### Cvičení {.unnumbered}
 
 -   Napište vlastní funkci, které pro dané vektory `x` a `y` spočítá korelační Spearmanův koeficient.\
-Řešení:
+    Řešení:
 
 ```{r}
 #| code-fold: true
@@ -40,18 +34,19 @@ sp_k <- function(x, y) {
 
 
 ```
-1. Nejprve je nutné identifikovat pořadí,
-2. dále spočítat kvadrát vzdáleností,
-3. a po dosazení počtu měření $n$ dosadit do rovnice.
 
- -    Porovnejte obě funkce na datech
+1.  Nejprve je nutné identifikovat pořadí,
+2.  dále spočítat kvadrát vzdáleností,
+3.  a po dosazení počtu měření $n$ dosadit do rovnice.
+
+-   Porovnejte obě funkce na datech
+
 ```{r, eval=FALSE}
 sp_k(_, _)
 cor(_, _, method = "Spearman")
 ```
 
-
- -    Pokuste se odhadnout korelační koeficient následujících veličin
+-   Pokuste se odhadnout korelační koeficient následujících veličin
 
 ```{r, echo=FALSE}
 par(mfrow = c(2, 2))
@@ -61,47 +56,47 @@ plot(x = 1:100/10, y = 5 + rnorm(100, sd = 5.5), xlab = "", ylab = "", axes = FA
 plot(1:100 * rnorm(100, sd = 500), xlab = "", ylab = "", axes = FALSE)
 ```
 
-
-
 <!-- | Povodí | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ | -->
+
 <!-- |--------|----------------|--------|-------------|--------|--------------|---------| -->
+
 <!-- | 1      |                |        |             |        |              |         | -->
+
 <!-- | 2      |                |        |             |        |              |         | -->
+
 <!-- | 3      |                |        |             |        |              |         | -->
+
 <!-- | 4      |                |        |             |        |              |         | -->
+
 <!-- | 5      |                |        |             |        |              |         | -->
+
 <!-- | 6      |                |        |             |        |              |         | -->
+
 <!-- | 7      |                |        |             |        |              |         | -->
+
 <!-- | 8      |                |        |             |        |              |         | -->
+
 <!-- | 9      |                |        |             |        |              |         | -->
+
 <!-- | 10     |                |        |             |        |              |         | -->
 
 ## Regrese
-Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme 
-**nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí lineárního
-regresního modelu.
-Cílem regrese je proložit naměřenými body přímku, která nejlépe vystihuje vztah mezi proměnnými.
+
+Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme **nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí lineárního regresního modelu. Cílem regrese je proložit naměřenými body přímku, která nejlépe vystihuje vztah mezi proměnnými.
 
 $$
 y = \beta_0 + \beta_1x
-$$
-kde $y$ je závislá proměnná, $x$ je nezávislá proměnná, $\beta_0$ je počátek (intercept) a 
-$\beta_1$ je sklon přímky.
+$$ kde $y$ je závislá proměnná, $x$ je nezávislá proměnná, $\beta_0$ je počátek (intercept) a $\beta_1$ je sklon přímky.
 
-Lineární model regresního typu definujeme v R pomocí funkce `lm()`, které na první pozici
-dosazujeme výraz ve formátu rovnice `formula`, např. `lm(y ~ x)`. Model vyhodnocujeme 
-funkcí `summary` a mezi sebou porovnáváme pomocí kritérií zohledňující vysvětlenou 
-variabilitu/věrohodnost modelu a jeho komplexnost, např. **Akaikeho informační kritérium**. 
-
+Lineární model regresního typu definujeme v R pomocí funkce `lm()`, které na první pozici dosazujeme výraz ve formátu rovnice `formula`, např. `lm(y ~ x)`. Model vyhodnocujeme funkcí `summary` a mezi sebou porovnáváme pomocí kritérií zohledňující vysvětlenou variabilitu/věrohodnost modelu a jeho komplexnost, např. **Akaikeho informační kritérium**.
 
 $$
 \text{AIC} = 2k - 2\ln(\hat{L})
-$$
-kde $k$ je počet volných parametrů modelu a $\hat{L}$ je věrohodnostní funkce modelu.
+$$ kde $k$ je počet volných parametrů modelu a $\hat{L}$ je věrohodnostní funkce modelu.
 
 #### Cvičení {.unnumbered}
 
- -   Uvažujme následující data, kde předpokláádme příčinnou závislost $y$ na $x$.
+-   Uvažujme následující data, kde předpokláádme příčinnou závislost $y$ na $x$.
 
 ```{r}
 dfr <- data.frame(
@@ -119,14 +114,13 @@ dfr <- data.frame(
 )
 ```
 
- -    Sestrojme lineární model `md1`
+-   Sestrojme lineární model `md1`
 
 ```{r}
 md1 <- lm(y ~ x, data = dfr)
 ```
 
- -    Struktura objektu `md1` je komplexní, můžeme vybírat jednotlivé proměnné 
- k dalším účelům, například pro tvorbu grafů.
+-   Struktura objektu `md1` je komplexní, můžeme vybírat jednotlivé proměnné k dalším účelům, například pro tvorbu grafů.
 
 ```{r}
 str(md1, 1)
@@ -139,22 +133,21 @@ abline(v = 0, lty = "dashed")
 abline(h = md1$coefficients[1], lty = "dashed")
 
 ```
- -    Model vyhodnotíme pomocí `summary`
+
+-   Model vyhodnotíme pomocí `summary`
 
 ```{r}
 summary(md1)
 ```
-Souhrn obsahuje původní zadání v podobě rovnice, dále identifikované koeficienty modelu,
-významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné;
-dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.\
+
+Souhrn obsahuje původní zadání v podobě rovnice, dále identifikované koeficienty modelu, významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.\
 
 ```{r}
 par(mfrow = c(2, 2))
 plot(md1, 1:4)
 ```
-R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. 
-Zde nás budou zajímat zejména **residua** modelu. Dle prvního grafu by mohl
-model se závislostí na polynomu být lepší volbou.\
+
+R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. Zde nás budou zajímat zejména **residua** modelu. Dle prvního grafu by mohl model se závislostí na polynomu být lepší volbou.\
 
 Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnnou.
 
@@ -162,10 +155,12 @@ Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnno
 md2 <- lm(y ~ poly(x, 2))
 summary(md2)
 ```
+
 ```{r}
 par(mfrow = c(2, 2))
 plot(md2, 1:4)
 ```
+
 ```{r}
 with(dfr, plot(x, y, xlim = c(0, 30)))
 pred <- predict(md2)
@@ -178,6 +173,5 @@ Srovnejme modely vzájemně
 ```{r}
 AIC(md1, md2)
 ```
- -    Pokuste se vést diskuzi nad vhodností obou modelů
 
-
+-   Pokuste se vést diskuzi nad vhodností obou modelů

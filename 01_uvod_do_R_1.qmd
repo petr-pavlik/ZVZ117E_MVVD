@@ -30,19 +30,14 @@ cumprod(1:10)  # i(i - 1)
 
 ## Jmenné konvence
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence.    
- - na začátku názvu není číslovka, 
- - název se neshoduje s, či neobsahuje klíčové slovo `if`, `else`, `repeat`, `while`, `function`, `for`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `Nan`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`.
- - speciální znak: `_`
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence.\
+- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo `if`, `else`, `repeat`, `while`, `function`, `for`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `Nan`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`. - speciální znak: `_`
 
-Dále se nedoporučuje vkládat do názvu proměnné tečku `.`, 
-např. ``
+Dále se nedoporučuje vkládat do názvu proměnné tečku `.`, např. \`\`
 
 ## Uvozovky a závorky
 
-Není nunté rozlišovat mezi dvojitými `"` a jednoduchými `'` uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou . \
-
-
+Není nunté rozlišovat mezi dvojitými `"` a jednoduchými `'` uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou .\
 
 ## Operátory
 
@@ -63,21 +58,18 @@ xor()    #
 isTRUE() # je platné
 ```
 
-
 ```{r}
 any()
 all()
 ```
 
-
 ## Základní datové struktury
 
-Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury. 
+Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.
 
 ### Homogenní datové struktury
 
-Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení 
-v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice. 
+Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.
 
 #### Vektor
 
@@ -85,13 +77,11 @@ v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být o
 
 ### Heterogenní datové struktury
 
-Za heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. 
-Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené
-struktury.
+Za heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené struktury.
 
 #### Datová tabulka
 
-`data.frame` je *de facto* vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu. 
+`data.frame` je *de facto* vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.
 
 ```{r, eval=TRUE, collapse=TRUE}
 DF <- data.frame(name = letters[1:5], 
@@ -116,35 +106,44 @@ nrow(DF)
 ncol(DF)
 ```
 
-
 ### Úlohy
 
-1. **Spočítejte pomocí R následující výrazy**:    
-  a) $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
-  b) $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
-  c) $\sum\limits_{i = 1}^{53}x_i$\    
-  d) $\dfrac{-\infty}{0}$\, $\dfrac{-\infty}{\infty}$\, $\dfrac{0}{0}$\    
-  e)      
-  f)      
-2. **Proveďte následující úkony**:   
-  a) Vytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci `seq()`.
-  b) Spočtěte rozdíl matic $A$, $B$.    
-  $$
-  A = \left(
-  \begin{matrix}
-  2 & 2 & 5\\
-  9 & 2 & 7\\
-  1 & 3 & 18\\
-  \end{matrix}
-  \right),\qquad 
-  B = \left(
-  \begin{matrix}
-  5 & 4 & 5\\
-  -7 & 2 & 4\\
-  10 & 1 & 5\\
-  \end{matrix}
-  \right)
-  $$
-  c) S pomocí hodnot TRUE/FALSE vytvořte matici $3\times3$, změňte typ prvku na pozici `M[1, 1]` na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
-  d) 
+1.  **Spočítejte pomocí R následující výrazy**:\
 
+```{=html}
+<!-- -->
+```
+a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
+b)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
+c)  $\sum\limits_{i = 1}^{53}x_i$ \
+d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$ \
+e)  
+f)  
+
+```{=html}
+<!-- -->
+```
+2.  **Proveďte následující úkony**:\
+
+```{=html}
+<!-- -->
+```
+a)  Vytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci `seq()`.
+b)  Spočtěte rozdíl matic $A$, $B$.\
+    $$
+      A = \left(
+      \begin{matrix}
+      2 & 2 & 5\\
+      9 & 2 & 7\\
+      1 & 3 & 18\\
+      \end{matrix}
+      \right),\qquad 
+      B = \left(
+      \begin{matrix}
+      5 & 4 & 5\\
+      -7 & 2 & 4\\
+      10 & 1 & 5\\
+      \end{matrix}
+      \right)
+      $$
+c)  S pomocí hodnot TRUE/FALSE vytvořte matici $3\times3$, změňte typ prvku na pozici `M[1, 1]` na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
