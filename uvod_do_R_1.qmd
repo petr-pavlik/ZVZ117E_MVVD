@@ -1,6 +1,6 @@
 # Práce v prostředí RStudio
 
-RStuido (Posit Inc.) je grafické uživatelské prostředí, specializované pro pro práci s R (nejen). Obsahuje řadu užitečných nástrojů usnadňujících organizaci práce, tvorbu reportů, práci s SQL databázemi, vývojem balíků a mnoho dalšího. V základním zobrazení bychom měil v levém horním panelu vidět **skript** a v panelu pod ním vstup **konzole**.
+RStudio (Posit Inc.) je grafické uživatelské prostředí, specializované pro pro práci s R (nejen). Obsahuje řadu užitečných nástrojů usnadňujících organizaci práce, tvorbu reportů, práci s SQL databázemi, vývojem balíků a mnoho dalšího. V základním zobrazení bychom měil v levém horním panelu vidět **skript** a v panelu pod ním vstup **konzole**.
 
 # Opakovaní jazyka R
 

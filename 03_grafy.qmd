@@ -1,0 +1,150 @@
+# Grafický výstup
+
+::: callout-warning
+## Cíle cvičení
+  - Naučit se tvorbu základních typů grafů
+  - Rozdělení sazby výstupu do polí
+:::
+
+V R dnes existují dva rúzné systémy pro tvorbu diagramů. První je obsažen v balíčku
+`base` a druhý staví na funkcionalitě obsažené v `grid`. 
+
+Opět připravím datovou sadu, tentokrát umístíme do `data.frame` jménem `dfr`.
+
+```{r}
+dfr <- data.frame(
+  X = 1:100,
+  Y = rnorm(100) # <1>
+)
+```
+1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v kapitole @sec-rozdeleni
+
+
+::: callout-tip
+## Úloha
+
+  1. Zadejte do konzole `demo(graphics)` a projeďte až na konec ukázky. Potom vyčistěte
+  panely **Environment**, **Plots** a **Console**. \
+  2. Pročtěte si nápovědu `?par`
+:::
+
+## Funkce `curve()`
+
+Curve je funkce, která se uplatní při tvorbě symbolických grafů matematických funkcí, kdy není třeba parametrizovat argument `x`. 
+
+```{r, fig.align='center'}
+curve(expr = tanh(x),
+      from = -pi, 
+      to = pi)
+```
+
+
+## Funkce `plot()`
+
+`plot(x, y, ...)` je základní **S3 generická** funkce, jejíž metody umožňují použití na široké množství objektů.
+Začneme s použitím na vektor z datasetu `dfr`.
+
+```{r, fig.align='center'}
+plot(dfr$Y) # <1> 
+```
+1. Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa $y$ je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~
+plot(x, y = NULL, type = "p",  xlim = NULL, ylim = NULL,
+     log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
+     ann = par("ann"), axes = TRUE, frame.plot = axes,
+     panel.first = NULL, panel.last = NULL, asp = NA,
+     xgap.axis = NA, ygap.axis = NA,
+     ...)
+~~~
+
+```{r, fig.align='center'}
+plot(x = dfr$X, # <1>
+     y = dfr$Y, # <1>
+     type = "b", # <2>
+     col = "gray10", # <3>
+     pch = 21, # <4>
+     bg = "#4a6777", # <5>
+     ylim = c(-abs(1.25 * min(dfr$Y)), # <6>
+              1.25 * max(dfr$Y)), # <6>
+     xlab = "", # <7>
+     ylab = "Value", # <7>
+     main = "Y~X vztah",  # <8>
+     sub = Sys.Date()) # <9>
+legend(x = "topright", # <10> 
+       fill = "#4a6777", # <11>
+       pch = 21, # <12>
+       legend = c("Y"), # <13> 
+       box.col = NA, # <14>
+       lty = 1, # <15>
+       col = "gray10") # <16>
+```
+1. Základní proměnné $X$ a $Y$ pro typ grafu.
+2. Volba typu grafu `"b"` označuje body protnuté spojnicí.
+3. Volba barvy popředí znaku bod/přímka.
+4. Volba charakteru bodového znaku.
+5. Volba barvy pozadí znaku umožňujícího výplň - bod.
+6. Změna rozsahu osy $y$.
+7. Změna názvu os.
+8. Znění hlavního nadpisu.
+9. Podnadpis *dtto*.
+10. Pokračujeme nastavením umístění legendy.
+11. Výplň prvku v legendě.
+12. Typ prvku v legendě.
+13. Název prvku v legendě.
+14. Volba barvy ohraničení legendy
+15. Volba typu spojnice (1 = plná čára)
+16. Volba barvy popředí prvku legendy
+
+
+
+```{r, fig.align='center'}
+with(data = dfr, # <1>
+     expr = { # <2>
+       plot(x = X, y = Y)  # <2>
+       lines(x = X, y = Y) # <2>
+       }# <2>
+     ) 
+```
+1. Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
+2. Argument `expr` může obsahovat i blok kódu `{...}`
+
+## Volba barev
+
+Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
+
+[^03_grafy-1]: Předdefinovaných barev je celkem 657.
+
+```{r}
+colors()[1:10]
+```
+
+## Matematická sazba v grafech
+
+## Vytváříme layout
+
+Jednoduchý pravidelný layout můžeme vytvořit změnou parametrů okna grafického výstupu pomocí funkce `par()`
+
+### Sazba pomocí `par()`
+
+```{r,fig.align='center'}
+par(mfrow = c(1, 2)) #<1>
+hist(dfr$X, main = "X", xlab = "") # <2>
+hist(dfr$Y, main = "Y", xlab = "") # <2>
+```
+1. Okno výstupu rozdělíme do dvou sloupců na jednom řádku.
+2. Posléze voláme dva grafy, které postupně vyplní pole v daném okně.
+
+### Sazba s funkcí `layout()` a matice
+
+```{r,fig.align='center'}
+layout.show(
+  layout(
+    mat = matrix(
+      data = c(2, 2, 0,
+               1, 1, 3,
+               1, 1, 3), 
+      nrow = 3, 
+      ncol = 3, 
+      byrow = TRUE)))
+```
+
+## Ukládáme do souboru

@@ -9,12 +9,19 @@ pxxx()
 qxxx()
 ```
 
-#### Úkol
+::: callout-tip
+## Úkol
+  1. Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.\
+:::
 
-Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
 
-## Diskrétní rozdělení
+## Odtokový součinitel
 
+## Základní odtok
+
+## Index předchozích srážek
+
+## 
 ```{r}
 x <- rnorm(n = 10, mean = 1.25, sd = 5.36)
 mean(x)

@@ -1,13 +1,12 @@
-# Struktura textu {.unnumbered}
+![](images/logo_mvvd.webp){fig-align="center" width="410"}
 
-Jetnodlivé kapitoly odráží náplň cvičení. K dispozici jsou rovněž dva vzorové testy a množství úloh k procvičení.
+# Úvodem
 
-Tento text byl vytvořen s pomocí verze R `r stringr::str_flatten(c(version$major, ".", version$minor))` a jmenných prostorů balíků ve verzích:
+Na těchto stránkách se nachází průvodce ke cvičením z kurzu ZVZ117E Metody vyhodnocování vodohospodářských dat, vyuřovaném na Fakultě životního prostředí České zemědělské univerzity. Jeho obsahem jsou materiály ke všem cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici komplexní teoretický výklad látky - nenahrazuje ani přednášky ani skripta. Jedná se o **průvodce cvičeními**, nicméně pro potřeby cvičení teorii ve zkrácené podobě připomene. \
+Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony jsou prováděny se zvoleným didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na jejichž existenci je čtenář občas doplňkově upozorněn.
 
-```{r, echo=FALSE}
-installed.packages()[installed.packages()[, 1] %in% loadedNamespaces(), ][, c("Version")] |> 
-  data.frame() |> 
-  setNames("Version") 
-```
+## Doporučená literatura
 
-K reprodukci věech příkladů by měla postačit zcela základní instalace software R, případně RStudia.
+Popisná statistiky je v cvičena v rozsahu textu @pus2007 a @jaruskova2006 obsahuje úvod do matematické statistiky. 
+
+K jazyku R je

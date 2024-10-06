@@ -1,149 +1,63 @@
-# Práce v prostředí RStudio
+# R & RStudio
 
-RStuido (Posit Inc.) je grafické uživatelské prostředí, specializované pro pro práci s R (nejen). Obsahuje řadu užitečných nástrojů usnadňujících organizaci práce, tvorbu reportů, práci s SQL databázemi, vývojem balíků a mnoho dalšího. V základním zobrazení bychom měil v levém horním panelu vidět **skript** a v panelu pod ním vstup **konzole**.
+::: callout-warning
+## Cíle cvičení
+  - Naučit se založit projekt
+  - Projekt či součást projektu uložit a otevřít
+  - Orientovat se v hlavním okně
+:::
 
-# Opakovaní jazyka R
+R je *volně dostupné programové prostředí pro statistické výpořty a grafiku*. Interpretr jazyka se základní funkcionalitou lze stáhnout ze stránek [https://www.r-project.org](https://www.r-project.org).
 
-Kurz MVVD navazuje na kurz "Výpočetní metody", který je vyučován v prvním semestru studia Vodního hospodářství. Opakování znalostí jazyka R jsou věnovány dvě celá úvodní cvičení.
+RStudio (dnes také společnost Posit Inc.) je integrované vývojové prostředí (IDE), specializované pro práci s jazykem R. Obsahuje řadu užitečných nástrojů usnadňujících organizaci, tvorbu reportů, práci s SQL databázemi, vývojem funkčních balíčků a mnoho dalšího.
 
-## Nápověda
+![Obr. 1: Základní layout prostředí RStudio.](images/main.png){#fig-zakladniRstudio}
 
-Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(jmeno funkce)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` funkce pod zkratkou `??`, což vyvolá tématickou nápovědu k již nainstalovaným funkcím. je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Připravená témata nápovědy: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`.
+V základním zobrazení @fig-zakladniRstudio bychom měli v levé části vidět panel **Console**. S konzolí nebudeme pracovat příliž intenzivně, slouží zejména k zadávání jednoduchých příkazů,
+například vyhodnocení proměnné. Pravou část vidíme rozdělenu na 
+Výchozí rozvržení je možné měnit ***Tools*** > ***Global optioins...*** > ***Pane layout***.
 
-## Aritmetické operace {#sec-aritmeticke-operace}
+::: callout-tip
+## Úloha
+  1. Provedeme jedno užitečné nastavení duhových závorek
+  
+  ![Obr. 2: Nastavení duhových závorek a dalších vlastností v okně ***Global Options...*** ](images/rainbow-parentheses.png){fig-align="center" width="510"}
+:::
 
-```{r základní aritmetické operace, eval=FALSE, collapse=TRUE}
-1 + 1          # přičítání
-2 - 1          # odečítání
-1 * 3.         # násobení
-1 * (-1)       # násobení
-1 / 6.         # dělení
-10 %% 3.       # modulo
-7 %/% 3        # celočíselné dělení
-10 ** 3        # mocninné operace
-10 %*% 3       # vnejší produkt 
-sum(1:10)      # součet prvků od 1 do 10
-prod(1:10)     # součin prvků od 1 do 10
-cumsum(1:10)   # i + (i - 1)
-cumprod(1:10)  # i(i - 1)
-```
+## Zakládáme projekt
 
-## Jmenné konvence
+Je vhodné seskupovat svoji práci do zv. projektů - ucelených souborů skriptů, dat a výstupů - podle jednotlivých projektů, kterým se věnuji.
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence.\
-- na začátku názvu není číslovka, - název se neshoduje s, či neobsahuje klíčové slovo `if`, `else`, `repeat`, `while`, `function`, `for`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `Nan`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`. - speciální znak: `_`
+1.  Při spuštěném programu z hlavní nabídky vybereme ***File** \> **New Project...***
 
-Dále se nedoporučuje vkládat do názvu proměnné tečku `.`, např. \`\`
+    ![Obr. 2 - Volba typu založení projektu](images/new_project.png){width="451"}
 
-## Uvozovky a závorky
+2.  Vybereme ***New Directory*** a zvolíme ***New Project***. Ostatní možnosti v tomto kurzu využívate nebudeme.
 
-Není nunté rozlišovat mezi dvojitými `"` a jednoduchými `'` uvozovkami. Obojí se dají využívat zástupně. Vždy je nicméně nutné uvozovky správně spárovat, párované jsou .\
+    ![Obr. 3 - Volba typu projektu](images/new_directory.png){width="459"}
 
-## Operátory
+3.  Projektu je dále nutné zadat název ***Directory name***. Pokud používate verzovací systém Git, můžete zaškrtnout volbu ***Create a git repository***. V tomto kurzu používat nebudeme.
 
-Kromě aritmetických operátorů, zmíněných @sec-aritmeticke-operace
+    ![Obr. 3 - Volba umístění a názvu projektu](images/new_project_name.png){width="457"}
 
-```{r, eval = FALSE, collapse = TRUE}
-<        # větší než 
->        # větší než 
->=       # větší nebo rovno 
-<=       # menší nebo rovno 
-==       # rovná se
-!=       # nerovná se
-&        # a zároveň
-&&       # a zároveň vektorově
-|        # nebo
-||       # nebo vektorově
-xor()    # 
-isTRUE() # je platné
+4.  Po úspěšném založení projektu by se mělo zobrazit hlavní okno programu s přednastvenými panely. V nastavení učeben ČZU odpovídá rozvržení 1. obrázku.
+
+## Hlavní okna a panely
+
+## Pracovní postup a jeho opakovatelnost
+
+R bohužel umožnuje *připínat* a *odepínat* `data.frame` pomocí funkcí `attach()` a 
+`detach()`, na které je vhodné ihned po přečtení této věty zapomenout. 
+
+```{r}
+?ls
+rm(list = ls())
+?objects
 ```
 
 ```{r}
-any()
-all()
+l <- list(A = 1:3, B = 3:5)
+attach(l)
+A
 ```
 
-## Základní datové struktury
-
-Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.
-
-### Homogenní datové struktury
-
-Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.
-
-#### Vektor
-
-**Vektor** je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv **datového typu**, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce `vector(mode = "numeric", length = 10)` a funkce `c()`, případně vzniká pomocí opetárorů `[` nebo `[[`. Zde je na místě
-
-### Heterogenní datové struktury
-
-Za heterogenní struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené struktury.
-
-#### Datová tabulka
-
-`data.frame` je *de facto* vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.
-
-```{r, eval=TRUE, collapse=TRUE}
-DF <- data.frame(name = letters[1:5], 
-                 value = rnorm(5))
-DF
-DF["name"]        # podvýběr do data.frame
-DF[["name"]]      # podvýběr do vektoru
-DF[, "name"]      # podvýběr do vektoru
-```
-
-Práce uvnitř `data.frame`
-
-```{r, eval=TRUE, collapse=TRUE}
-DF <- data.frame(
-  mon = rep(month.abb, 
-            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), 
-  value = rnorm(365), 
-  yr = 2001)
-str(DF)
-names(DF)
-nrow(DF)
-ncol(DF)
-```
-
-### Úlohy
-
-1.  **Spočítejte pomocí R následující výrazy**:\
-
-```{=html}
-<!-- -->
-```
-a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
-b)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
-c)  $\sum\limits_{i = 1}^{53}x_i$ \
-d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$ \
-e)  
-f)  
-
-```{=html}
-<!-- -->
-```
-2.  **Proveďte následující úkony**:\
-
-```{=html}
-<!-- -->
-```
-a)  Vytvořte vektor hodnot od 100 do 1 sestupně, využijte nápovědu k funkci `seq()`.
-b)  Spočtěte rozdíl matic $A$, $B$.\
-    $$
-      A = \left(
-      \begin{matrix}
-      2 & 2 & 5\\
-      9 & 2 & 7\\
-      1 & 3 & 18\\
-      \end{matrix}
-      \right),\qquad 
-      B = \left(
-      \begin{matrix}
-      5 & 4 & 5\\
-      -7 & 2 & 4\\
-      10 & 1 & 5\\
-      \end{matrix}
-      \right)
-      $$
-c)  S pomocí hodnot TRUE/FALSE vytvořte matici $3\times3$, změňte typ prvku na pozici `M[1, 1]` na textový řetězec. Ovlivní tato změna ostatní prvky v matici?

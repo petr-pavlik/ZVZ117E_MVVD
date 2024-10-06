@@ -1,8 +1,114 @@
 /*-- scss:defaults --*/
+
 $primary_1: #006666;
-$primary_2: #99CCFF;
-$primary_3: #004C99;
+$primary_2: #660033;
+$primary_3: #102d3d;
 $code-block-bg: #01010005;
 $code-color:$primary_3;
 $toc-color: $primary_3;
 $navbar-fg: $primary_3;
+/* Define custom colors and variables */
+
+div.callout-tip {
+  border-left-color: #102d3d !important;
+  background-color: #102d3d00 !important;
+}
+
+/* Header Background Color Override */
+div.callout-tip.callout-style-default > .callout-header {
+  background-color: #f2f2f2 !important;   /* Change this to your desired color */
+  color: #102d3d !important;              /* Font color */
+  font-weight: bold;
+}
+
+/* Change the Header Title Background Color */
+div.callout-tip.callout-style-default .callout-title {
+  background-color: #102d3d44 !important; /* Update to your preferred color */
+}
+
+/* Icon Customization */
+div.callout-tip .callout-icon::before {
+  content: '';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M10.854 5.854a.5.5 0 0 0-.708-.708L7 8.293 5.354 6.646a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l4-4z'/%3E%3C/svg%3E") !important;
+  width: 16px;                            /* Keep original size */
+  height: 16px;                           /* Keep original size */
+  background-size: 16px 16px;              /* Match the original dimensions */
+  transform: scale(1.75);                     /* Scale up by 2x */
+  margin-bottom: 0.2em;
+  margin-right: 0.05em;
+  vertical-align: middle;
+  color: #102d3d;
+}
+
+div.callout-warning {
+  border-left-color: #661122 !important;
+  background-color: #102d3d00 !important;
+}
+
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #102d3d11
+}
+
+/* Header Background Color Override */
+div.callout-warning.callout-style-default > .callout-header {
+  background-color: #f2f2f2 !important;   /* Change this to your desired color */
+  color: #661122 !important;              /* Font color */
+  font-weight: bold;
+}
+
+/* Change the Header Title Background Color */
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #66112211 !important; /* Update to your preferred color */
+}
+
+/* Icon Customization */
+div.callout-warning .callout-icon::before {
+  content: '';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M10.854 5.854a.5.5 0 0 0-.708-.708L7 8.293 5.354 6.646a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l4-4z'/%3E%3C/svg%3E") !important;
+  width: 16px;                            /* Keep original size */
+  height: 16px;                           /* Keep original size */
+  background-size: 16px 16px;              /* Match the original dimensions */
+  transform: scale(1.75);                     /* Scale up by 2x */
+  margin-bottom: 0.2em;
+  margin-right: 0.05em;
+  vertical-align: middle;
+  color: #661122;
+}
+
+div.callout-note {
+  border-left-color: #4a6777 !important;
+  background-color: #4a677700 !important;
+}
+
+div.callout-note.callout-style-default .callout-title {
+  background-color: #4a677711
+}
+
+/* Header Background Color Override */
+div.callout-note.callout-style-default > .callout-header {
+  background-color: #f2f2f2 !important;   /* Change this to your desired color */
+  color: #4a6777 !important;              /* Font color */
+  font-weight: bold;
+}
+
+/* Change the Header Title Background Color */
+div.callout-note.callout-style-default .callout-title {
+  background-color: #4a677711 !important; /* Update to your preferred color */
+}
+
+/* Icon Customization */
+div.callout-note .callout-icon::before {
+  content: '';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M10.854 5.854a.5.5 0 0 0-.708-.708L7 8.293 5.354 6.646a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l4-4z'/%3E%3C/svg%3E") !important;
+  width: 16px;                            /* Keep original size */
+  height: 16px;                           /* Keep original size */
+  background-size: 16px 16px;              /* Match the original dimensions */
+  transform: scale(1.75);                     /* Scale up by 2x */
+  margin-bottom: 0.2em;
+  margin-right: 0.05em;
+  vertical-align: middle;
+  color: #4a6777;
+}

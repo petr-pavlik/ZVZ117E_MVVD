@@ -1,9 +1,375 @@
-# Opakování R - pokračování
+# Opakovaní R
+
+Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospodářství. 
+Na tomto místě je pouze zhuštěný přehled funkcionality z uvedeného kurzu.
+
+## Nápověda
+
+Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. 
+Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
+
+::: callout-tip
+## Úloha
+
+  1. Vyhledejte nápovědu k `DateTimeClasses`. \
+    a) Co reprezentují třídy `POSIXct` a `POSIXlt`?\
+    b) Jaký je mezi nimi rozdíl?\
+    c) Nalezněte funkci pro výpočet $5!$\
+
+:::
+
+## Jmenné konvence
+
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. 
+Název objektu nezačíná číslovkou nebo operátorem. Název se neshoduje se žádným 
+klíčovým slovem rovněž se název neshoduje s žádnou běžně používanou funkcí.
+
+##### Klíčová slova {.unnumbered}
+
+`if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`, a speciální znak: `_`
+
+Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`.
+
+::: callout-tip
+## Úloha
+  
+  2. Intuitivně by nás mohlo vést nahrát data do proměnné `data`. Je to chybný 
+  postup, neboť `data()` je funkce zpřístupňující datové sady, kterou jsou součástí
+  instalace. Vyzkoušejte.
+:::
+
+
+##### Příklady nevhodných proměnných {.unnumbered}
+
+`aaa`, `Morávka průtok [m/s]`, `moje.proměnná`\
+Žádné z těchto jmen proměnných není proti 
+
+## Uvozovky a závorky
+
+Představují párové znaky jazyka R. Závorky se používají trojího typu: kulaté, hranaté a složené a všechny mají jasně vymezné pole působnosti.
+
+  - `()` **se používají vždy se jménem funkce** a uvozují prostor ve kterém se parametrizují argumenty funkce.\
+  - `[]` se **vždy pojí se jménem objektu** - vektoru, pole, listu, ... a vymezují výběr z daného objektu.\
+  - `{}` **ohraničují blok kódu**, který se má vykonat v celku.\
+
+Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem.
+
+```{r,eval=FALSE}
+"Správně"
+"Špatně'
+```
+
+::: callout-tip
+## Úloha
+
+  3. Zadejte špatnou variantu z kódu výše do konzole a sledujte chování prostředí.
+  Co vyjadřuje znak `+`? 
+:::
+
+## Aritmetické operace
+
+```{r základní aritmetické operace, eval=FALSE, collapse=TRUE}
+1 + 1          # <1> 
+2 - 1          # <2>
+1 * 3         # <3> 
+1 * (-1)       # <3> 
+1 / 6         # <4> 
+10 %% 3       # <5> 
+7 %/% 3        # <6> 
+10 ** 3        # <7> 
+10 %*% 3       # <8> 
+sum(1:10)      # <9> 
+prod(1:10)     # <10> 
+cumsum(1:10)   # <11> 
+cumprod(1:10)  # <12>
+```
+
+1.  Sčítání
+2.  Odečítání
+3.  Násobení
+4.  Dělení
+5.  Modulo
+6.  Celočíselné dělení
+7.  Mocninné operace
+8.  Maticové násoobení
+9.  $\sum$ prvků z rozsahu
+10. $\Pi$ prvků z rozsahu
+11. Kumulativní součet prvků z rozsahu
+12. Kumulativní produkt prvků z rozsahu
+
+## Operátory
+
+Kromě aritmetických operátorů, zmíněných @sec-aritmeticke-operace
+
+```{r, eval = FALSE, collapse = TRUE}
+<        # <1>
+>        # <2>
+>=       # <3>
+<=       # <4> 
+==       # <5>
+!=       # <6>
+&        # <7>
+&&       # <8>
+|        # <9>
+||       # <10>
+xor(x)    # <11>
+isTRUE(x) # <12>
+any() # <13>
+all() # <14>
+%in% # <15>
+setdiff(x, y)  # <16>
+```
+
+1.  Menší než
+2.  Větší než
+3.  Větší nebo rovno
+4.  Menší nebo rovno
+5.  Rovno
+6.  Nerovno
+7.  Logické "a"
+8.  Logické "a" přes vektor
+9.  Logické "nebo"\
+10. Logické "nebo" přes vektor
+11. Negace
+12. Je $x$ "pravda"?
+13. Je něco z obsahu "pravda"?
+14. Je vše z obsahu "pravda"?
+15. Je něco obsaženo v?
+16. Chybí něco něco z obsahu v?
+
+::: callout-tip
+## Úloha 
+  4. Použite k výpočtu operátory:\
+    a) Zjistěte, zda je číslo 1109388 dělitelné 7.\
+    b) Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí \
+    c) Vypište hodnoty \
+  
+:::
+
+## Základní datové struktury
+
+Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenní datové struktury.
+
+### Homogenní datové struktury
+
+Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.
+
+#### Vektor `vector`
+
+Vektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce `vector(mode = "numeric", length = 10)` a funkce `c()`, případně vzniká pomocí opetárorů `[` nebo `[[`.
+
+S vektory se pojí důležité pravidlo - **recyklace hodnot**.
+
+```{r}
+v <- c(1.4, 2.0, 6.1, 2.7)
+u <- c(2.0, 1.3)
+u + v # <1> 
+u * v # <2> 
+```
+
+1.  Sčítám vektory přičemž délka jednoho je násobkem délky druhého.
+2.  Násobím vektory přičemž délka jednoho je násobkem délky druhého.
+
+##### Práce s vektory {.unnumbered}
+
+```{r}
+x <- 1:10 #<1>
+x <- seq(10:1) #<1>
+x <- vector(mode = "numeric", length = 10) #<1>
+x <- replicate(n = 10, expr = eval(2)) #<1>
+x <- sample(x = 10, size = 10, replace = TRUE) #<1>
+x <- rep(x = 15, times = 2) #<1>
+```
+
+1.  Tvorba vektoru $\boldsymbol{\mathrm{x}}$ různými úkony. Použití sekvence, repetice, opakování a vzorkování.
+
+#### Matice `matrix`
+
+Rozšířením dimenze vektoru vznikne matice nebo obecně pole.
+
+```{r}
+x <- c(1:10)
+dim(x) <- c(2, 5)
+x
+```
+
+| Funkce            | Úkon                                   |
+|-------------------|----------------------------------------|
+| `nrow()`, `nco()` | počet řádků, sloupců matice            |
+| `dim()`           | řádky $\times$ sloupce matice          |
+| `det()`           | deteminant matice                      |
+| `eigen()`         | vlastní čísla a vlastní vektory matice |
+
+$$
+A = 
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+\end{bmatrix}
+$$
+
+```{r, collapse=TRUE}
+A <- matrix(data = seq(from = 1, to = 16, by = 2), nrow = 4)
+str(A) # <1> 
+dim(A) # <2> 
+svd(A) # <3> 
+diag(A) # <4> 
+# sweep(x = A, MARGIN = 1, STATS = mean)
+```
+
+1.  Struktura objektu
+2.  Dimenze matice
+3.  Singulární rozklad
+4.  Prvky na diagonále matice
+
+### Heterogenní datové struktury
+
+Za **heterogenní** struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené struktury.
+
+#### Datová tabulka `data.frame`
+
+`data.frame` je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.
+
+```{r, eval=TRUE, collapse=TRUE}
+DF <- data.frame(name = letters[1:5], 
+                 value = rnorm(5))
+DF
+DF["name"]        # podvýběr do data.frame
+DF[["name"]]      # podvýběr do vektoru
+DF[, "name"]      # podvýběr do vektoru
+```
+
+Práce uvnitř data.frame
+
+```{r, eval=TRUE, collapse=TRUE}
+DF <- data.frame(
+  mon = rep(month.abb, 
+            times = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)), 
+  value = rnorm(365), 
+  yr = 2001)
+str(DF)
+names(DF)
+nrow(DF)
+ncol(DF)
+```
+
+## Řídící struktury
+
+### Podmínky
+
+```{r}
+A <- 1
+if(A >= 1) {
+  cat("A je větší nebo shodné s 1.")
+}
+```
+
+```{r}
+A <- 5
+if(A >= 2) { #<1>
+  cat("A je větší nebo shodné s 2.") #<1>
+} else if(A > 2) { #<1>
+  cat("A je větší než 2.") #<1>
+} #<1>
+```
+
+1.  Řetěz podmínek se uzavře **v momentě, kdy je výraz v závorce poprvé vyhodnocen jako pravdivý**.
+
+### Cykly
+
+#### `for` z definovaného rozsahu
+
+```{r}
+for(i in 1:4) {
+  cat(i, "\n")
+}
+```
+
+#### `while` s pomocí podmínky
+
+```{r}
+i <- 1
+while(i < 4) {
+  cat(i, "\n")
+  i <- i + 1
+}
+```
+
+#### `repeat` s únikovou sekvencí
+
+```{r}
+i <- 1
+repeat({
+  cat(i, "\n")
+  i <- i + 1
+  if(i >= 4) break
+})
+```
+
+::: callout-tip
+## Cvičení
+  1. Vyhodnoťte s pomocí R následující výrazy:\
+    a) $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
+    b) $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
+    c) $\sum\limits_{i = 1}^{53}x_i$\
+    d) $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
+    e) $\dfrac{\sin(2.3)}{\cos(\pi)}$\
+    f) $20!$\
+    g) $\int_{0}^{3\pi} \sin(x) dx$
+
+  2. Proveďte:\
+    a) Vytvořte vektor hodnot od $100$ do $1$ sestupně, využijte nápovědu k funkci `seq()`.\
+    b) Spočtěte rozdíl, matic $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$. $$\boldsymbol{\mathrm{A}} = \left(
+  \begin{matrix}
+  2 & 2 & 5\\
+  9 & 2 & 7\\
+  1 & 3 & 18\\
+  \end{matrix}
+  \right),\qquad 
+  \boldsymbol{\mathrm{B}} = \left(
+  \begin{matrix}
+  5 & 4 & 5\\
+  -7 & 2 & 4\\
+  10 & 1 & 5\\
+  \end{matrix}
+  \right)
+  $$\
+    c) Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
+    d) S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
+:::
 
 ## Práce s daty
 
 Chybějící záznamy a speciální numerické případy `NA`, `NaN`, `NULL`, `Inf`, `-Inf` jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz `NA` je tvořen v datovém typu `logical`, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech `NA_real_` (odpovídá double), `NA_integer_`, `NA_complex_` a `NA_character_`, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. `NULL` je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky `NaN` a `±Inf` pochází z aritmetických operací $\dfrac{1}{0}$ resp. $\dfrac{\pm0}{1}$ . `na.omit()`, `is.na()`, `complete.cases()`.
 
-::: callout-note
-Note that there are five types of callouts, including: `note`, `tip`, `warning`, `caution`, and `important`.
+```{r}
+global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", row.names = 1)
+head(x = global_temperatures, n = 5)
+```
+
+```{r}
+global_temperature_yr <- aggregate(x = . ~ YEAR, # <1>
+                                   FUN = mean,  # <1>
+                                   data = global_temperatures) # <1>
+head(x = global_temperature_yr, n = 5)
+```
+
+1.  Agregace dat do průměrů za roční období.
+
+```{r, fig.align='center'}
+par(mfrow = c(1, 2))
+with(data = global_temperature_yr, expr = plot(YEAR, JAN, type = "l"))
+with(data = global_temperature_yr, 
+     expr = boxplot(ANNUAL, horizontal = TRUE))
+```
+
+::: callout-tip
+## Cvičení
+
+  1. Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
+  2. Doplňte hydrologický rok.\
+  3. Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
+  4. Vyneste do grafu pomocí funkce `plot()`.
 :::

@@ -8,11 +8,15 @@
 4.  Určení kritického oboru testové statistiky
 5.  
 
-Výsledkem tetování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
+Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
 
 [^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí
 
-## 100(1-$\alpha$)% inteval spolehlivosti
+## P-hodnota
+
+Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *p-hodnotu* (anglicky p-value). Definice p-hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
+
+## $100(1-\alpha)\%$ interval spolehlivosti
 
 $$
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
@@ -24,9 +28,6 @@ $$
 
 kde $\nu=n-1$ je počet stupňů volnosti.
 
-#### P-hodnota
 
-Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. **p-hodnotu** (p-value). Definice p-hodnoty je poněkud 
-obšírná - *je to odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
 
 Pravděpodobnost platnosti hypotézy

@@ -69,7 +69,7 @@ plot(dataset$Tmin, type = "l",
 md1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), 
              data = dataset, 
              degree = 1)
-lines(md1$fitted, col = "darkred")
+lines(md1$fitted, col = "orangered")
 
 plot(filter(x = dataset$R, 
              method = "convolution", 
@@ -85,7 +85,7 @@ plot(dataset$Tmin, type = "l",
      col = "slategray", 
      lwd = 0.5)
 lines(md1$fitted, col = "darkred")
-abline(coef(md2), col = "red")
+abline(coef(md2), col = "orangered")
 
 ```
 

@@ -1,8 +1,37 @@
-# Rozdělení pravděpodobnosti
+# Rozdělení pravděpodobnosti {#sec-rozdeleni}
 
 V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí
 
-##### Distribuční funkce {-}
+Balík `stats` obsahuje mnoho rozdělení. Alternativní, Binomické, Multinomické, Poissonov, Normální, Fischerovo, $\chi^2$, Studentovo $t$ a mnohá další.
+
+Pro ůplnost uvedeme funkce pro permutace `factorial()` a kombinace `choose()`.
+
+```{r,fig.align='center'}
+par(mfrow = c(1,2))
+plot(x = 0:6, 
+     y = factorial(0:6), 
+     type = "s",
+     main = "Permutace", 
+     ylab = bquote("log(0!:6!)"), 
+     xlab = "",
+     log = "y")
+plot(x = 0:6, 
+     y = choose(6, 0:6), 
+     type = "s", 
+     xlab = "",
+     main = "Binomické koeficienty")
+```
+
+
+```{r eval=FALSE}
+r___() # generování náhodných čísel z rozdělení
+d___() # funkce hustoty rozdělení
+p___() # Pravděpodobnostní funkce 
+q___() # Kvantilová funkce rozdělení
+```
+
+
+## Distribuční funkce rozdělení
 
 Rozdělení pravděpodobnosti náhodné veličiny lze jednoznačně popsat tzv. distribuční funkcí {@eq-distribucni-funkce}.
 
@@ -10,20 +39,45 @@ $$
 F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 $$ {#eq-distribucni-funkce}
 
-##### Kvantilová funkce {-}
+## Pravděpodobnostní funkce rozdělení
+
+## Kvantilová funkce
 
 Kvantilová funkce je inverzní funkcí k distribuční.
 
-```{r eval=FALSE}
-rxxx() # generování náhodných čísel
-dxxx() # 
-pxxx()
-qxxx()
+## Náhodná čísla
+
+Pro generování náhodných čísel lze použít rozdělení. 
+
+```{r,eval=FALSE}
+runif(n = 10, min = 0, max = 1) # <1>
+rpois(n = 15, lambda = 2.4) # <2>
+```
+1. Generování 10 čísel z rovnoměrného rozdělení z intervalu $(0;1)$
+2. Generování 15 čísel z Poisonova rozdělení z intervalu $(0;1)$
+
+Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako *pseudonáhodná*, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna 
+
+
+```{r}
+x <- sample(x = 1:1e3, size = 1) # <1>
+set.seed(x)  # <1>
+runif(1)
+
+set.seed(x)  # <2>
+runif(2)
 ```
 
-#### Náhodná čísla
 
-Generování náhodných čísel z rozdělení 
+```{r}
+seed <- .Random.seed
+head(seed, 10)
+```
+```{r,fig.align='center'}
+plot(.Random.seed)
+```
+
+
 
 ## Empirické vs. teoretické rozdělení
 
@@ -38,18 +92,20 @@ IQR(x)
 fivenum(x)
 ```
 
+```{r}
+
+```
+
+
 ## Spojitá rozdělení
 
 ```{r}
 curve(sin(x))
 ```
 
-#### Cvičení {.unnumbered}
-
-1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
-
-2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$.
-
-3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat hodnot menších než 6?
-
-## 
+::: callout-tip
+## Cvičení
+  1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
+  2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$.   
+  3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat hodnot menších než 6?    
+:::

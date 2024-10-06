@@ -1,42 +1,53 @@
-::: download_btn
-```{css}
-#| echo: false
+# Organizace textu
 
-.btn-default,
-.btn-default:hover,
-.btn-default:active {
-  font-size: 20px;
-  color: navy;
-  background-color: transparent;
-  border-color: transparent;
-}
+Text je členěn do kapitol podle náplně jednotlivých cvičení. Na začátku každé kapitoly jsou vypsány **Cíle cvičení**, k jejichž osvojení daná kapitola míří. Na konci každé kapitoly jsou vždy cvičení, které mají za cíl ověřit splnění cílů. V případech jednodušších úloh jsou cvičení uvedena v prostřed textu blíže látce.
 
-.btn-default:hover {
-  color: black;
-  transition: 0.2s;
-}
-
-```
-
-```{r}
-#| echo: false
-library(downloadthis)
-readRDS("data/data.rds") |> 
-  download_this(
-    output_name = "Sample MOPEX data set",
-    output_extension = ".rds",
-    button_label = "data.rds",
-    button_type = "default",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
-```
+::: callout-warning
+## Cíle cvičení
+...
 :::
 
-# Úvod
+::: callout-tip
+## Samostatné úlohy
+...
+:::
 
-Tento text je webový průvodce pro cvičení kurzu **ZVZ117E Metody vyhodnocování vodohospodářských dat**. Jeho obsahuje materiály ke všem jednotlivým cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici vyložit látku komplexně, nenahrazuje přednášky kurzu ani skripta. Jedná se o **průvodce cvičeními**. Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony jsou prováděny s didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na které je čtenář občas doplňkově upozorněn.
+::: callout-note
+## Další zdroje
+...
+:::
 
-## Doporučená literatura
+## Typografické konvence
 
-See @knuth84 for additional discussion of literate programming.
+Zdrojový kód v textu je barevně odlišen a jednotlivé úkony jsou v kódu doprovozeny číslovanými komentáři v kroužku, které se aktivují najetím kurzoru myši. V případě, že zdrojový kód obsahuje pouze jeden výraz k vyhodnocení, je vždy výstup uveden přímo pod ním.
+
+```{r}
+cat("Příklad výrazu a jeho vyhodnocení") # <1>
+```
+1. Toto je komentář.
+
+Někdy je nutné provést vyhodnocení více po sobě jdoucích výrazů a text byl zbytečně nafukován. V takovém případě je výstup zachován přímo v okně zdrojového kódu a je uvozen dvěma po sobě jdoucími znaky $\#\#$.
+
+```{r, collapse=TRUE}
+mean(1:10) # <1>
+median(1:10) # <1>
+sd(1:10) # <1>
+```
+1. Sjednocené výstupy v bloku kódu.
+
+
+Pokud se kód nachází uvnitř textu, je opět barevně odlišen a vysázen neproporcionálním písmem. Přičemž funkce je vždy uvedena s příslušnými závorkami a text, který je v kódu navíc, je vždy ohraničen znaky $<$ a $>$. Příkladem budiž `mean(x = <vektor čísel>)`. 
+
+
+
+## Verze
+
+Tento text byl vytvořen s pomocí verze R `r stringr::str_flatten(c(version$major, ".", version$minor))` a jmenných prostorů balíků ve verzích:
+
+```{r, echo=FALSE}
+installed.packages()[installed.packages()[, 1] %in% loadedNamespaces(), ][, c("Version")] |> 
+  data.frame() |> 
+  setNames("Version") |> 
+  knitr::kable()
+```
+

@@ -1,12 +1,12 @@
 /* quarto syntax highlight colors */
 :root {
-  --quarto-hl-ot-color: #d91e18;
-  --quarto-hl-at-color: #b37502;
+  --quarto-hl-ot-color: #20124d;
+  --quarto-hl-at-color: #9e8b6d;
   --quarto-hl-ss-color: #540775;
   --quarto-hl-an-color: #696969;
-  --quarto-hl-fu-color: #06287e;
+  --quarto-hl-fu-color: #16424c;
   --quarto-hl-st-color: #006666;
-  --quarto-hl-cf-color: #d91e18;
+  --quarto-hl-cf-color: #660033;
   --quarto-hl-op-color: #505152;
   --quarto-hl-er-color: #7928a1;
   --quarto-hl-bn-color: #7928a1;
@@ -20,14 +20,14 @@
   --quarto-hl-wa-color: #696969;
   --quarto-hl-do-color: #696969;
   --quarto-hl-im-color: inherit;
-  --quarto-hl-ch-color: #008000;
+  --quarto-hl-ch-color: #3f5f3f;
   --quarto-hl-dt-color: #7928a1;
   --quarto-hl-fl-color: #a55a00;
   --quarto-hl-co-color: #696969;
   --quarto-hl-cv-color: #696969;
-  --quarto-hl-cn-color: #d91e18;
+  --quarto-hl-cn-color: #055c6f;
   --quarto-hl-sc-color: #00769e;
-  --quarto-hl-dv-color: #7928a1;
+  --quarto-hl-dv-color: #735062;
   --quarto-hl-kw-color: #d91e18;
 }
 
@@ -37,29 +37,29 @@
 }
 
 pre > code.sourceCode > span {
-  color: #545454;
+  color: #333333;
 }
 
 code span {
-  color: #545454;
+  color: #333333;
 }
 
 code.sourceCode > span {
-  color: #545454;
+  color: #333333;
 }
 
 div.sourceCode,
 div.sourceCode pre.sourceCode {
-  color: #545454;
+  color: #333333;
 }
 
 code span.ot {
-  color: #d91e18;
+  color: #20124d;
   font-style: inherit;
 }
 
 code span.at {
-  color: #b37502;
+  color: #9e8b6d;
   font-style: inherit;
 }
 
@@ -74,7 +74,7 @@ code span.an {
 }
 
 code span.fu {
-  color: #06287e;
+  color: #16424c;
   font-style: inherit;
 }
 
@@ -84,7 +84,7 @@ code span.st {
 }
 
 code span.cf {
-  color: #d91e18;
+  color: #660033;
   font-style: inherit;
 }
 
@@ -151,7 +151,7 @@ code span.im {
 }
 
 code span.ch {
-  color: #008000;
+  color: #3f5f3f;
   font-style: inherit;
 }
 
@@ -176,7 +176,7 @@ code span.cv {
 }
 
 code span.cn {
-  color: #d91e18;
+  color: #055c6f;
   font-style: inherit;
 }
 
@@ -186,7 +186,7 @@ code span.sc {
 }
 
 code span.dv {
-  color: #7928a1;
+  color: #735062;
   font-style: inherit;
 }
 

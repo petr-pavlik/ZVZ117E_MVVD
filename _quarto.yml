@@ -6,50 +6,59 @@ website:
   title: "Metody vyhodnocování vodohospodářských dat"
   navbar: 
     left:
-      - href: index.qmd
       - text: Home
-      - intro.qmd
-  
+        href: index.qmd
+      - text: "Introduction"
+        href: intro.qmd
 
 book:
+  author: Petr Pavlík
   title: "Metody vyhodnocování vodohospodářských dat"
-  subtitle: "MVVD ZS 23/24"
-  author: "Petr Pavlík"
-  favicon: cover.png
+  subtitle: "ZVZ117E ZS 24/25"
+  favicon: cover.webp
+  version: 0.1
   repo-actions: [edit]
   date: today
   chapters:
     - index.qmd
     - intro.qmd
-    # - 01_uvod_do_R_1.qmd
-    # - 02_uvod_do_R_2.qmd
-    # - 03_summary.qmd
-    # - 04_popisna.qmd
-    # - 05_rozdeleni.qmd
+    - 01_uvod_do_R_1.qmd
+    - 02_uvod_do_R_2.qmd
+    - 03_grafy.qmd
+    - 04_popisna.qmd
+    - 05_rozdeleni.qmd
     - 06_odhad.qmd
-    # - 07_testovani.qmd
-    - 08_test_1.qmd
+    - 07_testovani.qmd
     - 09_casove_rady.qmd
-    #- 10_hydro_index.qmd
+    - 10_hydro_index.qmd
     - 11_korelace_regrese.qmd
-    # - 12_test_2.qmd
-    # - references.qmd
+    - 12_extremalni_rozdeleni.qmd
     
-  
-  downloads: [pdf, epub]
+
+  # Sidebar Configuration for the Book
   sidebar:
     title: "Metody vyhodnocování VH dat"
+    search: true
     pinned: true
-    tools:
-      - icon: save
-        menu:
-          - text: "data.csv"
-            url:  "data/data.csv"
+    # Adding the image in the sidebar
+    contents:
+      - image: images/logo_mvvd.webp
+      - index.qmd
+      - intro.qmd
+      - 01_uvod_do_R_1.qmd
+      - 02_uvod_do_R_2.qmd
+      - 03_grafy.qmd
+      - 04_popisna.qmd
+      - 05_rozdeleni.qmd
+      - 06_odhad.qmd
+      - 07_testovani.qmd
+      - 09_casove_rady.qmd
+      - 10_hydro_index.qmd
+      - 11_korelace_regrese.qmd
+      - 12_extremalni_rozdeleni.qmd
 
-  search: 
-    location: sidebar
-    type: textbox
-  
+  downloads: [pdf, epub]
+
 bibliography: references.bib
 
 format:
@@ -60,15 +69,18 @@ format:
       - cosmo
       - style.scss
     max-width: 1600px
-    #css: style.css
+    css: style.css
     code-fold: show
     linkcolor: "#006666"
     highlight-style: syntax.theme
+    code-annotations: hover
+    fig-align: center
+    fig-format: svg
+    fig-dpi: 400
+    fig-cap-location: bottom
 
   pdf:
     documentclass: scrreprt
 
 editor: visual
 lang: cs-CZ
-
-
