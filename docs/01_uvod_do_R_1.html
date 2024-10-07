@@ -241,8 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#zakládáme-projekt" id="toc-zakládáme-projekt" class="nav-link active" data-scroll-target="#zakládáme-projekt"><span class="header-section-number">3.1</span> Zakládáme projekt</a></li>
-  <li><a href="#hlavní-okna-a-panely" id="toc-hlavní-okna-a-panely" class="nav-link" data-scroll-target="#hlavní-okna-a-panely"><span class="header-section-number">3.2</span> Hlavní okna a panely</a></li>
+  <li><a href="#hlavní-okna-a-panely" id="toc-hlavní-okna-a-panely" class="nav-link active" data-scroll-target="#hlavní-okna-a-panely"><span class="header-section-number">3.1</span> Hlavní okna a panely</a></li>
+  <li><a href="#zakládáme-projekt" id="toc-zakládáme-projekt" class="nav-link" data-scroll-target="#zakládáme-projekt"><span class="header-section-number">3.2</span> Zakládáme projekt</a></li>
   <li><a href="#pracovní-postup-a-jeho-opakovatelnost" id="toc-pracovní-postup-a-jeho-opakovatelnost" class="nav-link" data-scroll-target="#pracovní-postup-a-jeho-opakovatelnost"><span class="header-section-number">3.3</span> Pracovní postup a jeho opakovatelnost</a></li>
   </ul>
 </nav>
@@ -286,6 +286,8 @@ Cíle cvičení
 </div>
 <p>R je <em>volně dostupné programové prostředí pro statistické výpořty a grafiku</em>. Interpretr jazyka se základní funkcionalitou lze stáhnout ze stránek <a href="https://www.r-project.org">https://www.r-project.org</a>.</p>
 <p>RStudio (dnes také společnost Posit Inc.) je integrované vývojové prostředí (IDE), specializované pro práci s jazykem R. Obsahuje řadu užitečných nástrojů usnadňujících organizaci, tvorbu reportů, práci s SQL databázemi, vývojem funkčních balíčků a mnoho dalšího.</p>
+<section id="hlavní-okna-a-panely" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="hlavní-okna-a-panely"><span class="header-section-number">3.1</span> Hlavní okna a panely</h2>
 <div id="fig-zakladniRstudio" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/main.png" class="img-fluid figure-img"></p>
@@ -314,8 +316,9 @@ Cíle cvičení
 </div>
 </div>
 </div>
-<section id="zakládáme-projekt" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="zakládáme-projekt"><span class="header-section-number">3.1</span> Zakládáme projekt</h2>
+</section>
+<section id="zakládáme-projekt" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="zakládáme-projekt"><span class="header-section-number">3.2</span> Zakládáme projekt</h2>
 <p>Je vhodné seskupovat svoji práci do zv. projektů - ucelených souborů skriptů, dat a výstupů - podle jednotlivých projektů, kterým se věnuji.</p>
 <ol type="1">
 <li><p>Při spuštěném programu z hlavní nabídky vybereme <em><strong>File</strong> &gt; <strong>New Project…</strong></em></p>
@@ -326,13 +329,33 @@ Cíle cvičení
 <img src="images/new_project_name.png" class="img-fluid" width="457" alt="Obr. 3 - Volba umístění a názvu projektu"></li>
 <li><p>Po úspěšném založení projektu by se mělo zobrazit hlavní okno programu s přednastvenými panely. V nastavení učeben ČZU odpovídá rozvržení 1. obrázku.</p></li>
 </ol>
-</section>
-<section id="hlavní-okna-a-panely" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="hlavní-okna-a-panely"><span class="header-section-number">3.2</span> Hlavní okna a panely</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol start="2" type="1">
+<li>Vytvořte projekt s názvem “MVVD_cv1”.</li>
+</ol>
+</div>
+</div>
 </section>
 <section id="pracovní-postup-a-jeho-opakovatelnost" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="pracovní-postup-a-jeho-opakovatelnost"><span class="header-section-number">3.3</span> Pracovní postup a jeho opakovatelnost</h2>
-<p>R bohužel umožnuje <em>připínat</em> a <em>odepínat</em> <code>data.frame</code> pomocí funkcí <code>attach()</code> a <code>detach()</code>, na které je vhodné ihned po přečtení této věty zapomenout.</p>
+<p>K systematické práci a analýze zejména v exaktních vědách patří dodržování jistých pracovních zásad, které umožňují jednak objektivní kontrolu výsledků a jednak jejich opětovného získání. Níže je uvedeno pár zásad, jejichž dodržování vede k celkové duševní pohodě a rovnováze jak vaší vlastní, tak kolegů.</p>
+<ul>
+<li>Při psaní kódu se řiďte unifikovaným schématem jmenných konvencí, odsazování a vkládání mezer, a komentování.<br>
+</li>
+<li>Každé cvičení začněte ideálně tvorbou nového projektu v oddělené složce, nebo alespoň nového skriptu.<br>
+</li>
+<li>Při zavírání RStudio neukládejte pracovní prostředí do souboru “*.RData”. Uloží se do něj vše co máte právě v <strong>Environment</strong>, což nemusí nutně pocházet z pracovního postupu uchovaného ve skriptech (byť při dodržobvání jiných zásad z tohoto sezamu by tomu tak být nemělo).</li>
+<li>R bohužel umožnuje <em>připínat</em> a <em>odepínat</em> <code>data.frame</code> pomocí funkcí <code>attach()</code> a <code>detach()</code>, na které je vhodné ihned po přečtení této věty zapomenout.</li>
+</ul>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -352,6 +375,9 @@ Cíle cvičení
 <pre><code>[1] 1 2 3</code></pre>
 </div>
 </div>
+<ul>
+<li><em>dtto</em> funkce <code>fix()</code>, která umožňuje manipulovat s daty formou GUI tabulkového procesoru</li>
+</ul>
 
 
 </section>

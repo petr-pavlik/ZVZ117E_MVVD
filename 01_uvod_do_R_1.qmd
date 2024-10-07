@@ -11,6 +11,8 @@ R je *volně dostupné programové prostředí pro statistické výpořty a graf
 
 RStudio (dnes také společnost Posit Inc.) je integrované vývojové prostředí (IDE), specializované pro práci s jazykem R. Obsahuje řadu užitečných nástrojů usnadňujících organizaci, tvorbu reportů, práci s SQL databázemi, vývojem funkčních balíčků a mnoho dalšího.
 
+## Hlavní okna a panely
+
 ![Obr. 1: Základní layout prostředí RStudio.](images/main.png){#fig-zakladniRstudio}
 
 V základním zobrazení @fig-zakladniRstudio bychom měli v levé části vidět panel **Console**. S konzolí nebudeme pracovat příliž intenzivně, slouží zejména k zadávání jednoduchých příkazů,
@@ -42,11 +44,21 @@ Je vhodné seskupovat svoji práci do zv. projektů - ucelených souborů skript
 
 4.  Po úspěšném založení projektu by se mělo zobrazit hlavní okno programu s přednastvenými panely. V nastavení učeben ČZU odpovídá rozvržení 1. obrázku.
 
-## Hlavní okna a panely
+::: callout-tip
+## Úloha
+  
+  2. Vytvořte projekt s názvem "MVVD_cv1".
+:::
+
 
 ## Pracovní postup a jeho opakovatelnost
 
-R bohužel umožnuje *připínat* a *odepínat* `data.frame` pomocí funkcí `attach()` a 
+K systematické práci a analýze zejména v exaktních vědách patří dodržování jistých pracovních zásad, které umožňují jednak objektivní kontrolu výsledků a jednak jejich opětovného získání. Níže je uvedeno pár zásad, jejichž dodržování vede k celkové duševní pohodě a rovnováze jak vaší vlastní, tak kolegů.
+
+- Při psaní kódu se řiďte unifikovaným schématem jmenných konvencí, odsazování a vkládání mezer, a komentování.\
+- Každé cvičení začněte ideálně tvorbou nového projektu v oddělené složce, nebo alespoň nového skriptu.\
+- Při zavírání RStudio neukládejte pracovní prostředí do souboru "\*.RData". Uloží se do něj vše co máte právě v **Environment**, což nemusí nutně pocházet z pracovního postupu uchovaného ve skriptech (byť při dodržobvání jiných zásad z tohoto sezamu by tomu tak být nemělo).
+- R bohužel umožnuje *připínat* a *odepínat* `data.frame` pomocí funkcí `attach()` a 
 `detach()`, na které je vhodné ihned po přečtení této věty zapomenout. 
 
 ```{r}
@@ -61,3 +73,4 @@ attach(l)
 A
 ```
 
+- *dtto* funkce `fix()`, která umožňuje manipulovat s daty formou GUI tabulkového procesoru

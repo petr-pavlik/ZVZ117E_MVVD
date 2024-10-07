@@ -1,27 +1,53 @@
 # Hydroklimatické indexy
 
-V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení
-
-```{r eval=FALSE}
-rxxx() # náhodná čísla
-dxxx() # 
-pxxx()
-qxxx()
-```
-
-::: callout-tip
-## Úkol
-  1. Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.\
-:::
-
+## 
 
 ## Odtokový součinitel
 
+$$
+\varphi = \dfrac{}{}
+$$
+## Budykova křivka
+
 ## Základní odtok
+
+```{r}
+
+```
+
 
 ## Index předchozích srážek
 
-## 
+## Frekvenční křivky
+
+### $N-$letý (maximální) průtok
+
+Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1$\times$
+za $N$ let.
+
+```{r}
+
+```
+
+::: callout-tip
+## Úloha
+
+  1. Spočítejte $Q_{20}$, $Q_{50}$ a $Q_{100}$.
+  2. Výpočet přetvořte na $N-$letý minimální průtok.
+:::
+
+### $m-$denní průtok
+
+Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu $m$ dní v roce.
+
+::: callout-tip
+## Úloha
+
+  3. Spočtete průměrný roční minimální průtok.
+:::
+
+### 
+
 ```{r}
 x <- rnorm(n = 10, mean = 1.25, sd = 5.36)
 mean(x)

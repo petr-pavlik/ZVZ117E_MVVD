@@ -1,117 +1,90 @@
 # Opakovaní R
 
-Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospodářství. 
-Na tomto místě je pouze zhuštěný přehled funkcionality z uvedeného kurzu.
+::: callout-warning
+## Cíle cvičení
+
+-   Umět vyhledat nápovědu k funkci.
+-   Ovládat základní matematické výpočty pmocí funkcí a operátorů.
+-   Umět definovat objekt v datovém typy a struktuře a tyto vzájemně transoformovat.
+-   Ovládat běh výpočtu pomocí podmínek a cyků.
+-   Přidávat k pracovnímu postupu vlastní funkce.
+:::
+
+Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospodářství. Na tomto místě je pouze zhuštěný přehled funkcionality z uvedeného kurzu.
 
 ## Nápověda
 
-Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. 
-Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
+Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
 
 ::: callout-tip
 ## Úloha
 
-  1. Vyhledejte nápovědu k `DateTimeClasses`. \
-    a) Co reprezentují třídy `POSIXct` a `POSIXlt`?\
-    b) Jaký je mezi nimi rozdíl?\
-    c) Nalezněte funkci pro výpočet $5!$\
-
+1.  Vyhledejte nápovědu k `DateTimeClasses`.\
+    a)  Co reprezentují třídy `POSIXct` a `POSIXlt`?\
+    b)  Jaký je mezi nimi rozdíl?\
+    c)  Nalezněte funkci pro výpočet $5!$\
 :::
 
 ## Jmenné konvence
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. 
-Název objektu nezačíná číslovkou nebo operátorem. Název se neshoduje se žádným 
-klíčovým slovem rovněž se název neshoduje s žádnou běžně používanou funkcí.
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nelze začínat číslovkou nebo operátorem, nesmít být totžný s žádným klíčovým slovem, obsahovat mezeru.
 
 ##### Klíčová slova {.unnumbered}
 
 `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`, a speciální znak: `_`
 
-Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`.
+Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`, a pojmenovávat shodně s běžně používanou funkcí. R je "case-sensitive" jazyk tzn., že proměnná `X` se nerovná `x`.
 
 ::: callout-tip
 ## Úloha
-  
-  2. Intuitivně by nás mohlo vést nahrát data do proměnné `data`. Je to chybný 
-  postup, neboť `data()` je funkce zpřístupňující datové sady, kterou jsou součástí
-  instalace. Vyzkoušejte.
-:::
 
+2.  Intuitivně by nás mohlo vést nahrát data do proměnné `data`. Je to chybný postup, neboť `data()` je funkce zpřístupňující datové sady, kterou jsou součástí instalace. Vyzkoušejte.
+:::
 
 ##### Příklady nevhodných proměnných {.unnumbered}
 
 `aaa`, `Morávka průtok [m/s]`, `moje.proměnná`\
-Žádné z těchto jmen proměnných není proti 
+Žádné z těchto jmen proměnných není proti
 
 ## Uvozovky a závorky
 
 Představují párové znaky jazyka R. Závorky se používají trojího typu: kulaté, hranaté a složené a všechny mají jasně vymezné pole působnosti.
 
-  - `()` **se používají vždy se jménem funkce** a uvozují prostor ve kterém se parametrizují argumenty funkce.\
-  - `[]` se **vždy pojí se jménem objektu** - vektoru, pole, listu, ... a vymezují výběr z daného objektu.\
-  - `{}` **ohraničují blok kódu**, který se má vykonat v celku.\
+-   `()` **se používají vždy se jménem funkce** a uvozují prostor ve kterém se parametrizují argumenty funkce.\
+-   `[]` se **vždy pojí se jménem objektu** (vektoru, pole, listu, ...) a vymezují výběr z daného objektu.\
+-   `{}` **ohraničují blok kódu**, který se má vykonat v celku.\
 
-Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem.
+Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře.
 
 ```{r,eval=FALSE}
 "Správně"
 "Špatně'
+
 ```
 
 ::: callout-tip
 ## Úloha
 
-  3. Zadejte špatnou variantu z kódu výše do konzole a sledujte chování prostředí.
-  Co vyjadřuje znak `+`? 
+3.  Zadejte špatnou variantu z kódu výše do konzole a sledujte chování prostředí. Co vyjadřuje znak `+`?
 :::
-
-## Aritmetické operace
-
-```{r základní aritmetické operace, eval=FALSE, collapse=TRUE}
-1 + 1          # <1> 
-2 - 1          # <2>
-1 * 3         # <3> 
-1 * (-1)       # <3> 
-1 / 6         # <4> 
-10 %% 3       # <5> 
-7 %/% 3        # <6> 
-10 ** 3        # <7> 
-10 %*% 3       # <8> 
-sum(1:10)      # <9> 
-prod(1:10)     # <10> 
-cumsum(1:10)   # <11> 
-cumprod(1:10)  # <12>
-```
-
-1.  Sčítání
-2.  Odečítání
-3.  Násobení
-4.  Dělení
-5.  Modulo
-6.  Celočíselné dělení
-7.  Mocninné operace
-8.  Maticové násoobení
-9.  $\sum$ prvků z rozsahu
-10. $\Pi$ prvků z rozsahu
-11. Kumulativní součet prvků z rozsahu
-12. Kumulativní produkt prvků z rozsahu
 
 ## Operátory
 
-Kromě aritmetických operátorů, zmíněných @sec-aritmeticke-operace
+Rozlišujeme operátory aritmetické, relační, přiřazení a patří sem i množinové funkce.
+
+| Znak                                                        | Význam                                                                                                               |
+|--------------------------------|----------------------------------------|
+| `+` , `-` , `*` , `/` , `%%` , `%/%` , `**` nebo `^`, `%*%` | aritmetické operátory (sčítání, odčítání, násobení, dělení, modulo, celočíselné dělení, mocnění a maticové násobení) |
+| `>` ,`>=` , `<` , `<=` , `==` , `!=`                        | relační operátory (větší/menžší než, rovno, nerovno)                                                                 |
+| `!` , `&` , `&&` , `|` , `||`                               | logické (ne, a soužasně, zdvojené po prvcích vektoru)                                                                |
+| `~`                                                         | zadání funkčního vztahu                                                                                              |
+| `<-` , `=`, `<<-`, `->`                                     | operátory přiřazení                                                                                                  |
+| `$`                                                         | jmenný index v heterogenních strukturách                                                                             |
+| `:`                                                         | rozsah                                                                                                               |
+| `isTRUE()` , `all()` , `any()` , `%in%` , `setdiff()`       | množinové funkce                                                                                                     |
 
 ```{r, eval = FALSE, collapse = TRUE}
-<        # <1>
->        # <2>
->=       # <3>
-<=       # <4> 
-==       # <5>
-!=       # <6>
-&        # <7>
-&&       # <8>
-|        # <9>
-||       # <10>
+
 xor(x)    # <11>
 isTRUE(x) # <12>
 any() # <13>
@@ -138,13 +111,35 @@ setdiff(x, y)  # <16>
 16. Chybí něco něco z obsahu v?
 
 ::: callout-tip
-## Úloha 
-  4. Použite k výpočtu operátory:\
-    a) Zjistěte, zda je číslo 1109388 dělitelné 7.\
-    b) Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí \
-    c) Vypište hodnoty \
-  
+## Úloha
+
+4.  Použite k výpočtu operátory:\
+    a)  Zjistěte, zda je číslo 1109388 dělitelné 7.\
+    b)  Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí\
+    c)  Vypište hodnoty\
 :::
+
+## Matematické funkce
+
+| Funkce                            | Význam                                                                                                                 |
+|----------------------|-------------------------------------------------|
+| `log(x)`                          | logaritmus $x$ o základu $e$                                                                                           |
+| `exp(x)`                          | odlogaritmování $x(e^x)$                                                                                               |
+| `log(x, n)`                       | logaritmus $x$ o základu $n$                                                                                           |
+| `log10(x)`                        | logaritmus $x$ o základu $10$                                                                                          |
+| `sqrt(x)`                         | druhá odmocnina z $x$                                                                                                  |
+| `factorial`(x)                    | $x!$                                                                                                                   |
+| `choose(n, x)`                    | binomické koeficienty $$                                                                                               
+                                                                                                                   \binom{n}{k} = \frac{n!}{k!(n-k)!}        
+                                                                                                                $$                                           |
+| `ceiling(x)`                      | nejmenší celé číslo větší než $x$                                                                                      |
+| `floor(x)`                        | největší celé číslo před $x$                                                                                           |
+| `trunc(x)`                        | nejbliřší celé číslo mez i$x$ a 0                                                                                      |
+| `round(x, digits)`                | zaokrouhlení $x$ na $n$ desetinných míst                                                                               |
+| `signif(x, digits)`               | zaokrouhlení na počet platných číslic                                                                                  |
+| `cos(x)` , `sin(x)` , `tan(x)`    | funkce kosinus, sinus, tangens v radianech                                                                             |
+| `acos(x)` , `asin(x)` , `atan(x)` | inverzní trigonometrické funkce                                                                                        |
+| `abs(x)`                          | absolutní hodnota                                                                                                      |
 
 ## Základní datové struktury
 
@@ -154,9 +149,9 @@ Základní datové struktury rozlišujeme na atomické (homogenní) a heterogenn
 
 Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.
 
-#### Vektor `vector`
+#### Atomický vektor `vector`
 
-Vektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce `vector(mode = "numeric", length = 10)` a funkce `c()`, případně vzniká pomocí opetárorů `[` nebo `[[`.
+Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako vektor hodnot, reprezentující bod v $n-$dimenzionálním prostoru. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce `vector(mode = "numeric", length = 10)` a funkce `c()`, případně vzniká pomocí opetárorů `[` nebo `[[`.
 
 S vektory se pojí důležité pravidlo - **recyklace hodnot**.
 
@@ -183,6 +178,18 @@ x <- rep(x = 15, times = 2) #<1>
 
 1.  Tvorba vektoru $\boldsymbol{\mathrm{x}}$ různými úkony. Použití sekvence, repetice, opakování a vzorkování.
 
+#### Faktor
+
+Faktorem rozumíme kategorickou proměnnou, která je určena výčtem hodnot. Ukážeme si na příkladu "tříd přesnosti měření".
+
+```{r}
+
+trida <- factor(x = 1:4,
+                labels = c(paste(1:4, ". třída", sep = "")), 
+                ordered = TRUE)
+
+```
+
 #### Matice `matrix`
 
 Rozšířením dimenze vektoru vznikne matice nebo obecně pole.
@@ -201,13 +208,24 @@ x
 | `eigen()`         | vlastní čísla a vlastní vektory matice |
 
 $$
-A = 
-\begin{bmatrix}
+\mathbf{\mathrm{u}} = 
+\begin{pmatrix}
 1\\
-1\\
-1\\
-1\\
-\end{bmatrix}
+1.5\\
+-14\\
+7.223\\
+\end{pmatrix}, \qquad
+\mathbf{\mathrm{v}} = 
+\begin{pmatrix}
+\mathrm{TRUE}\\
+\mathrm{FALSE}\\
+\mathrm{TRUE}\\
+\mathrm{TRUE}\\
+\end{pmatrix}, \qquad
+\mathbf{\mathrm{u^T}} =
+\begin{pmatrix}
+1 & 1.5 & -14 & 7.233\\
+\end{pmatrix}
 $$
 
 ```{r, collapse=TRUE}
@@ -218,19 +236,103 @@ svd(A) # <3>
 diag(A) # <4> 
 # sweep(x = A, MARGIN = 1, STATS = mean)
 ```
-
 1.  Struktura objektu
 2.  Dimenze matice
 3.  Singulární rozklad
 4.  Prvky na diagonále matice
 
+::: callout-tip
+## Úloha
+
+  1. S pomocí nápovědy k funkci `rnorm()` vytvořte matici $\boldsymbol{\mathrm{M}}; h(\boldsymbol{\mathrm{M}}) = 8$ náhodných čísel
+:::
+
+<!-- 
+```{r include=FALSE}
+Sys.setenv(LIBGS = "/usr/local/share/ghostscript/10.03.0/lib/")
+font_opts <- list(dvisvgm.opts = "--font-format=woff")
+```
+
+```{tikz, engine.opts=font_opts}
+#| echo: false
+#| fig-cap: "N-dimenzionální pole"
+#| fig-align: center
+#| out-width: 30%
+\usetikzlibrary{matrix}
+\begin{tikzpicture}[auto matrix/.style={matrix of nodes,
+  draw,thick,inner sep=0pt,
+  nodes in empty cells,column sep=-0.2pt,row sep=-0.2pt,
+  cells={nodes={minimum width=1.9em,minimum height=1.9em,
+   draw,very thin,anchor=center,fill=white,
+   execute at begin node={%
+   $\vphantom{x_|}\ifnum\the\pgfmatrixcurrentrow<4
+     \ifnum\the\pgfmatrixcurrentcolumn<4
+      {#1}^{\the\pgfmatrixcurrentrow}_{\the\pgfmatrixcurrentcolumn}
+     \else 
+      \ifnum\the\pgfmatrixcurrentcolumn=5
+       {#1}^{\the\pgfmatrixcurrentrow}_{N}
+      \fi
+     \fi
+    \else
+     \ifnum\the\pgfmatrixcurrentrow=5
+      \ifnum\the\pgfmatrixcurrentcolumn<4
+       {#1}^{T}_{\the\pgfmatrixcurrentcolumn}
+      \else
+       \ifnum\the\pgfmatrixcurrentcolumn=5
+        {#1}^{T}_{N}
+       \fi 
+      \fi
+     \fi
+    \fi  
+    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=14
+     \cdots
+    \fi
+    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=41
+     \vdots
+    \fi
+    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=44
+     \ddots
+    \fi$
+    }
+  }}}]
+ \matrix[auto matrix=z,xshift=3em,yshift=3em](matz){
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+ };
+ \matrix[auto matrix=y,xshift=1.5em,yshift=1.5em](maty){
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+ };
+ \matrix[auto matrix=x](matx){
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+  & & & & \\
+ };
+ \draw[thick,-stealth] ([xshift=1ex]matx.south east) -- ([xshift=1ex]matz.south east)
+  node[midway,below,rotate=45] {dimenze};
+ \draw[thick,-stealth] ([yshift=-1ex]matx.south west) -- 
+  ([yshift=-1ex]matx.south east) node[midway,below] {sloupce};
+ \draw[thick,-stealth] ([xshift=-1ex]matx.north west)
+   -- ([xshift=-1ex]matx.south west) node[midway,above,rotate=90] {řádky};
+\end{tikzpicture}
+```
+-->
+
 ### Heterogenní datové struktury
 
-Za **heterogenní** struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené struktury.
+Za **rúznorodé** struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou `data.frame` a `list`, dále pak `S4`, nebo `R6` třídy, případně další uživatelem vytvořené struktury.
 
 #### Datová tabulka `data.frame`
 
-`data.frame` je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.
+`data.frame` je *de facto* vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být vzájmeně rozdílného datového typu.
 
 ```{r, eval=TRUE, collapse=TRUE}
 DF <- data.frame(name = letters[1:5], 
@@ -241,7 +343,7 @@ DF[["name"]]      # podvýběr do vektoru
 DF[, "name"]      # podvýběr do vektoru
 ```
 
-Práce uvnitř data.frame
+Práce uvnitř `data.frame`
 
 ```{r, eval=TRUE, collapse=TRUE}
 DF <- data.frame(
@@ -257,7 +359,13 @@ ncol(DF)
 
 ## Řídící struktury
 
+Zajišťují obecný průběh programu, tvoří základní prvky algoritmů. Mezi řídící 
+strukury řadíme podmínky a cykly. Mohli bychom přidat i složené závorky,
+něboť pro struktury uvozují bloky kódu.
+
 ### Podmínky
+
+#### `if()`
 
 ```{r}
 A <- 1
@@ -274,71 +382,129 @@ if(A >= 2) { #<1>
   cat("A je větší než 2.") #<1>
 } #<1>
 ```
-
 1.  Řetěz podmínek se uzavře **v momentě, kdy je výraz v závorce poprvé vyhodnocen jako pravdivý**.
+
+#### `ifelse()`
+
+Vektorizovaný tvar podmínky, který lze volat na prvky struktur.
+
+```{r}
+x <- -5:5
+cat("Prvek x + 3 je více než 0: ", ifelse(x - 3 > 0, yes = "Ano", no = "Ne"))
+```
+
+
+#### `switch()`
+
+```{r}
+varianta <- "B"
+2 * (switch(
+      varianta,
+        "A" = 2,  # <1> 
+        "B" = 3)) # <2> 
+```
+1. Varianta "A nenastala,
+2. nastala varianta "B", tzn. výraz je vyhodnocen ve tvaru $2\cdot 3 = 6$
 
 ### Cykly
 
-#### `for` z definovaného rozsahu
+Zajištují, že se část kódu provede opakovaně. 
+
+#### `for()` z definovaného rozsahu
+
+Pokud je předem znám počet opakování cyklu (nebo je i jinak implicitně určen),
+používá se `for` cyklu.
 
 ```{r}
 for(i in 1:4) {
-  cat(i, "\n")
+  cat("Iterace ", i, "\n")
 }
 ```
 
-#### `while` s pomocí podmínky
+#### `while()` s pomocí podmínky
+
+V případech, kdy počet opakování není předem znám, ale je známa podmínka, za které
+cyklus má probíhat.
 
 ```{r}
 i <- 1
-while(i < 4) {
-  cat(i, "\n")
+while(i < 5) {
+  cat("Iterace ", i, "\n")
   i <- i + 1
 }
 ```
 
 #### `repeat` s únikovou sekvencí
 
+Počet opakování neni předem znám. Nicméně lze definovat případ, kdy má cyklus skončit.
+
 ```{r}
 i <- 1
-repeat({
-  cat(i, "\n")
-  i <- i + 1
-  if(i >= 4) break
-})
+repeat { #<1>
+  cat("Iterace ", i, "\n") #<1>
+  i <- i + 1 #<1>
+  if(i >= 5) break #<1> # <2>
+} #<1>
 ```
+1. Prováděj 
+2. Vnořenou podmínkou následovanou klíčovým slovem `break` definujeme konec cyklu. 
+
+Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití 
+příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`.
 
 ::: callout-tip
-## Cvičení
-  1. Vyhodnoťte s pomocí R následující výrazy:\
-    a) $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
-    b) $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
-    c) $\sum\limits_{i = 1}^{53}x_i$\
-    d) $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
-    e) $\dfrac{\sin(2.3)}{\cos(\pi)}$\
-    f) $20!$\
-    g) $\int_{0}^{3\pi} \sin(x) dx$
-
-  2. Proveďte:\
-    a) Vytvořte vektor hodnot od $100$ do $1$ sestupně, využijte nápovědu k funkci `seq()`.\
-    b) Spočtěte rozdíl, matic $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$. $$\boldsymbol{\mathrm{A}} = \left(
-  \begin{matrix}
-  2 & 2 & 5\\
-  9 & 2 & 7\\
-  1 & 3 & 18\\
-  \end{matrix}
-  \right),\qquad 
-  \boldsymbol{\mathrm{B}} = \left(
-  \begin{matrix}
-  5 & 4 & 5\\
-  -7 & 2 & 4\\
-  10 & 1 & 5\\
-  \end{matrix}
-  \right)
-  $$\
-    c) Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
-    d) S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
+## Úloha
+  
+1. Vytvořte cyklus, který 
 :::
+
+
+
+::: callout-tip
+## Úloha
+
+1.  Vyhodnoťte s pomocí R následující výrazy:\
+    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
+    b)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
+    c)  $\sum\limits_{i = 1}^{53}x_i$\
+    d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
+    e)  $\dfrac{\sin(2.3)}{\cos(\pi)}$\
+    f)  $20!$\
+    g)  $\int_{0}^{3\pi} \sin(x) dx$
+2.  Proveďte:\
+    a)  Vytvořte vektor hodnot od $100$ do $1$ sestupně, využijte nápovědu k funkci `seq()`.\
+    b)  Spočtěte rozdíl, matic $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$. $$\boldsymbol{\mathrm{A}} = \left(
+          \begin{matrix}
+          2 & 2 & 5\\
+          9 & 2 & 7\\
+          1 & 3 & 18\\
+          \end{matrix}
+          \right),\qquad 
+          \boldsymbol{\mathrm{B}} = \left(
+          \begin{matrix}
+          5 & 4 & 5\\
+          -7 & 2 & 4\\
+          10 & 1 & 5\\
+          \end{matrix}
+          \right)
+          $$\
+    c)  Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
+    d)  S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
+:::
+
+## Vlastní funkce
+
+K funkce slouží klíčové slovo `function`, které v závorkách doprovází argumenty sloužící k vnitřní specifikaci funkce.
+
+```{r}
+x <- rnorm(100)
+nejblizsi_hodnota <- function(x, value) { # <1>
+  x[which(abs(x - value) == min(abs(x - value)))] # <1>
+} # <1>
+
+cat("Hodnota nejblíže 0 z vektoru x je:" , nejblizsi_hodnota(x = x, value = 0))
+```
+1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
 
 ## Práce s daty
 
@@ -368,8 +534,8 @@ with(data = global_temperature_yr,
 ::: callout-tip
 ## Cvičení
 
-  1. Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
-  2. Doplňte hydrologický rok.\
-  3. Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
-  4. Vyneste do grafu pomocí funkce `plot()`.
+1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
+2.  Doplňte hydrologický rok.\
+3.  Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
+4.  Vyneste do grafu pomocí funkce `plot()`.
 :::

@@ -248,8 +248,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#kvantilová-funkce" id="toc-kvantilová-funkce" class="nav-link" data-scroll-target="#kvantilová-funkce"><span class="header-section-number">7.3</span> Kvantilová funkce</a></li>
   <li><a href="#náhodná-čísla" id="toc-náhodná-čísla" class="nav-link" data-scroll-target="#náhodná-čísla"><span class="header-section-number">7.4</span> Náhodná čísla</a></li>
   <li><a href="#empirické-vs.-teoretické-rozdělení" id="toc-empirické-vs.-teoretické-rozdělení" class="nav-link" data-scroll-target="#empirické-vs.-teoretické-rozdělení"><span class="header-section-number">7.5</span> Empirické vs.&nbsp;teoretické rozdělení</a></li>
-  <li><a href="#diskrétní-rozdělení" id="toc-diskrétní-rozdělení" class="nav-link" data-scroll-target="#diskrétní-rozdělení"><span class="header-section-number">7.6</span> Diskrétní rozdělení</a></li>
-  <li><a href="#spojitá-rozdělení" id="toc-spojitá-rozdělení" class="nav-link" data-scroll-target="#spojitá-rozdělení"><span class="header-section-number">7.7</span> Spojitá rozdělení</a></li>
+  <li><a href="#diskrétní-rozdělení" id="toc-diskrétní-rozdělení" class="nav-link" data-scroll-target="#diskrétní-rozdělení"><span class="header-section-number">7.6</span> Diskrétní rozdělení</a>
+  <ul class="collapse">
+  <li><a href="#alternativní-rozdělení" id="toc-alternativní-rozdělení" class="nav-link" data-scroll-target="#alternativní-rozdělení"><span class="header-section-number">7.6.1</span> Alternativní rozdělení</a></li>
+  <li><a href="#rovnoměrné-rozdělení" id="toc-rovnoměrné-rozdělení" class="nav-link" data-scroll-target="#rovnoměrné-rozdělení"><span class="header-section-number">7.6.2</span> Rovnoměrné rozdělení</a></li>
+  <li><a href="#binomické-rozdělení" id="toc-binomické-rozdělení" class="nav-link" data-scroll-target="#binomické-rozdělení"><span class="header-section-number">7.6.3</span> Binomické rozdělení</a></li>
+  <li><a href="#poissonovo-rozdělení" id="toc-poissonovo-rozdělení" class="nav-link" data-scroll-target="#poissonovo-rozdělení"><span class="header-section-number">7.6.4</span> Poissonovo rozdělení</a></li>
+  </ul></li>
+  <li><a href="#spojitá-rozdělení" id="toc-spojitá-rozdělení" class="nav-link" data-scroll-target="#spojitá-rozdělení"><span class="header-section-number">7.7</span> Spojitá rozdělení</a>
+  <ul class="collapse">
+  <li><a href="#normální-rozdělení" id="toc-normální-rozdělení" class="nav-link" data-scroll-target="#normální-rozdělení"><span class="header-section-number">7.7.1</span> Normální rozdělení</a></li>
+  <li><a href="#logaritmicko-normální-rozdělení" id="toc-logaritmicko-normální-rozdělení" class="nav-link" data-scroll-target="#logaritmicko-normální-rozdělení"><span class="header-section-number">7.7.2</span> Logaritmicko-normální rozdělení</a></li>
+  <li><a href="#studentovo-t-rozdělení" id="toc-studentovo-t-rozdělení" class="nav-link" data-scroll-target="#studentovo-t-rozdělení"><span class="header-section-number">7.7.3</span> Studentovo-<span class="math inline">\(t\)</span> rozdělení</a></li>
+  <li><a href="#f-rozdělení" id="toc-f-rozdělení" class="nav-link" data-scroll-target="#f-rozdělení"><span class="header-section-number">7.7.4</span> <span class="math inline">\(F\)</span> rozdělení</a></li>
+  <li><a href="#chi2-rozdělení" id="toc-chi2-rozdělení" class="nav-link" data-scroll-target="#chi2-rozdělení"><span class="header-section-number">7.7.5</span> <span class="math inline">\(\chi^2\)</span> rozdělení</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -337,11 +350,11 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-3">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-3">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 </dl>
 </div>
@@ -354,8 +367,8 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seed, <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]       10403           2  2076997455 -1111822250   109910784  -612897213
- [7]   369432033  -929971888  1050974126  1924033881</code></pre>
+<pre><code> [1]       10403           2  1244309462   559498321   995815171  -123230574
+ [7] -2132351964     4647655 -1258225859  1132855220</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -382,8 +395,8 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3663231
-[1] 0.3663231 0.5313931</code></pre>
+<pre><code>[1] 0.6025927
+[1] 0.602592711 0.002891292</code></pre>
 </div>
 </div>
 </section>
@@ -399,49 +412,122 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.356051</code></pre>
+<pre><code>[1] 0.5553819</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 33.56051</code></pre>
+<pre><code>[1] 5.553819</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.998284</code></pre>
+<pre><code>[1] 0.273356</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.721159</code></pre>
+<pre><code>[1] 2.50409</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fivenum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -6.946134  1.067855  1.998284  7.165056 14.147672</code></pre>
+<pre><code>[1] -5.372596 -1.589268  0.273356  1.465905  7.377337</code></pre>
 </div>
 </div>
+<section id="alternativní-rozdělení" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="alternativní-rozdělení"><span class="header-section-number">7.6.1</span> Alternativní rozdělení</h3>
+</section>
+<section id="rovnoměrné-rozdělení" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="rovnoměrné-rozdělení"><span class="header-section-number">7.6.2</span> Rovnoměrné rozdělení</h3>
+</section>
+<section id="binomické-rozdělení" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="binomické-rozdělení"><span class="header-section-number">7.6.3</span> Binomické rozdělení</h3>
+</section>
+<section id="poissonovo-rozdělení" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="poissonovo-rozdělení"><span class="header-section-number">7.6.4</span> Poissonovo rozdělení</h3>
+</section>
 </section>
 <section id="spojitá-rozdělení" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="spojitá-rozdělení"><span class="header-section-number">7.7</span> Spojitá rozdělení</h2>
+<p>Během počítání s rozděleními se snažíme nalézt odpovědi na podobné otázky:<br>
+“Jaká je pravděpodobnost, že veličina <span class="math inline">\(X\)</span> je menší než 7.5?”</p>
+<section id="normální-rozdělení" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="normální-rozdělení"><span class="header-section-number">7.7.1</span> Normální rozdělení</h3>
+<p>$$</p>
+<p>$$</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Pravděpodobnost, že <span class="math inline">\(x\)</span> je menší nebo rovno 2.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-10-1.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Pravděpodobnost, že <span class="math inline">\(x\)</span> je menší nebo rovno 2.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>S pomocí funkce <code>curve()</code> vykreslete hustotu funkce normovaného normálního rozdělení danou předpisem: <span class="math display">\[
+f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+\]</span></li>
+</ol>
+</div>
+</div>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid"></p>
 </div>
 </div>
+</section>
+<section id="logaritmicko-normální-rozdělení" class="level3" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="logaritmicko-normální-rozdělení"><span class="header-section-number">7.7.2</span> Logaritmicko-normální rozdělení</h3>
+</section>
+<section id="studentovo-t-rozdělení" class="level3" data-number="7.7.3">
+<h3 data-number="7.7.3" class="anchored" data-anchor-id="studentovo-t-rozdělení"><span class="header-section-number">7.7.3</span> Studentovo-<span class="math inline">\(t\)</span> rozdělení</h3>
+</section>
+<section id="f-rozdělení" class="level3" data-number="7.7.4">
+<h3 data-number="7.7.4" class="anchored" data-anchor-id="f-rozdělení"><span class="header-section-number">7.7.4</span> <span class="math inline">\(F\)</span> rozdělení</h3>
+<p>Jinak také <em>Fisherovo-Snedecorovo</em> rozdělení je používáno pro sestrojení <span class="math inline">\(100(1-\alpha)\%\)</span> intevalu spolehlivosti pro podíl rozptylů normálního rozdělení a je to modelové rozdělení testovací statistiky pro ověření shodnosti dvou rozptylů. V <span class="quarto-unresolved-ref">?sec-anova</span> nalezneme <span class="math inline">\(F-\)</span>rozdělení u testování hypotézy o rovnosti středních hodnot u více než dvou výběrových souborů.</p>
+</section>
+<section id="chi2-rozdělení" class="level3" data-number="7.7.5">
+<h3 data-number="7.7.5" class="anchored" data-anchor-id="chi2-rozdělení"><span class="header-section-number">7.7.5</span> <span class="math inline">\(\chi^2\)</span> rozdělení</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -463,6 +549,7 @@ Cvičení
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

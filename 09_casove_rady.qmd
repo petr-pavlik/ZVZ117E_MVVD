@@ -1,10 +1,31 @@
 # Časové řady
 
-Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.
+::: callout-warning
+## Cíle cvičení
+
+  - Definovat časovou řadu s pomocí `ts()`
+  - Detekovat přítomnost trendu, bodu zlomu
+  - Aplikovat klouzavý průměr jako zhlazovací funkci
+:::
+
+Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`. 
+
+
+::: callout-note
+## Další zdroje
+
+Mnoho dalších nalezneme například studiem příslušného [CRAN Task View](https://cran.r-projecet.org/web/views/TimeSeries.html).
+:::
+
+`ts()`
+```{r}
+?ts
+```
+
 
 Budeme pracovat se dvěma datovými sadami:
   
-  1. Naše již připravená data z MOPEX
+  1. Naše již připravená data z CAMELS
   2. Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`
 
 ```{r}
@@ -12,9 +33,60 @@ dataset <- readRDS("data/data.rds")[1:15000,]
 data("co2")
 ```
 
+Využijeme znalostí z @sec-grafy
+
+```{r, fig.align='center'}
+hydroplot <- function(srazka, vypar, odtok, ...) {
+  plot(odtok, 
+       ylim = c(-max(odtok), 
+                2*max(odtok)), 
+       yaxt = "n",
+       xlab = "", 
+       ylab = "", 
+       ...)
+  axis(2, 
+       at = round(signif(seq(0, max(odtok), length = 5), 2)))
+  abline(h = 0, lty = 3)
+  par(new = TRUE)
+  plot(x = time(srazka), 
+       y = as.numeric(srazka), 
+       col = "dodgerblue4", 
+       type = "h",
+       ylim = rev(c(0, 3*max(srazka))),
+       xlab = "", 
+       ylab = "", 
+       axes = FALSE, ...)
+  axis(4, 
+       at = round(signif(seq(0, max(odtok), length = 5), 2)))
+  par(new = TRUE)
+  deltaet <- max(vypar) - min(vypar)
+  plot(x = time(vypar), 
+       y = as.numeric(vypar), col = "salmon1", type = "l",
+       ylim = c(min(vypar), max(vypar) + 2.5*deltaet),
+       xlab = "", 
+       ylab = "", 
+       axes = FALSE, ...)
+  axis(4, 
+       at = round(signif(seq(min(vypar), max(vypar), length = 5), 2), 1))
+}
+
+dframe <- ts(data = data.frame(P = 1:365, EP = 21:385,Q = 31:395), 
+             start = c(2024, 1, 1), 
+             frequency = 525960)
+time(dframe)
+
+hydroplot(srazka = dframe[, "P"], 
+         vypar = dframe[, "EP"], 
+         odtok = dframe[, "Q"], 
+         xlim = as.Date(c("2001-09-01","2001-09-21")))
+         title("rainfall, runoff and potential evaporation (mm/d)", 
+               cex.main = 1.25, 
+               font.main = 1)
+```
+
 ## Autokorelační funkce
 
-ACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.
+Slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodných čísel. Graficky je vyjádřena pomocí *korelogramu*.
 
 ```{r, fig.cap="Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"}
 par(mfrow = c(1, 2))
@@ -22,6 +94,12 @@ acf(dataset$R)
 acf(co2)
 ```
 
+## Pardého koeficienty 
+
+
+```{r}
+
+```
 
 
 ## Dekompozice časové řady

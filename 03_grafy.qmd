@@ -1,4 +1,4 @@
-# Grafický výstup
+# Grafický výstup {#sec-grafy}
 
 ::: callout-warning
 ## Cíle cvičení
@@ -118,6 +118,9 @@ colors()[1:10]
 ```
 
 ## Matematická sazba v grafech
+
+`?plotmath`
+demo(plotmath)
 
 ## Vytváříme layout
 

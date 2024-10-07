@@ -246,8 +246,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#nápověda" id="toc-nápověda" class="nav-link active" data-scroll-target="#nápověda"><span class="header-section-number">4.1</span> Nápověda</a></li>
   <li><a href="#jmenné-konvence" id="toc-jmenné-konvence" class="nav-link" data-scroll-target="#jmenné-konvence"><span class="header-section-number">4.2</span> Jmenné konvence</a></li>
   <li><a href="#uvozovky-a-závorky" id="toc-uvozovky-a-závorky" class="nav-link" data-scroll-target="#uvozovky-a-závorky"><span class="header-section-number">4.3</span> Uvozovky a závorky</a></li>
-  <li><a href="#aritmetické-operace" id="toc-aritmetické-operace" class="nav-link" data-scroll-target="#aritmetické-operace"><span class="header-section-number">4.4</span> Aritmetické operace</a></li>
-  <li><a href="#operátory" id="toc-operátory" class="nav-link" data-scroll-target="#operátory"><span class="header-section-number">4.5</span> Operátory</a></li>
+  <li><a href="#operátory" id="toc-operátory" class="nav-link" data-scroll-target="#operátory"><span class="header-section-number">4.4</span> Operátory</a></li>
+  <li><a href="#matematické-funkce" id="toc-matematické-funkce" class="nav-link" data-scroll-target="#matematické-funkce"><span class="header-section-number">4.5</span> Matematické funkce</a></li>
   <li><a href="#základní-datové-struktury" id="toc-základní-datové-struktury" class="nav-link" data-scroll-target="#základní-datové-struktury"><span class="header-section-number">4.6</span> Základní datové struktury</a>
   <ul class="collapse">
   <li><a href="#homogenní-datové-struktury" id="toc-homogenní-datové-struktury" class="nav-link" data-scroll-target="#homogenní-datové-struktury"><span class="header-section-number">4.6.1</span> Homogenní datové struktury</a></li>
@@ -258,7 +258,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#podmínky" id="toc-podmínky" class="nav-link" data-scroll-target="#podmínky"><span class="header-section-number">4.7.1</span> Podmínky</a></li>
   <li><a href="#cykly" id="toc-cykly" class="nav-link" data-scroll-target="#cykly"><span class="header-section-number">4.7.2</span> Cykly</a></li>
   </ul></li>
-  <li><a href="#práce-s-daty" id="toc-práce-s-daty" class="nav-link" data-scroll-target="#práce-s-daty"><span class="header-section-number">4.8</span> Práce s daty</a></li>
+  <li><a href="#vlastní-funkce" id="toc-vlastní-funkce" class="nav-link" data-scroll-target="#vlastní-funkce"><span class="header-section-number">4.8</span> Vlastní funkce</a></li>
+  <li><a href="#práce-s-daty" id="toc-práce-s-daty" class="nav-link" data-scroll-target="#práce-s-daty"><span class="header-section-number">4.9</span> Práce s daty</a></li>
   </ul>
 </nav>
     </div>
@@ -282,6 +283,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cíle cvičení
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Umět vyhledat nápovědu k funkci.</li>
+<li>Ovládat základní matematické výpočty pmocí funkcí a operátorů.</li>
+<li>Umět definovat objekt v datovém typy a struktuře a tyto vzájemně transoformovat.</li>
+<li>Ovládat běh výpočtu pomocí podmínek a cyků.</li>
+<li>Přidávat k pracovnímu postupu vlastní funkce.</li>
+</ul>
+</div>
+</div>
 <p>Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospodářství. Na tomto místě je pouze zhuštěný přehled funkcionality z uvedeného kurzu.</p>
 <section id="nápověda" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="nápověda"><span class="header-section-number">4.1</span> Nápověda</h2>
@@ -298,21 +318,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Vyhledejte nápovědu k <code>DateTimeClasses</code>.<br>
-a) Co reprezentují třídy <code>POSIXct</code> a <code>POSIXlt</code>?<br>
-b) Jaký je mezi nimi rozdíl?<br>
-c) Nalezněte funkci pro výpočet <span class="math inline">\(5!\)</span><br>
+
+<ol type="a">
+<li>Co reprezentují třídy <code>POSIXct</code> a <code>POSIXlt</code>?<br>
 </li>
+<li>Jaký je mezi nimi rozdíl?<br>
+</li>
+<li>Nalezněte funkci pro výpočet <span class="math inline">\(5!\)</span><br>
+</li>
+</ol></li>
 </ol>
 </div>
 </div>
 </section>
 <section id="jmenné-konvence" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="jmenné-konvence"><span class="header-section-number">4.2</span> Jmenné konvence</h2>
-<p>Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nezačíná číslovkou nebo operátorem. Název se neshoduje se žádným klíčovým slovem rovněž se název neshoduje s žádnou běžně používanou funkcí.</p>
+<p>Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nelze začínat číslovkou nebo operátorem, nesmít být totžný s žádným klíčovým slovem, obsahovat mezeru.</p>
 <section id="klíčová-slova" class="level5 unnumbered">
 <h5 class="unnumbered anchored" data-anchor-id="klíčová-slova">Klíčová slova</h5>
 <p><code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>repeat</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>, <code>NA_character_</code>, a speciální znak: <code>_</code></p>
-<p>Nedoporučuje se vkládat do názvu proměnné tečku, např. <code>morava.prutoky</code>.</p>
+<p>Nedoporučuje se vkládat do názvu proměnné tečku, např. <code>morava.prutoky</code>, a pojmenovávat shodně s běžně používanou funkcí. R je “case-sensitive” jazyk tzn., že proměnná <code>X</code> se nerovná <code>x</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -341,12 +366,12 @@ c) Nalezněte funkci pro výpočet <span class="math inline">\(5!\)</span><br>
 <ul>
 <li><code>()</code> <strong>se používají vždy se jménem funkce</strong> a uvozují prostor ve kterém se parametrizují argumenty funkce.<br>
 </li>
-<li><code>[]</code> se <strong>vždy pojí se jménem objektu</strong> - vektoru, pole, listu, … a vymezují výběr z daného objektu.<br>
+<li><code>[]</code> se <strong>vždy pojí se jménem objektu</strong> (vektoru, pole, listu, …) a vymezují výběr z daného objektu.<br>
 </li>
 <li><code>{}</code> <strong>ohraničují blok kódu</strong>, který se má vykonat v celku.<br>
 </li>
 </ul>
-<p>Uvozovky uvozují textové řetězce. Lze používat jak dvojté <code>"</code> tak jednoduché <code>'</code> uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem.</p>
+<p>Uvozovky uvozují textové řetězce. Lze používat jak dvojté <code>"</code> tak jednoduché <code>'</code> uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -370,168 +395,91 @@ c) Nalezněte funkci pro výpočet <span class="math inline">\(5!\)</span><br>
 </div>
 </div>
 </section>
-<section id="aritmetické-operace" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="aritmetické-operace"><span class="header-section-number">4.4</span> Aritmetické operace</h2>
+<section id="operátory" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="operátory"><span class="header-section-number">4.4</span> Operátory</h2>
+<p>Rozlišujeme operátory aritmetické, relační, přiřazení a patří sem i množinové funkce.</p>
+<table class="table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Znak</th>
+<th>Význam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code> , <code>-</code> , <code>*</code> , <code>/</code> , <code>%%</code> , <code>%/%</code> , <code>**</code> nebo <code>^</code>, <code>%*%</code></td>
+<td>aritmetické operátory (sčítání, odčítání, násobení, dělení, modulo, celočíselné dělení, mocnění a maticové násobení)</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code> ,<code>&gt;=</code> , <code>&lt;</code> , <code>&lt;=</code> , <code>==</code> , <code>!=</code></td>
+<td>relační operátory (větší/menžší než, rovno, nerovno)</td>
+</tr>
+<tr class="odd">
+<td><code>!</code> , <code>&amp;</code> , <code>&amp;&amp;</code> , <code>|</code> , <code>||</code></td>
+<td>logické (ne, a soužasně, zdvojené po prvcích vektoru)</td>
+</tr>
+<tr class="even">
+<td><code>~</code></td>
+<td>zadání funkčního vztahu</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;-</code> , <code>=</code>, <code>&lt;&lt;-</code>, <code>-&gt;</code></td>
+<td>operátory přiřazení</td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>jmenný index v heterogenních strukturách</td>
+</tr>
+<tr class="odd">
+<td><code>:</code></td>
+<td>rozsah</td>
+</tr>
+<tr class="even">
+<td><code>isTRUE()</code> , <code>all()</code> , <code>any()</code> , <code>%in%</code> , <code>setdiff()</code></td>
+<td>množinové funkce</td>
+</tr>
+</tbody>
+</table>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">*</span> (<span class="sc">-</span><span class="dv">1</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%%</span> <span class="dv">3</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="7">7</button><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">**</span> <span class="dv">3</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="8">8</button><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">%*%</span> <span class="dv">3</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="9">9</button><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="10">10</button><span id="annotated-cell-2-11" class="code-annotation-target"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="11">11</button><span id="annotated-cell-2-12" class="code-annotation-target"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="12">12</button><span id="annotated-cell-2-13" class="code-annotation-target"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cumprod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="11">11</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(x)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="12">12</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(x)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="13">13</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="14">14</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="15">15</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">%in%</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="16">16</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Sčítání</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-2">Odečítání</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-annotation="3" data-code-lines="3,4" data-code-cell="annotated-cell-2">Násobení</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-annotation="4" data-code-lines="5" data-code-cell="annotated-cell-2">Dělení</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-annotation="5" data-code-lines="6" data-code-cell="annotated-cell-2">Modulo</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-annotation="6" data-code-lines="7" data-code-cell="annotated-cell-2">Celočíselné dělení</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-annotation="7" data-code-lines="8" data-code-cell="annotated-cell-2">Mocninné operace</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-annotation="8" data-code-lines="9" data-code-cell="annotated-cell-2">Maticové násoobení</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-annotation="9" data-code-lines="10" data-code-cell="annotated-cell-2"><span class="math inline">\(\sum\)</span> prvků z rozsahu</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-annotation="10" data-code-lines="11" data-code-cell="annotated-cell-2"><span class="math inline">\(\Pi\)</span> prvků z rozsahu</span>
-</dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-annotation="11" data-code-lines="12" data-code-cell="annotated-cell-2">Kumulativní součet prvků z rozsahu</span>
+<span data-code-lines="2" data-code-annotation="11" data-code-cell="annotated-cell-2">Negace</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-annotation="12" data-code-lines="13" data-code-cell="annotated-cell-2">Kumulativní produkt prvků z rozsahu</span>
+<span data-code-lines="3" data-code-annotation="12" data-code-cell="annotated-cell-2">Je <span class="math inline">\(x\)</span> “pravda”?</span>
 </dd>
-</dl>
-</div>
-</div>
-</section>
-<section id="operátory" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="operátory"><span class="header-section-number">4.5</span> Operátory</h2>
-<p>Kromě aritmetických operátorů, zmíněných <span class="quarto-unresolved-ref">?sec-aritmeticke-operace</span></p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;=</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;=</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="er">==</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a><span class="er">!=</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="7">7</button><span id="annotated-cell-3-7" class="code-annotation-target"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a><span class="er">&amp;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="8">8</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a><span class="er">&amp;&amp;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="9">9</button><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a><span class="er">|</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="10">10</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a><span class="er">||</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="11">11</button><span id="annotated-cell-3-11" class="code-annotation-target"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(x)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="12">12</button><span id="annotated-cell-3-12" class="code-annotation-target"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(x)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="13">13</button><span id="annotated-cell-3-13" class="code-annotation-target"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>()</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="14">14</button><span id="annotated-cell-3-14" class="code-annotation-target"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>()</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="15">15</button><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a><span class="sc">%in%</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="16">16</button><span id="annotated-cell-3-16" class="code-annotation-target"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-3">Menší než</span>
+<span data-code-lines="4" data-code-annotation="13" data-code-cell="annotated-cell-2">Je něco z obsahu “pravda”?</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-3">Větší než</span>
+<span data-code-lines="5" data-code-annotation="14" data-code-cell="annotated-cell-2">Je vše z obsahu “pravda”?</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="15">15</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="3" data-code-cell="annotated-cell-3">Větší nebo rovno</span>
+<span data-code-lines="6" data-code-annotation="15" data-code-cell="annotated-cell-2">Je něco obsaženo v?</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="16">16</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="4" data-code-cell="annotated-cell-3">Menší nebo rovno</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-annotation="5" data-code-lines="5" data-code-cell="annotated-cell-3">Rovno</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-annotation="6" data-code-lines="6" data-code-cell="annotated-cell-3">Nerovno</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-annotation="7" data-code-lines="7" data-code-cell="annotated-cell-3">Logické “a”</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-annotation="8" data-code-lines="8" data-code-cell="annotated-cell-3">Logické “a” přes vektor</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-annotation="9" data-code-lines="9" data-code-cell="annotated-cell-3">Logické “nebo”<br>
-</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-annotation="10" data-code-lines="10" data-code-cell="annotated-cell-3">Logické “nebo” přes vektor</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="11">11</dt>
-<dd>
-<span data-code-annotation="11" data-code-lines="11" data-code-cell="annotated-cell-3">Negace</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="12">12</dt>
-<dd>
-<span data-code-annotation="12" data-code-lines="12" data-code-cell="annotated-cell-3">Je <span class="math inline">\(x\)</span> “pravda”?</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="13">13</dt>
-<dd>
-<span data-code-annotation="13" data-code-lines="13" data-code-cell="annotated-cell-3">Je něco z obsahu “pravda”?</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="14">14</dt>
-<dd>
-<span data-code-annotation="14" data-code-lines="14" data-code-cell="annotated-cell-3">Je vše z obsahu “pravda”?</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="15">15</dt>
-<dd>
-<span data-code-annotation="15" data-code-lines="15" data-code-cell="annotated-cell-3">Je něco obsaženo v?</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="16">16</dt>
-<dd>
-<span data-code-annotation="16" data-code-lines="16" data-code-cell="annotated-cell-3">Chybí něco něco z obsahu v?</span>
+<span data-code-lines="7" data-code-annotation="16" data-code-cell="annotated-cell-2">Chybí něco něco z obsahu v?</span>
 </dd>
 </dl>
 </div>
@@ -548,13 +496,97 @@ c) Nalezněte funkci pro výpočet <span class="math inline">\(5!\)</span><br>
 <div class="callout-body-container callout-body">
 <ol start="4" type="1">
 <li>Použite k výpočtu operátory:<br>
-a) Zjistěte, zda je číslo 1109388 dělitelné 7.<br>
-b) Do vektoru <span class="math inline">\(\mathbf{\mathrm{a}}\)</span> uložte násobky 3 v rozsahu <span class="math inline">\(\langle-121;30\rangle\)</span> a <span class="math inline">\(\mathbf{\mathrm{b}}\)</span> násobky 7 v rozmezí<br>
-c) Vypište hodnoty<br>
+
+<ol type="a">
+<li>Zjistěte, zda je číslo 1109388 dělitelné 7.<br>
 </li>
+<li>Do vektoru <span class="math inline">\(\mathbf{\mathrm{a}}\)</span> uložte násobky 3 v rozsahu <span class="math inline">\(\langle-121;30\rangle\)</span> a <span class="math inline">\(\mathbf{\mathrm{b}}\)</span> násobky 7 v rozmezí<br>
+</li>
+<li>Vypište hodnoty<br>
+</li>
+</ol></li>
 </ol>
 </div>
 </div>
+</section>
+<section id="matematické-funkce" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="matematické-funkce"><span class="header-section-number">4.5</span> Matematické funkce</h2>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Funkce</th>
+<th>Význam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>log(x)</code></td>
+<td>logaritmus <span class="math inline">\(x\)</span> o základu <span class="math inline">\(e\)</span></td>
+</tr>
+<tr class="even">
+<td><code>exp(x)</code></td>
+<td>odlogaritmování <span class="math inline">\(x(e^x)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>log(x, n)</code></td>
+<td>logaritmus <span class="math inline">\(x\)</span> o základu <span class="math inline">\(n\)</span></td>
+</tr>
+<tr class="even">
+<td><code>log10(x)</code></td>
+<td>logaritmus <span class="math inline">\(x\)</span> o základu <span class="math inline">\(10\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>sqrt(x)</code></td>
+<td>druhá odmocnina z <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td><code>factorial</code>(x)</td>
+<td><span class="math inline">\(x!\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>choose(n, x)</code></td>
+<td>binomické koeficienty <span class="math display">\[                                                                                               
+                                                                                                                   \binom{n}{k} = \frac{n!}{k!(n-k)!}        
+                                                                                                                \]</span></td>
+</tr>
+<tr class="even">
+<td><code>ceiling(x)</code></td>
+<td>nejmenší celé číslo větší než <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>floor(x)</code></td>
+<td>největší celé číslo před <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td><code>trunc(x)</code></td>
+<td>nejbliřší celé číslo mez i<span class="math inline">\(x\)</span> a 0</td>
+</tr>
+<tr class="odd">
+<td><code>round(x, digits)</code></td>
+<td>zaokrouhlení <span class="math inline">\(x\)</span> na <span class="math inline">\(n\)</span> desetinných míst</td>
+</tr>
+<tr class="even">
+<td><code>signif(x, digits)</code></td>
+<td>zaokrouhlení na počet platných číslic</td>
+</tr>
+<tr class="odd">
+<td><code>cos(x)</code> , <code>sin(x)</code> , <code>tan(x)</code></td>
+<td>funkce kosinus, sinus, tangens v radianech</td>
+</tr>
+<tr class="even">
+<td><code>acos(x)</code> , <code>asin(x)</code> , <code>atan(x)</code></td>
+<td>inverzní trigonometrické funkce</td>
+</tr>
+<tr class="odd">
+<td><code>abs(x)</code></td>
+<td>absolutní hodnota</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="základní-datové-struktury" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="základní-datové-struktury"><span class="header-section-number">4.6</span> Základní datové struktury</h2>
@@ -562,27 +594,27 @@ c) Vypište hodnoty<br>
 <section id="homogenní-datové-struktury" class="level3" data-number="4.6.1">
 <h3 data-number="4.6.1" class="anchored" data-anchor-id="homogenní-datové-struktury"><span class="header-section-number">4.6.1</span> Homogenní datové struktury</h3>
 <p>Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.</p>
-<section id="vektor-vector" class="level4" data-number="4.6.1.1">
-<h4 data-number="4.6.1.1" class="anchored" data-anchor-id="vektor-vector"><span class="header-section-number">4.6.1.1</span> Vektor <code>vector</code></h4>
-<p>Vektor je v jazyce R základní stavební strukturou. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce <code>vector(mode = "numeric", length = 10)</code> a funkce <code>c()</code>, případně vzniká pomocí opetárorů <code>[</code> nebo <code>[[</code>.</p>
+<section id="atomický-vektor-vector" class="level4" data-number="4.6.1.1">
+<h4 data-number="4.6.1.1" class="anchored" data-anchor-id="atomický-vektor-vector"><span class="header-section-number">4.6.1.1</span> Atomický vektor <code>vector</code></h4>
+<p>Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako vektor hodnot, reprezentující bod v <span class="math inline">\(n-\)</span>dimenzionálním prostoru. Může nabývat jakéhokoliv datového typu, nicméně všechny prvky v daném vektoru jsou právě jednoho typu, čímž rozumíme, že je tato struktura tzv. homogenní. Vektor je možné vytvořit mnoha způsoby, mezi nejčastější patří funkce <code>vector(mode = "numeric", length = 10)</code> a funkce <code>c()</code>, případně vzniká pomocí opetárorů <code>[</code> nebo <code>[[</code>.</p>
 <p>S vektory se pojí důležité pravidlo - <strong>recyklace hodnot</strong>.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fl">2.0</span>, <span class="fl">6.1</span>, <span class="fl">2.7</span>)</span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.0</span>, <span class="fl">1.3</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> v</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>u <span class="sc">*</span> v</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fl">2.0</span>, <span class="fl">6.1</span>, <span class="fl">2.7</span>)</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.0</span>, <span class="fl">1.3</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> v</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>u <span class="sc">*</span> v</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-4">Sčítám vektory přičemž délka jednoho je násobkem délky druhého.</span>
+<span data-code-lines="3" data-code-annotation="1" data-code-cell="annotated-cell-3">Sčítám vektory přičemž délka jednoho je násobkem délky druhého.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-4">Násobím vektory přičemž délka jednoho je násobkem délky druhého.</span>
+<span data-code-lines="4" data-code-annotation="2" data-code-cell="annotated-cell-3">Násobím vektory přičemž délka jednoho je násobkem délky druhého.</span>
 </dd>
 </dl>
 </div>
@@ -596,33 +628,45 @@ c) Vypište hodnoty<br>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
-<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">expr =</span> <span class="fu">eval</span>(<span class="dv">2</span>))</span>
-<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">15</span>, <span class="at">times =</span> <span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">expr =</span> <span class="fu">eval</span>(<span class="dv">2</span>))</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">15</span>, <span class="at">times =</span> <span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1,2,3,4,5,6" data-code-cell="annotated-cell-5">Tvorba vektoru <span class="math inline">\(\boldsymbol{\mathrm{x}}\)</span> různými úkony. Použití sekvence, repetice, opakování a vzorkování.</span>
+<span data-code-lines="1,2,3,4,5,6" data-code-annotation="1" data-code-cell="annotated-cell-4">Tvorba vektoru <span class="math inline">\(\boldsymbol{\mathrm{x}}\)</span> různými úkony. Použití sekvence, repetice, opakování a vzorkování.</span>
 </dd>
 </dl>
 </div>
 </div>
 </section>
 </section>
-<section id="matice-matrix" class="level4" data-number="4.6.1.2">
-<h4 data-number="4.6.1.2" class="anchored" data-anchor-id="matice-matrix"><span class="header-section-number">4.6.1.2</span> Matice <code>matrix</code></h4>
+<section id="faktor" class="level4" data-number="4.6.1.2">
+<h4 data-number="4.6.1.2" class="anchored" data-anchor-id="faktor"><span class="header-section-number">4.6.1.2</span> Faktor</h4>
+<p>Faktorem rozumíme kategorickou proměnnou, která je určena výčtem hodnot. Ukážeme si na příkladu “tříd přesnosti měření”.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>trida <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="st">". třída"</span>, <span class="at">sep =</span> <span class="st">""</span>)), </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="matice-matrix" class="level4" data-number="4.6.1.3">
+<h4 data-number="4.6.1.3" class="anchored" data-anchor-id="matice-matrix"><span class="header-section-number">4.6.1.3</span> Matice <code>matrix</code></h4>
 <p>Rozšířením dimenze vektoru vznikne matice nebo obecně pole.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
@@ -657,13 +701,24 @@ c) Vypište hodnoty<br>
 </tbody>
 </table>
 <p><span class="math display">\[
-A =
-\begin{bmatrix}
+\mathbf{\mathrm{u}} =
+\begin{pmatrix}
 1\\
-1\\
-1\\
-1\\
-\end{bmatrix}
+1.5\\
+-14\\
+7.223\\
+\end{pmatrix}, \qquad
+\mathbf{\mathrm{v}} =
+\begin{pmatrix}
+\mathrm{TRUE}\\
+\mathrm{FALSE}\\
+\mathrm{TRUE}\\
+\mathrm{TRUE}\\
+\end{pmatrix}, \qquad
+\mathbf{\mathrm{u^T}} =
+\begin{pmatrix}
+1 &amp; 1.5 &amp; -14 &amp; 7.233\\
+\end{pmatrix}
 \]</span></p>
 <div class="cell">
 <details open="">
@@ -697,76 +752,102 @@ A =
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="2" data-code-cell="annotated-cell-7">Struktura objektu</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-7">Struktura objektu</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-7">Dimenze matice</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-7">Dimenze matice</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="4" data-code-cell="annotated-cell-7">Singulární rozklad</span>
+<span data-code-lines="4" data-code-annotation="3" data-code-cell="annotated-cell-7">Singulární rozklad</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="5" data-code-cell="annotated-cell-7">Prvky na diagonále matice</span>
+<span data-code-lines="5" data-code-annotation="4" data-code-cell="annotated-cell-7">Prvky na diagonále matice</span>
 </dd>
 </dl>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>S pomocí nápovědy k funkci <code>rnorm()</code> vytvořte matici <span class="math inline">\(\boldsymbol{\mathrm{M}}; h(\boldsymbol{\mathrm{M}}) = 8\)</span> náhodných čísel</li>
+</ol>
+</div>
+</div>
+<!-- 
+
+
+
+::: {.cell layout-align="center" engine.opts='{"dvisvgm.opts":"--font-format=woff"}'}
+::: {.cell-output-display}
+![N-dimenzionální pole](02_uvod_do_R_2_files/figure-html/unnamed-chunk-9-1.svg){fig-align='center' width=30%}
+:::
+:::
+
+-->
 </section>
 </section>
 <section id="heterogenní-datové-struktury" class="level3" data-number="4.6.2">
 <h3 data-number="4.6.2" class="anchored" data-anchor-id="heterogenní-datové-struktury"><span class="header-section-number">4.6.2</span> Heterogenní datové struktury</h3>
-<p>Za <strong>heterogenní</strong> struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou <code>data.frame</code> a <code>list</code>, dále pak <code>S4</code>, nebo <code>R6</code> třídy, případně další uživatelem vytvořené struktury.</p>
+<p>Za <strong>rúznorodé</strong> struktury se označují ty, které mohou uchovávat dva a více prvků rozdílného typu současně. Z těch základních to jsou <code>data.frame</code> a <code>list</code>, dále pak <code>S4</code>, nebo <code>R6</code> třídy, případně další uživatelem vytvořené struktury.</p>
 <section id="datová-tabulka-data.frame" class="level4" data-number="4.6.2.1">
 <h4 data-number="4.6.2.1" class="anchored" data-anchor-id="datová-tabulka-data.frame"><span class="header-section-number">4.6.2.1</span> Datová tabulka <code>data.frame</code></h4>
-<p><code>data.frame</code> je de facto vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být rozdílného typu.</p>
+<p><code>data.frame</code> je <em>de facto</em> vektor stejně dlouhých vektorů, které kromě toho, že musí být shodné délky, mohou být vzájmeně rozdílného datového typu.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DF</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name       value</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -2.89168307</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b  3.03219933</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c -0.01493429</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -0.26301710</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -0.32378350</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>DF[[<span class="st">"name"</span>]]      <span class="co"># podvýběr do vektoru</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>DF[, <span class="st">"name"</span>]      <span class="co"># podvýběr do vektoru</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>DF</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name      value</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a  0.2860600</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b  1.8994623</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  0.4127428</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d  0.6617618</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -0.3158358</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>DF[[<span class="st">"name"</span>]]      <span class="co"># podvýběr do vektoru</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>DF[, <span class="st">"name"</span>]      <span class="co"># podvýběr do vektoru</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Práce uvnitř data.frame</p>
+<p>Práce uvnitř <code>data.frame</code></p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mon =</span> <span class="fu">rep</span>(month.abb, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>)), </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">365</span>), </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yr =</span> <span class="dv">2001</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  -0.249 1.615 -0.881 0.645 0.299 ...</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(DF)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 365</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(DF)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mon =</span> <span class="fu">rep</span>(month.abb, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>)), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">365</span>), </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yr =</span> <span class="dv">2001</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  1.255 0.691 0.167 -0.344 -2.157 ...</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(DF)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 365</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(DF)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -774,15 +855,18 @@ A =
 </section>
 <section id="řídící-struktury" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="řídící-struktury"><span class="header-section-number">4.7</span> Řídící struktury</h2>
+<p>Zajišťují obecný průběh programu, tvoří základní prvky algoritmů. Mezi řídící strukury řadíme podmínky a cykly. Mohli bychom přidat i složené závorky, něboť pro struktury uvozují bloky kódu.</p>
 <section id="podmínky" class="level3" data-number="4.7.1">
 <h3 data-number="4.7.1" class="anchored" data-anchor-id="podmínky"><span class="header-section-number">4.7.1</span> Podmínky</h3>
+<section id="if" class="level4" data-number="4.7.1.1">
+<h4 data-number="4.7.1.1" class="anchored" data-anchor-id="if"><span class="header-section-number">4.7.1.1</span> <code>if()</code></h4>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(A <span class="sc">&gt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"A je větší nebo shodné s 1."</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(A <span class="sc">&gt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"A je větší nebo shodné s 1."</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>A je větší nebo shodné s 1.</code></pre>
@@ -802,7 +886,7 @@ A =
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="2,3,4,5,6" data-code-cell="annotated-cell-11">Řetěz podmínek se uzavře <strong>v momentě, kdy je výraz v závorce poprvé vyhodnocen jako pravdivý</strong>.</span>
+<span data-code-lines="2,3,4,5,6" data-code-annotation="1" data-code-cell="annotated-cell-11">Řetěz podmínek se uzavře <strong>v momentě, kdy je výraz v závorce poprvé vyhodnocen jako pravdivý</strong>.</span>
 </dd>
 </dl>
 </div>
@@ -811,59 +895,136 @@ A =
 </div>
 </div>
 </section>
-<section id="cykly" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="cykly"><span class="header-section-number">4.7.2</span> Cykly</h3>
-<section id="for-z-definovaného-rozsahu" class="level4" data-number="4.7.2.1">
-<h4 data-number="4.7.2.1" class="anchored" data-anchor-id="for-z-definovaného-rozsahu"><span class="header-section-number">4.7.2.1</span> <code>for</code> z definovaného rozsahu</h4>
+<section id="ifelse" class="level4" data-number="4.7.1.2">
+<h4 data-number="4.7.1.2" class="anchored" data-anchor-id="ifelse"><span class="header-section-number">4.7.1.2</span> <code>ifelse()</code></h4>
+<p>Vektorizovaný tvar podmínky, který lze volat na prvky struktur.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Prvek x + 3 je více než 0: "</span>, <span class="fu">ifelse</span>(x <span class="sc">-</span> <span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">yes =</span> <span class="st">"Ano"</span>, <span class="at">no =</span> <span class="st">"Ne"</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 
-2 
-3 
-4 </code></pre>
+<pre><code>Prvek x + 3 je více než 0:  Ne Ne Ne Ne Ne Ne Ne Ne Ne Ano Ano</code></pre>
+</div>
+</div>
+</section>
+<section id="switch" class="level4" data-number="4.7.1.3">
+<h4 data-number="4.7.1.3" class="anchored" data-anchor-id="switch"><span class="header-section-number">4.7.1.3</span> <code>switch()</code></h4>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a>varianta <span class="ot">&lt;-</span> <span class="st">"B"</span></span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="cf">switch</span>(</span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>      varianta,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"A"</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B"</span> <span class="ot">=</span> <span class="dv">3</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-13">Varianta “A nenastala,</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-13">nastala varianta “B”, tzn. výraz je vyhodnocen ve tvaru <span class="math inline">\(2\cdot 3 = 6\)</span></span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="cykly" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="cykly"><span class="header-section-number">4.7.2</span> Cykly</h3>
+<p>Zajištují, že se část kódu provede opakovaně.</p>
+<section id="for-z-definovaného-rozsahu" class="level4" data-number="4.7.2.1">
+<h4 data-number="4.7.2.1" class="anchored" data-anchor-id="for-z-definovaného-rozsahu"><span class="header-section-number">4.7.2.1</span> <code>for()</code> z definovaného rozsahu</h4>
+<p>Pokud je předem znám počet opakování cyklu (nebo je i jinak implicitně určen), používá se <code>for</code> cyklu.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Iterace  1 
+Iterace  2 
+Iterace  3 
+Iterace  4 </code></pre>
 </div>
 </div>
 </section>
 <section id="while-s-pomocí-podmínky" class="level4" data-number="4.7.2.2">
-<h4 data-number="4.7.2.2" class="anchored" data-anchor-id="while-s-pomocí-podmínky"><span class="header-section-number">4.7.2.2</span> <code>while</code> s pomocí podmínky</h4>
+<h4 data-number="4.7.2.2" class="anchored" data-anchor-id="while-s-pomocí-podmínky"><span class="header-section-number">4.7.2.2</span> <code>while()</code> s pomocí podmínky</h4>
+<p>V případech, kdy počet opakování není předem znám, ale je známa podmínka, za které cyklus má probíhat.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 
-2 
-3 </code></pre>
+<pre><code>Iterace  1 
+Iterace  2 
+Iterace  3 
+Iterace  4 </code></pre>
 </div>
 </div>
 </section>
 <section id="repeat-s-únikovou-sekvencí" class="level4" data-number="4.7.2.3">
 <h4 data-number="4.7.2.3" class="anchored" data-anchor-id="repeat-s-únikovou-sekvencí"><span class="header-section-number">4.7.2.3</span> <code>repeat</code> s únikovou sekvencí</h4>
+<p>Počet opakování neni předem znám. Nicméně lze definovat případ, kdy má cyklus skončit.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span>({</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="cf">break</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="cf">break</span> <span class="co">#&lt;1&gt;</span></span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="2,3,4,6" data-code-annotation="1" data-code-cell="annotated-cell-16">Prováděj</span>
+</dd>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-16">Vnořenou podmínkou následovanou klíčovým slovem <code>break</code> definujeme konec cyklu.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 
-2 
-3 </code></pre>
+<pre><code>Iterace  1 
+Iterace  2 
+Iterace  3 
+Iterace  4 </code></pre>
+</div>
+</div>
+<p>Kromě únikového klíčového slova <code>break</code> po němž cyklus okamžitě skončí je k využití příkaz <code>next</code>, po němž se zbytek příkazů v dané iteraci přeskočí a operátor <code>%||%</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Vytvořte cyklus, který</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -872,22 +1033,34 @@ A =
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Cvičení
+Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Vyhodnoťte s pomocí R následující výrazy:<br>
-a) <span class="math inline">\(1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3\)</span><br>
-b) <span class="math inline">\(\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)\)</span><br>
-c) <span class="math inline">\(\sum\limits_{i = 1}^{53}x_i\)</span><br>
-d) <span class="math inline">\(\dfrac{-\infty}{0}\)</span>, <span class="math inline">\(\dfrac{-\infty}{\infty}\)</span>, <span class="math inline">\(\dfrac{0}{0}\)</span><br>
-e) <span class="math inline">\(\dfrac{\sin(2.3)}{\cos(\pi)}\)</span><br>
-f) <span class="math inline">\(20!\)</span><br>
-g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p></li>
-<li><p>Proveďte:<br>
-a) Vytvořte vektor hodnot od <span class="math inline">\(100\)</span> do <span class="math inline">\(1\)</span> sestupně, využijte nápovědu k funkci <code>seq()</code>.<br>
-b) Spočtěte rozdíl, matic <span class="math inline">\(\boldsymbol{\mathrm{A}}\)</span>, <span class="math inline">\(\boldsymbol{\mathrm{B}}\)</span>. <span class="math display">\[\boldsymbol{\mathrm{A}} = \left(
+<li>Vyhodnoťte s pomocí R následující výrazy:<br>
+
+<ol type="a">
+<li><span class="math inline">\(1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3\)</span><br>
+</li>
+<li><span class="math inline">\(\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)\)</span><br>
+</li>
+<li><span class="math inline">\(\sum\limits_{i = 1}^{53}x_i\)</span><br>
+</li>
+<li><span class="math inline">\(\dfrac{-\infty}{0}\)</span>, <span class="math inline">\(\dfrac{-\infty}{\infty}\)</span>, <span class="math inline">\(\dfrac{0}{0}\)</span><br>
+</li>
+<li><span class="math inline">\(\dfrac{\sin(2.3)}{\cos(\pi)}\)</span><br>
+</li>
+<li><span class="math inline">\(20!\)</span><br>
+</li>
+<li><span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></li>
+</ol></li>
+<li>Proveďte:<br>
+
+<ol type="a">
+<li>Vytvořte vektor hodnot od <span class="math inline">\(100\)</span> do <span class="math inline">\(1\)</span> sestupně, využijte nápovědu k funkci <code>seq()</code>.<br>
+</li>
+<li>Spočtěte rozdíl, matic <span class="math inline">\(\boldsymbol{\mathrm{A}}\)</span>, <span class="math inline">\(\boldsymbol{\mathrm{B}}\)</span>. <span class="math display">\[\boldsymbol{\mathrm{A}} = \left(
   \begin{matrix}
   2 &amp; 2 &amp; 5\\
   9 &amp; 2 &amp; 7\\
@@ -902,22 +1075,51 @@ b) Spočtěte rozdíl, matic <span class="math inline">\(\boldsymbol{\mathrm{A}}
   \end{matrix}
   \right)
   \]</span><br>
-c) Spočítejte inverzní matici k matici <span class="math inline">\(\boldsymbol{\mathrm{A}}\)</span>. Najděte vhodnou funkci s pomocí nápovědy.<br>
-d) S pomocí hodnot <code>TRUE</code>/<code>FALSE</code> vytvořte matici <span class="math inline">\(\boldsymbol{\mathrm{M}}(3,3)\)</span>, změňte typ prvku na pozici <span class="math inline">\(\boldsymbol{\mathrm{M}}[1, 1]\)</span> na textový řetězec. Ovlivní tato změna ostatní prvky v matici?</p></li>
+</li>
+<li>Spočítejte inverzní matici k matici <span class="math inline">\(\boldsymbol{\mathrm{A}}\)</span>. Najděte vhodnou funkci s pomocí nápovědy.<br>
+</li>
+<li>S pomocí hodnot <code>TRUE</code>/<code>FALSE</code> vytvořte matici <span class="math inline">\(\boldsymbol{\mathrm{M}}(3,3)\)</span>, změňte typ prvku na pozici <span class="math inline">\(\boldsymbol{\mathrm{M}}[1, 1]\)</span> na textový řetězec. Ovlivní tato změna ostatní prvky v matici?</li>
+</ol></li>
 </ol>
 </div>
 </div>
 </section>
 </section>
 </section>
-<section id="práce-s-daty" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="práce-s-daty"><span class="header-section-number">4.8</span> Práce s daty</h2>
+<section id="vlastní-funkce" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="vlastní-funkce"><span class="header-section-number">4.8</span> Vlastní funkce</h2>
+<p>K funkce slouží klíčové slovo <code>function</code>, které v závorkách doprovází argumenty sloužící k vnitřní specifikaci funkce.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>nejblizsi_hodnota <span class="ot">&lt;-</span> <span class="cf">function</span>(x, value) {</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  x[<span class="fu">which</span>(<span class="fu">abs</span>(x <span class="sc">-</span> value) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> value)))]</span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hodnota nejblíže 0 z vektoru x je:"</span> , <span class="fu">nejblizsi_hodnota</span>(<span class="at">x =</span> x, <span class="at">value =</span> <span class="dv">0</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="2,3,4" data-code-annotation="1" data-code-cell="annotated-cell-17">Příklad funkce, která vyhledá nejbližší z hodnot vektoru <code>x</code> k referenční hodnotě <code>value</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hodnota nejblíže 0 z vektoru x je: -0.001564244</code></pre>
+</div>
+</div>
+</section>
+<section id="práce-s-daty" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="práce-s-daty"><span class="header-section-number">4.9</span> Práce s daty</h2>
 <p>Chybějící záznamy a speciální numerické případy <code>NA</code>, <code>NaN</code>, <code>NULL</code>, <code>Inf</code>, <code>-Inf</code> jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz <code>NA</code> je tvořen v datovém typu <code>logical</code>, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech <code>NA_real_</code> (odpovídá double), <code>NA_integer_</code>, <code>NA_complex_</code> a <code>NA_character_</code>, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. <code>NULL</code> je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky <code>NaN</code> a <code>±Inf</code> pochází z aritmetických operací <span class="math inline">\(\dfrac{1}{0}\)</span> resp. <span class="math inline">\(\dfrac{\pm0}{1}\)</span> . <code>na.omit()</code>, <code>is.na()</code>, <code>complete.cases()</code>.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>global_temperatures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"./data/JonesGlobalT.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperatures, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>global_temperatures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"./data/JonesGlobalT.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperatures, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  YEAR    JAN    FEB    MAR    APR    MAY    JUN    JUL    AUG    SEP    OCT
@@ -937,16 +1139,16 @@ d) S pomocí hodnot <code>TRUE</code>/<code>FALSE</code> vytvořte matici <span 
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>global_temperature_yr <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> . <span class="sc">~</span> YEAR,</span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">FUN =</span> mean,</span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">data =</span> global_temperatures)</span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperature_yr, <span class="at">n =</span> <span class="dv">5</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a>global_temperature_yr <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> . <span class="sc">~</span> YEAR,</span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">FUN =</span> mean,</span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">data =</span> global_temperatures)</span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperature_yr, <span class="at">n =</span> <span class="dv">5</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1,2,3" data-code-cell="annotated-cell-16">Agregace dat do průměrů za roční období.</span>
+<span data-code-lines="1,2,3" data-code-annotation="1" data-code-cell="annotated-cell-19">Agregace dat do průměrů za roční období.</span>
 </dd>
 </dl>
 </div>
@@ -968,15 +1170,15 @@ d) S pomocí hodnot <code>TRUE</code>/<code>FALSE</code> vytvořte matici <span 
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, <span class="at">expr =</span> <span class="fu">plot</span>(YEAR, JAN, <span class="at">type =</span> <span class="st">"l"</span>))</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">boxplot</span>(ANNUAL, <span class="at">horizontal =</span> <span class="cn">TRUE</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, <span class="at">expr =</span> <span class="fu">plot</span>(YEAR, JAN, <span class="at">type =</span> <span class="st">"l"</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">boxplot</span>(ANNUAL, <span class="at">horizontal =</span> <span class="cn">TRUE</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="02_uvod_do_R_2_files/figure-html/unnamed-chunk-16-1.svg" class="img-fluid figure-img"></p>
+<p><img src="02_uvod_do_R_2_files/figure-html/unnamed-chunk-22-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

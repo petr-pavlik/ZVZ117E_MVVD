@@ -1,7 +1,5 @@
 # Popisná statistika
 
-Funkce pro statistické zpracování datového souboru nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.\
-
 Popisná statistika má za cíle **souhrnně popsat soubor** (spíše než použít data k získání informací o populaci, o které se předpokládá, že vzorek dat reprezentuje).
 
 ::: callout-warning
@@ -9,6 +7,24 @@ Popisná statistika má za cíle **souhrnně popsat soubor** (spíše než použ
 
 - Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik\
 :::
+
+## Statistický soubor
+
+### Základní soubor (populace)
+
+Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.
+
+#### Soubor se známým rozsahem
+
+
+#### Soubor s neznámým rozsahem
+
+### Výběrový soubor (výběr)
+
+Je soubor o konečném počtu $n$ prvků základního souboru, u kterého je prováděno 
+měření charakteristik. 
+
+Výběrový soubor vzniká realizací **náhodného výběru**. 
 
 Níže uvedené funkce jsou počítané s pomocí následujícího vektoru
 
@@ -74,7 +90,7 @@ $$
 \bar{x_h} = \dfrac{n}{\sum\limits_{i=1}^{n}\frac{1}{x_i}}
 $$
 
-### Průměr stupně \alpha
+### Průměr stupně $\alpha$
 
 ```{r}
 

@@ -96,12 +96,98 @@ fivenum(x)
 
 ```
 
+### Alternativní rozdělení
+### Rovnoměrné rozdělení
+### Binomické rozdělení
+### Poissonovo rozdělení
+
 
 ## Spojitá rozdělení
 
-```{r}
-curve(sin(x))
+Během počítání s rozděleními se snažíme nalézt odpovědi na podobné otázky:\
+"Jaká je pravděpodobnost, že veličina $X$ je menší než 7.5?"
+
+### Normální rozdělení
+
+$$
+
+$$
+
+::: {layout-ncol=2}
+```{r,echo=FALSE, fig.cap="Pravděpodobnost, že $x$ je menší nebo rovno 2."}
+# Define the sequence and normal distribution
+x_values <- seq(from = -5, to = 2, by = 0.001)
+DNORM <- dnorm(x_values)
+
+curve(dnorm(x), -5, 5, 
+      main = "Normální rozdělení", 
+      cex.main = 1.5, #expression(paste(mu == 0, "; ", sigma == 1))
+      cex.axis = 1.5,
+      adj = 0, 
+      xlab = "", 
+      ylab = "")
+
+polygon(x = c(x_values, 2, -5),
+        y = c(DNORM, 0, 0),    
+        col = "gray95", 
+        border = 1)
+segments(x0 = 2, x1 = 2, y0 = -0.2, y1 = dnorm(2))
+arrows(x0 = 2, x1 = -2.2, y0 = 0.02, y1 = 0.02, length = 0.06, lwd = 1.2, code = 2, lty = 1)
+text(x = 2.5, y = 0.25, expression(paste(X%~%N("0; 1"))), cex = 1.5)
 ```
+
+```{r, echo=FALSE, fig.cap="Pravděpodobnost, že $x$ je menší nebo rovno 2."}
+# Define the sequence and normal distribution
+x_values <- seq(from = -5, to = 2, by = 0.001)
+DNORM <- dnorm(x_values)
+
+curve(dnorm(x), -5, 5, 
+      main = "Standardizované Normální rozdělení", 
+      cex.main = 1.5, #expression(paste(mu == 0, "; ", sigma == 1)) 
+      cex.axis = 1.5,
+      adj = 0, 
+      xlab = "", 
+      ylab = "")
+
+polygon(x = c(x_values, 2, -5),
+        y = c(DNORM, 0, 0),    
+        col = "gray95", 
+        border = 1)
+segments(x0 = 2, x1 = 2, y0 = -0.2, y1 = dnorm(2))
+arrows(x0 = 2, x1 = -2.2, y0 = 0.02, y1 = 0.02, length = 0.06, lwd = 1.2, code = 2, lty = 1)
+text(x = 2.5, y = 0.25, expression(paste(X%~%N("0; 1"))), cex = 1.5)
+```
+:::
+
+
+::: callout-tip
+## Úloha
+
+1. S pomocí funkce `curve()` vykreslete hustotu funkce normovaného normálního rozdělení
+danou předpisem:
+$$
+f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+$$
+
+:::
+
+```{r}
+curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
+curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
+```
+
+### Logaritmicko-normální rozdělení
+
+### Studentovo-$t$ rozdělení
+
+### $F$ rozdělení
+Jinak také *Fisherovo-Snedecorovo* rozdělení je používáno pro sestrojení $100(1-\alpha)\%$ 
+intevalu spolehlivosti pro podíl rozptylů normálního rozdělení a je to modelové rozdělení
+testovací statistiky pro ověření shodnosti dvou rozptylů. V @sec-anova nalezneme $F-$rozdělení 
+u testování hypotézy o rovnosti středních hodnot u více než dvou výběrových souborů.
+
+### $\chi^2$ rozdělení
+
 
 ::: callout-tip
 ## Cvičení

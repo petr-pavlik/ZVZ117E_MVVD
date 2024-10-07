@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Grafický výstup</span></h1>
+<h1 class="title"><span id="sec-grafy" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Grafický výstup</span></span></h1>
 </div>
 
 
@@ -292,6 +292,7 @@ Cíle cvičení
 </ul>
 </div>
 </div>
+<p>V R dnes existují dva rúzné systémy pro tvorbu diagramů. První je obsažen v balíčku <code>base</code> a druhý staví na funkcionalitě obsažené v <code>grid</code>.</p>
 <p>Opět připravím datovou sadu, tentokrát umístíme do <code>data.frame</code> jménem <code>dfr</code>.</p>
 <div class="cell">
 <details open="">
@@ -305,7 +306,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-1">K vytvoření proměnné <span class="math inline">\(Y\)</span> použijeme generování čísel z náhodného rozdělení s parametry <span class="math inline">\(\mu = 0\)</span> a <span class="math inline">\(\sigma = 1\)</span>; více v kapitole <a href="05_rozdeleni.html"><span>Kapitola&nbsp;7</span></a></span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="3">K vytvoření proměnné <span class="math inline">\(Y\)</span> použijeme generování čísel z náhodného rozdělení s parametry <span class="math inline">\(\mu = 0\)</span> a <span class="math inline">\(\sigma = 1\)</span>; více v kapitole <a href="05_rozdeleni.html"><span>Kapitola&nbsp;7</span></a></span>
 </dd>
 </dl>
 </div>
@@ -358,7 +359,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-3">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa <span class="math inline">\(y\)</span> je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~ plot(x, y = NULL, type = “p”, xlim = NULL, ylim = NULL, log = ““, main = NULL, sub = NULL, xlab = NULL, ylab = NULL, ann = par(”ann”), axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL, asp = NA, xgap.axis = NA, ygap.axis = NA, …) ~~~</span>
+<span data-code-cell="annotated-cell-3" data-code-annotation="1" data-code-lines="1">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa <span class="math inline">\(y\)</span> je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~ plot(x, y = NULL, type = “p”, xlim = NULL, ylim = NULL, log = ““, main = NULL, sub = NULL, xlab = NULL, ylab = NULL, ann = par(”ann”), axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL, asp = NA, xgap.axis = NA, ygap.axis = NA, …) ~~~</span>
 </dd>
 </dl>
 </div>
@@ -397,67 +398,67 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1,2" data-code-cell="annotated-cell-4">Základní proměnné <span class="math inline">\(X\)</span> a <span class="math inline">\(Y\)</span> pro typ grafu.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="1,2">Základní proměnné <span class="math inline">\(X\)</span> a <span class="math inline">\(Y\)</span> pro typ grafu.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-4">Volba typu grafu <code>"b"</code> označuje body protnuté spojnicí.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="2" data-code-lines="3">Volba typu grafu <code>"b"</code> označuje body protnuté spojnicí.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="4" data-code-cell="annotated-cell-4">Volba barvy popředí znaku bod/přímka.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="3" data-code-lines="4">Volba barvy popředí znaku bod/přímka.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="5" data-code-cell="annotated-cell-4">Volba charakteru bodového znaku.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="4" data-code-lines="5">Volba charakteru bodového znaku.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="6" data-code-cell="annotated-cell-4">Volba barvy pozadí znaku umožňujícího výplň - bod.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="5" data-code-lines="6">Volba barvy pozadí znaku umožňujícího výplň - bod.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-lines="7,8" data-code-cell="annotated-cell-4">Změna rozsahu osy <span class="math inline">\(y\)</span>.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="6" data-code-lines="7,8">Změna rozsahu osy <span class="math inline">\(y\)</span>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-lines="9,10" data-code-cell="annotated-cell-4">Změna názvu os.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="7" data-code-lines="9,10">Změna názvu os.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-lines="11" data-code-cell="annotated-cell-4">Znění hlavního nadpisu.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="8" data-code-lines="11">Znění hlavního nadpisu.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-annotation="9" data-code-lines="12" data-code-cell="annotated-cell-4">Podnadpis <em>dtto</em>.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="9" data-code-lines="12">Podnadpis <em>dtto</em>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-annotation="10" data-code-lines="13" data-code-cell="annotated-cell-4">Pokračujeme nastavením umístění legendy.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="10" data-code-lines="13">Pokračujeme nastavením umístění legendy.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-annotation="11" data-code-lines="14" data-code-cell="annotated-cell-4">Výplň prvku v legendě.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="11" data-code-lines="14">Výplň prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-annotation="12" data-code-lines="15" data-code-cell="annotated-cell-4">Typ prvku v legendě.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="12" data-code-lines="15">Typ prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-annotation="13" data-code-lines="16" data-code-cell="annotated-cell-4">Název prvku v legendě.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="13" data-code-lines="16">Název prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-annotation="14" data-code-lines="17" data-code-cell="annotated-cell-4">Volba barvy ohraničení legendy</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="14" data-code-lines="17">Volba barvy ohraničení legendy</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="15">15</dt>
 <dd>
-<span data-code-annotation="15" data-code-lines="18" data-code-cell="annotated-cell-4">Volba typu spojnice (1 = plná čára)</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="15" data-code-lines="18">Volba typu spojnice (1 = plná čára)</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="16">16</dt>
 <dd>
-<span data-code-annotation="16" data-code-lines="19" data-code-cell="annotated-cell-4">Volba barvy popředí prvku legendy</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="16" data-code-lines="19">Volba barvy popředí prvku legendy</span>
 </dd>
 </dl>
 </div>
@@ -483,11 +484,11 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-5">Funkce <code>with()</code> umožňuje zavolání funkce uvedené v arugmentu <code>expr</code> na proměnných v <code>data.frame</code>. Odpadá opakované psaní prefixu datové sady (zde <code>dfr$___</code>)</span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="1">Funkce <code>with()</code> umožňuje zavolání funkce uvedené v arugmentu <code>expr</code> na proměnných v <code>data.frame</code>. Odpadá opakované psaní prefixu datové sady (zde <code>dfr$___</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2,3,4,5" data-code-cell="annotated-cell-5">Argument <code>expr</code> může obsahovat i blok kódu <code>{...}</code></span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="2" data-code-lines="2,3,4,5">Argument <code>expr</code> může obsahovat i blok kódu <code>{...}</code></span>
 </dd>
 </dl>
 </div>
@@ -517,6 +518,7 @@ Cíle cvičení
 </section>
 <section id="matematická-sazba-v-grafech" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="matematická-sazba-v-grafech"><span class="header-section-number">5.4</span> Matematická sazba v grafech</h2>
+<p><code>?plotmath</code> demo(plotmath)</p>
 </section>
 <section id="vytváříme-layout" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="vytváříme-layout"><span class="header-section-number">5.5</span> Vytváříme layout</h2>
@@ -534,11 +536,11 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-7">Okno výstupu rozdělíme do dvou sloupců na jednom řádku.</span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="1">Okno výstupu rozdělíme do dvou sloupců na jednom řádku.</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2,3" data-code-cell="annotated-cell-7">Posléze voláme dva grafy, které postupně vyplní pole v daném okně.</span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="2,3">Posléze voláme dva grafy, které postupně vyplní pole v daném okně.</span>
 </dd>
 </dl>
 </div>

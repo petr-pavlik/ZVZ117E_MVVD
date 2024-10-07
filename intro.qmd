@@ -4,16 +4,19 @@ Text je členěn do kapitol podle náplně jednotlivých cvičení. Na začátku
 
 ::: callout-warning
 ## Cíle cvičení
+
 ...
 :::
 
 ::: callout-tip
 ## Samostatné úlohy
+
 ...
 :::
 
 ::: callout-note
 ## Další zdroje
+
 ...
 :::
 
@@ -24,7 +27,8 @@ Zdrojový kód v textu je barevně odlišen a jednotlivé úkony jsou v kódu do
 ```{r}
 cat("Příklad výrazu a jeho vyhodnocení") # <1>
 ```
-1. Toto je komentář.
+
+1.  Toto je komentář.
 
 Někdy je nutné provést vyhodnocení více po sobě jdoucích výrazů a text byl zbytečně nafukován. V takovém případě je výstup zachován přímo v okně zdrojového kódu a je uvozen dvěma po sobě jdoucími znaky $\#\#$.
 
@@ -33,14 +37,29 @@ mean(1:10) # <1>
 median(1:10) # <1>
 sd(1:10) # <1>
 ```
-1. Sjednocené výstupy v bloku kódu.
 
+1.  Sjednocené výstupy v bloku kódu.
 
-Pokud se kód nachází uvnitř textu, je opět barevně odlišen a vysázen neproporcionálním písmem. Přičemž funkce je vždy uvedena s příslušnými závorkami a text, který je v kódu navíc, je vždy ohraničen znaky $<$ a $>$. Příkladem budiž `mean(x = <vektor čísel>)`. 
+Pokud se kód nachází uvnitř textu, je opět barevně odlišen a vysázen neproporcionálním písmem. Přičemž funkce je vždy uvedena s příslušnými závorkami a text, který je v kódu navíc, je vždy ohraničen znaky $<$ a $>$. Příkladem budiž `mean(x = <vektor čísel>)`.
 
+## Data
 
+| Kapitola              |                                                                                                         | Popis                                   | Citace |
+|-----------------------|---------------------------------------------------------------------------------------------------------|-----------------------------------------|--------|
+| Kapitola 2 - Úloha 4b | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){width="28"}](./data/CHMI_SRA/P2VSEL01_SRA_N.csv) | Všelibice, úhrn z manuálního srážkoměru |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
+|                       |                                                                                                         |                                         |        |
 
-## Verze
+: Přehled datových sad ke cvičením.
+
+## Verze textu
 
 Tento text byl vytvořen s pomocí verze R `r stringr::str_flatten(c(version$major, ".", version$minor))` a jmenných prostorů balíků ve verzích:
 
@@ -50,4 +69,3 @@ installed.packages()[installed.packages()[, 1] %in% loadedNamespaces(), ][, c("V
   setNames("Version") |> 
   knitr::kable()
 ```
-

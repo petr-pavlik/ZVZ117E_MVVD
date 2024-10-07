@@ -12,6 +12,25 @@ Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1
 
 [^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí
 
+```{=html}
+<hr>
+<table>
+  <tr>
+    <td rowspan="2"><b>Rozhodnutí</b></td><td colspan="2"><b>Skutečnost</b></td>
+  </tr>
+  <tr>
+    <td>$$H_0$$</td><td>$$\neg H_0$$</td>
+  </tr>
+  <tr>
+    <td>Nazamítáme $$H_0$$</td><td>Správné rozhodnutí: $$P = 1 - \alpha$$</td><td>Nastává chyba II. druhu: $$P = \beta$$</td>
+  </tr>
+  <tr>
+    <td>Zamítáme $$H_0$$</td><td>Chyba I. druhu: $$P = \alpha$$</td><td>Správné rozhodnutí: $$P = 1- \beta$$</td>
+  </tr>
+</table>
+```
+
+
 ## P-hodnota
 
 Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *p-hodnotu* (anglicky p-value). Definice p-hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
