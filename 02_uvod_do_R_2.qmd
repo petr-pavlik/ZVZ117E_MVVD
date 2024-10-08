@@ -113,7 +113,7 @@ setdiff(x, y)  # <16>
 ::: callout-tip
 ## Úloha
 
-4.  Použite k výpočtu operátory:\
+4.  Použite k výpočtu operátory či množinové funkce:\
     a)  Zjistěte, zda je číslo 1109388 dělitelné 7.\
     b)  Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí\
     c)  Vypište hodnoty\
@@ -147,7 +147,7 @@ setdiff(x, y)  # <16>
 5.  Vyhodnoťte s pomocí R následující výrazy:\
     a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
     b)  $\dfrac{\sin(2.3)}{\cos(\pi)}$\
-    c)  $\sum\limits_{i = 1}^{53}x_i$\
+    c)  $\sum\limits_{i = 1}^{53}i$\
     d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
     e)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
     f)  $20!$\
@@ -283,7 +283,7 @@ x
 
 | Funkce            | Úkon                                   |
 |-------------------|----------------------------------------|
-| `nrow()`, `nco()` | počet řádků, sloupců matice            |
+| `nrow()`, `ncol()` | počet řádků, sloupců matice            |
 | `dim()`           | řádky $\times$ sloupce matice          |
 | `det()`           | deteminant matice                      |
 | `eigen()`         | vlastní čísla a vlastní vektory matice |
