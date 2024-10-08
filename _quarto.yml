@@ -24,15 +24,15 @@ book:
     - intro.qmd
     - 01_uvod_do_R_1.qmd
     - 02_uvod_do_R_2.qmd
-    - 03_grafy.qmd
-    - 04_popisna.qmd
-    - 05_rozdeleni.qmd
-    - 06_odhad.qmd
-    - 07_testovani.qmd
-    - 09_casove_rady.qmd
-    - 10_hydro_index.qmd
-    - 11_korelace_regrese.qmd
-    - 12_extremalni_rozdeleni.qmd
+    # - 03_grafy.qmd
+    # - 04_popisna.qmd
+    # - 05_rozdeleni.qmd
+    # - 06_odhad.qmd
+    # - 07_testovani.qmd
+    # - 09_casove_rady.qmd
+    # - 10_hydro_index.qmd
+    # - 11_korelace_regrese.qmd
+    # - 12_extremalni_rozdeleni.qmd
     
 
   # Sidebar Configuration for the Book
@@ -47,15 +47,15 @@ book:
       - intro.qmd
       - 01_uvod_do_R_1.qmd
       - 02_uvod_do_R_2.qmd
-      - 03_grafy.qmd
-      - 04_popisna.qmd
-      - 05_rozdeleni.qmd
-      - 06_odhad.qmd
-      - 07_testovani.qmd
-      - 09_casove_rady.qmd
-      - 10_hydro_index.qmd
-      - 11_korelace_regrese.qmd
-      - 12_extremalni_rozdeleni.qmd
+      # - 03_grafy.qmd
+      # - 04_popisna.qmd
+      # - 05_rozdeleni.qmd
+      # - 06_odhad.qmd
+      # - 07_testovani.qmd
+      # - 09_casove_rady.qmd
+      # - 10_hydro_index.qmd
+      # - 11_korelace_regrese.qmd
+      # - 12_extremalni_rozdeleni.qmd
 
   downloads: [pdf, epub]
 

@@ -17,7 +17,7 @@ dfr <- data.frame(
   Y = rnorm(100) # <1>
 )
 ```
-1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v kapitole @sec-rozdeleni
+1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v @sec-rozdeleni
 
 
 ::: callout-tip
@@ -136,18 +136,59 @@ hist(dfr$Y, main = "Y", xlab = "") # <2>
 1. Okno výstupu rozdělíme do dvou sloupců na jednom řádku.
 2. Posléze voláme dva grafy, které postupně vyplní pole v daném okně.
 
-### Sazba s funkcí `layout()` a matice
+### Sazba do matice s funkcí `layout()`
 
 ```{r,fig.align='center'}
 layout.show(
   layout(
+    mat = matrix(
+      data = c(2, 2, 0, #<1>
+               1, 1, 3, #<1>
+               1, 1, 3), #<1>
+      nrow = 3, 
+      ncol = 3, 
+      byrow = TRUE))
+)
+```
+1. Zde sdělujeme, že celkově bude pole rozděleno v poměru $3\times 3$ a $4\over9$ 
+(levá dolní část) vyplní 1. graf.
+
+Nyní vynecháme `layout.show()`, zavolámem jen layout() a postupně přiřadíme grafy 
+k jednotlivým polím.
+
+```{r}
+layout(
     mat = matrix(
       data = c(2, 2, 0,
                1, 1, 3,
                1, 1, 3), 
       nrow = 3, 
       ncol = 3, 
-      byrow = TRUE)))
+      byrow = TRUE))
 ```
 
+::: callout-tip
+## Úloha
+
+4. Vytvořte layout dle následujícího nákresu a vyplňte libovolnými rúznými typy grafů.
+
+:::
+
 ## Ukládáme do souboru
+
+```{r, eval=FALSE}
+png("./budyko_kompozit.png", 
+    width = 8, 
+    height = 6, 
+    units = "px", 
+    res = 300)
+...  #<1>
+dev.off()
+```
+1. Standardním způsobem vytvořený diagram či layout.
+
+::: callout-tip
+## Úloha
+
+5. Vytvořte layout a uložte do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
+:::

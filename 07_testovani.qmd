@@ -5,8 +5,8 @@
 1.  Formulace nulové $H_0$ a alternativní $H_a$ hypotézy.\
 2.  Volba hladiny významnosti $\alpha$.\
 3.  Volba testovací statistiky.\
-4.  Určení kritického oboru testové statistiky
-5.  
+4.  Určení kritického oboru testové statistiky.
+5.  Vyhodnocení testu.
 
 Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
 
