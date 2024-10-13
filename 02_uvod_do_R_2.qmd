@@ -16,6 +16,7 @@ Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospod�
 
 Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
 
+
 ::: callout-tip
 ## Úloha
 
@@ -177,6 +178,8 @@ K datovým typům (třídám) se pojí funkce `is.___` a `as.___` kteří slouž
 is.character("ABC")
 as.integer(11 + 1i)
 ```
+
+Chybějící záznamy a speciální numerické případy `NA`, `NaN`, `NULL`, `Inf`, `-Inf` jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz `NA` je tvořen v datovém typu `logical`, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech `NA_real_` (odpovídá double), `NA_integer_`, `NA_complex_` a `NA_character_`, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. `NULL` je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky `NaN` a `±Inf` pochází z aritmetických operací $\dfrac{1}{0}$ resp. $\dfrac{\pm0}{1}$ . `na.omit()`, `is.na()`, `complete.cases()`.
 
 ## Základní datové struktury
 
@@ -589,10 +592,6 @@ cat("Hodnota nejblíže 0 z vektoru x je:" ,
 ```
 
 1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
-
-## Práce s daty
-
-Chybějící záznamy a speciální numerické případy `NA`, `NaN`, `NULL`, `Inf`, `-Inf` jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz `NA` je tvořen v datovém typu `logical`, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech `NA_real_` (odpovídá double), `NA_integer_`, `NA_complex_` a `NA_character_`, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. `NULL` je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky `NaN` a `±Inf` pochází z aritmetických operací $\dfrac{1}{0}$ resp. $\dfrac{\pm0}{1}$ . `na.omit()`, `is.na()`, `complete.cases()`.
 
 
 ## Rekapitulace
