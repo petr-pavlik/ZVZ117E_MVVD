@@ -509,10 +509,12 @@ varianta <- "B"
 
 8.  a)  Vytvořte s pomocí podmínek známkovací schéma:
 
-| 1 | 90 - 100 \% | 
-| 2 | 75 - 89 \%  | 
-| 3 | 60 - 74 \%  | 
-| 4 |  < 60 \%    |
+| Rozmezí | Známka      |  
+|---------|-------------|
+| 1       | 90 - 100 \% | 
+| 2       | 75 - 89 \%  | 
+| 3       | 60 - 74 \%  | 
+| 4       |  < 60 \%    |
 :::
 
 
@@ -592,36 +594,6 @@ cat("Hodnota nejblíže 0 z vektoru x je:" ,
 
 Chybějící záznamy a speciální numerické případy `NA`, `NaN`, `NULL`, `Inf`, `-Inf` jsou hodnoty, které mohou vzniknout například jako výsledek početního úkonu, nebo špatného importu dat. Výraz `NA` je tvořen v datovém typu `logical`, nejméně náročném na paměť. Jinak je možné specifikovat chybějící hodnotu ve všech ostatních datových typech `NA_real_` (odpovídá double), `NA_integer_`, `NA_complex_` a `NA_character_`, které je vhodné využít zejména při vytváření datového rámce s přesně zadaným typem sloupců. `NULL` je návratová hodnota mnoha funkcí a výrazů, reprezentuje prázdný objekt. Výsledky `NaN` a `±Inf` pochází z aritmetických operací $\dfrac{1}{0}$ resp. $\dfrac{\pm0}{1}$ . `na.omit()`, `is.na()`, `complete.cases()`.
 
-
-```{r}
-global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", row.names = 1)
-head(x = global_temperatures, n = 5)
-```
-
-```{r}
-global_temperature_yr <- aggregate(x = . ~ YEAR, # <1>
-                                   FUN = mean,  # <1>
-                                   data = global_temperatures) # <1>
-head(x = global_temperature_yr, n = 5)
-```
-
-1.  Agregace dat do průměrů za roční období.
-
-```{r, fig.align='center'}
-par(mfrow = c(1, 2))
-with(data = global_temperature_yr, expr = plot(YEAR, JAN, type = "l"))
-with(data = global_temperature_yr, 
-     expr = boxplot(ANNUAL, horizontal = TRUE))
-```
-
-::: callout-tip
-## Úloha
-
-1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
-2.  Doplňte hydrologický rok.\
-3.  Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
-4.  Vyneste do grafu pomocí funkce `plot()`.
-:::
 
 ## Rekapitulace
 

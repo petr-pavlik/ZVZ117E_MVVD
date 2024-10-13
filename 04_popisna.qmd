@@ -17,6 +17,37 @@ V RStudio se nachází poměrně propracovaný průvodce importem dat, který na
 
 ![](images/data-import.png){fig-align="center" width="624"}
 
+```{r}
+global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", row.names = 1)
+head(x = global_temperatures, n = 5)
+```
+
+```{r}
+global_temperature_yr <- aggregate(x = . ~ YEAR, # <1>
+                                   FUN = mean,  # <1>
+                                   data = global_temperatures) # <1>
+head(x = global_temperature_yr, n = 5)
+```
+
+1.  Agregace dat do průměrů za roční období.
+
+```{r, fig.align='center'}
+par(mfrow = c(1, 2))
+with(data = global_temperature_yr, expr = plot(YEAR, JAN, type = "l"))
+with(data = global_temperature_yr, 
+     expr = boxplot(ANNUAL, horizontal = TRUE))
+```
+
+::: callout-tip
+## Úloha
+
+1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
+2.  Doplňte hydrologický rok.\
+3.  Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
+4.  Vyneste do grafu pomocí funkce `plot()`.
+:::
+
+
 ## Statistický soubor
 
 ### Základní soubor (populace)
