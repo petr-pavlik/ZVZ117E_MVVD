@@ -3,8 +3,10 @@
 ::: callout-warning
 ## Cíle cvičení
   - Naučit se založit projekt
+  - Rozeznat Základní soubory projektu a prostředí
   - Projekt či součást projektu uložit a otevřít
   - Orientovat se v hlavním okně
+  - Přepínat mezi výpočtem v konzoli a skriptu
 :::
 
 R je *volně dostupné programové prostředí pro statistické výpořty a grafiku*. Interpretr jazyka se základní funkcionalitou lze stáhnout ze stránek [https://www.r-project.org](https://www.r-project.org).

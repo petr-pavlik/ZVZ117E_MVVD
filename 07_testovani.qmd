@@ -1,16 +1,27 @@
-# Testování hypotéz
+# Testování hypotéz {#sec-testovani}
+
+Testování statistikcké hypotézy je proces 
+Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$. 
+Pod *testováním hypotéz* potom rozumíme proces, který na základě 
+vlastností datové sady pocházející z náhodného výběru rozhodne o zamítnutí, 
+či nezamítnutí nulové hypotézy.
+
+Nulová hypotéza má ve většině případů neutrání až poněkud negativní znění. 
+Například "neexistuje rozdíl mezi středními hodnotami", "testované rozdělení 
+není odlišné od normálního" apod. Její konstrukce víceméně odráží opak toho, 
+co se na sesbíraných datech snažíme vysledovat.
 
 ## Postup testování statistické hypotézy:
 
-1.  Formulace nulové $H_0$ a alternativní $H_a$ hypotézy.\
+1.  Formulace nulové $\mathrm{H}_0$ a alternativní $\mathrm{H}_a$ hypotézy.\
 2.  Volba hladiny významnosti $\alpha$.\
 3.  Volba testovací statistiky.\
 4.  Určení kritického oboru testové statistiky.
-5.  Vyhodnocení testu.
+5.  Vyhodnocení testu s pomocí p-hodnoty.
 
 Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
 
-[^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí
+[^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí.
 
 ```{=html}
 <hr>
@@ -19,19 +30,19 @@ Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1
     <td rowspan="2"><b>Rozhodnutí</b></td><td colspan="2"><b>Skutečnost</b></td>
   </tr>
   <tr>
-    <td>$$H_0$$</td><td>$$\neg H_0$$</td>
+    <td>$$\mathrm{H}_0$$</td><td>$$\neg \mathrm{H}_0$$</td>
   </tr>
   <tr>
-    <td>Nazamítáme $$H_0$$</td><td>Správné rozhodnutí: $$P = 1 - \alpha$$</td><td>Nastává chyba II. druhu: $$P = \beta$$</td>
+    <td>Nazamítáme $$\mathrm{H}_0$$</td><td>Správné rozhodnutí: $$P = 1 - \alpha$$</td><td>Nastává chyba II. druhu: $$P = \beta$$</td>
   </tr>
   <tr>
-    <td>Zamítáme $$H_0$$</td><td>Chyba I. druhu: $$P = \alpha$$</td><td>Správné rozhodnutí: $$P = 1- \beta$$</td>
+    <td>Zamítáme $$\mathrm{H}_0$$</td><td>Chyba I. druhu: $$P = \alpha$$</td><td>Správné rozhodnutí: $$P = 1- \beta$$</td>
   </tr>
 </table>
 ```
 
 
-## P-hodnota
+## p-hodnota
 
 Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *p-hodnotu* (anglicky p-value). Definice p-hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
 
@@ -47,6 +58,6 @@ $$
 
 kde $\nu=n-1$ je počet stupňů volnosti.
 
-
+-
 
 Pravděpodobnost platnosti hypotézy

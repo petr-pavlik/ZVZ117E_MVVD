@@ -5,8 +5,17 @@ Popisná statistika má za cíle **souhrnně popsat soubor** (spíše než použ
 ::: callout-warning
 ## Cíle cvičení
 
-- Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik\
+-   Provést import datové sady
+-   Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik\
 :::
+
+## Import dat
+
+V hydrologii pracujeme s datovými sadami, které mají rúznou podobu. Nejběžnějším výměnným formát jsou stále obecné \*.xls/\*.xlsx, \*.txt, \*.csv (*comma separated values*). S pomocí těchto formátů jsou často katalogizována data z automatických měření. Dále méně časté formáty \*.json (*javascript object notation*), \*.shp (*shapefile*), \*.laz, \*.nc (*NetCDF file*), \*.parquet (*Apache parqet*). A jako poslední doménově specifické \*.RData, nebo \*.rds. Formátů je velké množství, nicméně je velmi obtížné narazit na některý, pro který neexistuje v R možnost importu ať už v základní konfiguraci nebo s pomocí externích balíčků.
+
+V RStudio se nachází poměrně propracovaný průvodce importem dat, který naklikneme pod záložkou **Environment** \> **Import Dataset**.
+
+![](images/data-import.png){fig-align="center" width="624"}
 
 ## Statistický soubor
 
@@ -16,15 +25,13 @@ Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.
 
 #### Soubor se známým rozsahem
 
-
 #### Soubor s neznámým rozsahem
 
 ### Výběrový soubor (výběr)
 
-Je soubor o konečném počtu $n$ prvků základního souboru, u kterého je prováděno 
-měření charakteristik. 
+Je soubor o konečném počtu $n$ prvků základního souboru, u kterého je prováděno měření charakteristik.
 
-Výběrový soubor vzniká realizací **náhodného výběru**. 
+Výběrový soubor vzniká realizací **náhodného výběru**.
 
 Níže uvedené funkce jsou počítané s pomocí následujícího vektoru
 
@@ -44,14 +51,15 @@ $$
  \max(x)\\
  \min(x)\\
  \min(x) - \max(x)
-$$ \
+$$\
 
 ### Výběrový kvantil
 
 ```{r}
 t(sapply(X = 1:7, FUN = function(i) quantile(x))) #<1>
 ```
-1. Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci `quantile()`
+
+1.  Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci `quantile()`
 
 ### Aritmetický průměr {.unnumbered}
 
@@ -78,9 +86,10 @@ table(round(x = x, digits = 0)) #<1>
 table(cut(x, breaks = 10)) #<2>
 plot(density(x = x)) #<3>
 ```
-1. Četnosti po zaokrouhlení na celá čísla
-2. Četnosti po rozdělení do 10 intervalů
-3. Hustota
+
+1.  Četnosti po zaokrouhlení na celá čísla
+2.  Četnosti po rozdělení do 10 intervalů
+3.  Hustota
 
 ### Harmonický průměr
 
@@ -102,8 +111,9 @@ max(x) #<1>
 max(x) - min(x) #<2>
 range(x) #<2>
 ```
-1. Statistiky minimum & maximum
-2. Rozpětí
+
+1.  Statistiky minimum & maximum
+2.  Rozpětí
 
 ## Míry variability
 
@@ -130,16 +140,18 @@ IQR(x)
 ### Rozptyl
 
 $$
-     \sigma^2 =\sum\limits_{1}^{n}\sqrt{\dfrac{1}{n}(x_i - \bar{x})^2}
+     \sigma_x^2 =\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n}(x_i - \bar{x})^2}\\
+     s_x^2 =\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n-1}(x_i - \bar{x})^2}
 $$
 
 ### Směrodatná odchylka
 
 $$
-   \dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}
+   \sigma_x = \dfrac{1}{n}\sqrt{\sum\limits_{i=1}^{n}(x_i - \bar{x})^2}\\
+   s_x = \dfrac{s}{\sqrt{n}}
 $$
 
-Rozptyl i směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*.
+Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*.
 
 ```{r, collapse=TRUE}
 var(x)
@@ -148,8 +160,10 @@ sd(x)
 
 ### Variační koeficient
 
+Podíl směrodatné odchylky a aritmetického souboru výběrového souboru.
+
 $$
-V = 100 \frac{s}{x}
+v_x = \frac{s_x}{\bar{x}}
 $$
 
 ### Střední chyba aritmetického průměru
@@ -159,9 +173,10 @@ s_x = \dfrac{s}{\sqrt{n}}
 $$
 
 
-::: callout-tip
-## Cvičení
-  1. Nalezněte 10% kvantil a medián, z následujících hodnot\
-  $0.64$, $0.98$, $-0.49$, $0.75$, $-1.35$, $1.65$, $1.12$, $-1.04$, $1.05$, $0.29$, $-0.6$, $-0.08$, $1.45$, $-1.87$, $-0.07$, $-0.02$, $0.62$, $0.01$, $-0.26$\
-  2. Co\
-:::
+## Rekapitulace
+
+1.  Máte vektor hodnot: $0.64$, $0.98$, $-0.49$, $0.75$, $-1.35$, $1.65$, $1.12$, $-1.04$, $1.05$, $0.29$, $-0.6$, $-0.08$, $1.45$, $-1.87$, $-0.07$, $-0.02$, $0.62$, $0.01$, $-0.26$. Nalezněte:\       
+  průměr `r fitb(0.1463158)` 10% kvantil `r fitb(-1.102)` a medián `r fitb(0.01)`.\
+2.  Doplňte funkci `read.___()` aby výsledek byl
+3.  Pro datovou sadu 
+

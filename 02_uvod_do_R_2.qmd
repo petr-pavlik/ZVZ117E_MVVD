@@ -145,13 +145,16 @@ setdiff(x, y)  # <16>
 ## Úloha
 
 5.  Vyhodnoťte s pomocí R následující výrazy:\
-    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
-    b)  $\dfrac{\sin(2.3)}{\cos(\pi)}$\
-    c)  $\sum\limits_{i = 1}^{53}i$\
-    d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
-    e)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
-    f)  $20!$\
-    g)  $\int_{0}^{3\pi} \sin(x) dx$
+    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3=$  `r fitb(answer = 3)`\
+    b)  $\dfrac{\sin(2.3)}{\cos(\pi)}=$  `r fitb(answer = -0.7457052)`\
+    c)  $\sum\limits_{i = 1}^{53}i=$ `r fitb(answer = 1431)`\
+    d)  $\dfrac{-\infty}{0}=$ `r fitb(-Inf)`, $\dfrac{-\infty}{\infty}=$ `r fitb(NaN)`, $\dfrac{0}{0}=$ `r fitb(NaN)`\
+    e)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)=$ `r fitb(0.4780914)`\
+    f)  $20!=$ `r fitb(2.432902e+18)`\
+    g)  $\int_{0}^{3\pi} \sin(x) dx=$ `r fitb(c(2, "2 with absolute error < 1.7e-12"))`\
+    h)  $\sqrt[3]{561}=$ `r fitb(8.247474)`\
+    i)  $\mathrm{diag}\left( \pmatrix{5\\ 3}\cdot \pmatrix{6 & 5}\right)=$ `r fitb(c("30 15", "30, 15"))`\
+    j)  $y=x^2 + 3\sqrt{x};\:y^\prime=$ `r fitb("2 * x + x^((3/2) - 1) * (3/2)")`
 :::
 
 ## Datové typy
@@ -579,7 +582,8 @@ nejblizsi_hodnota <- function(x, value) { # <1>
   x[which(abs(x - value) == min(abs(x - value)))] # <1>
 } # <1>
 
-cat("Hodnota nejblíže 0 z vektoru x je:" , nejblizsi_hodnota(x = x, value = 0))
+cat("Hodnota nejblíže 0 z vektoru x je:" , 
+    nejblizsi_hodnota(x = x, value = 0))
 ```
 
 1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
@@ -611,10 +615,33 @@ with(data = global_temperature_yr,
 ```
 
 ::: callout-tip
-## Cvičení
+## Úloha
 
 1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
 2.  Doplňte hydrologický rok.\
 3.  Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
 4.  Vyneste do grafu pomocí funkce `plot()`.
 :::
+
+## Rekapitulace
+
+Vyplňte následující formulář bez použití R.\
+
+```{r, include=FALSE}
+opts1 <- c("Počet sloupců i řádků musí být shodný", 
+           answer = "Proměnnná musí mít uvedenou hodnotu v každém řádku", 
+           "Všechny proměnné musí být stejného typu")
+```
+
+  1. Zvolte platné tvrzení pro `data.frame`: `r longmcq(opts = opts1)`
+  2. Matici je možné vytvořit z vektoru přidáním dimenze: `r torf(answer = TRUE)`\
+  3. Co je výsledkem výrazu: $\sin(\frac{0}{0})$ `r fitb(answer = "NaN")`\
+  4. Vyberte, platné tvrzení pro data.frame: `r longmcq(opts = opts1)`
+  5. Napište výraz pro nepřiřazenou číselnou hodnotu : `r fitb(answer = "NA_real_")`\
+  6. Dolňte chybějící zápis cyklu: `r fitb(answer = "6-i")`\
+  ```
+    for(i in 1:5) {
+      cat(___)    
+    }
+    > 54321
+  ```

@@ -3,9 +3,9 @@
 ::: callout-warning
 ## Cíle cvičení 
 
-- Nestrannost odhadu
-- Zákon velkých čísel
-- Bodový a intervalový odhad
+- vlastnosti odhadu
+- zákon velkých čísel
+- bodový a intervalový odhad
 - $t$-test
 :::
 
@@ -13,7 +13,7 @@ Obecně je odhadem v matematické statistice nazýváno určení parametru rozd�
 
 Obecné charakteristiky základního souboru značíme písmeny řecké abecedy (např. $\mu$, $\sigma$, $\ldots$), pro výběrové charakteristiky volíme analogická písmena z latinky ($\bar{x}, s_x, \ldots$).
 
-## Nestrannost odhadu
+## Vlastnosti odhadu
 
 V mnoha situacích potřebujeme odhadnout určitý parametr (střední hodnotu, $90\%$ kvantil atp.) neznámé náhodné veličiny. Tento parametr odhadujeme pomocí nějaké statistiky výběru z této veličiny. Například odhadujeme střední hodnotu veličiny pomocí průměru. Abychom mohli určit hodnotu parametru (např. střední hodnotu) přesně, musel by být výběr nekonečně velký. Jelikož toto v praxi nenastane, náš odhad je vždy více či méně odlišný od skutečné hodnoty parametru (např. střední hodnoty) neznámé veličiny. Důležitou vlastností odhadu je nestrannost - o nestranném odhadu mluvíme pokud střední hodnota odhadu je rovna neznámému parametru.
 
@@ -72,6 +72,7 @@ Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakován
 
   1. Generujte s pomocí funkce `rnorm` postupně $10$, $10^2$, $10^3$, $10^4$ čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte $\bar{x}$ a ${s^2}$, použijte nápovědu.
 Okomentujte výsledky. 
+  2. V předchozím cvičení $\chi$
 :::
 
 
@@ -94,7 +95,8 @@ $$
 \bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
 $$
 
-$100(1-\alpha)\%$ interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností.
+$100(1-\alpha)\%$ interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností. Je tomu tak současně za předpokladu, že samotná poloha
+hledaného parametru je konstantní.
 
 ```{r}
 alpha <- 0.05
@@ -111,6 +113,14 @@ Maximálně věrohodný odhad je takový, který maximalizuje věrohodnostní fu
 $$
 L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ldots p(x_n, \theta) = \prod\limits_{i=1}^{n}p(x_i, \theta)
 $$ Konstrukce věrohodnostní funkce
+
+### Maximálně věrohodný odhad pro normální rozdělení
+
+Vjděme z pravděpodobnostní funkce normálního rozdělení s předpisem @eq-maxlike-normalni-rozdeleni, který 
+
+$$
+f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\sigma^2}\right]
+$$ {#eq-maxlike-normalni-rozdeleni}
 
 ```{r}
 # Set the parameters
@@ -154,7 +164,9 @@ curve(dlnorm(x, 1, 0.5), add = TRUE)
 ```
 
 ## $t$-test {#ttest}
-
+Testování hypotéz podrobněji probereme v @sec-testovani, nyní si nicméně ukážeme, 
+že výstupem funkce `t.test()` je rovněž intervalový odhad pro střední hodnotu normálního
+rozdělení při neznámém rozptylu.
 Nejjednodušší aplikací $t$-testu je Testovací statistika pro oboustrannou alternativu má hodnotu
 
 $$

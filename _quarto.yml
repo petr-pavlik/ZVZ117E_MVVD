@@ -1,86 +1,81 @@
 project:
   type: book
   output-dir: docs
-
 website:
-  title: "Metody vyhodnocování vodohospodářských dat"
-  navbar: 
+  title: Metody vyhodnocování vodohospodářských dat
+  navbar:
     left:
-      - text: Home
-        href: index.qmd
-      - text: "Introduction"
-        href: intro.qmd
-
+    - text: Home
+      href: index.qmd
+    - text: Introduction
+      href: intro.qmd
 book:
   author: Petr Pavlík
-  title: "Metody vyhodnocování vodohospodářských dat"
-  subtitle: "ZVZ117E ZS 24/25"
-  favicon: cover.webp
+  title: Metody vyhodnocování vodohospodářských dat
+  subtitle: ZVZ117E ZS 24/25
+  favicon: images/DALLE_no-bg.webp
   version: 0.1
-  repo-actions: [edit]
+  repo-actions: edit
   date: today
   chapters:
+  - index.qmd
+  - intro.qmd
+  - 01_uvod_do_R_1.qmd
+  - 02_uvod_do_R_2.qmd
+  - 03_grafy.qmd
+  - 04_popisna.qmd
+  - 05_rozdeleni.qmd
+  - 06_odhad.qmd
+  - 07_testovani.qmd
+  - 09_casove_rady.qmd
+  - 10_hydro_index.qmd
+  - 11_korelace_regrese.qmd
+  - 12_extremalni_rozdeleni.qmd
+  sidebar:
+    title: Metody vyhodnocování VH dat
+    search: true
+    pinned: true
+    contents:
+    - image: images/DALLE_no-bg.webp
     - index.qmd
     - intro.qmd
     - 01_uvod_do_R_1.qmd
     - 02_uvod_do_R_2.qmd
-    # - 03_grafy.qmd
-    # - 04_popisna.qmd
-    # - 05_rozdeleni.qmd
-    # - 06_odhad.qmd
-    # - 07_testovani.qmd
-    # - 09_casove_rady.qmd
-    # - 10_hydro_index.qmd
-    # - 11_korelace_regrese.qmd
-    # - 12_extremalni_rozdeleni.qmd
-    
-
-  # Sidebar Configuration for the Book
-  sidebar:
-    title: "Metody vyhodnocování VH dat"
-    search: true
-    pinned: true
-    # Adding the image in the sidebar
-    contents:
-      - image: images/logo_mvvd.webp
-      - index.qmd
-      - intro.qmd
-      - 01_uvod_do_R_1.qmd
-      - 02_uvod_do_R_2.qmd
-      # - 03_grafy.qmd
-      # - 04_popisna.qmd
-      # - 05_rozdeleni.qmd
-      # - 06_odhad.qmd
-      # - 07_testovani.qmd
-      # - 09_casove_rady.qmd
-      # - 10_hydro_index.qmd
-      # - 11_korelace_regrese.qmd
-      # - 12_extremalni_rozdeleni.qmd
-
-  downloads: [pdf, epub]
-
+    - 03_grafy.qmd
+    - 04_popisna.qmd
+    - 05_rozdeleni.qmd
+    - 06_odhad.qmd
+    - 07_testovani.qmd
+    - 09_casove_rady.qmd
+    - 10_hydro_index.qmd
+    - 11_korelace_regrese.qmd
+    - 12_extremalni_rozdeleni.qmd
+  downloads:
+  - pdf
+  - epub
 bibliography: references.bib
-
 format:
   html:
     page-layout: article
-    include-after-body: custom.html
-    theme: 
-      - cosmo
-      - style.scss
+    include-after-body:
+    - custom.html
+    - include/webex.js
+    theme:
+    - cosmo
+    - style.scss
     max-width: 1600px
-    css: style.css
+    css:
+    - style.css
+    - include/webex.css
     code-fold: show
-    linkcolor: "#006666"
+    linkcolor: '#006666'
     highlight-style: syntax.theme
     code-annotations: hover
     fig-align: center
     fig-format: svg
     fig-dpi: 400
     fig-cap-location: bottom
-
   pdf:
     documentclass: scrreprt
-
 editor: visual
 lang: cs-CZ

@@ -33,7 +33,7 @@ q___() # Kvantilová funkce rozdělení
 
 ## Distribuční funkce rozdělení
 
-Rozdělení pravděpodobnosti náhodné veličiny lze jednoznačně popsat tzv. distribuční funkcí {@eq-distribucni-funkce}.
+Rozdělení pravděpodobnosti náhodné veličiny lze jednoznačně popsat tzv. distribuční funkcí @eq-distribucni-funkce.
 
 $$
 F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
@@ -79,7 +79,15 @@ plot(.Random.seed)
 
 
 
-## Empirické vs. teoretické rozdělení
+## Empirická distribuční funkce
+
+Sestavuje se na základě sesbíraného vzorku dat, sděluje jak velký podíl dat je stejných
+nebo menších než konkrétní hodnota.
+
+```{r}
+ED <- ecdf(1) #<1>
+```
+1. a
 
 ## Diskrétní rozdělení
 
@@ -92,14 +100,46 @@ IQR(x)
 fivenum(x)
 ```
 
-```{r}
-
-```
-
 ### Alternativní rozdělení
 ### Rovnoměrné rozdělení
 ### Binomické rozdělení
 ### Poissonovo rozdělení
+
+::: callout-tip
+## Úloha
+
+  8. Vytvořte jednoduchý simulátor deště pro jeden rok podle následujícího zadání\
+    a) Buď prší, nebo ne. Prvděpodobnost že neprší, je 90 \%.\
+    b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost že prší 
+  dnes na 25 \%.
+:::
+
+Řešení:\
+```{r, fig.align='center'}
+#| code-fold: true
+x <- vector(mode = "numeric", length = 365) #<1>
+
+for(i in seq_along(x)) {
+  if(i == 1) next #<2> 
+  x[i] <- ifelse(
+            test = x[i - 1] > 0, #<3>
+            yes = rbinom(n = 1, #<3>
+                         size = 1, #<3>
+                         prob = 0.10) * rchisq(n = 1, #<3>
+                                               df = 1, #<3>
+                                               ncp = 0), #<3>
+            no = rbinom(n = 1, 
+                        size = 1, 
+                        prob = 0.25) * rchisq(n = 1, 
+                                              df = 3, 
+                                              ncp = 1)) 
+}
+barplot(x)
+```
+1. Předem alokuejeme vektor hodnot.
+2. Je třeba ošetřit případ, kdy začínáme a neexistuje úsek $x(t-1)$.
+3. Pokud pršelo v předchozím čase
+
 
 
 ## Spojitá rozdělení
@@ -171,14 +211,71 @@ $$
 
 :::
 
+Řešení:
 ```{r}
+#| code-fold: true
 curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
 curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
 ```
 
+### Studentovo-$t$ rozdělení
+
+
 ### Logaritmicko-normální rozdělení
 
-### Studentovo-$t$ rozdělení
+Nabývá pouze kladných hodnot. Můžeme jej nalézt například v rozdělení průtoků, 
+simulacích chemické konncentrace.
+
+
+::: callout-note
+## Další zdroje
+
+ČHMÚ používá pro odhad a konstrukci $m-$denních průtoků logaritmicko-normální 
+rodzdělení s pěti parametry.     \
+
+tvar transformace se třemi, s pěti a ve standardizovaném tvaru pro průtoky
+$$
+y = e^x + y_o\\
+y = a\cdot e^{sign(x)\cdot|x|^b}+y_0\\
+q_{norm} = \alpha\cdot e^{sign(x)\cdot|x|^\beta}+q_{100\%}
+$$
+
+$$
+
+$$
+
+  - $\mu$: výběrový průmer normálního rozdělení   \
+  - $\sigma$: směrodatná odchylka normálního rozdělení   \
+  - $\gamma$: parametru posunu   \
+  - $\alpha$: parametr měřítka   \
+  - $\beta$: parametr tvaru (3. a 4. moment)\
+
+$$
+f(x;\mu, \sigma, \gamma, \alpha, \beta) = \dfrac{\beta}{(x-\gamma)\sigma\sqrt{2\pi}}\exp\left(-\frac{\left(\ln{\left(\dfrac{x-\gamma}{\alpha}\right)}-\mu\right)^2}{2\sigma^2}\right),\quad x>\gamma
+$$
+```{r, echo=FALSE, fig.align='center', }
+# x <- 1:100
+ln5 <- function(x) ((beta / ((x - gamma) * sigma * sqrt(2 * pi))) * exp(-((log((x - gamma) / alpha) - mu)^2) / (2 * sigma^2)))
+
+mu <- 0
+sigma <- 1
+gamma <- 0.8
+alpha <- 1
+beta <- 2
+curve(expr = ln5, 
+      from = gamma + 0.01, 
+      to = 20, 
+      n = 1000, 
+      xname = "x", 
+      col = "#102d3d", 
+      main = "Hustota funkce logaritmicko-normálního rozdělení s 5 parametry", 
+      xlab = "", 
+      ylab = "f(x)")
+```
+
+
+:::
+
 
 ### $F$ rozdělení
 Jinak také *Fisherovo-Snedecorovo* rozdělení je používáno pro sestrojení $100(1-\alpha)\%$ 
@@ -188,10 +285,21 @@ u testování hypotézy o rovnosti středních hodnot u více než dvou výběro
 
 ### $\chi^2$ rozdělení
 
+Narozdíl od předchozích zde uvedených rozdělení není $\chi^2$ rozdělení u pozorovaných veličin příliš časté. 
+Nicméně je to významné rozdělení z hlediska testování statistických hypotéz (@sec-testovani) při porovnávání
+rozdělení vzájemně. Používá se při stanovení intervalů spolehlivosti výběrový rozptyl.
+
+$$
+\dfrac{(n-1)s_x^2}{\chi^2_{1-\alpha/2}} \leq \sigma_x^2\leq \dfrac{(n-1)s_x^2}{\chi^2_{\alpha/2}}
+$$ {#eq-odhad-chisq-rozptyl}
 
 ::: callout-tip
 ## Cvičení
-  1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.
-  2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$.   
-  3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat hodnot menších než 6?    
+  1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.\
+  2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$.   \
+  3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat 
+  hodnot menších než 6?    \
+  4.  Předpokládejme, že $s_x^2=8,6$ při $15$ stupních volnosti. Doplňte následující
+  výraz k určení 95\% intervalu spolehlivosti pro $\sigma_x^2$ (viz @eq-odhad-chisq-rozptyl).\        
+  `c(15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.975)`,  `r fitb(15)` `),` `15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.025)`,  `15` `))`
 :::
