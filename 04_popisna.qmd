@@ -78,6 +78,7 @@ x
 Pro obě extrémní polohy ($\min$ a $\max$) jsou v R stejnojmenné funkce.
 
 | Název              | Funkce          | Vzorec                             |
+|--------------------|-----------------|------------------------------------|
 | minimum/maximum    | `min(x)/max(x))`| $\max(x) - \min(x)$                |
 | výběrový kvantil   | `quantile(x)`   | -                                  |
 | aritmetický průměr | `mean(x)`       | $\dfrac{1}{n}\sum_{i=1}^{n}x_i$    |
@@ -134,6 +135,7 @@ range(x) #<2>
 Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené $Q3$ a $Q1$ neboli $q_{75}$ a $q_{25}$.
 
 | Název                  | Funkce          | Vzorec                                                               |
+|------------------------|-----------------|----------------------------------------------------------------------|
 | rozptyl                | `var(x)`        | $\sum\limits_{i=1}^{n}\dfrac{1}{n-1}(x_i - \bar{x})^2$               |
 | směrodatná odchylka    | `sd(x)`         | $\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n-1}(x_i - \bar{x})^2}$        |
 | varianční rozpětí      | `range(x)`      | $\max(x) - \min(x)$                                                  |
