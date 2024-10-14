@@ -89,12 +89,12 @@ Vidíme, že $x =$ `r x`. Pro tento průmer následně spočítáme interval spo
 
 ## Intervalový odhad
 
-V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. 
+V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. @eq-odhad-intervalovyodhad je rovnice pro intervalový odhad střední hodnoty při neznámém rozptylu.
 
 
-$$
+$$ 
 \bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
-$$
+$$ {#eq-odhad-intervalovyodhad}
 
 $100(1-\alpha)\%$ interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností. Je tomu tak současně za předpokladu, že samotná poloha
 hledaného parametru je konstantní.
@@ -124,33 +124,35 @@ f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\si
 $$ {#eq-maxlike-normalni-rozdeleni}
 
 ```{r}
-# Set the parameters
-mean_true <- 5
-sd_true <- 1
+mu <- 5 # <1>
+sigma <- 1 # <1>
 
-# Generate random data from a normal distribution
-set.seed(123)
-n <- 10000
-x <- rnorm(n, mean_true, sd_true)
+n <- 10000 # <2>
+x <- rnorm(n, mu, sigma^2) # <2>
 
-# Define the likelihood function
-likelihood <- function(params) {
-  mean_param <- params[1]
-  sd_param <- params[2]
-  return(prod(dnorm(x, mean = mean_param, sd = sd_param)))
+likelihood <- function(params) { # <3>
+  mean_param <- params[1] # <3>
+  sd_param <- params[2]# <3>
+  return(prod(dnorm(x, mean = mean_param, sd = sd_param)))# <3>
 }
 
-# Use optim() to find the maximum likelihood estimates
-result <- optim(par = c(0, 1), fn = function(params) -likelihood(params), hessian = TRUE)
 
-# Maximum Likelihood Estimates
-mle_mean <- result$par[1]
-mle_sd <- result$par[2]
+result <- optim(par = c(0, 1), #<4>
+                fn = function(params) -likelihood(params), #<4>
+                hessian = TRUE) #<4>
 
-cat("MLE for mean:", mle_mean, "\n")
-cat("MLE for standard deviation:", mle_sd, "\n")
+mle_mean <- result$par[1] #<5>
+mle_sd <- result$par[2] #<5>
+
+cat("MLE pro střední hodnotu:", mle_mean, "\n")
+cat("MLE pro směrodatnou odchylku:", mle_sd, "\n")
 
 ```
+1. Skutečné parametry $\mu$ a $\sigma$, které použijeme ke generování náhodných čísel.
+2. Získáme pseudonáhodná čísla z Normálního rozdělení.
+3. Definice věrohodnostní funkce.
+4. S použitím funkce `optim()` hledáme maximálně věrohodný odhad.
+5. Získané hodnoty odhadů.
 
 Spočítejte hodnotu věrohodnostní funkce pro $X = 4$
 

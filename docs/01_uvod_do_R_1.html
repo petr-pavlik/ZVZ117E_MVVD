@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_extremalni_rozdeleni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Extremální rozdělení</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
   </div>
 </li>
     </ul>
@@ -297,7 +297,7 @@ Cíle cvičení
 <figcaption class="figure-caption">Obrázek&nbsp;3.1: Obr. 1: Základní layout prostředí RStudio.</figcaption>
 </figure>
 </div>
-<p>V základním zobrazení <a href="#fig-zakladniRstudio">Obrázek&nbsp;<span>3.1</span></a> bychom měli v levé části vidět panel <strong>Console</strong>. S konzolí nebudeme pracovat příliž intenzivně, slouží zejména k zadávání jednoduchých příkazů, například vyhodnocení proměnné. Pravou část vidíme rozdělenu na Výchozí rozvržení je možné měnit <strong><em>Tools</em></strong> &gt; <strong><em>Global optioins…</em></strong> &gt; <strong><em>Pane layout</em></strong>.</p>
+<p>V základním zobrazení <a href="#fig-zakladniRstudio">Obrázek&nbsp;<span>3.1</span></a> bychom měli v levé části vidět panel <strong>Console</strong>. S konzolí nebudeme pracovat příliš intenzivně, slouží zejména k zadávání jednoduchých příkazů, například vyhodnocení proměnné. Pravou část vidíme rozdělenu na dolní a horní polovinu. V té horní jsou důležité panely <strong>Environment</strong> kde se nachází všechny objekty a vlastní funkce, které jsme vytvořili v rámci <em>session</em>. Dále Výchozí rozvržení je možné měnit <strong><em>Tools</em></strong> &gt; <strong><em>Global options…</em></strong> &gt; <strong><em>Pane layout</em></strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -352,11 +352,11 @@ Cíle cvičení
 <h2 data-number="3.3" class="anchored" data-anchor-id="pracovní-postup-a-jeho-opakovatelnost"><span class="header-section-number">3.3</span> Pracovní postup a jeho opakovatelnost</h2>
 <p>K systematické práci a analýze zejména v exaktních vědách patří dodržování jistých pracovních zásad, které umožňují jednak objektivní kontrolu výsledků a jednak jejich opětovného získání. Níže je uvedeno pár zásad, jejichž dodržování vede k celkové duševní pohodě a rovnováze jak vaší vlastní, tak kolegů.</p>
 <ul>
-<li>Při psaní kódu se řiďte unifikovaným schématem jmenných konvencí, odsazování a vkládání mezer, a komentování.<br>
+<li>Při psaní kódu se řiďte unifikovaným schématem jmenných konvencí, odsazování a vkládání mezer, a komentování. Jedno takové má například <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham</a>, či <a href="https://google.github.io/styleguide/Rguide.html">Google</a>.<br>
 </li>
 <li>Každé cvičení začněte ideálně tvorbou nového projektu v oddělené složce, nebo alespoň nového skriptu.<br>
 </li>
-<li>Při zavírání RStudio neukládejte pracovní prostředí do souboru “*.RData”. Uloží se do něj vše co máte právě v <strong>Environment</strong>, což nemusí nutně pocházet z pracovního postupu uchovaného ve skriptech (byť při dodržobvání jiných zásad z tohoto sezamu by tomu tak být nemělo).</li>
+<li>Při zavírání RStudio neukládejte pracovní prostředí do souboru “*.RData”. Uloží se do něj vše co máte právě v <strong>Environment</strong>, což nemusí nutně pocházet z pracovního postupu uchovaného ve skriptech (byť při dodržování jiných zásad z tohoto sezamu by tomu tak být nemělo).</li>
 <li>R bohužel umožnuje <em>připínat</em> a <em>odepínat</em> <code>data.frame</code> pomocí funkcí <code>attach()</code> a <code>detach()</code>, na které je vhodné ihned po přečtení této věty zapomenout.</li>
 </ul>
 <div class="cell">
@@ -379,7 +379,19 @@ Cíle cvičení
 </div>
 </div>
 <ul>
-<li><em>dtto</em> funkce <code>fix()</code>, která umožňuje manipulovat s daty formou GUI tabulkového procesoru</li>
+<li><p><em>dtto</em> funkce <code>fix()</code>, která umožňuje manipulovat s daty formou GUI tabulkového procesoru.<br>
+</p></li>
+<li><p>Naučte se používat <code>::</code> značící jmenný prostor, ze kterého funkce pochází. Například <code>filter()</code> je funkce definována ve více jmenných prostorech často používaných balíčků.</p></li>
+<li><p>Oddělujte vzájemně surová data, zpracovaná data, skripty analýz a výstupy. Souborová struktura projektu může vypadat například takto:</p>
+<pre><code>~/mzp_analyza/
+ ├── data/
+ |   ├── raw_data/ 
+ |   └── zpracovana_data/ 
+ ├── skripty/
+ |   └── 01_load.R
+ ├── vystupy/
+ |  └── 01_liniovy_graf_m_denni_vody.pdf
+ └── mzp_analyza.RProj</code></pre></li>
 </ul>
 
 

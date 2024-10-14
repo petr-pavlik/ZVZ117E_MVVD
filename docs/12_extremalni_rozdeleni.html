@@ -243,8 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#weibullovo-rozdělení" id="toc-weibullovo-rozdělení" class="nav-link active" data-scroll-target="#weibullovo-rozdělení"><span class="header-section-number">13.1</span> Weibullovo rozdělení</a></li>
-  <li><a href="#regrese" id="toc-regrese" class="nav-link" data-scroll-target="#regrese"><span class="header-section-number">13.2</span> Regrese</a></li>
+  <li><a href="#gumbellovo-rozdělení" id="toc-gumbellovo-rozdělení" class="nav-link active" data-scroll-target="#gumbellovo-rozdělení"><span class="header-section-number">13.1</span> Gumbellovo rozdělení</a></li>
   </ul>
 </nav>
     </div>
@@ -268,412 +267,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="weibullovo-rozdělení" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="weibullovo-rozdělení"><span class="header-section-number">13.1</span> Weibullovo rozdělení</h2>
-<p>Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá.Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.</p>
-<p>Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít <strong>Paersonův</strong> korelační koeficient,</p>
+<section id="gumbellovo-rozdělení" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="gumbellovo-rozdělení"><span class="header-section-number">13.1</span> Gumbellovo rozdělení</h2>
+<p>Hustota funkce Gumbellova rozdělení je dána předpisem</p>
 <p><span class="math display">\[
-r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}\sqrt{\sum(y_i - \bar{y})^2}}
-\]</span> přičemž platí <span class="math inline">\(r_{xy}\in\langle-1;1\rangle\)</span>. Alternativně můžeme použít neparametrický výpočet <strong>Spearmana</strong>, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako <span class="math inline">\(d_i = x_{ri} - y_{ri}\)</span></p>
-<p><span id="eq-spearman"><span class="math display">\[
-\rho = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)}
-\tag{13.1}\]</span></span></p>
-<section id="cvičení" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="cvičení">Cvičení</h4>
-<ul>
-<li>Napište vlastní funkci, které pro dané vektory <code>x</code> a <code>y</code> spočítá korelační Spearmanův koeficient.<br>
-Řešení:</li>
-</ul>
-<div class="cell">
-<details>
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>sp_k <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>  rank_x <span class="ot">&lt;-</span> <span class="fu">rank</span>(x)</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>  rank_y <span class="ot">&lt;-</span> <span class="fu">rank</span>(y)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> rank_x <span class="sc">-</span> rank_y</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>  d_sq <span class="ot">&lt;-</span> <span class="fu">sum</span>(d<span class="sc">^</span><span class="dv">2</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> ((<span class="dv">6</span> <span class="sc">*</span> d_sq) <span class="sc">/</span> (n<span class="sc">*</span>(n<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)))</span>
-<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="2,3">Nejprve je nutné identifikovat pořadí,</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="4,5">dále spočítat kvadrát vzdáleností,</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="6,8">a po dosazení počtu měření <span class="math inline">\(n\)</span> dosadit do rovnice.</span>
-</dd>
-</dl>
-</div>
-</div>
-<ul>
-<li>Porovnejte obě funkce na datech</li>
-</ul>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sp_k</span>(_, _)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(_, _, <span class="at">method =</span> <span class="st">"Spearman"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ul>
-<li>Pokuste se odhadnout korelační koeficient následujících veličin</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<table class="table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 21%">
-<col style="width: 10%">
-<col style="width: 17%">
-<col style="width: 10%">
-<col style="width: 18%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Povodí</th>
-<th>velikost <span class="math inline">\(x_i\)</span></th>
-<th>pořadí</th>
-<th>odtok <span class="math inline">\(y_i\)</span></th>
-<th>pořadí</th>
-<th>rozdíl <span class="math inline">\(d_i\)</span></th>
-<th><span class="math inline">\(d_i^2\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="regrese" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="regrese"><span class="header-section-number">13.2</span> Regrese</h2>
-<p>Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme <strong>nezávislou proměnnou</strong> a <strong>závislou proměnnou</strong>. Míru závislosti posuzujeme pomocí lineárního regresního modelu. Cílem regrese je proložit naměřenými body přímku, která nejlépe vystihuje vztah mezi proměnnými.</p>
+f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-exp\left(-\dfrac{x-c}{d}\right)\right]
+\]</span> kde <span class="math inline">\(c\)</span> a <span class="math inline">\(d\)</span> jsou parametry. Kvantilová funkce je pak <span class="math display">\[
+x_T = c - d\cdot\ln\left[-\ln\left(1-\dfrac{1}{T}\right)\right]
+\]</span></p>
+<p>kde <span class="math inline">\(T\)</span> je doba opakování a parametry odhadnuté metodou mometů jsou:</p>
 <p><span class="math display">\[
-y = \beta_0 + \beta_1x
-\]</span> kde <span class="math inline">\(y\)</span> je závislá proměnná, <span class="math inline">\(x\)</span> je nezávislá proměnná, <span class="math inline">\(\beta_0\)</span> je počátek (intercept) a <span class="math inline">\(\beta_1\)</span> je sklon přímky.</p>
-<p>Lineární model regresního typu definujeme v R pomocí funkce <code>lm()</code>, které na první pozici dosazujeme výraz ve formátu rovnice <code>formula</code>, např. <code>lm(y ~ x)</code>. Model vyhodnocujeme funkcí <code>summary</code> a mezi sebou porovnáváme pomocí kritérií zohledňující vysvětlenou variabilitu/věrohodnost modelu a jeho komplexnost, např. <strong>Akaikeho informační kritérium</strong>.</p>
-<p><span class="math display">\[
-\text{AIC} = 2k - 2\ln(\hat{L})
-\]</span> kde <span class="math inline">\(k\)</span> je počet volných parametrů modelu a <span class="math inline">\(\hat{L}\)</span> je věrohodnostní funkce modelu.</p>
-<section id="cvičení-1" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="cvičení-1">Cvičení</h5>
-<ol type="1">
-<li>Uvažujme následující data, kde předpokládáme příčinnou závislost <span class="math inline">\(y\)</span> na <span class="math inline">\(x\)</span>.</li>
-</ol>
-<div class="cell">
+d = \dfrac{\sqrt{6}}{\pi}\sigma, \quad c = \mu-0.5772\cdot d
+\]</span></p>
+<p>a <span class="math inline">\(\mu\)</span> <span class="math inline">\(\sigma\)</span> jsou momenty celkového souboru.</p>
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dfr <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="fl">3.93</span>,  <span class="fl">3.83</span>,  <span class="fl">7.11</span>,  <span class="fl">6.98</span>,  <span class="fl">7.87</span>,  <span class="fl">9.11</span>, <span class="fl">10.04</span>,  <span class="fl">9.99</span>, <span class="fl">10.11</span>, <span class="fl">10.93</span>, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="fl">11.01</span>, <span class="fl">11.93</span>, <span class="fl">11.94</span>, <span class="fl">11.88</span>, <span class="fl">11.82</span>, <span class="fl">12.98</span>, <span class="fl">13.04</span>, <span class="fl">13.04</span>, <span class="fl">13.11</span>, <span class="fl">13.99</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="fl">13.97</span>, <span class="fl">13.99</span>, <span class="fl">13.97</span>, <span class="fl">15.08</span>, <span class="fl">14.93</span>, <span class="fl">14.86</span>, <span class="fl">15.89</span>, <span class="fl">16.15</span>, <span class="fl">17.08</span>, <span class="fl">17.18</span>, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="fl">16.96</span>, <span class="fl">17.95</span>, <span class="fl">18.14</span>, <span class="fl">18.09</span>, <span class="fl">18.05</span>, <span class="fl">19.04</span>, <span class="fl">19.08</span>, <span class="fl">19.07</span>, <span class="fl">20.11</span>, <span class="dv">20</span>, </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="dv">20</span>,    <span class="fl">20.14</span>, <span class="fl">19.92</span>, <span class="fl">22.13</span>, <span class="fl">23.09</span>, <span class="fl">23.9</span> , <span class="fl">23.95</span>, <span class="fl">24.06</span>, <span class="fl">23.95</span>, <span class="fl">24.94</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="fl">1.93</span>, <span class="fl">10.01</span>,  <span class="fl">3.73</span>, <span class="fl">22.09</span>, <span class="fl">15.86</span>, <span class="fl">10.09</span>, <span class="fl">18.09</span>, <span class="fl">25.91</span>, <span class="fl">34.09</span>, <span class="fl">16.89</span>, </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="fl">28.04</span>, <span class="fl">13.95</span>, <span class="fl">19.98</span>, <span class="fl">23.98</span>, <span class="fl">27.78</span>, <span class="fl">26.19</span>, <span class="fl">33.85</span>, <span class="fl">33.96</span>, <span class="fl">45.88</span>, <span class="fl">25.96</span>, </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>         <span class="fl">35.89</span>, <span class="fl">60.</span>  , <span class="fl">80.03</span>, <span class="fl">20.06</span>, <span class="fl">25.92</span>, <span class="fl">54.03</span>, <span class="fl">31.96</span>, <span class="fl">40.12</span>, <span class="fl">32.03</span>, <span class="fl">39.95</span>, </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>         <span class="fl">50.2</span> , <span class="fl">41.91</span>, <span class="fl">55.92</span>, <span class="fl">75.92</span>, <span class="fl">83.89</span>, <span class="fl">35.94</span>, <span class="fl">45.94</span>, <span class="fl">67.85</span>, <span class="fl">32.05</span>, <span class="fl">48.11</span>, </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         <span class="fl">52.11</span>, <span class="fl">55.95</span>, <span class="fl">64.02</span>, <span class="fl">65.9</span> , <span class="fl">53.94</span>, <span class="fl">69.92</span>, <span class="fl">92.1</span> , <span class="fl">92.78</span>, <span class="fl">99.03</span>, <span class="fl">85.09</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ol start="2" type="1">
-<li>Sestrojme lineární model <code>md1</code></li>
-</ol>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>md1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">data =</span> dfr)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ol start="3" type="1">
-<li>Struktura objektu <code>md1</code> je komplexní, můžeme vybírat jednotlivé proměnné k dalším účelům, například pro tvorbu grafů.</li>
-</ol>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(md1, <span class="dv">1</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of 12
- $ coefficients : Named num [1:2] -15.72 3.78
-  ..- attr(*, "names")= chr [1:2] "(Intercept)" "x"
- $ residuals    : Named num [1:50] 2.79 11.25 -7.43 11.42 1.82 ...
-  ..- attr(*, "names")= chr [1:50] "1" "2" "3" "4" ...
- $ effects      : Named num [1:50] -300.7778 140.5186 -9.3636 9.458 0.0675 ...
-  ..- attr(*, "names")= chr [1:50] "(Intercept)" "x" "" "" ...
- $ rank         : int 2
- $ fitted.values: Named num [1:50] -0.862 -1.24 11.163 10.672 14.037 ...
-  ..- attr(*, "names")= chr [1:50] "1" "2" "3" "4" ...
- $ assign       : int [1:2] 0 1
- $ qr           :List of 5
-  ..- attr(*, "class")= chr "qr"
- $ df.residual  : int 48
- $ xlevels      : Named list()
- $ call         : language lm(formula = y ~ x, data = dfr)
- $ terms        :Classes 'terms', 'formula'  language y ~ x
-  .. ..- attr(*, "variables")= language list(y, x)
-  .. ..- attr(*, "factors")= int [1:2, 1] 0 1
-  .. .. ..- attr(*, "dimnames")=List of 2
-  .. ..- attr(*, "term.labels")= chr "x"
-  .. ..- attr(*, "order")= int 1
-  .. ..- attr(*, "intercept")= int 1
-  .. ..- attr(*, "response")= int 1
-  .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
-  .. ..- attr(*, "predvars")= language list(y, x)
-  .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
-  .. .. ..- attr(*, "names")= chr [1:2] "y" "x"
- $ model        :'data.frame':  50 obs. of  2 variables:
-  ..- attr(*, "terms")=Classes 'terms', 'formula'  language y ~ x
-  .. .. ..- attr(*, "variables")= language list(y, x)
-  .. .. ..- attr(*, "factors")= int [1:2, 1] 0 1
-  .. .. .. ..- attr(*, "dimnames")=List of 2
-  .. .. ..- attr(*, "term.labels")= chr "x"
-  .. .. ..- attr(*, "order")= int 1
-  .. .. ..- attr(*, "intercept")= int 1
-  .. .. ..- attr(*, "response")= int 1
-  .. .. ..- attr(*, ".Environment")=&lt;environment: R_GlobalEnv&gt; 
-  .. .. ..- attr(*, "predvars")= language list(y, x)
-  .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
-  .. .. .. ..- attr(*, "names")= chr [1:2] "y" "x"
- - attr(*, "class")= chr "lm"</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> dfr, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">plot</span>(x, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                 y, </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ylim =</span> <span class="fu">c</span>(md1<span class="sc">$</span>coefficients[<span class="dv">1</span>], </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">max</span>(md1<span class="sc">$</span>fitted.values) <span class="sc">+</span> <span class="dv">2</span>)))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(md1<span class="sc">$</span>coefficients, <span class="at">col =</span> <span class="st">"orangered"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> md1<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">lty =</span> <span class="st">"dashed"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fitgumbel <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  mX <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  sdX <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  dX <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">/</span>pi<span class="sc">*</span>sdX</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  cX <span class="ot">&lt;-</span> mX <span class="sc">-</span> <span class="fl">0.5772</span><span class="sc">*</span>dX</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(cX <span class="sc">-</span> d<span class="sc">*</span><span class="fu">log</span>(<span class="sc">-</span><span class="fu">log</span>(<span class="dv">1-1</span><span class="sc">/</span>x)), <span class="at">add =</span> <span class="cn">TRUE</span>, ...)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">100</span>), </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Doba opakování (roky)"</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Maximální denní průtok v roce (mm/d)"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-1-1.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Model vyhodnotíme pomocí <code>summary</code></li>
-</ol>
-<div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(md1)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitgumbel()</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = y ~ x, data = dfr)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--28.274  -9.410  -1.639  10.063  42.925 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -15.7241     6.3224  -2.487   0.0164 *  
-x             3.7816     0.3884   9.736 6.03e-13 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 14.43 on 48 degrees of freedom
-Multiple R-squared:  0.6639,    Adjusted R-squared:  0.6568 
-F-statistic: 94.79 on 1 and 48 DF,  p-value: 6.032e-13</code></pre>
 </div>
-</div>
-<p>Souhrn obsahuje původní zadání v podobě rovnice, dále identifikované koeficienty modelu, významnost závislosti indikuje přítomnost jedné nebo více <code>*</code> u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy <code>Adjusted R-squared:  0.6417</code>.<br>
-</p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(md1, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<p>R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. Zde nás budou zajímat zejména <strong>residua</strong> modelu. Dle prvního grafu by mohl model se závislostí na polynomu být lepší volbou.<br>
-</p>
-<p>Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnnou.</p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>md2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(md2)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = y ~ poly(x, 2))
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--28.086  -9.010  -3.459   4.693  45.048 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   42.536      2.027  20.985  &lt; 2e-16 ***
-poly(x, 2)1  140.519     14.333   9.804 6.05e-13 ***
-poly(x, 2)2   18.519     14.333   1.292    0.203    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 14.33 on 47 degrees of freedom
-Multiple R-squared:  0.6754,    Adjusted R-squared:  0.6616 
-F-statistic: 48.89 on 2 and 47 DF,  p-value: 3.29e-12</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(md2, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> dfr, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">plot</span>(x, y, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>)))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(md2)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ix <span class="ot">&lt;-</span> <span class="fu">sort</span>(dfr<span class="sc">$</span>x, <span class="at">index.return=</span>T)<span class="sc">$</span>ix</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x[ix], pred[ix], <span class="at">col =</span> <span class="st">'orangered'</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid"></p>
-</div>
-</div>
-<p>Srovnejme modely vzájemně</p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(md1, md2)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    df      AIC
-md1  3 412.8013
-md2  4 413.0561</code></pre>
-</div>
-</div>
-<ul>
-<li>Pokuste se vést diskuzi nad vhodností obou modelů</li>
-</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -191,7 +191,7 @@ Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole
 
 #### Atomický vektor `vector`
 
-Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{A} = (a_{ij})_{m1}$ hodnot v $n-$dimenzionálním prostoru.
+Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot.
 
 $$
 \mathbf{\mathrm{u}} = 
@@ -343,7 +343,14 @@ diag(A) # <4>
           \right)
           $$\
     d)  Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
-    e)  S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?
+    e)  S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?\
+    f)  Vyřešte s pomocí R soustavu lineárních rovnic:
+    $$\begin{array}
+      -3x & +2y& +z&=1\\
+      -2x & -y& +z&=2\\
+      2x & +y& -4z&=0
+      \end{array}
+    $$
 :::
 
 ````{=html}

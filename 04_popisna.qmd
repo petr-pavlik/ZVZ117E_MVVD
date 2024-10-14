@@ -18,7 +18,8 @@ V RStudio se nachází poměrně propracovaný průvodce importem dat, který na
 ![](images/data-import.png){fig-align="center" width="624"}
 
 ```{r}
-global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", row.names = 1)
+global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", 
+                                row.names = 1)
 head(x = global_temperatures, n = 5)
 ```
 
@@ -100,14 +101,27 @@ Artitmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2+1}$ v se�
 
 Za modus se označuje nejčastěji se vyskytující hodnota v souboru. Četnost výskytu hodnot na reálné ose se nahrazuje buďto hustotou (funkce `density()`) nebo je možné použít kombinaci funkcí `cut()` a `table()`.
 
-```{r,collapse=FALSE}
+```{r,collapse=FALSE, fig.align='center'}
 table(round(x = x, digits = 0)) #<1>
 table(cut(x, breaks = 10)) #<2>
-plot(density(x = x)) #<3>
+dens <- density(x = x) #<3>
+max_dens <- which.max(dens$y)
+plot(dens, main = "Jádrový odhad hustoty x") #<3>
+segments(x0 = dens$x[max_dens], 
+         y0 = 0, 
+         x1 = dens$x[max_dens], 
+         y1 = dens$y[max_dens], 
+         lwd = 1.5) #<3>
 ```
 1.  Funkce `table()` provede součty speficikovaných hodnot. V tomto případě po zaokrouhlení na celá čísla.
 2.  Nyní s pomocí funkce `cut()` rozlišíme četnosti do 10 intervalů a následně spočteme počet hodnot v těchto intervalech.
-3.  Jádrový odhad hustoty.
+3.  Jádrový odhad hustoty. 
+$$
+  \hat{f}(x)=\dfrac{1}{nh}\sum_{i=1}^{n}\mathsf{K}\left(\dfrac{x-x_i}{h}\right)
+$$
+kde $\mathsf{K}$ je jádrová funkce, $h$ je šířka pásma (zhlazovací funkce) a $x_i$ jsou hodnoty.
+4. Modus je nahrazen argumentačním maximem z tohoto odhadu $$\arg \max_x \hat{f}(x)$$
+
 
 ### Harmonický průměr
 
@@ -139,8 +153,8 @@ Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()
 | rozptyl                | `var(x)`        | $\sum\limits_{i=1}^{n}\dfrac{1}{n-1}(x_i - \bar{x})^2$               |
 | směrodatná odchylka    | `sd(x)`         | $\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n-1}(x_i - \bar{x})^2}$        |
 | varianční rozpětí      | `range(x)`      | $\max(x) - \min(x)$                                                  |
-| mezikvartilové rozpětí | `IQR(x)`        |  $\mathrm{Q}3 - \mathrm{Q}$                                          |
-| variační koeficient    | `mean(x)/sd(x)` |  $\mathrm{Q}3 - \mathrm{Q}$                                          |
+| mezikvartilové rozpětí | `IQR(x)`        |  $\mathrm{Q}3 - \mathrm{Q}_1$                                          |
+| variační koeficient    | `mean(x)/sd(x)` |  $\dfrac{s_x}{\bar{x}}$                                          |
 
 
 ### Střední chyba aritmetického průměru
@@ -160,7 +174,7 @@ summary(x)
 ```
 
 ::: callout-note
-## Další zdroje
+## Poznámka
 
 Funkce `summary()` je tzv. *S3 generic*, to znamená, že její chování je definované v závislosti na
 objekt, na který je volána. Podívejte se na výstup `methods(summary)`. Pokud volána funkci na numerický vektor, tak je vybrána metoda `summary.numeric()`.
@@ -170,8 +184,10 @@ objekt, na který je volána. Podívejte se na výstup `methods(summary)`. Pokud
 
 ## Rekapitulace
 
-1.  Máte vektor hodnot: $0.64$, $0.98$, $-0.49$, $0.75$, $-1.35$, $1.65$, $1.12$, $-1.04$, $1.05$, $0.29$, $-0.6$, $-0.08$, $1.45$, $-1.87$, $-0.07$, $-0.02$, $0.62$, $0.01$, $-0.26$. Nalezněte:\       
-  průměr `r fitb(0.1463158)` 10% kvantil `r fitb(-1.102)` a medián `r fitb(0.01)`.\
+1.  Máte vektor hodnot: $0.64$, $0.98$, $-0.49$, $0.75$, $-1.35$, $1.65$, $1.12$, $-1.04$, $1.05$, $0.29$, $-0.6$, $-0.08$, $1.45$, $-1.87$, $-0.07$, $-0.02$, $0.62$, $0.01$, $-0.26$. Nalezněte s pomocí R:\
+  a) průměr `r fitb(0.1463158)`\     
+  b) $q_{10\textrm{p}}$ `r fitb(-1.102)`\      
+  c) medián `r fitb(0.01)`. \        
 2.  Doplňte funkci `read.___()` aby výsledek byl
-3.  Z datové sady vebrte sloupce 
+3.  Z datové sady vyberte sloupce 
 

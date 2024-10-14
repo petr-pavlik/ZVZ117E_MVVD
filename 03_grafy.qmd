@@ -3,9 +3,9 @@
 ::: callout-warning
 ## Cíle cvičení
 
-  - Naučit se tvorbu základních typů grafů
-  - Rozdělení sazby výstupu do polí
-  - Ukládání výstupů do souboru
+  - Naučit se tvorbu základních typů grafů.
+  - Definovat rozdělení sazby výstupu do polí.
+  - Uložit výstupy do souboru.
 :::
 
 V R dnes existují dva rúzné systémy pro tvorbu diagramů. První je obsažen v balíčku
@@ -110,6 +110,84 @@ with(data = dfr, # <1>
 1. Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
 2. Argument `expr` může obsahovat i blok kódu `{...}`
 
+::: callout-tip
+## Úloha
+
+6.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
+Postup:\
+    a) Nahrajte do prostředí data ze souboru.\           
+    b) Začněte tvorbu grafu s funkcí `plot.new()`\           
+    c) Nejjednodušší vztah popsal Schreiber v roce 1902\           
+$$
+  \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
+$$
+    d) Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$.\           
+    e) S pomocí 
+    f) Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$.\           
+  
+  Výsledek by měl vypadat následovně:
+```{r, echo=FALSE, fig.align='center'}
+phi <- seq(0, 2, 10e-3)
+schreiber <- 1 - exp(-phi)
+plot(x = phi, 
+     xlab = "Ep/P", 
+     ylab = "P/Er", 
+     xlim = c(0, 2), 
+     ylim = c(0, 1.2), 
+     # bty = "n",
+     type = "n", 
+     xaxt = "n",
+     yaxt = "n"
+)
+# Add grid lines similar to gnuplot
+grid(nx = 4, 
+     ny = NULL, 
+     col = "gray", 
+     lty = "dotted", 
+     lwd = 1)
+
+# Ensure the plot has a gnuplot-like minimalist style
+box(col = NA)  # Remove the box around the plot
+axis(1, 
+      col = "black", 
+      col.ticks = "black", 
+      lwd.ticks = 1, 
+      lwd = 1, 
+      las = 1, 
+      tck = -0.02)  # X-axis
+axis(2, 
+     col = "black", 
+     col.ticks = "black", 
+     lwd.ticks = 1, 
+     lwd = 1, 
+     las = 1, 
+     tck = -0.02)  # Y-axis
+
+lines(x = phi, 
+      y = schreiber, lty = 3)
+segments(x0 = 0, x1 = 1, y0 = 0, y1 = 1, lwd = 2, col = "gray60")
+segments(x0 = 1, x1 = 2, y0 = 1, y1 = 1, lwd = 2, col = "gray60")
+```
+:::
+
+
+### Transformace souřadnic
+
+S polárními souřadnicemi se setkáváme poměrně často. 
+
+Polární souřadnice
+$$
+\begin{array}{rl}
+x =& \sqrt{t}\cdot\cos(2\pi t)\\
+y =& \sqrt{t}\cdot\sin(2\pi t)
+\end{array}
+$$
+
+```{r}
+x <- sqrt
+```
+
+
 ## Volba barev
 
 Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
@@ -120,12 +198,59 @@ Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colo
 colors()[1:10]
 ```
 
+### `RColorBrewer`
+
+Součástí základní sady je balíček `RColorBrewer`
+
+```{r, fig.align='center'}
+#| fig-width: 10
+#| fig-height: 8
+RColorBrewer::display.brewer.all()
+```
+
+K vytvoření palety barev
+
+```{r}
+RColorBrewer::brewer.pal(100, name = "RdBu")
+rbind(
+  rainbow = rainbow(10),
+  heat.colors = heat.colors(10),
+  cm.colors = cm.colors(10),
+  blues9
+)
+
+
+```
+
+
+```{r}
+palette.pals()
+palette.colors(palette = "Okabe-Ito")
+
+```
+
+```{r}
+fcol <- colorRampPalette(colors = c("black", "white"))
+palette("Classic Tableau")
+```
+
+
+::: callout-note
+## Poznámka
+
+Správná volba barev v grafech odborných publikací je velmi důležitá. V ideálním 
+případě by grafické škály měly být stejné čitelné jak pro lidi s poruchou barevného
+spektra, tak v černobílem tisku. Obojí je řešeno například pomocí balíčku `scico` @pedersen2021package. 
+Ve zkratce je problematika vysvětlena  například ve [vignette](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) balíčku `viridis`.
+:::
+
+
 ## Matematická sazba v grafech
 
 `?plotmath`
 demo(plotmath)
 
-## Vytváříme layout
+## Layout
 
 Jednoduchý pravidelný layout můžeme vytvořit změnou parametrů okna grafického výstupu pomocí funkce `par()`
 
@@ -178,7 +303,11 @@ layout(
 
 :::
 
-## Ukládáme do souboru
+## Uložení do souboru
+
+Grafy je možné uložit externě, at už prostřednictvím dialogu v ***Plots*** > ***Export***,
+nebo přímo ve skriptu. Formát lze volit mezi rastrovými \*.png, \*.jpeg, \*.tiff, \*.bmp, 
+či vektorovými \*.eps, \*.svg, \*.pdf. 
 
 ```{r, eval=FALSE}
 png("./budyko_kompozit.png", 
@@ -194,5 +323,20 @@ dev.off()
 ::: callout-tip
 ## Úloha
 
-5. Vytvořte layout a uložte do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
+5.  a) Vytvořte layout a uložte do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
+    b) Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom
+    do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
 :::
+
+
+
+
+
+```{r}
+load("./data/data4chapter5and6.rda")
+meanEPmon <- -1.55 + 0.96 * (8.128 + 0.457*meanTmon)*meanSImon
+meanEPmon[meanEPmon < 0] <- 0
+PET <- 365.25 * apply(meanEPmon, 1, mean, na.rm = TRUE)
+# PETovP <- 
+```
+

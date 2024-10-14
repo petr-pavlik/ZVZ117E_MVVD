@@ -15,7 +15,7 @@ Text je členěn do kapitol podle náplně jednotlivých cvičení. Na začátku
 :::
 
 ::: callout-note
-## Další zdroje
+## Poznámka
 
 ...
 :::
@@ -44,18 +44,18 @@ Pokud se kód nachází uvnitř textu, je opět barevně odlišen a vysázen nep
 
 ## Data
 
-| Kapitola              |  Soubor                                                                                                 | Popis                                   | Citace |
-|-----------------------|---------------------------------------------------------------------------------------------------------|-----------------------------------------|--------|
-| @sec-grafy Úloha 4b   | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){width="28"}](./data/CHMI_SRA/P2VSEL01_SRA_N.csv) | Všelibice, úhrn z manuálního srážkoměru |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
-|                       |                                                                                                         |                                         |        |
+| Kapitola            | Soubor                                                                                                  | Popis                                   | Citace |
+|------------|------------------------------------|------------|------------|
+| @sec-grafy Úloha 4b | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){width="28"}](./data/CHMI_SRA/P2VSEL01_SRA_N.csv) | Všelibice, úhrn z manuálního srážkoměru |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
+|                     |                                                                                                         |                                         |        |
 
 : Přehled datových sad ke cvičením.
 

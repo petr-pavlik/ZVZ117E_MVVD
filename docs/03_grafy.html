@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -245,15 +264,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#funkce-curve" id="toc-funkce-curve" class="nav-link active" data-scroll-target="#funkce-curve"><span class="header-section-number">5.1</span> Funkce <code>curve()</code></a></li>
-  <li><a href="#funkce-plot" id="toc-funkce-plot" class="nav-link" data-scroll-target="#funkce-plot"><span class="header-section-number">5.2</span> Funkce <code>plot()</code></a></li>
-  <li><a href="#volba-barev" id="toc-volba-barev" class="nav-link" data-scroll-target="#volba-barev"><span class="header-section-number">5.3</span> Volba barev</a></li>
+  <li><a href="#funkce-plot" id="toc-funkce-plot" class="nav-link" data-scroll-target="#funkce-plot"><span class="header-section-number">5.2</span> Funkce <code>plot()</code></a>
+  <ul class="collapse">
+  <li><a href="#transformace-souřadnic" id="toc-transformace-souřadnic" class="nav-link" data-scroll-target="#transformace-souřadnic"><span class="header-section-number">5.2.1</span> Transformace souřadnic</a></li>
+  </ul></li>
+  <li><a href="#volba-barev" id="toc-volba-barev" class="nav-link" data-scroll-target="#volba-barev"><span class="header-section-number">5.3</span> Volba barev</a>
+  <ul class="collapse">
+  <li><a href="#rcolorbrewer" id="toc-rcolorbrewer" class="nav-link" data-scroll-target="#rcolorbrewer"><span class="header-section-number">5.3.1</span> <code>RColorBrewer</code></a></li>
+  </ul></li>
   <li><a href="#matematická-sazba-v-grafech" id="toc-matematická-sazba-v-grafech" class="nav-link" data-scroll-target="#matematická-sazba-v-grafech"><span class="header-section-number">5.4</span> Matematická sazba v grafech</a></li>
-  <li><a href="#vytváříme-layout" id="toc-vytváříme-layout" class="nav-link" data-scroll-target="#vytváříme-layout"><span class="header-section-number">5.5</span> Vytváříme layout</a>
+  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">5.5</span> Layout</a>
   <ul class="collapse">
   <li><a href="#sazba-pomocí-par" id="toc-sazba-pomocí-par" class="nav-link" data-scroll-target="#sazba-pomocí-par"><span class="header-section-number">5.5.1</span> Sazba pomocí <code>par()</code></a></li>
   <li><a href="#sazba-do-matice-s-funkcí-layout" id="toc-sazba-do-matice-s-funkcí-layout" class="nav-link" data-scroll-target="#sazba-do-matice-s-funkcí-layout"><span class="header-section-number">5.5.2</span> Sazba do matice s funkcí <code>layout()</code></a></li>
   </ul></li>
-  <li><a href="#ukládáme-do-souboru" id="toc-ukládáme-do-souboru" class="nav-link" data-scroll-target="#ukládáme-do-souboru"><span class="header-section-number">5.6</span> Ukládáme do souboru</a></li>
+  <li><a href="#uložení-do-souboru" id="toc-uložení-do-souboru" class="nav-link" data-scroll-target="#uložení-do-souboru"><span class="header-section-number">5.6</span> Uložení do souboru</a></li>
   </ul>
 </nav>
     </div>
@@ -288,9 +313,9 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Naučit se tvorbu základních typů grafů</li>
-<li>Rozdělení sazby výstupu do polí</li>
-<li>Ukládání výstupů do souboru</li>
+<li>Naučit se tvorbu základních typů grafů.</li>
+<li>Definovat rozdělení sazby výstupu do polí.</li>
+<li>Uložit výstupy do souboru.</li>
 </ul>
 </div>
 </div>
@@ -308,7 +333,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">K vytvoření proměnné <span class="math inline">\(Y\)</span> použijeme generování čísel z náhodného rozdělení s parametry <span class="math inline">\(\mu = 0\)</span> a <span class="math inline">\(\sigma = 1\)</span>; více v <a href="05_rozdeleni.html"><span>Kapitola&nbsp;7</span></a></span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="3">K vytvoření proměnné <span class="math inline">\(Y\)</span> použijeme generování čísel z náhodného rozdělení s parametry <span class="math inline">\(\mu = 0\)</span> a <span class="math inline">\(\sigma = 1\)</span>; více v <a href="05_rozdeleni.html"><span>Kapitola&nbsp;7</span></a></span>
 </dd>
 </dl>
 </div>
@@ -361,7 +386,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa <span class="math inline">\(y\)</span> je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~ plot(x, y = NULL, type = “p”, xlim = NULL, ylim = NULL, log = ““, main = NULL, sub = NULL, xlab = NULL, ylab = NULL, ann = par(”ann”), axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL, asp = NA, xgap.axis = NA, ygap.axis = NA, …) ~~~</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="1">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa <span class="math inline">\(y\)</span> je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~ plot(x, y = NULL, type = “p”, xlim = NULL, ylim = NULL, log = ““, main = NULL, sub = NULL, xlab = NULL, ylab = NULL, ann = par(”ann”), axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL, asp = NA, xgap.axis = NA, ygap.axis = NA, …) ~~~</span>
 </dd>
 </dl>
 </div>
@@ -400,67 +425,67 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Základní proměnné <span class="math inline">\(X\)</span> a <span class="math inline">\(Y\)</span> pro typ grafu.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1,2">Základní proměnné <span class="math inline">\(X\)</span> a <span class="math inline">\(Y\)</span> pro typ grafu.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">Volba typu grafu <code>"b"</code> označuje body protnuté spojnicí.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="3">Volba typu grafu <code>"b"</code> označuje body protnuté spojnicí.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">Volba barvy popředí znaku bod/přímka.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="4">Volba barvy popředí znaku bod/přímka.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="4">Volba charakteru bodového znaku.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-4" data-code-lines="5">Volba charakteru bodového znaku.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="5">Volba barvy pozadí znaku umožňujícího výplň - bod.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-4" data-code-lines="6">Volba barvy pozadí znaku umožňujícího výplň - bod.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7,8" data-code-annotation="6">Změna rozsahu osy <span class="math inline">\(y\)</span>.</span>
+<span data-code-annotation="6" data-code-cell="annotated-cell-4" data-code-lines="7,8">Změna rozsahu osy <span class="math inline">\(y\)</span>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="9,10" data-code-annotation="7">Změna názvu os.</span>
+<span data-code-annotation="7" data-code-cell="annotated-cell-4" data-code-lines="9,10">Změna názvu os.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="11" data-code-annotation="8">Znění hlavního nadpisu.</span>
+<span data-code-annotation="8" data-code-cell="annotated-cell-4" data-code-lines="11">Znění hlavního nadpisu.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="12" data-code-annotation="9">Podnadpis <em>dtto</em>.</span>
+<span data-code-annotation="9" data-code-cell="annotated-cell-4" data-code-lines="12">Podnadpis <em>dtto</em>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="13" data-code-annotation="10">Pokračujeme nastavením umístění legendy.</span>
+<span data-code-annotation="10" data-code-cell="annotated-cell-4" data-code-lines="13">Pokračujeme nastavením umístění legendy.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="14" data-code-annotation="11">Výplň prvku v legendě.</span>
+<span data-code-annotation="11" data-code-cell="annotated-cell-4" data-code-lines="14">Výplň prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="12">12</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="15" data-code-annotation="12">Typ prvku v legendě.</span>
+<span data-code-annotation="12" data-code-cell="annotated-cell-4" data-code-lines="15">Typ prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="13">13</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="16" data-code-annotation="13">Název prvku v legendě.</span>
+<span data-code-annotation="13" data-code-cell="annotated-cell-4" data-code-lines="16">Název prvku v legendě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="14">14</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="17" data-code-annotation="14">Volba barvy ohraničení legendy</span>
+<span data-code-annotation="14" data-code-cell="annotated-cell-4" data-code-lines="17">Volba barvy ohraničení legendy</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="15">15</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="18" data-code-annotation="15">Volba typu spojnice (1 = plná čára)</span>
+<span data-code-annotation="15" data-code-cell="annotated-cell-4" data-code-lines="18">Volba typu spojnice (1 = plná čára)</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="16">16</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="19" data-code-annotation="16">Volba barvy popředí prvku legendy</span>
+<span data-code-annotation="16" data-code-cell="annotated-cell-4" data-code-lines="19">Volba barvy popředí prvku legendy</span>
 </dd>
 </dl>
 </div>
@@ -486,11 +511,11 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Funkce <code>with()</code> umožňuje zavolání funkce uvedené v arugmentu <code>expr</code> na proměnných v <code>data.frame</code>. Odpadá opakované psaní prefixu datové sady (zde <code>dfr$___</code>)</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="1">Funkce <code>with()</code> umožňuje zavolání funkce uvedené v arugmentu <code>expr</code> na proměnných v <code>data.frame</code>. Odpadá opakované psaní prefixu datové sady (zde <code>dfr$___</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="2,3,4,5" data-code-annotation="2">Argument <code>expr</code> může obsahovat i blok kódu <code>{...}</code></span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-5" data-code-lines="2,3,4,5">Argument <code>expr</code> může obsahovat i blok kódu <code>{...}</code></span>
 </dd>
 </dl>
 </div>
@@ -502,6 +527,63 @@ Cíle cvičení
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol start="6" type="1">
+<li>následujícím příkladu vytvoříte graf <strong>Budykovy křivky</strong>.<br>
+Postup:<br>
+
+<ol type="a">
+<li>Nahrajte do prostředí data ze souboru.&nbsp;<br>
+</li>
+<li>Začněte tvorbu grafu s funkcí <code>plot.new()</code>&nbsp;<br>
+</li>
+<li>Nejjednodušší vztah popsal Schreiber v roce 1902&nbsp;<br>
+<span class="math display">\[
+  \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
+\]</span></li>
+<li>Vytvořte posloupnost od <span class="math inline">\(0\)</span> do <span class="math inline">\(2\)</span> s krokem <span class="math inline">\(10e^{-3}\)</span>.&nbsp;<br>
+</li>
+<li>S pomocí</li>
+<li>Nastavte <code>xlab = "Ep/P"</code>, <code>ylab = "P/Er"</code>, <code>xlim</code> v rozsahu <span class="math inline">\(\phi\)</span> a <code>ylim</code> od <span class="math inline">\(0\)</span> do <span class="math inline">\(1,2\)</span>.&nbsp;</li>
+</ol></li>
+</ol>
+<p>Výsledek by měl vypadat následovně:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03_grafy_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="transformace-souřadnic" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="transformace-souřadnic"><span class="header-section-number">5.2.1</span> Transformace souřadnic</h3>
+<p>S polárními souřadnicemi se setkáváme poměrně často.</p>
+<p>Polární souřadnice <span class="math display">\[
+\begin{array}{rl}
+x =&amp; \sqrt{t}\cdot\cos(2\pi t)\\
+y =&amp; \sqrt{t}\cdot\sin(2\pi t)
+\end{array}
+\]</span></p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> sqrt</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
 </section>
 <section id="volba-barev" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="volba-barev"><span class="header-section-number">5.3</span> Volba barev</h2>
@@ -509,7 +591,7 @@ Cíle cvičení
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colors</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colors</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "white"         "aliceblue"     "antiquewhite"  "antiquewhite1"
@@ -517,39 +599,137 @@ Cíle cvičení
  [9] "aquamarine1"   "aquamarine2"  </code></pre>
 </div>
 </div>
+<section id="rcolorbrewer" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="rcolorbrewer"><span class="header-section-number">5.3.1</span> <code>RColorBrewer</code></h3>
+<p>Součástí základní sady je balíček <code>RColorBrewer</code></p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03_grafy_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>K vytvoření palety barev</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">100</span>, <span class="at">name =</span> <span class="st">"RdBu"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in RColorBrewer::brewer.pal(100, name = "RdBu"): n too large, allowed maximum for palette RdBu is 11
+Returning the palette you asked for with that many colors</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#67001F" "#B2182B" "#D6604D" "#F4A582" "#FDDBC7" "#F7F7F7" "#D1E5F0"
+ [8] "#92C5DE" "#4393C3" "#2166AC" "#053061"</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">rainbow =</span> <span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">heat.colors =</span> <span class="fu">heat.colors</span>(<span class="dv">10</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cm.colors =</span> <span class="fu">cm.colors</span>(<span class="dv">10</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  blues9</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in rbind(rainbow = rainbow(10), heat.colors = heat.colors(10),
+cm.colors = cm.colors(10), : number of columns of result is not a multiple of
+vector length (arg 4)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]      [,2]      [,3]      [,4]      [,5]      [,6]     
+rainbow     "#FF0000" "#FF9900" "#CCFF00" "#33FF00" "#00FF66" "#00FFFF"
+heat.colors "#FF0000" "#FF2400" "#FF4900" "#FF6D00" "#FF9200" "#FFB600"
+cm.colors   "#80FFFF" "#99FFFF" "#B3FFFF" "#CCFFFF" "#E6FFFF" "#FFE6FF"
+blues9      "#F7FBFF" "#DEEBF7" "#C6DBEF" "#9ECAE1" "#6BAED6" "#4292C6"
+            [,7]      [,8]      [,9]      [,10]    
+rainbow     "#0066FF" "#3300FF" "#CC00FF" "#FF0099"
+heat.colors "#FFDB00" "#FFFF00" "#FFFF40" "#FFFFBF"
+cm.colors   "#FFCCFF" "#FFB3FF" "#FF99FF" "#FF80FF"
+blues9      "#2171B5" "#08519C" "#08306B" "#F7FBFF"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">palette.pals</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "R3"              "R4"              "ggplot2"         "Okabe-Ito"      
+ [5] "Accent"          "Dark 2"          "Paired"          "Pastel 1"       
+ [9] "Pastel 2"        "Set 1"           "Set 2"           "Set 3"          
+[13] "Tableau 10"      "Classic Tableau" "Polychrome 36"   "Alphabet"       </code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">palette.colors</span>(<span class="at">palette =</span> <span class="st">"Okabe-Ito"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "#000000" "#E69F00" "#56B4E9" "#009E73" "#F0E442" "#0072B2" "#D55E00"
+[8] "#CC79A7" "#999999"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fcol <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(<span class="st">"Classic Tableau"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Správná volba barev v grafech odborných publikací je velmi důležitá. V ideálním případě by grafické škály měly být stejné čitelné jak pro lidi s poruchou barevného spektra, tak v černobílem tisku. Obojí je řešeno například pomocí balíčku <code>scico</code> <span class="citation" data-cites="pedersen2021package">Pedersen a Crameri (<a href="#ref-pedersen2021package" role="doc-biblioref">2021</a>)</span>. Ve zkratce je problematika vysvětlena například ve <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">vignette</a> balíčku <code>viridis</code>.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="matematická-sazba-v-grafech" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="matematická-sazba-v-grafech"><span class="header-section-number">5.4</span> Matematická sazba v grafech</h2>
 <p><code>?plotmath</code> demo(plotmath)</p>
 </section>
-<section id="vytváříme-layout" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="vytváříme-layout"><span class="header-section-number">5.5</span> Vytváříme layout</h2>
+<section id="layout" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="layout"><span class="header-section-number">5.5</span> Layout</h2>
 <p>Jednoduchý pravidelný layout můžeme vytvořit změnou parametrů okna grafického výstupu pomocí funkce <code>par()</code></p>
 <section id="sazba-pomocí-par" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="sazba-pomocí-par"><span class="header-section-number">5.5.1</span> Sazba pomocí <code>par()</code></h3>
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dfr<span class="sc">$</span>X, <span class="at">main =</span> <span class="st">"X"</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dfr<span class="sc">$</span>Y, <span class="at">main =</span> <span class="st">"Y"</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dfr<span class="sc">$</span>X, <span class="at">main =</span> <span class="st">"X"</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span>
+<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dfr<span class="sc">$</span>Y, <span class="at">main =</span> <span class="st">"Y"</span>, <span class="at">xlab =</span> <span class="st">""</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Okno výstupu rozdělíme do dvou sloupců na jednom řádku.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-14" data-code-lines="1">Okno výstupu rozdělíme do dvou sloupců na jednom řádku.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="2,3" data-code-annotation="2">Posléze voláme dva grafy, které postupně vyplní pole v daném okně.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-14" data-code-lines="2,3">Posléze voláme dva grafy, které postupně vyplní pole v daném okně.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="03_grafy_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid figure-img"></p>
+<p><img src="03_grafy_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -560,30 +740,30 @@ Cíle cvičení
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex =</span> <span class="dv">2</span>)</span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mat =</span> <span class="fu">matrix</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>,</span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">3</span>, </span>
-<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">3</span>, </span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(</span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mat =</span> <span class="fu">matrix</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>,</span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">3</span>, </span>
+<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">3</span>, </span>
+<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
+<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="5,6,7" data-code-annotation="1">Zde sdělujeme, že celkově bude pole rozděleno v poměru <span class="math inline">\(3\times 3\)</span> a <span class="math inline">\(4\over9\)</span> (levá dolní část) vyplní 1. graf.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-15" data-code-lines="5,6,7">Zde sdělujeme, že celkově bude pole rozděleno v poměru <span class="math inline">\(3\times 3\)</span> a <span class="math inline">\(4\over9\)</span> (levá dolní část) vyplní 1. graf.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="03_grafy_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid figure-img"></p>
+<p><img src="03_grafy_files/figure-html/unnamed-chunk-14-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -592,14 +772,14 @@ Cíle cvičení
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">mat =</span> <span class="fu">matrix</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">3</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">3</span>, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">mat =</span> <span class="fu">matrix</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">3</span>, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncol =</span> <span class="dv">3</span>, </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -619,24 +799,25 @@ Cíle cvičení
 </div>
 </section>
 </section>
-<section id="ukládáme-do-souboru" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="ukládáme-do-souboru"><span class="header-section-number">5.6</span> Ukládáme do souboru</h2>
+<section id="uložení-do-souboru" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="uložení-do-souboru"><span class="header-section-number">5.6</span> Uložení do souboru</h2>
+<p>Grafy je možné uložit externě, at už prostřednictvím dialogu v <strong><em>Plots</em></strong> &gt; <strong><em>Export</em></strong>, nebo přímo ve skriptu. Formát lze volit mezi rastrovými *.png, *.jpeg, *.tiff, *.bmp, či vektorovými *.eps, *.svg, *.pdf.</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"./budyko_kompozit.png"</span>, </span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">8</span>, </span>
-<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="dv">6</span>, </span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">units =</span> <span class="st">"px"</span>, </span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">res =</span> <span class="dv">300</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"./budyko_kompozit.png"</span>, </span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">8</span>, </span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="dv">6</span>, </span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">units =</span> <span class="st">"px"</span>, </span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">res =</span> <span class="dv">300</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="1">Standardním způsobem vytvořený diagram či layout.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-17" data-code-lines="6">Standardním způsobem vytvořený diagram či layout.</span>
 </dd>
 </dl>
 </div>
@@ -652,12 +833,30 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ol start="5" type="1">
+<li><ol type="a">
 <li>Vytvořte layout a uložte do souboru s pomocí funkce <code>pdf()</code>. Využijte naápovědy.</li>
+<li>Vytvořte poslouponost <code>t &lt;- seq(from = 2010, to = 2020, length = 200))</code> a potom do stejného grafu vyneste <span class="math inline">\(\sin(2\pi(t - 1))\)</span> a <span class="math inline">\(\cos^2(2\pi t)\)</span>.</li>
+</ol></li>
 </ol>
 </div>
 </div>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./data/data4chapter5and6.rda"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>meanEPmon <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.55</span> <span class="sc">+</span> <span class="fl">0.96</span> <span class="sc">*</span> (<span class="fl">8.128</span> <span class="sc">+</span> <span class="fl">0.457</span><span class="sc">*</span>meanTmon)<span class="sc">*</span>meanSImon</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>meanEPmon[meanEPmon <span class="sc">&lt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>PET <span class="ot">&lt;-</span> <span class="fl">365.25</span> <span class="sc">*</span> <span class="fu">apply</span>(meanEPmon, <span class="dv">1</span>, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># PETovP &lt;- </span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-pedersen2021package" class="csl-entry" role="listitem">
+Pedersen, Thomas Lin, a Fabio Crameri. 2021. <span>„Package ’scico’"</span>.
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
