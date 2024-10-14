@@ -21,7 +21,7 @@ co se na sesbíraných datech snažíme vysledovat.
 
 Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
 
-[^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza neplatí**, ale znamená to, že data nevykazují objektivní důvody k jejímu přijetí.
+[^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza ve skutečnosti nemůže platit**, ale získaná data nevykazují objektivní důvody k jejímu přijetí.
 
 ```{=html}
 <hr>
@@ -41,10 +41,11 @@ Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1
 </table>
 ```
 
+Síla testu $\beta$ je pravěpodobnost, že je testem zamítnuta nulová hypotéza, která je skutečně neplatná. $P(\mathrm{H}_A|\mathrm{H}_A) = 1-\beta$
 
-## p-hodnota
+## $p-$hodnota
 
-Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *p-hodnotu* (anglicky p-value). Definice p-hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
+Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *$p-$hodnotu* (anglicky p-value). Definice $p-$hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
 
 ## $100(1-\alpha)\%$ interval spolehlivosti
 

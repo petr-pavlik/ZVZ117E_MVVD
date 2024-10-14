@@ -119,8 +119,9 @@ md1 <- lm(formula = y ~ x, data = dfr)
   3. Struktura objektu `md1` je komplexní, můžeme vybírat jednotlivé proměnné k dalším účelům, například pro tvorbu grafů.
 
 ```{r}
-str(md1, 1)
+str(md1, 1) #<1>
 ```
+1. Vypíšeme strukturu objektu do první hierarchické úrovně
 
 
 ```{r}

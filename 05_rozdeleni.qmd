@@ -203,12 +203,18 @@ text(x = 2.5, y = 0.25, expression(paste(X%~%N("0; 1"))), cex = 1.5)
 ::: callout-tip
 ## Úloha
 
-1. S pomocí funkce `curve()` vykreslete hustotu funkce normovaného normálního rozdělení
+1.  a) S pomocí funkce `curve()` vykreslete hustotu funkce normovaného normálního rozdělení
 danou předpisem:
 $$
 f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 $$
-
+    b) Máme náhodnou veličinu $X$, jež sleduje Normální rozdělení s parametry $\mu = 5$ a $\sigma^2 = 4,13$, nebo-li $X\sim \mathsf{N}(5; 4,13)$. Jaká je pravděpodobnost:\     
+      - $P(X < 8)$\         
+      - $P(X \leq 8)$\         
+      - $P(X > 12,4)$\      
+    c) Pro jakou hodnotu $\gamma$ je pravděpodobnost přibližně:
+      - $P(X < \gamma)$ = 0,76            
+      - $P(X > \gamma)$ = 0,16              
 :::
 
 Řešení:
@@ -301,5 +307,7 @@ $$ {#eq-odhad-chisq-rozptyl}
   hodnot menších než 6?    \
   4.  Předpokládejme, že $s_x^2=8,6$ při $15$ stupních volnosti. Doplňte následující
   výraz k určení 95\% intervalu spolehlivosti pro $\sigma_x^2$ (viz @eq-odhad-chisq-rozptyl).\        
-  `c(15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.975)`,  `r fitb(15)` `),` `15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.025)`,  `15` `))`
+  `c(15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.975)`,  `r fitb(15)` `),` `15*` `r fitb(8.6)` `/qchisq(` `r fitb(0.025)`,  `15` `))`         
+  5. Najděte následující hodnoty:
+    - t_{0,95}(10), \chi_{0,1}^2(8), F_{0,01}(13;4)\         
 :::

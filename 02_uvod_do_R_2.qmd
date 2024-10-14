@@ -191,7 +191,7 @@ Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole
 
 #### Atomický vektor `vector`
 
-Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako vektor hodnot, reprezentující bod v $n-$dimenzionálním prostoru.
+Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{A} = (a_{ij})_{m1}$ hodnot v $n-$dimenzionálním prostoru.
 
 $$
 \mathbf{\mathrm{u}} = 

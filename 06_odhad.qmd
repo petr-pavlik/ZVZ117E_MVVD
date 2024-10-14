@@ -76,6 +76,7 @@ Okomentujte výsledky.
 :::
 
 
+
 ### Odhad parametru $\mu$, neboli střední hodnoty normálního rozdělení s neznámým rozptylem
 
 Takto formulovaný bodový a intervalový je jednou z nejčastěji prováděných úloh. Nejprve bodovým odhadem zjistíme **výběrový průměr** souboru.
