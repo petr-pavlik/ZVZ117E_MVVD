@@ -137,65 +137,6 @@ with(data = dfr, # <1>
 1. Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
 2. Argument `expr` může obsahovat i blok kódu `{...}`, jako je tomu v tomto případě.
 
-::: callout-tip
-## Úloha
-
-3.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
-Postup:\
-    a) Nahrajte do prostředí data ze souboru.\           
-    b) Začněte tvorbu grafu s funkcí `plot.new()`\           
-    c) Nejjednodušší vztah popsal Schreiber v roce 1902\           
-$$
-  \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
-$$
-    d) Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$.\           
-    e) S pomocí 
-    f) Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$.\           
-  
-  Výsledek by měl vypadat následovně:
-```{r, echo=FALSE, fig.align='center'}
-phi <- seq(0, 2, 10e-3)
-schreiber <- 1 - exp(-phi)
-plot(x = phi, 
-     xlab = "Ep/P", 
-     ylab = "P/Er", 
-     xlim = c(0, 2), 
-     ylim = c(0, 1.2), 
-     # bty = "n",
-     type = "n", 
-     xaxt = "n",
-     yaxt = "n"
-)
-# Add grid lines similar to gnuplot
-grid(nx = 4, 
-     ny = NULL, 
-     col = "gray", 
-     lty = "dotted", 
-     lwd = 1)
-
-# Ensure the plot has a gnuplot-like minimalist style
-box(col = NA)  # Remove the box around the plot
-axis(1, 
-      col = "black", 
-      col.ticks = "black", 
-      lwd.ticks = 1, 
-      lwd = 1, 
-      las = 1, 
-      tck = -0.02)  # X-axis
-axis(2, 
-     col = "black", 
-     col.ticks = "black", 
-     lwd.ticks = 1, 
-     lwd = 1, 
-     las = 1, 
-     tck = -0.02)  # Y-axis
-
-lines(x = phi, 
-      y = schreiber, lty = 3)
-segments(x0 = 0, x1 = 1, y0 = 0, y1 = 1, lwd = 2, col = "gray60")
-segments(x0 = 1, x1 = 2, y0 = 1, y1 = 1, lwd = 2, col = "gray60")
-```
-:::
 
 
 <!-- ### Transformace souřadnic -->
@@ -270,6 +211,85 @@ spektra, tak v černobílem tisku. Obojí je řešeno například pomocí balí�
 Ve zkratce je problematika vysvětlena  například ve [vignette](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) balíčku `viridis`.
 :::
 
+::: callout-tip
+## Úloha
+
+3.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
+Postup:\
+    a) Nahrajte do prostředí data ze souboru **./data/budyko_dfr**.\           
+    b) Začněte tvorbu grafu s funkcí `plot.new()`\           
+    c) Nejjednodušší vztah popsal Schreiber v roce 1902\           
+$$
+  \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
+$$
+    d) Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$ a uložte do proměnné `phi`.\
+    e) Pro posloupnost `phi` spočítejte Schreiberovu rovnici a uložte do `schreiber`.
+    g) S pomocí následujícího příkazu vytvořte barevné schéma `paleta <- rev(rainbow(20, start = 0, end = 0.6))`
+    h) Vyneste body `x = budyko_dfr$PET_over_P` a `y = ET_over_P`.
+    i) Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$.\           
+    j) Vyneste do plotu liniové segmenty $(0;0)$ -- $(1;1)$ a $(1;1)$ -- $(2;1)$.
+    k) Funkcí `grid()` přidejte tečkovanou mřížku.
+    
+  
+  Pokuste se výsledkem přiblížit následovnému grafu, použijte nápovědy:
+```{r, echo=FALSE, fig.align='center'}
+budyko_dfr <- readRDS("./data/budyko_dfr.rds")
+phi <- seq(0, 2, 10e-3)
+schreiber <- 1 - exp(-phi)
+paleta <- rev(rainbow(20, start = 0, end = 0.6))
+
+plot(x = phi, 
+     xlab = "Ep/P", 
+     ylab = "P/Er", 
+     xlim = c(0, 2), 
+     ylim = c(0, 1.2), 
+     # bty = "n",
+     type = "n", 
+     xaxt = "n",
+     yaxt = "n"
+)
+
+points(x = budyko_dfr$PET_over_P, 
+     y = budyko_dfr$ET_over_P,
+     xlim = c(0, 2), 
+     ylim = c(0, 1), 
+     xlab = "PET/P", 
+     ylab = "ET/P",
+     pch = 21, 
+     bg = paleta[round(10*budyko_dfr$PET_over_P)])
+
+# Add grid lines similar to gnuplot
+grid(nx = 4, 
+     ny = NULL, 
+     col = "gray", 
+     lty = "dotted", 
+     lwd = 1)
+
+# Ensure the plot has a gnuplot-like minimalist style
+box(col = NA)  # Remove the box around the plot
+axis(1, 
+      col = "black", 
+      col.ticks = "black", 
+      lwd.ticks = 1, 
+      lwd = 1, 
+      las = 1, 
+      tck = -0.02)  # X-axis
+axis(2, 
+     col = "black", 
+     col.ticks = "black", 
+     lwd.ticks = 1, 
+     lwd = 1, 
+     las = 1, 
+     tck = -0.02)  # Y-axis
+
+lines(x = phi, 
+      y = schreiber, lty = 3, lwd = 2.5)
+segments(x0 = 0, x1 = 1, y0 = 0, y1 = 1, lwd = 2, col = "gray60")
+segments(x0 = 1, x1 = 2, y0 = 1, y1 = 1, lwd = 2, col = "gray60")
+```
+:::
+
+
 
 ## Matematická sazba v grafech
 
@@ -283,7 +303,6 @@ plot(x = dfr$X,
      y = dfr$X^2, 
      main = expression(paste("graf ", y == x^2)), 
      ylab = expression(paste(y == x^2)))
-# lines()
 ```
 
 
@@ -368,16 +387,3 @@ dev.off()
        do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
     b) Vytvořte layout ze 4. úlohy a uložte předchozí graf a dva další do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
 :::
-
-
-
-
-
-```{r, eval=FALSE}
-load("./data/56.rda")
-meanEPmon <- -1.55 + 0.96 * (8.128 + 0.457*meanTmon)*meanSImon
-meanEPmon[meanEPmon < 0] <- 0
-PET <- 365.25 * apply(meanEPmon, 1, mean, na.rm = TRUE)
-# PETovP <- 
-```
-
