@@ -44,10 +44,10 @@ Pokud se kód nachází uvnitř textu, je opět barevně odlišen a vysázen nep
 
 ## Data
 
-| Kapitola              | Soubor                                                                                                          | Popis                                   | Citace |
+| Kapitola              | Soubor                                                                                                     | Popis                                     | Citace |
 |--------------|-------------------------------|--------------|--------------|
-| @sec-grafy Úloha 3    | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){alt="P2VSEL01_SRA_N.csv" width="28"}](./data/budyko_dfr) | Dlouhodobá klimatická bilance na povodí | \-     |
-| @sec-popisna Úloha 4b | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){alt="P2VSEL01_SRA_N.csv" width="28"}](#0)                | Všelibice, úhrn z manuálního srážkoměru |        |
+| @sec-grafy Úloha 3    | [![budyko_dfr](images/mage--file-download.svg){alt="P2VSEL01_SRA_N.csv" width="28"}](/data/budyko_dfr.rds) | Dlouhodobá klimatická bilance na povodích | \-     |
+| @sec-popisna Úloha 4b | [![P2VSEL01_SRA_N.csv](images/mage--file-download.svg){alt="P2VSEL01_SRA_N.csv" width="28"}](#0)           | Všelibice, úhrn z manuálního srážkoměru   |        |
 
 : Přehled datových sad ke cvičením.
 
