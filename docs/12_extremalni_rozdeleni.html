@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 13&nbsp; Extremální rozdělení</title>
+<title>Metody vyhodnocování vodohospodářských dat - 13&nbsp; Rozdělení extrémních hodnot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_extremalni_rozdeleni.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Extremální rozdělení</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_extremalni_rozdeleni.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_extremalni_rozdeleni.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Extremální rozdělení</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
   </div>
 </li>
     </ul>
@@ -243,7 +243,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#gumbellovo-rozdělení" id="toc-gumbellovo-rozdělení" class="nav-link active" data-scroll-target="#gumbellovo-rozdělení"><span class="header-section-number">13.1</span> Gumbellovo rozdělení</a></li>
+  <li><a href="#vymezení-extrémní-hodnoty" id="toc-vymezení-extrémní-hodnoty" class="nav-link active" data-scroll-target="#vymezení-extrémní-hodnoty"><span class="header-section-number">13.1</span> Vymezení extrémní hodnoty</a>
+  <ul class="collapse">
+  <li><a href="#bloková-maxima" id="toc-bloková-maxima" class="nav-link" data-scroll-target="#bloková-maxima"><span class="header-section-number">13.1.1</span> Bloková maxima</a></li>
+  <li><a href="#překročení-limitu" id="toc-překročení-limitu" class="nav-link" data-scroll-target="#překročení-limitu"><span class="header-section-number">13.1.2</span> Překročení limitu</a></li>
+  </ul></li>
+  <li><a href="#gumbellovo-rozdělení" id="toc-gumbellovo-rozdělení" class="nav-link" data-scroll-target="#gumbellovo-rozdělení"><span class="header-section-number">13.2</span> Gumbellovo rozdělení</a></li>
   </ul>
 </nav>
     </div>
@@ -252,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Extremální rozdělení</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></h1>
 </div>
 
 
@@ -267,8 +272,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="gumbellovo-rozdělení" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="gumbellovo-rozdělení"><span class="header-section-number">13.1</span> Gumbellovo rozdělení</h2>
+<section id="vymezení-extrémní-hodnoty" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="vymezení-extrémní-hodnoty"><span class="header-section-number">13.1</span> Vymezení extrémní hodnoty</h2>
+<section id="bloková-maxima" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="bloková-maxima"><span class="header-section-number">13.1.1</span> Bloková maxima</h3>
+</section>
+<section id="překročení-limitu" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="překročení-limitu"><span class="header-section-number">13.1.2</span> Překročení limitu</h3>
+<p>Z dat jsou užita pouze pozorování překračující stanovenou mez, například 95 % kvantil.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><ol type="a">
+<li>Nahrajte do prostředí data …</li>
+<li>Metodou blokových maxim stanovte maxima</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="gumbellovo-rozdělení" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="gumbellovo-rozdělení"><span class="header-section-number">13.2</span> Gumbellovo rozdělení</h2>
 <p>Hustota funkce Gumbellova rozdělení je dána předpisem</p>
 <p><span class="math display">\[
 f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-exp\left(-\dfrac{x-c}{d}\right)\right]

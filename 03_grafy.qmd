@@ -20,27 +20,56 @@ dfr <- data.frame(
   Y = rnorm(100) # <1>
 )
 ```
-1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v @sec-rozdeleni
+1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v @sec-rozdeleni. Velká písmena jsou zvolena pro odlišnost od argumentů funkce.
 
 
 ::: callout-tip
 ## Úloha
 
-  1. Zadejte do konzole `demo(graphics)` a projeďte až na konec ukázky. Potom vyčistěte
-  panely **Environment**, **Plots** a **Console**. \
-  2. Pročtěte si nápovědu `?par`
+1.  a) Zadejte do konzole `demo(graphics)` a projeďte až na konec ukázky. Potom vyčistěte
+       panely **Environment**, **Plots** a **Console**. \
+    b) Pročtěte si nápovědu `?par`
+:::
+
+## Jednorozměrná data
+
+Jednorozměrná data nejčastěji kreslíme pomocí **boxplotu**, **histogramu** a **sloupcového grafu**.
+
+
+```{r ,fig.align='center', fig.width=10}
+
+par(mfrow = c(1, 3)) #<1>
+boxplot(dfr$Y) #<2>
+hist(dfr$Y) #<2>
+barplot(dfr$Y) #<2>
+```
+1. Rozdělení grafického okna na tři sloupce (viz níže).
+2. Funkce pro jednorozměrné grafy v základní parametrizaci. 
+
+::: callout-tip
+## Úloha
+
+2.  a) Podívejte se na oba krajní grafy předchozího výstupu a popište, rozdíl mezi
+       histogramem a sloupcovým grafem.
+    b) Podívejte se do nápovědy k funkci `hist()` a doplňte následující kód tak, 
+       aby koše měly hranice od $-4$ do $4$ s krokem $0,5$.
+`hist(dfr$Y, breaks =` `r fitb("seq(from = -4, to = 4, by = 0.5)")` `)`
 :::
 
 ## Funkce `curve()`
 
 Curve je funkce, která se uplatní při tvorbě symbolických grafů matematických funkcí, kdy není třeba parametrizovat argument `x`. 
+Další argumenty `?par` jsou stejné jako u `plot()`.
 
 ```{r, fig.align='center'}
 curve(expr = tanh(x),
       from = -pi, 
       to = pi)
+curve(expr = tanh(2*x),
+      from = -pi, 
+      to = pi, 
+      add = TRUE)
 ```
-
 
 ## Funkce `plot()`
 
@@ -48,16 +77,11 @@ curve(expr = tanh(x),
 Začneme s použitím na vektor z datasetu `dfr`.
 
 ```{r, fig.align='center'}
-plot(dfr$Y) # <1> 
+plot(dfr$X, dfr$Y) # <1> 
 ```
-1. Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa $y$ je pojmenována po vstupním parametru. V celém znění funkce vypadá následovně:~~~
-plot(x, y = NULL, type = "p",  xlim = NULL, ylim = NULL,
-     log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
-     ann = par("ann"), axes = TRUE, frame.plot = axes,
-     panel.first = NULL, panel.last = NULL, asp = NA,
-     xgap.axis = NA, ygap.axis = NA,
-     ...)
-~~~
+1. Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa $y$ je pojmenována po vstupním parametru.
+
+Zkusíme více parametrizovat výstup a 
 
 ```{r, fig.align='center'}
 plot(x = dfr$X, # <1>
@@ -98,6 +122,9 @@ legend(x = "topright", # <10>
 16. Volba barvy popředí prvku legendy
 
 
+U funkcí, do kterých vstupuje více proměnných z jednoho datasetu je možné z důvodu 
+přehledonosti použít obalovací funkci `with()`, s níž pak není třeba provádět opakovaně
+podvýběr.
 
 ```{r, fig.align='center'}
 with(data = dfr, # <1>
@@ -108,12 +135,12 @@ with(data = dfr, # <1>
      ) 
 ```
 1. Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
-2. Argument `expr` může obsahovat i blok kódu `{...}`
+2. Argument `expr` může obsahovat i blok kódu `{...}`, jako je tomu v tomto případě.
 
 ::: callout-tip
 ## Úloha
 
-6.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
+3.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
 Postup:\
     a) Nahrajte do prostředí data ze souboru.\           
     b) Začněte tvorbu grafu s funkcí `plot.new()`\           
@@ -171,25 +198,27 @@ segments(x0 = 1, x1 = 2, y0 = 1, y1 = 1, lwd = 2, col = "gray60")
 :::
 
 
-### Transformace souřadnic
+<!-- ### Transformace souřadnic -->
 
-S polárními souřadnicemi se setkáváme poměrně často. 
+<!-- S polárními souřadnicemi se setkáváme poměrně často.  -->
 
-Polární souřadnice
-$$
-\begin{array}{rl}
-x =& \sqrt{t}\cdot\cos(2\pi t)\\
-y =& \sqrt{t}\cdot\sin(2\pi t)
-\end{array}
-$$
+<!-- Polární souřadnice -->
+<!-- $$ -->
+<!-- \begin{array}{rl} -->
+<!-- x =& \sqrt{t}\cdot\cos(2\pi t)\\ -->
+<!-- y =& \sqrt{t}\cdot\sin(2\pi t) -->
+<!-- \end{array} -->
+<!-- $$ -->
 
-```{r}
-x <- sqrt
-```
+<!-- ```{r} -->
+<!-- x <- sqrt -->
+<!-- ``` -->
 
 
 ## Volba barev
 
+Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů,
+například `"white"`, `"orange"` použít funkci `rgb()` a nebo hexadecimální zápis `"#FFF000"`.
 Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
 
 [^03_grafy-1]: Předdefinovaných barev je celkem 657.
@@ -198,9 +227,9 @@ Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colo
 colors()[1:10]
 ```
 
-### `RColorBrewer`
+### Palety a `RColorBrewer`
 
-Součástí základní sady je balíček `RColorBrewer`
+Součástí základní sady je sada palet a balík `RColorBrewer`.
 
 ```{r, fig.align='center'}
 #| fig-width: 10
@@ -208,25 +237,22 @@ Součástí základní sady je balíček `RColorBrewer`
 RColorBrewer::display.brewer.all()
 ```
 
-K vytvoření palety barev
+K vytvoření palety (vektoru) barev pak žádáme $n$ barev z předdefinovaného jmenného rozsahu.
 
 ```{r}
-RColorBrewer::brewer.pal(100, name = "RdBu")
+RColorBrewer::brewer.pal(n = 100, name = "RdBu")
 rbind(
   rainbow = rainbow(10),
   heat.colors = heat.colors(10),
   cm.colors = cm.colors(10),
   blues9
 )
-
-
 ```
 
 
 ```{r}
 palette.pals()
 palette.colors(palette = "Okabe-Ito")
-
 ```
 
 ```{r}
@@ -247,8 +273,19 @@ Ve zkratce je problematika vysvětlena  například ve [vignette](https://cran.r
 
 ## Matematická sazba v grafech
 
+Dá se použít v místě textu, nadpisu nebo jiného popisku.
+
 `?plotmath`
 demo(plotmath)
+
+```{r}
+plot(x = dfr$X, 
+     y = dfr$X^2, 
+     main = expression(paste("graf ", y == x^2)), 
+     ylab = expression(paste(y == x^2)))
+# lines()
+```
+
 
 ## Layout
 
@@ -300,6 +337,10 @@ layout(
 ## Úloha
 
 4. Vytvořte layout dle následujícího nákresu a vyplňte libovolnými rúznými typy grafů.
+```{r, echo=FALSE, fig.align='center'}
+layout.show(layout(mat = matrix(c(0, 1, 1,
+                                2, 2, 3), nrow = 2, byrow = TRUE)))
+```
 
 :::
 
@@ -323,17 +364,17 @@ dev.off()
 ::: callout-tip
 ## Úloha
 
-5.  a) Vytvořte layout a uložte do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
-    b) Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom
-    do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
+5.  a) Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom
+       do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
+    b) Vytvořte layout ze 4. úlohy a uložte předchozí graf a dva další do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
 :::
 
 
 
 
 
-```{r}
-load("./data/data4chapter5and6.rda")
+```{r, eval=FALSE}
+load("./data/56.rda")
 meanEPmon <- -1.55 + 0.96 * (8.128 + 0.457*meanTmon)*meanSImon
 meanEPmon[meanEPmon < 0] <- 0
 PET <- 365.25 * apply(meanEPmon, 1, mean, na.rm = TRUE)

@@ -1,5 +1,21 @@
 # Rozdělení extrémních hodnot
 
+## Vymezení extrémní hodnoty
+
+### Bloková maxima
+
+### Překročení limitu
+Z dat jsou užita pouze pozorování překračující stanovenou mez, například 95 \% kvantil.
+
+::: callout-tip
+## Úloha
+
+1.  a) Nahrajte do prostředí data ...
+    b) Metodou blokových maxim stanovte maxima 
+
+:::
+
+
 ## Gumbellovo rozdělení
 
 Hustota funkce Gumbellova rozdělení je dána předpisem
