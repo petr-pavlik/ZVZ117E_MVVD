@@ -143,35 +143,31 @@ Během počítání s rozděleními se snažíme nalézt odpovědi na podobné o
 
 ### Normální rozdělení
 
-$$
-
-$$
+Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace $X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)$ bude menší než 5,5. Početně je úkon řešen standardizací a určením nového 
 
 ::: {layout-ncol=2}
 ```{r,echo=FALSE, fig.cap="Pravděpodobnost, že $x$ je menší nebo rovno 2."}
-# Define the sequence and normal distribution
-x_values <- seq(from = -5, to = 2, by = 0.001)
+x_values <- seq(from = -5+3, to = 2+3, by = 0.001)
 DNORM <- dnorm(x_values)
 
-curve(dnorm(x), -5, 5, 
+curve(dnorm(x, 3, sqrt(2.2)), -5+3, 2+3, 
       main = "Normální rozdělení", 
-      cex.main = 1.5, #expression(paste(mu == 0, "; ", sigma == 1))
+      cex.main = 1.5, #expression(paste(mu == 3, "; ", sigma^2 == 2,2))
       cex.axis = 1.5,
       adj = 0, 
       xlab = "", 
       ylab = "")
 
-polygon(x = c(x_values, 2, -5),
-        y = c(DNORM, 0, 0),    
+polygon(x = c(x_values, 2+3, -5+3),
+        y = c(DNORM, 3, sqrt(2.2)),    
         col = "gray95", 
         border = 1)
-segments(x0 = 2, x1 = 2, y0 = -0.2, y1 = dnorm(2))
+segments(x0 = 2, x1 = 2, y0 = -0.2, y1 = dnorm(5.5))
 arrows(x0 = 2, x1 = -2.2, y0 = 0.02, y1 = 0.02, length = 0.06, lwd = 1.2, code = 2, lty = 1)
-text(x = 2.5, y = 0.25, expression(paste(X%~%N("0; 1"))), cex = 1.5)
+text(x = 2.5, y = 0.25, expression(paste(X%~%N("3; 2,2"))), cex = 1.5)
 ```
 
 ```{r, echo=FALSE, fig.cap="Pravděpodobnost, že $x$ je menší nebo rovno 2."}
-# Define the sequence and normal distribution
 x_values <- seq(from = -5, to = 2, by = 0.001)
 DNORM <- dnorm(x_values)
 
@@ -192,6 +188,42 @@ arrows(x0 = 2, x1 = -2.2, y0 = 0.02, y1 = 0.02, length = 0.06, lwd = 1.2, code =
 text(x = 2.5, y = 0.25, expression(paste(X%~%N("0; 1"))), cex = 1.5)
 ```
 :::
+
+Provedeme standardizaci na $Z\sim\mathsf{N}(0; 1)$
+$$
+Z = \dfrac{X - \mu}{\sigma} \approx \dfrac{5,5 - 3}{1,48324} \approx 1,6855
+$$
+$P(Z < 1,69)$ Spočítáme s pomocí kvantilu Standardizovaného Normálního rozdělení.
+Tento úkon R dělá z nás, ale pro porovnání si uvedeme obě varianty:
+```{r}
+cbind(
+  N = pnorm(q = 1.6855, mean = 0, sd = 1, lower.tail = TRUE),
+  Z = pnorm(q = 5.5, mean = 3, sd = sqrt(2.2), lower.tail = TRUE)
+)
+```
+
+Hledaná pravděpodobnost je `r round(pnorm(q = 1.69, mean = 0, sd = 1, lower.tail = TRUE)*100, 2)` \%.
+
+
+::: callout-note
+## Poznámka
+
+Zde je dobré upozornit na numerické zaokrouhlovací chyby, které během počítačového zpracování dat 
+vznikají. 
+```{r}
+all.equal(
+  pnorm(q = 1.6855, mean = 0, sd = 1, lower.tail = TRUE), 
+  pnorm(q = 5.5, mean = 3, sd = sqrt(2.2), lower.tail = TRUE)
+)
+all.equal(
+  pnorm(q = 1.6855, mean = 0, sd = 1, lower.tail = TRUE), 
+  pnorm(q = 5.5, mean = 3, sd = sqrt(2.2), lower.tail = TRUE), tolerance = 0.005
+)
+```
+:::
+
+
+
 
 
 ::: callout-tip

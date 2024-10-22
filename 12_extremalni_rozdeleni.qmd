@@ -1,4 +1,4 @@
-# Rozdělení extrémních hodnot
+# Rozdělení extrémních hodnot {#sec-rozdeleniextremnichhodnota}
 
 ## Vymezení extrémní hodnoty
 

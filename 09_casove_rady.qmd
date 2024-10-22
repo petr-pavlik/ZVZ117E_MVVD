@@ -1,4 +1,4 @@
-# Časové řady
+# Časové řady {#sec-casoverady}
 
 ::: callout-warning
 ## Cíle cvičení
@@ -92,13 +92,6 @@ Slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou slo
 par(mfrow = c(1, 2))
 acf(dataset$R)
 acf(co2)
-```
-
-## Pardého koeficienty 
-
-
-```{r}
-
 ```
 
 

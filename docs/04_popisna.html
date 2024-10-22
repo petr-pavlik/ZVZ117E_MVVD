@@ -347,7 +347,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1,2,3" data-code-cell="annotated-cell-2">Agregace dat do průměrů za roční období.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1,2,3" data-code-annotation="1">Agregace dat do průměrů za roční období.</span>
 </dd>
 </dl>
 </div>
@@ -406,15 +406,13 @@ Cíle cvičení
 </section>
 <section id="sec-popisna-statistickysoubor" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="sec-popisna-statistickysoubor"><span class="header-section-number">6.2</span> Statistický soubor</h2>
+<p>Je základní jednotkou popisné statistiky, skládá se z množiny všech objektů, které jsou nositely určitého znaku.</p>
 <section id="základní-soubor-populace" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="základní-soubor-populace"><span class="header-section-number">6.2.1</span> Základní soubor (populace)</h3>
 <p>Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.</p>
-<section id="sec-popisna-statistickysoubor-souborseznamymrozsahem" class="level4" data-number="6.2.1.1">
-<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sec-popisna-statistickysoubor-souborseznamymrozsahem"><span class="header-section-number">6.2.1.1</span> Soubor se známým rozsahem</h4>
-</section>
-<section id="sec-popisna-statistickysoubor-souborsneznamymrozsahem" class="level4" data-number="6.2.1.2">
-<h4 data-number="6.2.1.2" class="anchored" data-anchor-id="sec-popisna-statistickysoubor-souborsneznamymrozsahem"><span class="header-section-number">6.2.1.2</span> Soubor s neznámým rozsahem</h4>
-</section>
+<!-- #### Soubor se známým rozsahem {#sec-popisna-statistickysoubor-souborseznamymrozsahem} -->
+<!-- V případě, kdy  -->
+<!-- #### Soubor s neznámým rozsahem {#sec-popisna-statistickysoubor-souborsneznamymrozsahem} -->
 </section>
 <section id="sec-popisna-statistickysoubor-vyberovysoubor" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-popisna-statistickysoubor-vyberovysoubor"><span class="header-section-number">6.2.2</span> Výběrový soubor (výběr)</h3>
@@ -425,11 +423,14 @@ Cíle cvičení
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>), <span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>), <span class="dv">4</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] -0.63  0.18 -0.84  1.60  0.33 -0.82  0.49  0.74  0.58 -0.31  1.51  0.39</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] -0.62 -2.21  1.12 -0.04 -0.02  0.94  0.82  0.59  0.92  0.78  0.07 -1.99</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [25]  0.62 -0.06 -0.16 -1.47 -0.48  0.42</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] -0.6265  0.1836 -0.8356  1.5953  0.3295 -0.8205  0.4874  0.7383  0.5758</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] -0.3054  1.5118  0.3898 -0.6212 -2.2147  1.1249 -0.0449 -0.0162  0.9438</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [19]  0.8212  0.5939  0.9190  0.7821  0.0746 -1.9894  0.6198 -0.0561 -0.1558</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [28] -1.4708 -0.4782  0.4179  1.3587 -0.1028  0.3877 -0.0538 -1.3771 -0.4150</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [37] -0.3943 -0.0593  1.1000  0.7632 -0.1645 -0.2534  0.6970  0.5567 -0.6888</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [46] -0.7075  0.3646  0.7685 -0.1123  0.8811</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -483,30 +484,30 @@ Cíle cvičení
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">sapply</span>(<span class="at">X =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">FUN =</span> <span class="cf">function</span>(i) <span class="fu">quantile</span>(x)))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">sapply</span>(<span class="at">X =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">FUN =</span> <span class="cf">function</span>(i) <span class="fu">quantile</span>(x, <span class="at">type =</span> i)))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-5">Využití anonymní funkce <code>function(i)</code> vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci <code>quantile()</code></span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Využití anonymní funkce <code>function(i)</code> vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci <code>quantile()</code></span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        0%     25%   50%  75% 100%
-[1,] -2.21 -0.4375 0.255 0.71  1.6
-[2,] -2.21 -0.4375 0.255 0.71  1.6
-[3,] -2.21 -0.4375 0.255 0.71  1.6
-[4,] -2.21 -0.4375 0.255 0.71  1.6
-[5,] -2.21 -0.4375 0.255 0.71  1.6
-[6,] -2.21 -0.4375 0.255 0.71  1.6
-[7,] -2.21 -0.4375 0.255 0.71  1.6</code></pre>
+<pre><code>          0%       25%    50%      75%   100%
+[1,] -2.2147 -0.394300 0.0746 0.738300 1.5953
+[2,] -2.2147 -0.394300 0.1291 0.738300 1.5953
+[3,] -2.2147 -0.415000 0.0746 0.738300 1.5953
+[4,] -2.2147 -0.404650 0.0746 0.717650 1.5953
+[5,] -2.2147 -0.394300 0.1291 0.738300 1.5953
+[6,] -2.2147 -0.399475 0.1291 0.744525 1.5953
+[7,] -2.2147 -0.372075 0.1291 0.727975 1.5953</code></pre>
 </div>
 </div>
 <section id="medián" class="level4" data-number="6.3.1.1">
 <h4 data-number="6.3.1.1" class="anchored" data-anchor-id="medián"><span class="header-section-number">6.3.1.1</span> Medián</h4>
-<p>Artitmetický průměr hodnot na pozicích <span class="math inline">\(\frac{n}{2}\)</span> a <span class="math inline">\(\frac{n}{2+1}\)</span> v seřazeném souboru.</p>
+<p>Aritmetický průměr hodnot na pozicích <span class="math inline">\(\frac{n}{2}\)</span> a <span class="math inline">\(\frac{n}{2+1}\)</span> v seřazeném souboru.</p>
 </section>
 </section>
 <section id="modus" class="level3" data-number="6.3.2">
@@ -530,15 +531,15 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-6">Funkce <code>table()</code> provede součty speficikovaných hodnot. V tomto případě po zaokrouhlení na celá čísla.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Funkce <code>table()</code> provede součty speficikovaných hodnot. V tomto případě po zaokrouhlení na celá čísla.</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-6">Nyní s pomocí funkce <code>cut()</code> rozlišíme četnosti do 10 intervalů a následně spočteme počet hodnot v těchto intervalech.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Nyní s pomocí funkce <code>cut()</code> rozlišíme četnosti do 10 intervalů a následně spočteme počet hodnot v těchto intervalech.</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="3,5,10" data-code-cell="annotated-cell-6">Jádrový odhad hustoty. <span class="math display">\[
+<span data-code-cell="annotated-cell-6" data-code-lines="3,5,10" data-code-annotation="3">Jádrový odhad hustoty. <span class="math display">\[
   \hat{f}(x)=\dfrac{1}{nh}\sum_{i=1}^{n}\mathsf{K}\left(\dfrac{x-x_i}{h}\right)
 \]</span> kde <span class="math inline">\(\mathsf{K}\)</span> je jádrová funkce, <span class="math inline">\(h\)</span> je šířka pásma (zhlazovací funkce) a <span class="math inline">\(x_i\)</span> jsou hodnoty.</span>
 </dd>
@@ -554,12 +555,12 @@ Cíle cvičení
 <div class="cell-output cell-output-stdout">
 <pre><code>
 -2 -1  0  1  2 
- 2  5 12  9  2 
+ 2  8 22 16  2 
 
-  (-2.21,-1.83]   (-1.83,-1.45]   (-1.45,-1.07]  (-1.07,-0.686] (-0.686,-0.305] 
-              2               1               0               2               4 
- (-0.305,0.076]   (0.076,0.457]   (0.457,0.838]    (0.838,1.22]      (1.22,1.6] 
-              5               4               7               3               2 </code></pre>
+ (-2.22,-1.83]  (-1.83,-1.45]  (-1.45,-1.07] (-1.07,-0.691] (-0.691,-0.31] 
+             2              1              1              3              6 
+(-0.31,0.0713] (0.0713,0.452]  (0.452,0.833]   (0.833,1.21]     (1.21,1.6] 
+            11              7             11              5              3 </code></pre>
 </div>
 </div>
 </section>
@@ -572,6 +573,10 @@ Cíle cvičení
 </section>
 <section id="průměr-stupně-alpha" class="level3" data-number="6.3.4">
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="průměr-stupně-alpha"><span class="header-section-number">6.3.4</span> Průměr stupně <span class="math inline">\(\alpha\)</span></h3>
+<p>Označuje obecný vzorec průměru (zahrnující aritmetický, harmonický, geometrický apod.)</p>
+<p><span class="math display">\[
+\bar{x}_\alpha(x_1, x_2, \ldots, x_n) = \left(\dfrac{1}{n}\sum_{i=1}^{n}x_i^\alpha\right)^\frac{1}{\alpha}
+\]</span></p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -579,24 +584,28 @@ Cíle cvičení
 <span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)</span>
 <span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -2.21</span></span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.6</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -2.2147</span></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.5953</span></span>
 <span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.81</span></span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -2.21  1.60</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -2.2147  1.5953</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1,2" data-code-cell="annotated-cell-7">Statistiky minimum &amp; maximum</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="1">Statistiky minimum &amp; maximum</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="3,4" data-code-cell="annotated-cell-7">Rozpětí</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3,4" data-code-annotation="2">Rozpětí</span>
 </dd>
 </dl>
 </div>
 </div>
+<p>::: ## Úloha</p>
+<ol start="5" type="1">
+<li>Napište funkci pro výpočet obecného vzorce průměru <span class="math inline">\(\alpha\)</span> a srovnejte s výstupem funkce <code>mean</code>. :::</li>
+</ol>
 </section>
 </section>
 <section id="míry-variability" class="level2" data-number="6.4">
@@ -619,15 +628,15 @@ Cíle cvičení
 <tr class="odd">
 <td>rozptyl</td>
 <td><code>var(x)</code></td>
-<td><span class="math inline">\(\sum\limits_{i=1}^{n}\dfrac{1}{n-1}(x_i - \bar{x})^2\)</span></td>
+<td><span class="math inline">\(\sum\limits_{i=1}^{n}\dfrac{(x_i - \bar{x})^2}{n-1}\)</span></td>
 </tr>
 <tr class="even">
 <td>směrodatná odchylka</td>
 <td><code>sd(x)</code></td>
-<td><span class="math inline">\(\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n-1}(x_i - \bar{x})^2}\)</span></td>
+<td><span class="math inline">\(\dfrac{1}{n-1}\sum\limits_{i=1}^{n}\sqrt{(x_i - \bar{x})^2}\)</span></td>
 </tr>
 <tr class="odd">
-<td>varianční rozpětí</td>
+<td>variační rozpětí</td>
 <td><code>range(x)</code></td>
 <td><span class="math inline">\(\max(x) - \min(x)\)</span></td>
 </tr>
@@ -658,15 +667,15 @@ s_x = \dfrac{s}{\sqrt{n}}
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fivenum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.210 -0.480  0.255  0.740  1.600</code></pre>
+<pre><code>[1] -2.2147 -0.3943  0.1291  0.7383  1.5953</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
--2.21000 -0.43750  0.25500  0.08167  0.71000  1.60000 </code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-2.2147 -0.3721  0.1291  0.1004  0.7280  1.5953 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

@@ -244,17 +244,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#odtokový-součinitel" id="toc-odtokový-součinitel" class="nav-link active" data-scroll-target="#odtokový-součinitel"><span class="header-section-number">11.1</span> Odtokový součinitel</a></li>
+  <li><a href="#srážko-odtokový-součinitel" id="toc-srážko-odtokový-součinitel" class="nav-link active" data-scroll-target="#srážko-odtokový-součinitel"><span class="header-section-number">11.1</span> Srážko-odtokový součinitel</a></li>
   <li><a href="#základní-odtok" id="toc-základní-odtok" class="nav-link" data-scroll-target="#základní-odtok"><span class="header-section-number">11.2</span> Základní odtok</a></li>
   <li><a href="#budykova-křivka" id="toc-budykova-křivka" class="nav-link" data-scroll-target="#budykova-křivka"><span class="header-section-number">11.3</span> Budykova křivka</a></li>
-  <li><a href="#spei" id="toc-spei" class="nav-link" data-scroll-target="#spei"><span class="header-section-number">11.4</span> SPEI</a></li>
-  <li><a href="#index-předchozích-srážek" id="toc-index-předchozích-srážek" class="nav-link" data-scroll-target="#index-předchozích-srážek"><span class="header-section-number">11.5</span> Index předchozích srážek</a></li>
-  <li><a href="#frekvenční-křivky" id="toc-frekvenční-křivky" class="nav-link" data-scroll-target="#frekvenční-křivky"><span class="header-section-number">11.6</span> Frekvenční křivky</a>
+  <li><a href="#pardého-koeficienty" id="toc-pardého-koeficienty" class="nav-link" data-scroll-target="#pardého-koeficienty"><span class="header-section-number">11.4</span> Pardého koeficienty</a></li>
+  <li><a href="#spei" id="toc-spei" class="nav-link" data-scroll-target="#spei"><span class="header-section-number">11.5</span> SPEI</a></li>
+  <li><a href="#index-předchozích-srážek" id="toc-index-předchozích-srážek" class="nav-link" data-scroll-target="#index-předchozích-srážek"><span class="header-section-number">11.6</span> Index předchozích srážek</a></li>
+  <li><a href="#frekvenční-křivky" id="toc-frekvenční-křivky" class="nav-link" data-scroll-target="#frekvenční-křivky"><span class="header-section-number">11.7</span> Frekvenční křivky</a>
   <ul class="collapse">
-  <li><a href="#n-letý-maximální-průtok" id="toc-n-letý-maximální-průtok" class="nav-link" data-scroll-target="#n-letý-maximální-průtok"><span class="header-section-number">11.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</a></li>
-  <li><a href="#m-denní-průtok" id="toc-m-denní-průtok" class="nav-link" data-scroll-target="#m-denní-průtok"><span class="header-section-number">11.6.2</span> <span class="math inline">\(m-\)</span>denní průtok</a></li>
+  <li><a href="#n-letý-maximální-průtok" id="toc-n-letý-maximální-průtok" class="nav-link" data-scroll-target="#n-letý-maximální-průtok"><span class="header-section-number">11.7.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</a></li>
+  <li><a href="#m-denní-průtok" id="toc-m-denní-průtok" class="nav-link" data-scroll-target="#m-denní-průtok"><span class="header-section-number">11.7.2</span> <span class="math inline">\(M-\)</span>denní průtok</a></li>
   </ul></li>
-  <li><a href="#spojitá-rozdělení" id="toc-spojitá-rozdělení" class="nav-link" data-scroll-target="#spojitá-rozdělení"><span class="header-section-number">11.7</span> Spojitá rozdělení</a></li>
+  <li><a href="#další-indexy" id="toc-další-indexy" class="nav-link" data-scroll-target="#další-indexy"><span class="header-section-number">11.8</span> Další indexy</a>
+  <ul class="collapse">
+  <li><a href="#klouzavá-minima-a-maxima" id="toc-klouzavá-minima-a-maxima" class="nav-link" data-scroll-target="#klouzavá-minima-a-maxima"><span class="header-section-number">11.8.1</span> Klouzavá minima a maxima</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></h1>
+<h1 class="title"><span id="sec-hydroklimatickeindexy" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></h1>
 </div>
 
 
@@ -278,12 +282,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="odtokový-součinitel" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="odtokový-součinitel"><span class="header-section-number">11.1</span> Odtokový součinitel</h2>
+<p>Hydroklimatické indexy lze rozdělit na <strong>empirické</strong> a <strong>stochastické</strong>. K výpočtu těch empirických nám poslouží pouze naměřená datová sada resp. data v ní, nějakým způsobem upravená.</p>
+<p>Mezi empirické řadíme například</p>
+<table class="table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 35%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Index</th>
+<th>Popis</th>
+<th>Výpočet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>QMN7D <span class="math inline">\([\mathrm{m}^3\mathrm{s}^{-1}]\)</span></td>
+<td>Minimalní 7denní klouzavý průtok</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\varphi\)</span> [-]</td>
+<td>Součinitel odtoku</td>
+<td><a href="#eq-soucinitelodtoku">Rovnice&nbsp;<span>11.1</span></a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\phi\)</span> [-]</td>
+<td>Index aridity</td>
+<td><span class="math display">\[                                                            
+                                                                            \phi=\frac{\mathrm{PET}-\mathrm{ET}_\mathrm{a}}{\mathrm{PET}}  
+                                                                            \]</span></td>
+</tr>
+</tbody>
+</table>
+<p>Mezi stochastické potom</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Index</th>
+<th>Popis</th>
+<th>Výpočet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SPEI</td>
+<td><em>Standard Precipitation Evaporation Index</em></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>PDSI</td>
+<td><em>Palmer Drought Severity Index</em></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>M60D</td>
+<td>Minimální 60denní průtok</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>V tomto cvičení budeme pracovat s průtokovými daty naměřenými Českým hydrometeorologickýnm ústavem ve stanici Louňovice pod Blaníkem.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><ol type="a">
+<li>Nahrajte do prostředí datovou sadu <strong>QD165600</strong> do stejnojmenné proměnné.<br>
+Jednotlivé proměnné pojmenujte “id”, “var”, “year”, “month”, “day” a “q”.<br>
+Výsledek by měl vypadat takto:</li>
+<li>V České republice je definován hydrologický rok od 1. 11. do 31. 10. následujícího roku. Přidejte k datové sadě sloupec “h_year”</li>
+<li></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      id var year month day     q
+1 165600  QD 1991    11   1 0.180
+2 165600  QD 1991    11   2 0.140
+3 165600  QD 1991    11   3 0.144
+4 165600  QD 1991    11   4 0.171
+5 165600  QD 1991    11   5 0.206</code></pre>
+</div>
+</div>
+<section id="srážko-odtokový-součinitel" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="srážko-odtokový-součinitel"><span class="header-section-number">11.1</span> Srážko-odtokový součinitel</h2>
 <p>Vyjadřuje poměr mezi dlouhodobým odtokem a srážkou na povodí</p>
-<p><span class="math display">\[
+<p><span id="eq-soucinitelodtoku"><span class="math display">\[
 \varphi\:[\text{mm}] = \dfrac{Q\:[\text{mm}]}{P\:[\text{mm}]}
-\]</span></p>
+\tag{11.1}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -302,6 +400,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="základní-odtok" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="základní-odtok"><span class="header-section-number">11.2</span> Základní odtok</h2>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -313,19 +420,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ol start="2" type="1">
-<li>Použijte metodu 30 denních klouzavých minim pro výpočet základního odtoku</li>
+<li>Použijte metodu 30denních klouzavých minim pro výpočet základního odtoku</li>
 </ol>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>klouzave_minimum <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">30</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(x) <span class="sc">-</span> n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(x) <span class="sc">-</span> n <span class="sc">+</span> <span class="dv">1</span>)) {</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    result[i] <span class="ot">&lt;-</span> <span class="fu">min</span>(x[i<span class="sc">:</span>(i <span class="sc">+</span> n <span class="sc">-</span> <span class="dv">1</span>)])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="10_hydro_index_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="budykova-křivka" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="budykova-křivka"><span class="header-section-number">11.3</span> Budykova křivka</h2>
+<p>Na budykovu křivku jsme narazili už při tvorbě grafického výstupu v <a href="03_grafy.html"><span>Kapitola&nbsp;5</span></a>.</p>
 </section>
-<section id="spei" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="spei"><span class="header-section-number">11.4</span> SPEI</h2>
+<section id="pardého-koeficienty" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="pardého-koeficienty"><span class="header-section-number">11.4</span> Pardého koeficienty</h2>
+<p>Tento ukazatel zobrazuje poměr měsíčního odtoku k celkovému ročnímu odtoku.</p>
 </section>
-<section id="index-předchozích-srážek" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="index-předchozích-srážek"><span class="header-section-number">11.5</span> Index předchozích srážek</h2>
+<section id="spei" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="spei"><span class="header-section-number">11.5</span> SPEI</h2>
+</section>
+<section id="index-předchozích-srážek" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="index-předchozích-srážek"><span class="header-section-number">11.6</span> Index předchozích srážek</h2>
 <p>Je definována s pomocí rozpadové konstanty <span class="math inline">\(k\)</span> a <span class="math inline">\(n\)</span> předchozích dní</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -343,11 +476,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="frekvenční-křivky" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="frekvenční-křivky"><span class="header-section-number">11.6</span> Frekvenční křivky</h2>
-<section id="n-letý-maximální-průtok" class="level3" data-number="11.6.1">
-<h3 data-number="11.6.1" class="anchored" data-anchor-id="n-letý-maximální-průtok"><span class="header-section-number">11.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</h3>
-<p>Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1<span class="math inline">\(\times\)</span> za <span class="math inline">\(N\)</span> let.</p>
+<section id="frekvenční-křivky" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="frekvenční-křivky"><span class="header-section-number">11.7</span> Frekvenční křivky</h2>
+<p>Pravděpodobnost překročení <span class="math inline">\(P(X\geq x_i)\)</span> <span class="math inline">\(i-\)</span>té hodnoty v souboru lze zapsat <span class="math display">\[
+P = \dfrac{m}{n}, \quad \text{pokud } n\rightarrow \infty
+\]</span> V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je <span class="math inline">\(P(X\geq x_{\min})=1\)</span>. Vzorec byl Čegodajevem upraven na <span class="math display">\[
+P = \dfrac{m-0,3}{n+0,4}
+\]</span> Vztah mezi pravděpodobností překročení <span class="math inline">\(P\)</span> a dobou opakování <span class="math inline">\(T'\)</span> je <span class="math display">\[
+T' = \dfrac{1}{1-P(X\geq x_i)}
+\]</span></p>
+<section id="n-letý-maximální-průtok" class="level3" data-number="11.7.1">
+<h3 data-number="11.7.1" class="anchored" data-anchor-id="n-letý-maximální-průtok"><span class="header-section-number">11.7.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</h3>
+<p>Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1<span class="math inline">\(\times\)</span> za <span class="math inline">\(N\)</span> let. Určuje se pro doby opakování <span class="math inline">\(N = 1, 2, 5, 10, 20, 50, 100\)</span> let.</p>
+<p>Sestrojíme</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -365,9 +506,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="m-denní-průtok" class="level3" data-number="11.6.2">
-<h3 data-number="11.6.2" class="anchored" data-anchor-id="m-denní-průtok"><span class="header-section-number">11.6.2</span> <span class="math inline">\(m-\)</span>denní průtok</h3>
-<p>Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu <span class="math inline">\(m\)</span> dní v roce.</p>
+<section id="m-denní-průtok" class="level3" data-number="11.7.2">
+<h3 data-number="11.7.2" class="anchored" data-anchor-id="m-denní-průtok"><span class="header-section-number">11.7.2</span> <span class="math inline">\(M-\)</span>denní průtok</h3>
+<p>Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu <span class="math inline">\(M\)</span> dní v roce.</p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">30</span>, <span class="at">to =</span> <span class="dv">330</span>, <span class="at">by =</span> <span class="dv">30</span>), <span class="dv">355</span>, <span class="dv">364</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Mdenni <span class="ot">&lt;-</span> <span class="fu">quantile</span>(<span class="at">x =</span> QD165600<span class="sc">$</span>q, <span class="at">probs =</span> <span class="dv">1</span><span class="sc">/</span>(M<span class="dv">-1</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Mdenni, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Průtok ["</span>, m<span class="sc">^</span><span class="dv">3</span><span class="sc">*</span>s<span class="sc">^-</span><span class="dv">1</span>, <span class="st">"]"</span>)))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Mdenni)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">nx =</span> <span class="dv">12</span>, <span class="at">equilogs =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Mdenni, <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="fu">rev</span>(<span class="fu">rainbow</span>(<span class="dv">13</span>, <span class="at">end =</span> <span class="fl">0.7</span>)))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="10_hydro_index_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -386,56 +549,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.25</span>, <span class="at">sd =</span> <span class="fl">5.36</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.25</span>, <span class="at">sd =</span> <span class="fl">5.36</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.523503</code></pre>
+<pre><code>[1] 1.800301</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.23503</code></pre>
+<pre><code>[1] 18.00301</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.176428</code></pre>
+<pre><code>[1] 4.008192</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.719705</code></pre>
+<pre><code>[1] 2.383837</code></pre>
 </div>
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fivenum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fivenum</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -5.909579 -1.663103  1.176428  5.619703  9.098266</code></pre>
+<pre><code>[1] -10.153471   2.223848   4.008192   4.944132   6.463063</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="spojitá-rozdělení" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="spojitá-rozdělení"><span class="header-section-number">11.7</span> Spojitá rozdělení</h2>
+<section id="další-indexy" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="další-indexy"><span class="header-section-number">11.8</span> Další indexy</h2>
+<section id="klouzavá-minima-a-maxima" class="level3" data-number="11.8.1">
+<h3 data-number="11.8.1" class="anchored" data-anchor-id="klouzavá-minima-a-maxima"><span class="header-section-number">11.8.1</span> Klouzavá minima a maxima</h3>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">sin</span>(x))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>QD165600<span class="sc">$</span>diff <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">diff</span>(QD165600<span class="sc">$</span>q, <span class="at">lag =</span> <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>QD165600[<span class="dv">1200</span><span class="sc">+</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">365</span>), ] <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(diff = ifelse(diff &lt;= 0, -1*log(abs(diff)), log(diff))) |&gt; </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>)), <span class="at">y =</span> q, <span class="at">color =</span> diff, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  scico<span class="sc">::</span><span class="fu">scale_color_scico</span>(<span class="at">palette =</span> <span class="st">"berlin"</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<p><img src="10_hydro_index_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid"></p>
-</div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

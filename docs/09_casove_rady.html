@@ -245,13 +245,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#autokorelační-funkce" id="toc-autokorelační-funkce" class="nav-link active" data-scroll-target="#autokorelační-funkce"><span class="header-section-number">10.1</span> Autokorelační funkce</a></li>
-  <li><a href="#pardého-koeficienty" id="toc-pardého-koeficienty" class="nav-link" data-scroll-target="#pardého-koeficienty"><span class="header-section-number">10.2</span> Pardého koeficienty</a></li>
-  <li><a href="#dekompozice-časové-řady" id="toc-dekompozice-časové-řady" class="nav-link" data-scroll-target="#dekompozice-časové-řady"><span class="header-section-number">10.3</span> Dekompozice časové řady</a>
+  <li><a href="#dekompozice-časové-řady" id="toc-dekompozice-časové-řady" class="nav-link" data-scroll-target="#dekompozice-časové-řady"><span class="header-section-number">10.2</span> Dekompozice časové řady</a>
   <ul class="collapse">
-  <li><a href="#aditivní-dekompozice" id="toc-aditivní-dekompozice" class="nav-link" data-scroll-target="#aditivní-dekompozice"><span class="header-section-number">10.3.1</span> Aditivní dekompozice</a></li>
-  <li><a href="#residua" id="toc-residua" class="nav-link" data-scroll-target="#residua"><span class="header-section-number">10.3.2</span> Residua</a></li>
+  <li><a href="#aditivní-dekompozice" id="toc-aditivní-dekompozice" class="nav-link" data-scroll-target="#aditivní-dekompozice"><span class="header-section-number">10.2.1</span> Aditivní dekompozice</a></li>
+  <li><a href="#residua" id="toc-residua" class="nav-link" data-scroll-target="#residua"><span class="header-section-number">10.2.2</span> Residua</a></li>
   </ul></li>
-  <li><a href="#zhlazovací-funkce" id="toc-zhlazovací-funkce" class="nav-link" data-scroll-target="#zhlazovací-funkce"><span class="header-section-number">10.4</span> Zhlazovací funkce</a></li>
+  <li><a href="#zhlazovací-funkce" id="toc-zhlazovací-funkce" class="nav-link" data-scroll-target="#zhlazovací-funkce"><span class="header-section-number">10.3</span> Zhlazovací funkce</a></li>
   </ul>
 </nav>
     </div>
@@ -260,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></h1>
+<h1 class="title"><span id="sec-casoverady" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></h1>
 </div>
 
 
@@ -458,11 +457,8 @@ Frequency = 525960
 </div>
 </div>
 </section>
-<section id="pardého-koeficienty" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="pardého-koeficienty"><span class="header-section-number">10.2</span> Pardého koeficienty</h2>
-</section>
-<section id="dekompozice-časové-řady" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="dekompozice-časové-řady"><span class="header-section-number">10.3</span> Dekompozice časové řady</h2>
+<section id="dekompozice-časové-řady" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="dekompozice-časové-řady"><span class="header-section-number">10.2</span> Dekompozice časové řady</h2>
 <p>Dekompozicí časové řady rozumíme rozklad na složky:</p>
 <ol type="1">
 <li>Trendovou <span class="math inline">\(T_t\)</span></li>
@@ -470,8 +466,8 @@ Frequency = 525960
 <li>Cyklickou <span class="math inline">\(C_t\)</span></li>
 <li>Náhodnou <span class="math inline">\(\epsilon_t\)</span></li>
 </ol>
-<section id="aditivní-dekompozice" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="aditivní-dekompozice"><span class="header-section-number">10.3.1</span> Aditivní dekompozice</h3>
+<section id="aditivní-dekompozice" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="aditivní-dekompozice"><span class="header-section-number">10.2.1</span> Aditivní dekompozice</h3>
 <p>Předpokládáme, že řadu lze rozložit na součet složek</p>
 <p><span class="math display">\[
 Y_t =T_t +S_t +C_t +\epsilon_t,
@@ -483,19 +479,19 @@ Y_t =T_t +S_t +C_t +\epsilon_t,
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_co2)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid"></p>
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid"></p>
 </div>
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_co2<span class="sc">$</span>trend)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-6-2.svg" class="img-fluid"></p>
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-5-2.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="residua" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="residua"><span class="header-section-number">10.3.2</span> Residua</h3>
+<section id="residua" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="residua"><span class="header-section-number">10.2.2</span> Residua</h3>
 <p>Ověřte, zda po dekompozici <code>co2</code> residua <span class="math inline">\(\epsilon_t\)</span> splňují definici <em>bílého šumu</em> tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.</p>
 <div class="cell">
 <details open="">
@@ -530,8 +526,8 @@ W = 0.99506, p-value = 0.1549</code></pre>
 </div>
 </section>
 </section>
-<section id="zhlazovací-funkce" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="zhlazovací-funkce"><span class="header-section-number">10.4</span> Zhlazovací funkce</h2>
+<section id="zhlazovací-funkce" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="zhlazovací-funkce"><span class="header-section-number">10.3</span> Zhlazovací funkce</h2>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
@@ -552,7 +548,7 @@ W = 0.99506, p-value = 0.1549</code></pre>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid"></p>
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell">
@@ -566,7 +562,7 @@ W = 0.99506, p-value = 0.1549</code></pre>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">coef</span>(md2), <span class="at">col =</span> <span class="st">"orangered"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid"></p>
+<p><img src="09_casove_rady_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid"></p>
 </div>
 </div>
 

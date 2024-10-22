@@ -1,4 +1,4 @@
-# Bodový a intervalový odhad {#odhad}
+# Bodový a intervalový odhad {#sec-odhad}
 
 ::: callout-warning
 ## Cíle cvičení 
@@ -52,6 +52,41 @@ names(X) = c('UNB', 'BIA' , 'UNB2' ,'BIA2')
 :::
 
 
+### Zákon velkých čísel
+
+Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.
+
+::: callout-tip
+## Úloha
+
+  1. Generujte s pomocí funkce `rnorm` postupně $10$, $10^2$, $10^3$ čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte $\bar{x}$ a ${s^2}$, použijte nápovědu.
+Okomentujte výsledky. 
+```{r, echo=FALSE, fig.align='center', fig.width=10}
+par(mfrow = c(1, 3))
+set.seed(13)
+x10 <- rnorm(10, 0, 1)
+set.seed(13)
+x100 <- rnorm(100, 0, 1)
+set.seed(13)
+x1000 <- rnorm(1000, 0, 1)
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "A)", cex.main = 2)
+rug(x10, lwd = 2, col = "#00000025")
+rug(mean(x10), lwd = 2, col = "orangered")
+segments(x0 = mean(x10), y0 = 0, x1 = mean(x10), y1 = dnorm(mean(x10), 0, 1), col = "orangered")
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0, 0, 1), lty = "dashed", col = "gray25")
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "B)", cex.main = 2)
+rug(x100, lwd = 2, col = "#00000025")
+rug(mean(x100), lwd = 2, col = "orangered")
+segments(x0 = mean(x100), y0 = 0, x1 = mean(x100), y1 = dnorm(mean(x100), 0, 1), col = "orangered")
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0, 0, 1), lty = "dashed", col = "gray25")
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "C)", cex.main = 2)
+rug(x1000, lwd = 2, col = "#00000025")
+rug(mean(x1000), lwd = 2, col = "orangered")
+segments(x0 = mean(x1000), y0 = 0, x1 = mean(x1000), y1 = dnorm(mean(x1000), 0, 1), col = "orangered")
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0, 0, 1), lty = "dashed", col = "gray25")
+```
+:::
+
 ## Bodový odhad
 
 Bodovým odhadem se se rozumí jednočíselná hodnota, která reprezentuje vybraný moment statistického souboru jako celek. Bodovým odhadem je například výběrový průměr nebo výběrový rozptyl.
@@ -62,19 +97,6 @@ x <- rnorm(10, 10, 10)
 mean(x)
 var(x)
 ```
-
-### Zákon velkých čísel
-
-Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.
-
-::: callout-tip
-## Cvičení
-
-  1. Generujte s pomocí funkce `rnorm` postupně $10$, $10^2$, $10^3$, $10^4$ čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte $\bar{x}$ a ${s^2}$, použijte nápovědu.
-Okomentujte výsledky. 
-  2. V předchozím cvičení $\chi$
-:::
-
 
 
 ### Odhad parametru $\mu$, neboli střední hodnoty normálního rozdělení s neznámým rozptylem
@@ -137,7 +159,7 @@ likelihood <- function(params) { # <3>
 }
 
 
-result <- optim(par = c(0, 1), #<4>
+result <- optim(par = c(5, 1), #<4>
                 fn = function(params) -likelihood(params), #<4>
                 hessian = TRUE) #<4>
 
@@ -167,10 +189,10 @@ curve(dlnorm(x, 1, 0.5), add = TRUE)
 ```
 
 ## $t$-test {#ttest}
-Testování hypotéz podrobněji probereme v @sec-testovani, nyní si nicméně ukážeme, 
-že výstupem funkce `t.test()` je rovněž intervalový odhad pro střední hodnotu normálního
+Testování hypotéz podrobněji probereme v @sec-testovani. Nyní si nicméně ukážeme, 
+že výstupem funkce `t.test()` je rovněž intervalový odhad pro střední hodnotu Normálního
 rozdělení při neznámém rozptylu.
-Nejjednodušší aplikací $t$-testu je Testovací statistika pro oboustrannou alternativu má hodnotu
+Testovací statistika pro oboustrannou alternativu má hodnotu
 
 $$
 \dfrac{|\bar{x} - \mu_0|}{s}\sqrt{n} > t_{\alpha/2}(n-1)
@@ -185,7 +207,8 @@ $$
 $$ pro $\mu < \mu_0$. $n-1$ je počet stupňů volnosti.
 
 ::: callout-tip
-## Cvičení 
+## Úloha
+
   1. Spočítejte pomocí funkce `t.test` intervalový odhad pro `x = rnorm(100)` a `set.seed(100)`.\
   2. Spočítejte, zda můžeme s pravděpodobností $90\:\%$ zamítnout hypotézu, že střední hodnota veličiny generující výběr `x <- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)` je menší než 1.\
   3. Pro stejný výběr spočítejte, zda je možné na hladině významnosti $0.05$ zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna $1$.

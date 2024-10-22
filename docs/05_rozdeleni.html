@@ -344,7 +344,7 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-3">a</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="1">a</span>
 </dd>
 </dl>
 </div>
@@ -371,11 +371,11 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-4">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="2" data-code-cell="annotated-cell-4">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="2">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 </dl>
 </div>
@@ -388,8 +388,8 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seed, <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]       10403           2 -1210384671 -1785471920   319759534  1749712985
- [7]  1096884331   998364634  -651837796  1391595679</code></pre>
+<pre><code> [1]      10403          2 1964367473 1860140195  411317746 1701246276
+ [7] 1050850823  187495389 1566858452 -678345734</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -416,8 +416,8 @@ F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 <span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1017202
-[1] 0.1017202 0.7221883</code></pre>
+<pre><code>[1] 0.454882
+[1] 0.4548820 0.1536355</code></pre>
 </div>
 </div>
 </section>
@@ -482,15 +482,15 @@ b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost ž
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-8">Předem alokuejeme vektor hodnot.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-8" data-code-lines="1">Předem alokuejeme vektor hodnot.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="4" data-code-cell="annotated-cell-8">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-8" data-code-lines="4">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="6,7,8,9,10,11" data-code-cell="annotated-cell-8">Pokud pršelo v předchozím čase</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-8" data-code-lines="6,7,8,9,10,11">Pokud pršelo v předchozím čase</span>
 </dd>
 </dl>
 </div>
@@ -510,8 +510,7 @@ b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost ž
 “Jaká je pravděpodobnost, že veličina <span class="math inline">\(X\)</span> je menší než 7.5?”</p>
 <section id="normální-rozdělení" class="level3" data-number="7.6.1">
 <h3 data-number="7.6.1" class="anchored" data-anchor-id="normální-rozdělení"><span class="header-section-number">7.6.1</span> Normální rozdělení</h3>
-<p>$$</p>
-<p>$$</p>
+<p>Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace <span class="math inline">\(X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)\)</span> bude menší než 5,5. Početně je úkon řešen standardizací a určením nového</p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -532,6 +531,58 @@ b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost ž
 <figcaption class="figure-caption">Pravděpodobnost, že <span class="math inline">\(x\)</span> je menší nebo rovno 2.</figcaption>
 </figure>
 </div>
+</div>
+</div>
+</div>
+</div>
+<p>Provedeme standardizaci na <span class="math inline">\(Z\sim\mathsf{N}(0; 1)\)</span> <span class="math display">\[
+Z = \dfrac{X - \mu}{\sigma} \approx \dfrac{5,5 - 3}{1,48324} \approx 1,6855
+\]</span> <span class="math inline">\(P(Z &lt; 1,69)\)</span> Spočítáme s pomocí kvantilu Standardizovaného Normálního rozdělení. Tento úkon R dělá z nás, ale pro porovnání si uvedeme obě varianty:</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Z =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             N         Z
+[1,] 0.9540539 0.9540539</code></pre>
+</div>
+</div>
+<p>Hledaná pravděpodobnost je 95.45 %.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Zde je dobré upozornit na numerické zaokrouhlovací chyby, které během počítačového zpracování dat vznikají.</p>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mean relative difference: 3.473763e-08"</code></pre>
+</div>
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">tolerance =</span> <span class="fl">0.005</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 </div>
@@ -575,11 +626,11 @@ f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 <div class="cell">
 <details>
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>pi))<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>)), <span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -627,7 +678,7 @@ f(x;\mu, \sigma, \gamma, \alpha, \beta) = \dfrac{\beta}{(x-\gamma)\sigma\sqrt{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-14-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

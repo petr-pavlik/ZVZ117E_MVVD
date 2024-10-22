@@ -519,7 +519,7 @@ varianta <- "B"
 
 8.  a)  Vytvořte s pomocí podmínek známkovací schéma:
 
-| Rozmezí | Známka      |  
+| Známka  | Rozmezí     |  
 |---------|-------------|
 | 1       | 90 - 100 \% | 
 | 2       | 75 - 89 \%  | 
@@ -581,8 +581,6 @@ Kromě únikového klíčového slova `break` po němž cyklus okamžitě skonč
     d) S pomocí funkce `readline()` od uživatele požaduje číslo, které vždy vypíše.
        Pokud je číslo záporné, skončí smyčku.
 :::
-
-
 
 ## Vlastní funkce
 

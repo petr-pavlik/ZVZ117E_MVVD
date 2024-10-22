@@ -225,7 +225,7 @@ $$
     d) Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$ a uložte do proměnné `phi`.\
     e) Pro posloupnost `phi` spočítejte Schreiberovu rovnici a uložte do `schreiber`.
     g) S pomocí následujícího příkazu vytvořte barevné schéma `paleta <- rev(rainbow(20, start = 0, end = 0.6))`
-    h) Vyneste body `x = budyko_dfr$PET_over_P` a `y = ET_over_P`.
+    h) Vyneste body `x = budyko_dfr$PET_over_P` a `y = budyko_dfr$ET_over_P`.
     i) Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$.\           
     j) Vyneste do plotu liniové segmenty $(0;0)$ -- $(1;1)$ a $(1;1)$ -- $(2;1)$.
     k) Funkcí `grid()` přidejte tečkovanou mřížku.

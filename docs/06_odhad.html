@@ -244,11 +244,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#vlastnosti-odhadu" id="toc-vlastnosti-odhadu" class="nav-link active" data-scroll-target="#vlastnosti-odhadu"><span class="header-section-number">8.1</span> Vlastnosti odhadu</a></li>
+  <li><a href="#vlastnosti-odhadu" id="toc-vlastnosti-odhadu" class="nav-link active" data-scroll-target="#vlastnosti-odhadu"><span class="header-section-number">8.1</span> Vlastnosti odhadu</a>
+  <ul class="collapse">
+  <li><a href="#zákon-velkých-čísel" id="toc-zákon-velkých-čísel" class="nav-link" data-scroll-target="#zákon-velkých-čísel"><span class="header-section-number">8.1.1</span> Zákon velkých čísel</a></li>
+  </ul></li>
   <li><a href="#bodový-odhad" id="toc-bodový-odhad" class="nav-link" data-scroll-target="#bodový-odhad"><span class="header-section-number">8.2</span> Bodový odhad</a>
   <ul class="collapse">
-  <li><a href="#zákon-velkých-čísel" id="toc-zákon-velkých-čísel" class="nav-link" data-scroll-target="#zákon-velkých-čísel"><span class="header-section-number">8.2.1</span> Zákon velkých čísel</a></li>
-  <li><a href="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" id="toc-odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="nav-link" data-scroll-target="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">8.2.2</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</a></li>
+  <li><a href="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" id="toc-odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="nav-link" data-scroll-target="#odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">8.2.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</a></li>
   </ul></li>
   <li><a href="#intervalový-odhad" id="toc-intervalový-odhad" class="nav-link" data-scroll-target="#intervalový-odhad"><span class="header-section-number">8.3</span> Intervalový odhad</a></li>
   <li><a href="#maximálně-věrohodný-odhad" id="toc-maximálně-věrohodný-odhad" class="nav-link" data-scroll-target="#maximálně-věrohodný-odhad"><span class="header-section-number">8.4</span> Maximálně věrohodný odhad</a>
@@ -264,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="odhad" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bodový a intervalový odhad</span></span></h1>
+<h1 class="title"><span id="sec-odhad" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bodový a intervalový odhad</span></span></h1>
 </div>
 
 
@@ -351,6 +353,34 @@ Cvičení
 </ol>
 </div>
 </div>
+<section id="zákon-velkých-čísel" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="zákon-velkých-čísel"><span class="header-section-number">8.1.1</span> Zákon velkých čísel</h3>
+<p>Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Generujte s pomocí funkce <code>rnorm</code> postupně <span class="math inline">\(10\)</span>, <span class="math inline">\(10^2\)</span>, <span class="math inline">\(10^3\)</span> čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte <span class="math inline">\(\bar{x}\)</span> a <span class="math inline">\({s^2}\)</span>, použijte nápovědu. Okomentujte výsledky.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06_odhad_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="bodový-odhad" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="bodový-odhad"><span class="header-section-number">8.2</span> Bodový odhad</h2>
@@ -366,28 +396,8 @@ Cvičení
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31.48541</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="zákon-velkých-čísel" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="zákon-velkých-čísel"><span class="header-section-number">8.2.1</span> Zákon velkých čísel</h3>
-<p>Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakování nezávislých náhodných pokusů se empirické charakteristiky (realizované výběrové odhady), které popisují výsledky těchto pokusů blíží k teoretickým charakteristikám.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Cvičení
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Generujte s pomocí funkce <code>rnorm</code> postupně <span class="math inline">\(10\)</span>, <span class="math inline">\(10^2\)</span>, <span class="math inline">\(10^3\)</span>, <span class="math inline">\(10^4\)</span> čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte <span class="math inline">\(\bar{x}\)</span> a <span class="math inline">\({s^2}\)</span>, použijte nápovědu. Okomentujte výsledky.</li>
-<li>V předchozím cvičení <span class="math inline">\(\chi\)</span></li>
-</ol>
-</div>
-</div>
-</section>
-<section id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">8.2.2</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</h3>
+<section id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="odhad-parametru-mu-neboli-střední-hodnoty-normálního-rozdělení-s-neznámým-rozptylem"><span class="header-section-number">8.2.1</span> Odhad parametru <span class="math inline">\(\mu\)</span>, neboli střední hodnoty normálního rozdělení s neznámým rozptylem</h3>
 <p>Takto formulovaný bodový a intervalový je jednou z nejčastěji prováděných úloh. Nejprve bodovým odhadem zjistíme <strong>výběrový průměr</strong> souboru.</p>
 <div class="cell">
 <details open="">
@@ -451,7 +461,7 @@ f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\si
 <span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>),</span>
 <span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">fn =</span> <span class="cf">function</span>(params) <span class="sc">-</span><span class="fu">likelihood</span>(params),</span>
 <span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span>
 <span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -465,28 +475,28 @@ f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\si
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1,2" data-code-annotation="1" data-code-cell="annotated-cell-4">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4,5" data-code-annotation="2" data-code-cell="annotated-cell-4">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="4,5" data-code-annotation="2">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="7,8,9,10" data-code-annotation="3" data-code-cell="annotated-cell-4">Definice věrohodnostní funkce.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="7,8,9,10" data-code-annotation="3">Definice věrohodnostní funkce.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="14,15,16" data-code-annotation="4" data-code-cell="annotated-cell-4">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="14,15,16" data-code-annotation="4">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="18,19" data-code-annotation="5" data-code-cell="annotated-cell-4">Získané hodnoty odhadů.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="18,19" data-code-annotation="5">Získané hodnoty odhadů.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>MLE pro střední hodnotu: 0 
+<pre><code>MLE pro střední hodnotu: 5 
 MLE pro směrodatnou odchylku: 1 </code></pre>
 </div>
 </div>
@@ -507,7 +517,7 @@ MLE pro směrodatnou odchylku: 1 </code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid"></p>
+<p><img src="06_odhad_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid"></p>
 </div>
 <details open="">
 <summary>Kód</summary>
@@ -515,14 +525,14 @@ MLE pro směrodatnou odchylku: 1 </code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dlnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-6-2.svg" class="img-fluid"></p>
+<p><img src="06_odhad_files/figure-html/unnamed-chunk-7-2.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
 </section>
 <section id="ttest" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="ttest"><span class="header-section-number">8.5</span> <span class="math inline">\(t\)</span>-test</h2>
-<p>Testování hypotéz podrobněji probereme v <a href="07_testovani.html"><span>Kapitola&nbsp;9</span></a>, nyní si nicméně ukážeme, že výstupem funkce <code>t.test()</code> je rovněž intervalový odhad pro střední hodnotu normálního rozdělení při neznámém rozptylu. Nejjednodušší aplikací <span class="math inline">\(t\)</span>-testu je Testovací statistika pro oboustrannou alternativu má hodnotu</p>
+<p>Testování hypotéz podrobněji probereme v <a href="07_testovani.html"><span>Kapitola&nbsp;9</span></a>. Nyní si nicméně ukážeme, že výstupem funkce <code>t.test()</code> je rovněž intervalový odhad pro střední hodnotu Normálního rozdělení při neznámém rozptylu. Testovací statistika pro oboustrannou alternativu má hodnotu</p>
 <p><span class="math display">\[
 \dfrac{|\bar{x} - \mu_0|}{s}\sqrt{n} &gt; t_{\alpha/2}(n-1)
 \]</span> a pro jednostrannou alternativu <span class="math inline">\(\mu &gt; \mu_0\)</span></p>
@@ -538,7 +548,7 @@ MLE pro směrodatnou odchylku: 1 </code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Cvičení
+Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">

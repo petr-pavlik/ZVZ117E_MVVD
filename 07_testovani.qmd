@@ -6,10 +6,14 @@ Pod *testováním hypotéz* potom rozumíme proces, který na základě
 vlastností datové sady pocházející z náhodného výběru rozhodne o zamítnutí, 
 či nezamítnutí nulové hypotézy.
 
-Nulová hypotéza má ve většině případů neutrání až poněkud negativní znění. 
+::: callout-note
+## Poznámka
+
+Nulová hypotéza má ve většině případů neutrání až trochu negativní znění. 
 Například "neexistuje rozdíl mezi středními hodnotami", "testované rozdělení 
 není odlišné od normálního" apod. Její konstrukce víceméně odráží opak toho, 
 co se na sesbíraných datech snažíme vysledovat.
+:::
 
 ## Postup testování statistické hypotézy:
 
@@ -46,6 +50,12 @@ Síla testu $\beta$ je pravěpodobnost, že je testem zamítnuta nulová hypoté
 ## $p-$hodnota
 
 Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *$p-$hodnotu* (anglicky p-value). Definice $p-$hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
+
+## Jednovýběrové testy
+
+Představme si, že hledáme odpověď na otázky typu: "Jaká je střední hodnota souboru?", 
+"Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)"?
+"Jaká je mír nejistoty odhadu této střední hodnoty?".
 
 ## $100(1-\alpha)\%$ interval spolehlivosti
 

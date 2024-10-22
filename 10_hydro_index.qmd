@@ -1,36 +1,103 @@
-# Hydroklimatické indexy
+# Hydroklimatické indexy {#sec-hydroklimatickeindexy}
 
+Hydroklimatické indexy lze rozdělit na **empirické** a **stochastické**. K výpočtu těch empirických nám poslouží pouze naměřená datová sada resp. data v ní, nějakým způsobem upravená.
 
-## Odtokový součinitel
+Mezi empirické řadíme například
+
+| Index                                 | Popis                            | Výpočet                                                       |
+|-----------------------------|--------------------------|------------------|
+| QMN7D $[\mathrm{m}^3\mathrm{s}^{-1}]$ | Minimalní 7denní klouzavý průtok |                                                               |
+| $\varphi$ \[-\]                       | Součinitel odtoku                | @eq-soucinitelodtoku                                          |
+| $\phi$ \[-\]                          | Index aridity                    | $$                                                            
+                                                                            \phi=\frac{\mathrm{PET}-\mathrm{ET}_\mathrm{a}}{\mathrm{PET}}  
+                                                                            $$                                                             |
+
+Mezi stochastické potom
+
+| Index | Popis                                      | Výpočet |
+|-------|--------------------------------------------|---------|
+| SPEI  | *Standard Precipitation Evaporation Index* |         |
+| PDSI  | *Palmer Drought Severity Index*            |         |
+| M60D  | Minimální 60denní průtok                   |         |
+
+V tomto cvičení budeme pracovat s průtokovými daty naměřenými Českým hydrometeorologickýnm ústavem ve stanici Louňovice pod Blaníkem.
+
+::: callout-tip
+## Úloha
+
+1.  
+
+    a)  Nahrajte do prostředí datovou sadu **QD165600** do stejnojmenné proměnné.\
+        Jednotlivé proměnné pojmenujte "id", "var", "year", "month", "day" a "q".\
+        Výsledek by měl vypadat takto:
+    b)  V České republice je definován hydrologický rok od 1. 11. do 31. 10. následujícího roku. Přidejte k datové sadě sloupec "h_year"
+    c)  
+:::
+
+```{r, echo=FALSE}
+QD165600 <- read.csv("data/QD_165600/QD_165600_Data.csv", header = FALSE)
+names(QD165600) <- c("id", "var", "year", "month", "day" ,"q")
+head(QD165600, 5)
+```
+
+## Srážko-odtokový součinitel
 
 Vyjadřuje poměr mezi dlouhodobým odtokem a srážkou na povodí
 
 $$
 \varphi\:[\text{mm}] = \dfrac{Q\:[\text{mm}]}{P\:[\text{mm}]}
-$$
+$$ {#eq-soucinitelodtoku}
 
 ::: callout-tip
 ## Úloha
 
-1. Spočítejte odtokový součinitel za období 1980--2010 a 1990--2020. 
+1.  Spočítejte odtokový součinitel za období 1980--2010 a 1990--2020.
 :::
-
 
 ## Základní odtok
 
 ```{r}
-
+1
 ```
 
 ::: callout-tip
 ## Úloha
 
-2. Použijte metodu 30 denních klouzavých minim pro výpočet základního odtoku
+2.  Použijte metodu 30denních klouzavých minim pro výpočet základního odtoku
 :::
+
+```{r}
+klouzave_minimum <- function(x, n = 30) {
+  result <- numeric(length(x) - n + 1)
+  for(i in 1:(length(x) - n + 1)) {
+    result[i] <- min(x[i:(i + n - 1)])
+  }
+  return(result)
+}
+```
+
+```{r,echo=FALSE, fig.align='center'}
+x_vals <- 30:365
+# Calculate the moving minima (assuming klouzave_minimum works similarly to your custom function)
+y_vals <- klouzave_minimum(QD165600$q[1:365])
+plot(QD165600$q[1:365], type = "l")
+# points(QD165600$q[1:365], pch = 21)
+polygon(x = c(x_vals, rev(x_vals)),             # x coordinates go forward and then backward
+  y = c(y_vals, rep(0, length(y_vals))), col = "#003399DD", border = NA)
+
+```
 
 ## Budykova křivka
 
+Na budykovu křivku jsme narazili už při tvorbě grafického výstupu v @sec-grafy.
 
+## Pardého koeficienty
+
+Tento ukazatel zobrazuje poměr měsíčního odtoku k celkovému ročnímu odtoku.
+
+```{r}
+
+```
 
 ## SPEI
 
@@ -41,37 +108,58 @@ Je definována s pomocí rozpadové konstanty $k$ a $n$ předchozích dní
 ::: callout-tip
 ## Úloha
 
-3. Napište funkci pro výpočet $\text{API}_n = \sum\limits^{n}_{i=1}\text{ET}_\text{C}(i)\cdot P(i)$
+3.  Napište funkci pro výpočet $\text{API}_n = \sum\limits^{n}_{i=1}\text{ET}_\text{C}(i)\cdot P(i)$
 :::
 
 ## Frekvenční křivky
 
+Pravděpodobnost překročení $P(X\geq x_i)$ $i-$té hodnoty v souboru lze zapsat 
+$$
+P = \dfrac{m}{n}, \quad \text{pokud } n\rightarrow \infty
+$$ 
+V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je $P(X\geq x_{\min})=1$. Vzorec byl Čegodajevem upraven na $$
+P = \dfrac{m-0,3}{n+0,4}
+$$ Vztah mezi pravděpodobností překročení $P$ a dobou opakování $T'$ je 
+$$
+T' = \dfrac{1}{1-P(X\geq x_i)}
+$$
+
 ### $N-$letý (maximální) průtok
 
-Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1$\times$
-za $N$ let.
+Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1$\times$ za $N$ let. Určuje se pro doby opakování $N = 1, 2, 5, 10, 20, 50, 100$ let.
 
-```{r}
+Sestrojíme
+
+::: callout-tip
+## Úloha
+
+1.  Spočítejte $Q_{20}$, $Q_{50}$ a $Q_{100}$.
+2.  Výpočet přetvořte na $N-$letý minimální průtok.
+:::
+
+### $M-$denní průtok
+
+Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu $M$ dní v roce.
+
+```{r, fig.align='center', fig.width=8}
+M <- c(seq(from = 30, to = 330, by = 30), 355, 364)
+Mdenni <- quantile(x = QD165600$q, probs = 1/(M-1))
+
+plot(Mdenni, 
+     type = "n", 
+     xlab = "", 
+     ylab = expression(paste("Průtok [", m^3*s^-1, "]")))
+lines(Mdenni)
+grid(nx = 12, equilogs = FALSE)
+points(Mdenni, pch = 21, bg = rev(rainbow(13, end = 0.7)))
 
 ```
 
 ::: callout-tip
 ## Úloha
 
-  1. Spočítejte $Q_{20}$, $Q_{50}$ a $Q_{100}$.
-  2. Výpočet přetvořte na $N-$letý minimální průtok.
+3.  Spočtete průměrný roční minimální průtok.
 :::
-
-### $m-$denní průtok
-
-Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu $m$ dní v roce.
-
-::: callout-tip
-## Úloha
-
-  3. Spočtete průměrný roční minimální průtok.
-:::
-
 
 ```{r}
 x <- rnorm(n = 10, mean = 1.25, sd = 5.36)
@@ -82,8 +170,17 @@ IQR(x)
 fivenum(x)
 ```
 
-## Spojitá rozdělení
+## Další indexy
 
-```{r}
-curve(sin(x))
+### Klouzavá minima a maxima
+
+```{r, eval=FALSE}
+library(tidyverse)
+QD165600$diff <- c(diff(QD165600$q, lag = 1), 0)
+QD165600[1200+(1:365), ] |> 
+  # mutate(diff = ifelse(diff <= 0, -1*log(abs(diff)), log(diff))) |> 
+ggplot() +
+  geom_line(aes(x = as.Date(paste(year, month, day, sep = "-")), y = q, color = diff, group = 1)) +
+  scico::scale_color_scico(palette = "berlin", midpoint = 0, direction = -1) +
+  theme_void()
 ```

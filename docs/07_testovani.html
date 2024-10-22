@@ -212,7 +212,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#postup-testování-statistické-hypotézy" id="toc-postup-testování-statistické-hypotézy" class="nav-link active" data-scroll-target="#postup-testování-statistické-hypotézy"><span class="header-section-number">9.1</span> Postup testování statistické hypotézy:</a></li>
   <li><a href="#p-hodnota" id="toc-p-hodnota" class="nav-link" data-scroll-target="#p-hodnota"><span class="header-section-number">9.2</span> <span class="math inline">\(p-\)</span>hodnota</a></li>
-  <li><a href="#alpha-interval-spolehlivosti" id="toc-alpha-interval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-interval-spolehlivosti"><span class="header-section-number">9.3</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</a></li>
+  <li><a href="#jednovýběrové-testy" id="toc-jednovýběrové-testy" class="nav-link" data-scroll-target="#jednovýběrové-testy"><span class="header-section-number">9.3</span> Jednovýběrové testy</a></li>
+  <li><a href="#alpha-interval-spolehlivosti" id="toc-alpha-interval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-interval-spolehlivosti"><span class="header-section-number">9.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</a></li>
   </ul>
 </nav>
     </div>
@@ -237,7 +238,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Testování statistikcké hypotézy je proces Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span>. Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady pocházející z náhodného výběru rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.</p>
-<p>Nulová hypotéza má ve většině případů neutrání až poněkud negativní znění. Například “neexistuje rozdíl mezi středními hodnotami”, “testované rozdělení není odlišné od normálního” apod. Její konstrukce víceméně odráží opak toho, co se na sesbíraných datech snažíme vysledovat.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nulová hypotéza má ve většině případů neutrání až trochu negativní znění. Například “neexistuje rozdíl mezi středními hodnotami”, “testované rozdělení není odlišné od normálního” apod. Její konstrukce víceméně odráží opak toho, co se na sesbíraných datech snažíme vysledovat.</p>
+</div>
+</div>
 <section id="postup-testování-statistické-hypotézy" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="postup-testování-statistické-hypotézy"><span class="header-section-number">9.1</span> Postup testování statistické hypotézy:</h2>
 <ol type="1">
@@ -281,8 +294,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="9.2" class="anchored" data-anchor-id="p-hodnota"><span class="header-section-number">9.2</span> <span class="math inline">\(p-\)</span>hodnota</h2>
 <p>Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. <em><span class="math inline">\(p-\)</span>hodnotu</em> (anglicky p-value). Definice <span class="math inline">\(p-\)</span>hodnoty je poněkud obšírná - <em>jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá</em>.</p>
 </section>
-<section id="alpha-interval-spolehlivosti" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="alpha-interval-spolehlivosti"><span class="header-section-number">9.3</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</h2>
+<section id="jednovýběrové-testy" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="jednovýběrové-testy"><span class="header-section-number">9.3</span> Jednovýběrové testy</h2>
+<p>Představme si, že hledáme odpověď na otázky typu: “Jaká je střední hodnota souboru?”, “Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)”? “Jaká je mír nejistoty odhadu této střední hodnoty?”.</p>
+</section>
+<section id="alpha-interval-spolehlivosti" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="alpha-interval-spolehlivosti"><span class="header-section-number">9.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</h2>
 <p><span class="math display">\[
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
 \]</span></p>

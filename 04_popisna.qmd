@@ -52,13 +52,18 @@ with(data = global_temperature_yr,
 
 ## Statistický soubor {#sec-popisna-statistickysoubor}
 
+Je základní jednotkou popisné statistiky, skládá se z množiny všech objektů, které
+jsou nositely určitého znaku.
+
 ### Základní soubor (populace)
 
 Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.
 
-#### Soubor se známým rozsahem {#sec-popisna-statistickysoubor-souborseznamymrozsahem}
+<!-- #### Soubor se známým rozsahem {#sec-popisna-statistickysoubor-souborseznamymrozsahem} -->
 
-#### Soubor s neznámým rozsahem {#sec-popisna-statistickysoubor-souborsneznamymrozsahem}
+<!-- V případě, kdy  -->
+
+<!-- #### Soubor s neznámým rozsahem {#sec-popisna-statistickysoubor-souborsneznamymrozsahem} -->
 
 ### Výběrový soubor (výběr) {#sec-popisna-statistickysoubor-vyberovysoubor}
 
@@ -70,7 +75,7 @@ Níže uvedené funkce jsou počítané s pomocí následujícího vektoru
 
 ```{r, collapse=TRUE, echo=TRUE}
 set.seed(1)
-x <- round(rnorm(30), 2)
+x <- round(rnorm(50), 4)
 x
 ```
 
@@ -89,13 +94,13 @@ Pro obě extrémní polohy ($\min$ a $\max$) jsou v R stejnojmenné funkce.
 ### Výběrový kvantil
 
 ```{r}
-t(sapply(X = 1:7, FUN = function(i) quantile(x))) #<1>
+t(sapply(X = 1:7, FUN = function(i) quantile(x, type = i))) #<1>
 ```
 1.  Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci `quantile()`
 
 #### Medián
 
-Artitmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2+1}$ v seřazeném souboru.
+Aritmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2+1}$ v seřazeném souboru.
 
 ### Modus
 
@@ -122,7 +127,6 @@ $$
 kde $\mathsf{K}$ je jádrová funkce, $h$ je šířka pásma (zhlazovací funkce) a $x_i$ jsou hodnoty.
 4. Modus je nahrazen argumentačním maximem z tohoto odhadu $$\arg \max_x \hat{f}(x)$$
 
-
 ### Harmonický průměr
 
 Aritmetický průměr převrácených hodnot.
@@ -132,6 +136,12 @@ $$
 $$
 
 ### Průměr stupně $\alpha$
+
+Označuje obecný vzorec průměru (zahrnující aritmetický, harmonický, geometrický apod.)
+
+$$
+\bar{x}_\alpha(x_1, x_2, \ldots, x_n) = \left(\dfrac{1}{n}\sum_{i=1}^{n}x_i^\alpha\right)^\frac{1}{\alpha}
+$$
 
 
 ```{r, collapse=TRUE}
@@ -144,17 +154,23 @@ range(x) #<2>
 1.  Statistiky minimum & maximum
 2.  Rozpětí
 
+:::
+## Úloha
+
+5.    Napište funkci pro výpočet obecného vzorce průměru $\alpha$ a srovnejte s výstupem funkce `mean`.
+:::
+
 ## Míry variability
 
 Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené $Q3$ a $Q1$ neboli $q_{75}$ a $q_{25}$.
 
 | Název                  | Funkce          | Vzorec                                                               |
 |------------------------|-----------------|----------------------------------------------------------------------|
-| rozptyl                | `var(x)`        | $\sum\limits_{i=1}^{n}\dfrac{1}{n-1}(x_i - \bar{x})^2$               |
-| směrodatná odchylka    | `sd(x)`         | $\sum\limits_{i=1}^{n}\sqrt{\dfrac{1}{n-1}(x_i - \bar{x})^2}$        |
-| varianční rozpětí      | `range(x)`      | $\max(x) - \min(x)$                                                  |
-| mezikvartilové rozpětí | `IQR(x)`        |  $\mathrm{Q}3 - \mathrm{Q}_1$                                          |
-| variační koeficient    | `mean(x)/sd(x)` |  $\dfrac{s_x}{\bar{x}}$                                          |
+| rozptyl                | `var(x)`        | $\sum\limits_{i=1}^{n}\dfrac{(x_i - \bar{x})^2}{n-1}$                |
+| směrodatná odchylka    | `sd(x)`         | $\dfrac{1}{n-1}\sum\limits_{i=1}^{n}\sqrt{(x_i - \bar{x})^2}$        |
+| variační rozpětí       | `range(x)`      | $\max(x) - \min(x)$                                                  |
+| mezikvartilové rozpětí | `IQR(x)`        |  $\mathrm{Q}3 - \mathrm{Q}_1$                                        |
+| variační koeficient    | `mean(x)/sd(x)` |  $\dfrac{s_x}{\bar{x}}$                                              |
 
 
 ### Střední chyba aritmetického průměru
