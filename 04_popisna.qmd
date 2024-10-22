@@ -154,10 +154,11 @@ range(x) #<2>
 1.  Statistiky minimum & maximum
 2.  Rozpětí
 
-:::
+::: callout-tip
 ## Úloha
 
 5.    Napište funkci pro výpočet obecného vzorce průměru $\alpha$ a srovnejte s výstupem funkce `mean`.
+
 :::
 
 ## Míry variability
