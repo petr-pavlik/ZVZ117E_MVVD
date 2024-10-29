@@ -2,26 +2,12 @@
 
 V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí
 
-Balík `stats` obsahuje mnoho rozdělení. Alternativní, Binomické, Multinomické, **Poissonovo**, **Normální**, **Fischer-Snedecorovo**, $\chi^2$, **Studentovo** $t$ a mnohá další. Podívejte se na `?Distributions`.
+Balík `stats` obsahuje mnoho rozdělení. **Alternativní**, **Binomické**, **Multinomické**, **Poissonovo**, **Normální**, **Fischer-Snedecorovo**, $\chi^2$, **Studentovo**, $t$, **Gumbellovo** a mnohá další. \
+Podívejte se na `?Distributions`.
 
-Pro úplnost uvedeme funkce pro permutace `factorial()` a kombinace `choose()`.
+## Funkce rozdělení
 
-```{r,fig.align='center'}
-par(mfrow = c(1,2))
-plot(x = 0:6, 
-     y = factorial(0:6), 
-     type = "s",
-     main = "Permutace", 
-     ylab = bquote("log(0!:6!)"), 
-     xlab = "",
-     log = "y")
-plot(x = 0:6, 
-     y = choose(6, 0:6), 
-     type = "s", 
-     xlab = "",
-     main = "Binomické koeficienty")
-```
-
+Pro práci s rozděleními jsou k dispozici obecně tři funkce:
 
 ```{r eval=FALSE}
 r___() # generování náhodných čísel z rozdělení
@@ -31,7 +17,27 @@ q___() # Kvantilová funkce rozdělení
 ```
 
 
-## Distribuční funkce rozdělení
+Pro úplnost jsou zde uvedeny funkce pro permutace `factorial()` a kombinace `choose()`.
+
+```{r,fig.align='center'}
+par(mfrow = c(1,2))
+plot(x = 0:6, 
+     y = factorial(0:6), # <1>
+     type = "s",
+     main = "Permutace", 
+     ylab = bquote("log(0!:6!)"), 
+     xlab = "",
+     log = "y")
+plot(x = 0:6, 
+     y = choose(6, 0:6), # <2>
+     type = "s", 
+     xlab = "",
+     main = "Binomické koeficienty")
+```
+1. Kolika způsoby je možné seřadit $n\leq6$ prvků?
+2. Kolika způsoby lze vybrat $n-$tici z $6$ prvků?
+
+### Distribuční funkce rozdělení
 
 Rozdělení pravděpodobnosti náhodné veličiny lze jednoznačně popsat tzv. distribuční funkcí @eq-distribucni-funkce.
 
@@ -39,24 +45,71 @@ $$
 F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 $$ {#eq-distribucni-funkce}
 
-### Empirická distribuční funkce
+#### Empirická distribuční funkce {#sec-rozdeleni-empiricka}
 
 Sestavuje se na základě sesbíraného vzorku dat, sděluje jak velký podíl dat je stejných
-nebo menších než konkrétní hodnota.
+nebo menších než konkrétní hodnota. K jejímu vytvoření potřebujeme data seřazená.
+
+```{r, fig.align='center', fig.width=10}
+Qd <- read.fwf(file = "./data/01138000.dly", #<1>
+               widths = c(8, rep(10, times = 5)))[, 5] #<1>
+```
+
+$$
+P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
+$$
+kde $k$ je pořadí v seřazeném souboru a $n$ je počet prvků souboru.
+
+::: callout-tip
+## Úloha
+
+1.  a) Nahrajte data. \     
+    b) Vytvořte vektor pořadí hodnot. \  
+    c) Spočítejte pravděpodobnosti. \  
+    d) Vyneste do grafu. \   
+    d) Proveďte s pomocí funkce `ecdf()`.
+:::
+
+
+```{r, fig.align='center', fig.width=10, echo=FALSE}
+k <- rank(Qd)
+n <- length(Qd)
+P <- (k - 0.3)/(n + 0.4)
+
+dat <- data.frame(k, n, P, Qd)
+dat <- dat[order(dat$P), ]
+par(mfrow = c(1, 2))
+plot(y = dat$P, # <2>
+     x = dat$Qd, # <2>
+     ylab = expression(P(X<=x[k])), # <2>
+     xlab = expression(T[avg]),  # <2>
+     type = "l",
+     lwd = 1.25) # <2>
+
+plot(x = dat$Qd, # <2>
+     y = 1-dat$P, # <2>
+     ylab = expression(P(X>x[k])), # <2>
+     xlab = expression(T[avg]),  # <2>
+     type = "l", 
+     lwd = 1.25) # <2>
+
+```
+
+
+
+### Kvantilová funkce
+
+Kvantilová funkce je inverzní funkcí k distribuční. Pokud distribuční funkce
+udává s jakou pravděpodobností bude hodnota náhodného pokusu menší nebo rovna $x$,
+kvantilová funkce udává, pro jaké $x$ bude výsledek náhodného pokusu s danou pravděpodobností
+$y$ měnší nebo roven $x$.
 
 ```{r}
-ED <- ecdf(1) #<1>
+qnorm(p = 0.8, mean = 2, sd = 1) #<1>
 ```
-1. a
+1. S $80\%$ pravděpodobností bude hodnota $\leq$`r qnorm(p = 0.8, mean = 2, sd = 1)`.
 
-
-## Pravděpodobnostní funkce rozdělení
-
-## Kvantilová funkce
-
-Kvantilová funkce je inverzní funkcí k distribuční.
-
-## Náhodná čísla
+### Náhodná čísla z rozdělení
 
 Pro generování náhodných čísel lze použít rozdělení. 
 
@@ -68,7 +121,7 @@ rpois(n = 15, lambda = 2.4) # <2>
 2. Generování 15 čísel z Poisonova rozdělení z intervalu $(0;1)$
 
 Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako *pseudonáhodná*, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna 
-
+funkcí `set.seed()` volanou před každou vygenerovanou sekvencí.
 
 ```{r}
 x <- sample(x = 1:1e3, size = 1) # <1>
@@ -91,10 +144,21 @@ plot(.Random.seed)
 
 ## Diskrétní rozdělení
 
-### Alternativní rozdělení
-### Rovnoměrné rozdělení
-### Binomické rozdělení
+<!-- ### Alternativní rozdělení -->
+<!-- ### Rovnoměrné rozdělení -->
+<!-- ### Binomické rozdělení -->
 ### Poissonovo rozdělení
+
+```{r, fig.align='center'}
+# par(mfrow = c(2, 2))
+lambda <- c(1, 4, 8)
+plot(x = 1:20, ylim = c(0,0.4), type = "n")
+for(l in lambda) {
+  lines(dpois(x = 1:20, lambda = l), lty = l)
+  points(dpois(x = 1:20, lambda = l), col = l)
+}
+```
+
 
 ::: callout-tip
 ## Úloha
@@ -243,19 +307,26 @@ $$
         - $P(X > \gamma) = 0,16\quad\gamma=$ `r fitb(c("9.10", "9,10"))`            
 :::
 
-Řešení:
-```{r}
-#| code-fold: true
-curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
-curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3)
-```
+<!-- Řešení: -->
+<!-- ```{r} -->
+<!-- #| code-fold: true -->
+<!-- curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3) -->
+<!-- curve(expr = 1/(sqrt(2*pi))*exp(-(x^2)/(2*1^2)), from = -3, to = 3) -->
+<!-- ``` -->
 
 ### Studentovo-$t$ rozdělení
+
+Používá se pro odhad střední hodnoty souboru pocházejícího z normálního rozdělení 
+s neznámým parametrem $\sigma$. Více v @sec-testovani.
+
+```{r}
+qt(p = 0.95, df = 100)
+```
 
 
 ### Logaritmicko-normální rozdělení
 
-Nabývá pouze kladných hodnot. Můžeme jej nalézt například v rozdělení průtoků, 
+Nabývá pouze kladných hodnot. Můžeme jej nalézt například v rozdělení **průtoků, 
 simulacích chemické konncentrace.
 
 
@@ -266,15 +337,11 @@ simulacích chemické konncentrace.
 rodzdělení s pěti parametry.     \
 
 tvar transformace se třemi, s pěti a ve standardizovaném tvaru pro průtoky
-$$
-y = e^x + y_o\\
-y = a\cdot e^{sign(x)\cdot|x|^b}+y_0\\
-q_{norm} = \alpha\cdot e^{sign(x)\cdot|x|^\beta}+q_{100\%}
-$$
-
-$$
-
-$$
+<!-- $$ -->
+<!-- y = e^x + y_o\\ -->
+<!-- y = a\cdot e^{sign(x)\cdot|x|^b}+y_0\\ -->
+<!-- q_{norm} = \alpha\cdot e^{sign(x)\cdot|x|^\beta}+q_{100\%} -->
+<!-- $$ -->
 
   - $\mu$: výběrový průmer normálního rozdělení   \
   - $\sigma$: směrodatná odchylka normálního rozdělení   \
@@ -328,7 +395,8 @@ $$ {#eq-odhad-chisq-rozptyl}
 ::: callout-tip
 ## Cvičení
   1.  Generujte 10 čísel s pomocí normálního rozdělení s parametry $\mu = 2.3$ a $\sigma = 4.23$.\
-  2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$.   \
+  2.  Generujte 50 čísel $X\sim\mathsf{Po}(\lambda = 2.3)$ s pomocí `set.seed(123)`. Doplňte střední hodnotu 
+      generovaného souboru `r fitb(2.36)`    \    
   3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat 
   hodnot menších než 6?    \
   4.  Předpokládejme, že $s_x^2=8,6$ při $15$ stupních volnosti. Doplňte následující

@@ -64,11 +64,50 @@ $$
 $$
 
 $$
-\bar{x} - t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + t_{1-\alpha/2(\nu)}\dfrac{\sigma}{\sqrt{n}}
+\bar{x} - t_{(1-\alpha/2)}(\nu)\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + t_{(1-\alpha/2)}(\nu)\dfrac{\sigma}{\sqrt{n}}
 $$
 
-kde $\nu=n-1$ je počet stupňů volnosti.
+kde $\nu=n-1$ je počet stupňů volnosti. Kvantil $t_{\alpha/2}$ lze získat následovně
+```{r, eval=FALSE}
+alpha <- 0.05
+nu <- n - 1
+qt(p = (1 - alpha)/2, df = nu)
+```
 
--
+### Příklad 1
+V tomto příkladu si ukážeme, jak to vypadá, když **dojde k chybě 1. druhu**.
+Dejme tomu, že jsme v průběhu práce sesbírali následující hodnoty:\    
+`r set.seed(1450070); rnorm(10)`\      
+u procesu $X\sim\mathsf{N}(0; 1)$
+```{r, fig.align='center'}
+set.seed(1450070)
+xd <- rnorm(10)
+curve(dnorm(x), from = -5, to = 5)
+rug(xd, lwd = 2)
+segments(x0 = mean(xd), x1 = mean(xd), y0 = -0.2, y1 = dnorm(mean(xd)), lwd = 2, col = "orangered")
+```
+
+### Příklad 2
+
 
 Pravděpodobnost platnosti hypotézy
+
+## Testy dobré shody
+
+Testovací statistika testu dobré shody
+$$
+\chi^2=\sum\dfrac{(O-E)^2}{E}
+$$
+
+
+## Rekapitulace
+
+::: callout-tip
+## Úloha
+
+  1. a) Nalezněte 90% interval spolehlivosti pro roztpyl veličiny
+     b) Otestujte, zda veličiny generující sobory $x$ a $y$ mají shodný rozptyl.
+:::
+
+
+

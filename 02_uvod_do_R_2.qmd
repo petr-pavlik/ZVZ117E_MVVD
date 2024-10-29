@@ -607,12 +607,16 @@ Vyplňte následující formulář bez použití R.\
 opts1 <- c("Počet sloupců i řádků musí být shodný", 
            answer = "Proměnnná musí mít uvedenou hodnotu v každém řádku", 
            "Všechny proměnné musí být stejného typu")
+opts2 <- c("Počet sloupců i řádků musí být shodný", 
+           "Proměnnná musí mít uvedenou hodnotu v každém řádku", 
+           "Všechny proměnné musí být stejného typu", 
+           answer = "Je možné do něj rekurzivně vniřit další objekt typu list")
 ```
 
   1. Zvolte platné tvrzení pro `data.frame`: `r longmcq(opts = opts1)`
   2. Matici je možné vytvořit z vektoru přidáním dimenze: `r torf(answer = TRUE)`\
   3. Co je výsledkem výrazu: $\sin(\frac{0}{0})$ `r fitb(answer = "NaN")`\
-  4. Vyberte, platné tvrzení pro data.frame: `r longmcq(opts = opts1)`
+  4. Vyberte, platné tvrzení pro list: `r longmcq(opts = opts2)`
   5. Napište výraz pro nepřiřazenou číselnou hodnotu : `r fitb(answer = "NA_real_")`\
   6. Dolňte chybějící zápis cyklu: `r fitb(answer = "6-i")`\
   ```

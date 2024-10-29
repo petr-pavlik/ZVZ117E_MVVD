@@ -2,7 +2,7 @@
 
 ## Korelace {#sec-korelace}
 
-Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá.Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
+Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá. Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
 
 Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít **Paersonův** korelační koeficient,
 
