@@ -2,43 +2,45 @@
 
 Hydroklimatické indexy lze rozdělit na **empirické** a **stochastické**. K výpočtu těch empirických nám poslouží pouze naměřená datová sada resp. data v ní, nějakým způsobem upravená.
 
-Mezi empirické řadíme například
+Mezi empirické lze řdit například
 
-| Index                                 | Popis                            | Výpočet                                                       |
-|-----------------------------|--------------------------|------------------|
-| QMN7D $[\mathrm{m}^3\mathrm{s}^{-1}]$ | Minimalní 7denní klouzavý průtok |                                                               |
-| $\varphi$ \[-\]                       | Součinitel odtoku                | @eq-soucinitelodtoku                                          |
-| $\phi$ \[-\]                          | Index aridity                    | $$                                                            
-                                                                            \phi=\frac{\mathrm{PET}-\mathrm{ET}_\mathrm{a}}{\mathrm{PET}}  
-                                                                            $$                                                             |
+| Index                                 | Popis                            | Výpočet                                                                                                                                     |
+|----------------------------|--------------------------|------------------|
+| QMN7D $[\mathrm{m}^3\mathrm{s}^{-1}]$ | Minimalní 7denní klouzavý průtok |                                                                                                                                             |
+| $\varphi$ \[-\]                       | Součinitel odtoku                | @eq-soucinitelodtoku                                                                                                                        |
+| $\phi$ \[-\]                          | Index aridity                    | $$                                                                                                                                          
+                                                                                                                                                        \phi=\frac{\mathrm{PET}-\mathrm{ET}_\mathrm{a}}{\mathrm{PET}}    
+                                                                                                                                                        $$                                                               |
 
-Mezi stochastické potom
+a jim podobné hodnoty získané z dat kombinací filtrace, agregace a volby mezních hodnot. 
+Za stochastické potom budeme označovat ty, ve kterých je v nějaké míře pracováno se 
+statistickým rozdělením.
 
-| Index | Popis                                      | Výpočet |
-|-------|--------------------------------------------|---------|
-| SPEI  | *Standard Precipitation Evaporation Index* |         |
-| PDSI  | *Palmer Drought Severity Index*            |         |
-| M60D  | Minimální 60denní průtok                   |         |
+| Index   | Popis                                      | Výpočet |
+|---------|--------------------------------------------|---------|
+| SPEI    | *Standard Precipitation Evaporation Index* |         |
+| PDSI    | *Palmer Drought Severity Index*            |         |
+| $Q_{50}$| Průtok s průměrnou dobou opakování 50 let. |         |
 
-V tomto cvičení budeme pracovat s průtokovými daty naměřenými Českým hydrometeorologickýnm ústavem ve stanici Louňovice pod Blaníkem.
+V tomto cvičení budeme pracovat s průtokovými daty naměřenými Českým hydrometeorologickýnm 
+ústavem ve stanici Louňovice pod Blaníkem.
 
 ::: callout-tip
 ## Úloha
 
-1.  
-
-    a)  Nahrajte do prostředí datovou sadu **QD165600** do stejnojmenné proměnné.\
-        Jednotlivé proměnné pojmenujte "id", "var", "year", "month", "day" a "q".\
-        Výsledek by měl vypadat takto:
-    b)  V České republice je definován hydrologický rok od 1. 11. do 31. 10. následujícího roku. Přidejte k datové sadě sloupec "h_year"
-    c)  
-:::
-
+1.  Nahrajte do prostředí datovou sadu **QD165600** do stejnojmenné proměnné.\
+    Jednotlivé proměnné pojmenujte "id", "var", "year", "month", "day" a "q".\
+    Výsledek by měl vypadat takto:
 ```{r, echo=FALSE}
 QD165600 <- read.csv("data/QD_165600/QD_165600_Data.csv", header = FALSE)
 names(QD165600) <- c("id", "var", "year", "month", "day" ,"q")
 head(QD165600, 5)
-```
+```    
+    
+2.  a)  V České republice je definován hydrologický rok od 1. 11. do 31. 10. následujícího roku. 
+        Přidejte k datové sadě sloupec "h_year" s pomocí funkce `ifelse()`.
+    c)  
+:::
 
 ## Srážko-odtokový součinitel
 
@@ -51,28 +53,28 @@ $$ {#eq-soucinitelodtoku}
 ::: callout-tip
 ## Úloha
 
-1.  Spočítejte odtokový součinitel za období 1980--2010 a 1990--2020.
+3.  Spočítejte odtokový součinitel pro dvě období 1980--2010 a 1990--2020.
 :::
 
 ## Základní odtok
 
-```{r}
-1
-```
+Složka celkového odtoku v hydrologické bilanci, která je tvořená dotací z podzemních vod.
+Z odtokové řady se identifikuje aplikací statistických filtrů.
 
 ::: callout-tip
 ## Úloha
 
-2.  Použijte metodu 30denních klouzavých minim pro výpočet základního odtoku
-:::
+2.  Upravte metodu 30denních klouzavých minim pro výpočet základního odtoku tak, 
+    aby bylo možné při volání funkce velikost okna upravovat.
+::: vc
 
 ```{r}
-klouzave_minimum <- function(x, n = 30) {
-  result <- numeric(length(x) - n + 1)
-  for(i in 1:(length(x) - n + 1)) {
-    result[i] <- min(x[i:(i + n - 1)])
+klouzave_minimum <- function(x) {
+  res <- numeric(length(x) - 30 + 1)
+  for(i in 1:(length(x) - 30 + 1)) {
+    res[i] <- min(x[i:(i + 30 - 1)])
   }
-  return(result)
+  return(res)
 }
 ```
 
@@ -90,16 +92,39 @@ polygon(x = c(x_vals, rev(x_vals)),             # x coordinates go forward and t
 ## Budykova křivka
 
 Na budykovu křivku jsme narazili už při tvorbě grafického výstupu v @sec-grafy.
+Popisuje referenční klimatické podmínky povodí.
 
 ## Pardého koeficienty
 
 Tento ukazatel zobrazuje poměr měsíčního odtoku k celkovému ročnímu odtoku.
 
-```{r}
+a) S pomocí funkce `aggregate()` spočtěte roční odtoky
 
+```{r, fig.align='center'}
+q_m <- aggregate(q ~ year + month, data = QD165600, FUN = sum) #<1>
+q_yr <- aggregate(q ~ year, data = q_m, FUN = sum) #<1>
+parde <- merge(q_m, q_yr, by = "year", suffixes = c("_month", "_year")) #<2>
+parde$parde <- round(parde$q_month / parde$q_year, 2) #<2>
+
+
+medians <- tapply(parde$parde, parde$month, median) #<3>
+barvy <- colorRampPalette(colors = RColorBrewer::brewer.pal(11, "RdYlBu")) #<3>    
+color_palette <- barvy(12)      #<3>    
+ordered_colors <- color_palette[rank(medians)]    #<3> 
+
+boxplot(parde ~ month, #<4>
+        data = parde,  #<4>
+        border = "black",  #<4>
+        col = ordered_colors, #<4>
+        ylab = "Odtok [mm]",  #<4>
+        xlab = "Měsíc") #<4>
 ```
-
-## SPEI
+1. Nejprve dvakrát aplikujeme funkci `aggregate()`, abychom dostali součty odtoků
+za jednotlivé roky a za jednotlivé měsíce v letech.
+2. Výsledné data.frame poté sloučíme do jednoho s pomocí funkce `merge()`, za příponu
+zvolíme časové okno, ze kterého jsme hodnoty počítali.
+3. Vytvoříme berevné schéma na základě 50% kvantilu hodnot.
+4. Vyneseme do krabicového grafu.
 
 ## Index předchozích srážek
 
@@ -117,18 +142,19 @@ Pravděpodobnost překročení $P(X\geq x_i)$ $i-$té hodnoty v souboru lze zaps
 $$
 P = \dfrac{m}{n}, \quad \text{pokud } n\rightarrow \infty
 $$ 
-V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je $P(X\geq x_{\min})=1$. Vzorec byl Čegodajevem upraven na $$
+V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je $P(X\geq x_{\min})=1$. Vzorec byl Čegodajevem upraven na 
+$$
 P = \dfrac{m-0,3}{n+0,4}
-$$ Vztah mezi pravděpodobností překročení $P$ a dobou opakování $T'$ je 
+$$ 
+Vztah mezi pravděpodobností překročení $P$ a dobou opakování $T'$ je 
 $$
 T' = \dfrac{1}{1-P(X\geq x_i)}
 $$
 
+
 ### $N-$letý (maximální) průtok
 
 Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1$\times$ za $N$ let. Určuje se pro doby opakování $N = 1, 2, 5, 10, 20, 50, 100$ let.
-
-Sestrojíme
 
 ::: callout-tip
 ## Úloha
@@ -161,26 +187,4 @@ points(Mdenni, pch = 21, bg = rev(rainbow(13, end = 0.7)))
 3.  Spočtete průměrný roční minimální průtok.
 :::
 
-```{r}
-x <- rnorm(n = 10, mean = 1.25, sd = 5.36)
-mean(x)
-sum(x)
-median(x)
-IQR(x)
-fivenum(x)
-```
-
-## Další indexy
-
-### Klouzavá minima a maxima
-
-```{r, eval=FALSE}
-library(tidyverse)
-QD165600$diff <- c(diff(QD165600$q, lag = 1), 0)
-QD165600[1200+(1:365), ] |> 
-  # mutate(diff = ifelse(diff <= 0, -1*log(abs(diff)), log(diff))) |> 
-ggplot() +
-  geom_line(aes(x = as.Date(paste(year, month, day, sep = "-")), y = q, color = diff, group = 1)) +
-  scico::scale_color_scico(palette = "berlin", midpoint = 0, direction = -1) +
-  theme_void()
-```
+## SPI

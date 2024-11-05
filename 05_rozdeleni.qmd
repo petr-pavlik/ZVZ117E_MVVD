@@ -58,7 +58,7 @@ Qd <- read.fwf(file = "./data/01138000.dly", #<1>
 $$
 P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 $$
-kde $k$ je pořadí v seřazeném souboru a $n$ je počet prvků souboru.
+kde $k$ je pořadí v seřazeném souboru a $n$ je počet prvků v souboru.
 
 ::: callout-tip
 ## Úloha
