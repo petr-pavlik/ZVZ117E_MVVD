@@ -408,7 +408,7 @@ Cvičení
 <pre><code>[1] 9.820428</code></pre>
 </div>
 </div>
-<p>Vidíme, že <span class="math inline">\(x =\)</span> 4.9780765, 11.3153117, 9.2108291, 18.8678481, 11.1697127, 13.1863009, 4.1820932, 17.1453271, 1.7474057, 6.4013787. Pro tento průmer následně spočítáme interval spolehlivosti.</p>
+<p>Vidíme, že <span class="math inline">\(x =\)</span> 9.8204284. Pro tento průmer následně spočítáme interval spolehlivosti.</p>
 </section>
 </section>
 <section id="intervalový-odhad" class="level2" data-number="8.3">
@@ -445,89 +445,70 @@ L(\theta, x_1, x_2, \ldots, x_n) = p(x_1, \theta) \cdot p(x_2, \theta) \cdot \ld
 <p><span id="eq-maxlike-normalni-rozdeleni"><span class="math display">\[
 f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\sigma^2}\right]
 \tag{8.2}\]</span></span></p>
+<p>Věrohodnostní funkce je vyjádřena:</p>
+<p><span id="eq-05odhad-likelihood"><span class="math display">\[
+L\left(\mu, \sigma^2; x_1, \ldots, x_n\right) = (2\pi\sigma^2)^{-n/2}\exp\left(-\dfrac{1}{2\sigma^2}\sum_{j=1}^{n}(x_j-\mu)^2\right)
+\tag{8.3}\]</span></span></p>
+<p>Dva parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span> jsou neznámé</p>
 <div class="cell">
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, mu, sigma<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(params) {</span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>  mean_param <span class="ot">&lt;-</span> params[<span class="dv">1</span>]</span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>  sd_param <span class="ot">&lt;-</span> params[<span class="dv">2</span>]</span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">prod</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mean_param, <span class="at">sd =</span> sd_param)))</span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-14" class="code-annotation-target"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">fn =</span> <span class="cf">function</span>(params) <span class="sc">-</span><span class="fu">likelihood</span>(params),</span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-18" class="code-annotation-target"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a>mle_mean <span class="ot">&lt;-</span> result<span class="sc">$</span>par[<span class="dv">1</span>]</span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>mle_sd <span class="ot">&lt;-</span> result<span class="sc">$</span>par[<span class="dv">2</span>]</span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MLE pro střední hodnotu:"</span>, mle_mean, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MLE pro směrodatnou odchylku:"</span>, mle_sd, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>norm.lik <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, x) {</span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>  logl <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.5</span> <span class="sc">*</span> n <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">2</span><span class="sc">*</span>pi) <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> n <span class="sc">*</span> <span class="fu">log</span>(sigma2) <span class="sc">-</span> </span>
+<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> sigma2))<span class="sc">*</span><span class="fu">sum</span>((x <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-13" class="code-annotation-target"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span>logl)</span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-17" class="code-annotation-target"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">2</span>),</span>
+<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">fn =</span> norm.lik,</span>
+<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> x,</span>
+<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"BFGS"</span>,</span>
+<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span>
+<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6">6</button><span id="annotated-cell-4-23" class="code-annotation-target"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a>mle_mean <span class="ot">&lt;-</span> result<span class="sc">$</span>par[<span class="dv">1</span>]</span>
+<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24" aria-hidden="true" tabindex="-1"></a>mle_sigma2 <span class="ot">&lt;-</span> result<span class="sc">$</span>par[<span class="dv">2</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1,2" data-code-annotation="1" data-code-cell="annotated-cell-4">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="1,2">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="4,5" data-code-annotation="2" data-code-cell="annotated-cell-4">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="2" data-code-lines="4,5">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="7,8,9,10" data-code-annotation="3" data-code-cell="annotated-cell-4">Definice věrohodnostní funkce.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="3" data-code-lines="7,8,12">Definice věrohodnostní funkce <a href="#eq-05odhad-likelihood">Rovnice&nbsp;<span>8.3</span></a>,</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="14,15,16" data-code-annotation="4" data-code-cell="annotated-cell-4">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="4" data-code-lines="13">je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="18,19" data-code-annotation="5" data-code-cell="annotated-cell-4">Získané hodnoty odhadů.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="5" data-code-lines="17,18,19,20,21">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-annotation="6" data-code-lines="23,24">Uložíme získané hodnoty odhadů.</span>
 </dd>
 </dl>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MLE pro střední hodnotu: 5 
-MLE pro směrodatnou odchylku: 1 </code></pre>
 </div>
-</div>
-<p>Spočítejte hodnotu věrohodnostní funkce pro <span class="math inline">\(X = 4\)</span></p>
-<div class="cell">
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(L)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.979054</code></pre>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid"></p>
-</div>
-<details open="">
-<summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="dv">4</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dlnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="06_odhad_files/figure-html/unnamed-chunk-7-2.svg" class="img-fluid"></p>
-</div>
-</div>
+<p>MLE pro střední hodnotu: 5.0232384&nbsp;<br>
+MLE pro rozptyl: 1.065408.</p>
 </section>
 </section>
 <section id="ttest" class="level2" data-number="8.5">
@@ -555,9 +536,6 @@ MLE pro směrodatnou odchylku: 1 </code></pre>
 <ol type="1">
 <li>Spočítejte pomocí funkce <code>t.test</code> intervalový odhad pro <code>x = rnorm(100)</code> a <code>set.seed(100)</code>.<br>
 </li>
-<li>Spočítejte, zda můžeme s pravděpodobností <span class="math inline">\(90\:\%\)</span> zamítnout hypotézu, že střední hodnota veličiny generující výběr <code>x &lt;- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)</code> je menší než 1.<br>
-</li>
-<li>Pro stejný výběr spočítejte, zda je možné na hladině významnosti <span class="math inline">\(0.05\)</span> zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna <span class="math inline">\(1\)</span>.</li>
 </ol>
 </div>
 </div>

@@ -107,7 +107,7 @@ Takto formulovaný bodový a intervalový je jednou z nejčastěji prováděnýc
 mean(x)
 ```
 
-Vidíme, že $x =$ `r x`. Pro tento průmer následně spočítáme interval spolehlivosti.
+Vidíme, že $x =$ `r mean(x)`. Pro tento průmer následně spočítáme interval spolehlivosti.
 
 ## Intervalový odhad
 
@@ -145,48 +145,52 @@ $$
 f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\sigma^2}\right]
 $$ {#eq-maxlike-normalni-rozdeleni}
 
+Věrohodnostní funkce je vyjádřena:
+
+$$
+L\left(\mu, \sigma^2; x_1, \ldots, x_n\right) = (2\pi\sigma^2)^{-n/2}\exp\left(-\dfrac{1}{2\sigma^2}\sum_{j=1}^{n}(x_j-\mu)^2\right)
+$$ {#eq-05odhad-likelihood}
+
+Dva parametry $\mu$ a $\sigma$ jsou neznámé
+
 ```{r}
 mu <- 5 # <1>
 sigma <- 1 # <1>
 
-n <- 10000 # <2>
+n <- 1000 # <2>
 x <- rnorm(n, mu, sigma^2) # <2>
 
-likelihood <- function(params) { # <3>
-  mean_param <- params[1] # <3>
-  sd_param <- params[2]# <3>
-  return(prod(dnorm(x, mean = mean_param, sd = sd_param)))# <3>
+norm.lik <- function(pars, x) { # <3>
+  n <- length(x) # <3>
+  mu <- pars[1]
+  sigma2 <- pars[2]
+  logl <- -0.5 * n * log(2*pi) - 0.5 * n * log(sigma2) - 
+    (1/(2 * sigma2))*sum((x - mu)^2) # <3>
+  return(-logl)# <4>
 }
 
 
-result <- optim(par = c(5, 1), #<4>
-                fn = function(params) -likelihood(params), #<4>
-                hessian = TRUE) #<4>
+result <- optim(par = c(0.1, 2), #<5>
+                fn = norm.lik, #<5>
+                x = x, #<5>
+                method = "BFGS", #<5>
+                hessian = TRUE) #<5>
 
-mle_mean <- result$par[1] #<5>
-mle_sd <- result$par[2] #<5>
-
-cat("MLE pro střední hodnotu:", mle_mean, "\n")
-cat("MLE pro směrodatnou odchylku:", mle_sd, "\n")
-
+mle_mean <- result$par[1] #<6>
+mle_sigma2 <- result$par[2] #<6>
 ```
 1. Skutečné parametry $\mu$ a $\sigma$, které použijeme ke generování náhodných čísel.
 2. Získáme pseudonáhodná čísla z Normálního rozdělení.
-3. Definice věrohodnostní funkce.
-4. S použitím funkce `optim()` hledáme maximálně věrohodný odhad.
-5. Získané hodnoty odhadů.
+3. Definice věrohodnostní funkce @eq-05odhad-likelihood,
+4. je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.
+5. S použitím funkce `optim()` hledáme maximálně věrohodný odhad. Je potřeba zadat
+počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud 
+bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant
+Hessovy matice.
+6. Uložíme získané hodnoty odhadů.
 
-Spočítejte hodnotu věrohodnostní funkce pro $X = 4$
-
-```{r}
-n <- 10000
-x <- rnorm(n, 5, 1)
-L <- x*pnorm(x, mean = 5, sd = 1)
-max(L)
-boxplot(x)
-curve(dnorm(x, 4, 1), xlim = c(0,8))
-curve(dlnorm(x, 1, 0.5), add = TRUE)
-```
+MLE pro střední hodnotu: `r mle_mean`\     
+MLE pro rozptyl: `r mle_sigma2`.
 
 ## $t$-test {#ttest}
 Testování hypotéz podrobněji probereme v @sec-testovani. Nyní si nicméně ukážeme, 
@@ -210,6 +214,5 @@ $$ pro $\mu < \mu_0$. $n-1$ je počet stupňů volnosti.
 ## Úloha
 
   1. Spočítejte pomocí funkce `t.test` intervalový odhad pro `x = rnorm(100)` a `set.seed(100)`.\
-  2. Spočítejte, zda můžeme s pravděpodobností $90\:\%$ zamítnout hypotézu, že střední hodnota veličiny generující výběr `x <- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)` je menší než 1.\
-  3. Pro stejný výběr spočítejte, zda je možné na hladině významnosti $0.05$ zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna $1$.
 :::
+

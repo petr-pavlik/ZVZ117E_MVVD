@@ -187,4 +187,5 @@ points(Mdenni, pch = 21, bg = rev(rainbow(13, end = 0.7)))
 3.  Spočtete průměrný roční minimální průtok.
 :::
 
-## SPI
+<!-- ## SPI -->
+

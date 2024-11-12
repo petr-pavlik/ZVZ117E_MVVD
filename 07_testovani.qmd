@@ -100,14 +100,63 @@ $$
 $$
 
 
-## Rekapitulace
+<!-- ## SPEI -->
 
-::: callout-tip
-## Úloha
+<!-- Načteme data -->
 
-  1. a) Nalezněte 90% interval spolehlivosti pro roztpyl veličiny
-     b) Otestujte, zda veličiny generující sobory $x$ a $y$ mají shodný rozptyl.
-:::
+<!-- ```{r} -->
+<!-- precip <- as.numeric(unlist((read.csv2("./data/CHMI_SRA/U2HRAD01_SRA_N.csv", skip = 30)["X0"]))) -->
+<!-- ``` -->
 
+
+<!-- # Výpočet statistických parametrů -->
+<!-- ```{r} -->
+<!-- mean_precip <- mean(precip)             # Průměr -->
+<!-- sd_precip <- sd(precip)                 # Směrodatná odchylka -->
+<!-- skewness_precip <- mean((precip - mean_precip)^3) / sd_precip^3  # Koeficient šikmosti -->
+<!-- ``` -->
+
+<!-- # Funkce pro CDF Pearsonova rozdělení III. typu -->
+<!-- ```{r} -->
+<!-- pearson_cdf <- function(x, mean, sd, skew) { -->
+<!--   if (skew == 0) { -->
+<!--     pnorm((x - mean) / sd) -->
+<!--   } else { -->
+<!--     alpha <- 4 / skew^2 -->
+<!--     beta <- sqrt(sd^2 / alpha) -->
+<!--     x_shifted <- x - (mean - alpha * beta) -->
+<!--     pgamma(x_shifted / beta, shape = alpha) -->
+<!--   } -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- # Výpočet CDF hodnot pro každou hodnotu srážek pomocí Pearsonova III rozdělení -->
+<!-- ```{r} -->
+<!-- cdf_values <- sapply(precip, pearson_cdf, mean = mean_precip, sd = sd_precip, skew = skewness_precip) -->
+<!-- ``` -->
+
+<!-- # Transformace CDF hodnot na standardní normální hodnoty (hodnoty SPI) -->
+<!-- ```{r} -->
+<!-- spi_values <- qnorm(cdf_values) -->
+<!-- ``` -->
+
+<!-- # Výsledek: hodnoty SPI -->
+<!-- ```{r} -->
+<!-- print(spi_values) -->
+<!-- plot(table(cut(spi_values, breaks = c(-5:5)))) -->
+<!-- ``` -->
+
+
+
+<!-- ## Rekapitulace -->
+
+<!-- ::: callout-tip -->
+<!-- ## Úloha -->
+
+<!--   1. a) Nalezněte 90% interval spolehlivosti pro roztpyl veličiny -->
+<!--      b) Otestujte, zda veličiny generující sobory $x$ a $y$ mají shodný rozptyl. -->
+<!--   2. Spočítejte, zda můžeme s pravděpodobností $90\:\%$ zamítnout hypotézu, že střední hodnota veličiny generující výběr `x <- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)` je menší než 1.\ -->
+<!--   3. Pro stejný výběr spočítejte, zda je možné na hladině významnosti $0.05$ zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna $1$. -->
+<!-- ::: -->
 
 

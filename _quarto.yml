@@ -75,7 +75,7 @@ format:
     fig-format: svg
     fig-dpi: 400
     fig-cap-location: bottom
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
 editor: visual
 lang: cs-CZ
