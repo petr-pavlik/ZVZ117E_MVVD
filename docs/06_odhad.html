@@ -482,27 +482,27 @@ L\left(\mu, \sigma^2; x_1, \ldots, x_n\right) = (2\pi\sigma^2)^{-n/2}\exp\left(-
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="1,2">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1,2">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="2" data-code-lines="4,5">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="4,5">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="3" data-code-lines="7,8,12">Definice věrohodnostní funkce <a href="#eq-05odhad-likelihood">Rovnice&nbsp;<span>8.3</span></a>,</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="7,8,12">Definice věrohodnostní funkce <a href="#eq-05odhad-likelihood">Rovnice&nbsp;<span>8.3</span></a>,</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="4" data-code-lines="13">je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-4" data-code-lines="13">je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="5" data-code-lines="17,18,19,20,21">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-4" data-code-lines="17,18,19,20,21">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-annotation="6" data-code-lines="23,24">Uložíme získané hodnoty odhadů.</span>
+<span data-code-annotation="6" data-code-cell="annotated-cell-4" data-code-lines="23,24">Uložíme získané hodnoty odhadů.</span>
 </dd>
 </dl>
 </div>

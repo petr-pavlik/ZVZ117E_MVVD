@@ -252,8 +252,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#příklad-1" id="toc-příklad-1" class="nav-link" data-scroll-target="#příklad-1"><span class="header-section-number">9.4.1</span> Příklad 1</a></li>
   <li><a href="#příklad-2" id="toc-příklad-2" class="nav-link" data-scroll-target="#příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</a></li>
   </ul></li>
-  <li><a href="#testy-dobré-shody" id="toc-testy-dobré-shody" class="nav-link" data-scroll-target="#testy-dobré-shody"><span class="header-section-number">9.5</span> Testy dobré shody</a></li>
-  <li><a href="#rekapitulace" id="toc-rekapitulace" class="nav-link" data-scroll-target="#rekapitulace"><span class="header-section-number">9.6</span> Rekapitulace</a></li>
   </ul>
 </nav>
     </div>
@@ -277,7 +275,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Testování statistikcké hypotézy je proces Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span>. Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady pocházející z náhodného výběru rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.</p>
+<p>Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících z náhodného výběru ověřujeme úsudek o teoretickém souboru.</p>
+<p>Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span>.</p>
+<p>Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -294,14 +294,15 @@ Poznámka
 <section id="postup-testování-statistické-hypotézy" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="postup-testování-statistické-hypotézy"><span class="header-section-number">9.1</span> Postup testování statistické hypotézy:</h2>
 <ol type="1">
-<li>Formulace nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní <span class="math inline">\(\mathrm{H}_a\)</span> hypotézy.<br>
+<li>Formulace nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní <span class="math inline">\(\mathrm{H}_a\)</span> hypotézy,<br>
 </li>
-<li>Volba hladiny významnosti <span class="math inline">\(\alpha\)</span>.<br>
+<li>volba hladiny významnosti <span class="math inline">\(\alpha\)</span>,<br>
 </li>
-<li>Volba testovací statistiky.<br>
+<li>volba testovací statistiky,<br>
 </li>
-<li>Určení kritického oboru testové statistiky.</li>
-<li>Vyhodnocení testu s pomocí p-hodnoty.</li>
+<li>určení kritického oboru testové statistiky,<br>
+</li>
+<li>vyhodnocení testu s pomocí p-hodnoty.</li>
 </ol>
 <p>Výsledkem testování je buď a) zamítnutní nulové hypotézy<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> b) nezamítnutní nulové hypotézy.</p>
 <hr>
@@ -340,6 +341,7 @@ Poznámka
 </section>
 <section id="alpha-interval-spolehlivosti" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="alpha-interval-spolehlivosti"><span class="header-section-number">9.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</h2>
+<p>Vrátíme se krátce k intervalu spolehlivosti z předchozí hodiny.</p>
 <p><span class="math display">\[
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
 \]</span></p>
@@ -363,12 +365,27 @@ u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1450070</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>xd <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(xd, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">mean</span>(xd), <span class="at">x1 =</span> <span class="fu">mean</span>(xd), <span class="at">y0 =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">y1 =</span> <span class="fu">dnorm</span>(<span class="fu">mean</span>(xd)), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"orangered"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1450070</span>)</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>xd <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x), <span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>)</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(xd, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">mean</span>(xd), </span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="fu">mean</span>(xd), </span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">y0 =</span> <span class="sc">-</span><span class="fl">0.2</span>, </span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">y1 =</span> <span class="fu">dnorm</span>(<span class="fu">mean</span>(xd)), </span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="st">"orangered"</span>,</span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab =</span> <span class="st">""</span>, </span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab =</span> <span class="st">""</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme <code>set.seed()</code></span>
+</dd>
+</dl>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -377,21 +394,8 @@ u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
 </div>
 </div>
 </div>
-</section>
-<section id="příklad-2" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</h3>
-<p>Pravděpodobnost platnosti hypotézy</p>
-</section>
-</section>
-<section id="testy-dobré-shody" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="testy-dobré-shody"><span class="header-section-number">9.5</span> Testy dobré shody</h2>
-<p>Testovací statistika testu dobré shody <span class="math display">\[
-\chi^2=\sum\dfrac{(O-E)^2}{E}
-\]</span></p>
-</section>
-<section id="rekapitulace" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="rekapitulace"><span class="header-section-number">9.6</span> Rekapitulace</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>Data jsme získali s pomocí generátoru pro náhodné rozdělení, budeme předpokládat, že teoretický soubor má náhodné rozdělení s parametry <span class="math inline">\(\mu=0\)</span> a <span class="math inline">\(\sigma^2=1\)</span> a ověříme na hladině významnosti <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -402,15 +406,55 @@ u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><ol type="a">
-<li>Nalezněte 90% interval spolehlivosti pro roztpyl veličiny</li>
-<li>Otestujte, zda veličiny generující sobory <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span> mají shodný rozptyl.</li>
-</ol></li>
+<li>Stanovte znění <span class="math inline">\(\mathrm{H}_0\)</span> a <span class="math inline">\(\mathrm{H}_a\)</span>.</li>
+<li>Kolik bude stupňů volnosti?</li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(xd, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  xd
+t = 3.5511, df = 9, p-value = 0.006206
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.5696028 2.5690180
+sample estimates:
+mean of x 
+  1.56931 </code></pre>
+</div>
+</div>
+<p>Z výsledku testu vyplývá, že <code>p-value</code> <span class="math inline">\(&lt; \alpha\)</span>, proto tedy musíme nulovou hypotézu</p>
+</section>
+<section id="příklad-2" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</h3>
+<p>V předchozím příkladu jsme testovali nulovou hypotézu oproti oboustranné alternativě, tzn. neřešili jsme, zda je střední hodnota menší či větší.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>S pomocí nápovědy nastavte argumenty funkce <code>t.test()</code> tak, aby byla test proběhl oproti jednostranné alternativě, že je skutečná střední hodnota nižší než 2.</li>
+<li>Studentův <span class="math inline">\(t-\)</span>test lze použít za předpokladu, že data splňují tzv. normalitu. tu lze pro tento soubor snadno ověřit jiným testem - <code>shapiro.test()</code>. <span class="math inline">\(\mathrm{H}_0\)</span>: rozdělení není odlišné od normálního. Zamítneme <span class="math inline">\(\mathrm{H}_0\)</span> na hladině významnosti <span class="math inline">\(\alpha=0,1\)</span>?</li>
+<li>Zatím jsme použili jedovýběrový <span class="math inline">\(t-\)</span>test na data pocházející z Normálního rozdělení. V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední hodnotě lze využít neparametrický <em>Wilcoxonův test</em> - <code>wilcox.test()</code>. Rozhodněte o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů z datové sady <strong>temp.csv</strong>.</li>
 </ol>
 </div>
 </div>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

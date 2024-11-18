@@ -1,10 +1,12 @@
 # Testování hypotéz {#sec-testovani}
 
-Testování statistikcké hypotézy je proces 
+Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících
+z náhodného výběru ověřujeme úsudek o teoretickém souboru.
+
 Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$. 
+
 Pod *testováním hypotéz* potom rozumíme proces, který na základě 
-vlastností datové sady pocházející z náhodného výběru rozhodne o zamítnutí, 
-či nezamítnutí nulové hypotézy.
+vlastností datové sady rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.
 
 ::: callout-note
 ## Poznámka
@@ -17,11 +19,11 @@ co se na sesbíraných datech snažíme vysledovat.
 
 ## Postup testování statistické hypotézy:
 
-1.  Formulace nulové $\mathrm{H}_0$ a alternativní $\mathrm{H}_a$ hypotézy.\
-2.  Volba hladiny významnosti $\alpha$.\
-3.  Volba testovací statistiky.\
-4.  Určení kritického oboru testové statistiky.
-5.  Vyhodnocení testu s pomocí p-hodnoty.
+1.  Formulace nulové $\mathrm{H}_0$ a alternativní $\mathrm{H}_a$ hypotézy,\
+2.  volba hladiny významnosti $\alpha$,\
+3.  volba testovací statistiky,\
+4.  určení kritického oboru testové statistiky,\
+5.  vyhodnocení testu s pomocí p-hodnoty.
 
 Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1] b) nezamítnutní nulové hypotézy.
 
@@ -45,7 +47,8 @@ Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1
 </table>
 ```
 
-Síla testu $\beta$ je pravěpodobnost, že je testem zamítnuta nulová hypotéza, která je skutečně neplatná. $P(\mathrm{H}_A|\mathrm{H}_A) = 1-\beta$
+Síla testu $\beta$ je pravěpodobnost, že je testem zamítnuta nulová hypotéza, 
+která je skutečně neplatná. $P(\mathrm{H}_A|\mathrm{H}_A) = 1-\beta$
 
 ## $p-$hodnota
 
@@ -58,6 +61,8 @@ Představme si, že hledáme odpověď na otázky typu: "Jaká je střední hodn
 "Jaká je mír nejistoty odhadu této střední hodnoty?".
 
 ## $100(1-\alpha)\%$ interval spolehlivosti
+
+Vrátíme se krátce k intervalu spolehlivosti z předchozí hodiny. 
 
 $$
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
@@ -80,83 +85,58 @@ Dejme tomu, že jsme v průběhu práce sesbírali následující hodnoty:\
 `r set.seed(1450070); rnorm(10)`\      
 u procesu $X\sim\mathsf{N}(0; 1)$
 ```{r, fig.align='center'}
-set.seed(1450070)
+set.seed(1450070) #<1>
 xd <- rnorm(10)
 curve(dnorm(x), from = -5, to = 5)
 rug(xd, lwd = 2)
-segments(x0 = mean(xd), x1 = mean(xd), y0 = -0.2, y1 = dnorm(mean(xd)), lwd = 2, col = "orangered")
+segments(x0 = mean(xd), 
+         x1 = mean(xd), 
+         y0 = -0.2, 
+         y1 = dnorm(mean(xd)), 
+         lwd = 2, 
+         col = "orangered",
+         xlab = "", 
+         ylab = "")
 ```
+1. V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme `set.seed()` 
+
+Data jsme získali s pomocí generátoru pro náhodné rozdělení, budeme předpokládat, 
+že teoretický soubor má náhodné rozdělení s parametry $\mu=0$ a $\sigma^2=1$ a ověříme
+na hladině významnosti $\alpha=0.05$.
+
+::: callout-note
+## Úloha
+  
+  1. Stanovte znění $\mathrm{H}_0$ a $\mathrm{H}_a$.
+  2. Kolik bude stupňů volnosti?
+:::
+
+```{r}
+t.test(xd, mu = 0) #<1>
+```
+Z výsledku testu vyplývá, že `p-value` $< \alpha$, proto tedy musíme nulovou hypotézu
+
+
 
 ### Příklad 2
 
+V předchozím příkladu jsme testovali nulovou hypotézu oproti oboustranné alternativě, 
+tzn. neřešili jsme, zda je střední hodnota menší či větší.
 
-Pravděpodobnost platnosti hypotézy
+::: callout-note
+## Úloha 
 
-## Testy dobré shody
-
-Testovací statistika testu dobré shody
-$$
-\chi^2=\sum\dfrac{(O-E)^2}{E}
-$$
-
-
-<!-- ## SPEI -->
-
-<!-- Načteme data -->
-
-<!-- ```{r} -->
-<!-- precip <- as.numeric(unlist((read.csv2("./data/CHMI_SRA/U2HRAD01_SRA_N.csv", skip = 30)["X0"]))) -->
-<!-- ``` -->
-
-
-<!-- # Výpočet statistických parametrů -->
-<!-- ```{r} -->
-<!-- mean_precip <- mean(precip)             # Průměr -->
-<!-- sd_precip <- sd(precip)                 # Směrodatná odchylka -->
-<!-- skewness_precip <- mean((precip - mean_precip)^3) / sd_precip^3  # Koeficient šikmosti -->
-<!-- ``` -->
-
-<!-- # Funkce pro CDF Pearsonova rozdělení III. typu -->
-<!-- ```{r} -->
-<!-- pearson_cdf <- function(x, mean, sd, skew) { -->
-<!--   if (skew == 0) { -->
-<!--     pnorm((x - mean) / sd) -->
-<!--   } else { -->
-<!--     alpha <- 4 / skew^2 -->
-<!--     beta <- sqrt(sd^2 / alpha) -->
-<!--     x_shifted <- x - (mean - alpha * beta) -->
-<!--     pgamma(x_shifted / beta, shape = alpha) -->
-<!--   } -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- # Výpočet CDF hodnot pro každou hodnotu srážek pomocí Pearsonova III rozdělení -->
-<!-- ```{r} -->
-<!-- cdf_values <- sapply(precip, pearson_cdf, mean = mean_precip, sd = sd_precip, skew = skewness_precip) -->
-<!-- ``` -->
-
-<!-- # Transformace CDF hodnot na standardní normální hodnoty (hodnoty SPI) -->
-<!-- ```{r} -->
-<!-- spi_values <- qnorm(cdf_values) -->
-<!-- ``` -->
-
-<!-- # Výsledek: hodnoty SPI -->
-<!-- ```{r} -->
-<!-- print(spi_values) -->
-<!-- plot(table(cut(spi_values, breaks = c(-5:5)))) -->
-<!-- ``` -->
-
-
-
-<!-- ## Rekapitulace -->
-
-<!-- ::: callout-tip -->
-<!-- ## Úloha -->
-
-<!--   1. a) Nalezněte 90% interval spolehlivosti pro roztpyl veličiny -->
-<!--      b) Otestujte, zda veličiny generující sobory $x$ a $y$ mají shodný rozptyl. -->
-<!--   2. Spočítejte, zda můžeme s pravděpodobností $90\:\%$ zamítnout hypotézu, že střední hodnota veličiny generující výběr `x <- c(0.77, 1.11, 1.14, 0.92, 0.49, 5.03, 1.35, 0.94, 0.33, 2.49)` je menší než 1.\ -->
-<!--   3. Pro stejný výběr spočítejte, zda je možné na hladině významnosti $0.05$ zamítnout hypotézu, že střední hodnota veličiny generující výběr je rovna $1$. -->
-<!-- ::: -->
-
+  1. S pomocí nápovědy nastavte argumenty funkce `t.test()` tak, aby byla test proběhl
+  oproti jednostranné alternativě, že je skutečná střední hodnota nižší než 2.
+  2. Studentův $t-$test lze použít za předpokladu, že data splňují tzv. normalitu.
+  tu lze pro tento soubor snadno ověřit jiným testem - `shapiro.test()`. $\mathrm{H}_0$:
+  rozdělení není odlišné od normálního. Zamítneme $\mathrm{H}_0$ na hladině významnosti $\alpha=0,1$?
+  3. Zatím jsme použili jedovýběrový $t-$test na data pocházející z Normálního rozdělení. 
+  V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, 
+  museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední 
+  hodnotě lze využít neparametrický *Wilcoxonův test* - `wilcox.test()`. Rozhodněte 
+  o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů
+  z datové sady **temp.csv**.
+  
+:::
 

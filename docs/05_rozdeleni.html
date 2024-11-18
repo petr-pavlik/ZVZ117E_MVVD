@@ -322,11 +322,11 @@ Podívejte se na <code>?Distributions</code>.</p>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">Kolika způsoby je možné seřadit <span class="math inline">\(n\leq6\)</span> prvků?</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="3">Kolika způsoby je možné seřadit <span class="math inline">\(n\leq6\)</span> prvků?</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="2">Kolika způsoby lze vybrat <span class="math inline">\(n-\)</span>tici z <span class="math inline">\(6\)</span> prvků?</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="10">Kolika způsoby lze vybrat <span class="math inline">\(n-\)</span>tici z <span class="math inline">\(6\)</span> prvků?</span>
 </dd>
 </dl>
 </div>
@@ -403,7 +403,7 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">S <span class="math inline">\(80\%\)</span> pravděpodobností bude hodnota $$2.8416212.</span>
+<span data-code-cell="annotated-cell-4" data-code-annotation="1" data-code-lines="1">S <span class="math inline">\(80\%\)</span> pravděpodobností bude hodnota $$2.8416212.</span>
 </dd>
 </dl>
 </div>
@@ -425,11 +425,11 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="1">Generování 10 čísel z rovnoměrného rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="2">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
+<span data-code-cell="annotated-cell-5" data-code-annotation="2" data-code-lines="2">Generování 15 čísel z Poisonova rozdělení z intervalu <span class="math inline">\((0;1)\)</span></span>
 </dd>
 </dl>
 </div>
@@ -442,8 +442,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seed, <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]       10403           2  -803126727    44946507 -1701169670  1596010748
- [7]   517465407  1539414549  1605792044   915399170</code></pre>
+<pre><code> [1]       10403           2 -1885648490 -1942284015    18422467   962507474
+ [7]  1368609636  2028418727  -803815427  -544032268</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -470,8 +470,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4310816
-[1] 0.4310816 0.9928884</code></pre>
+<pre><code>[1] 0.4238429
+[1] 0.4238429 0.8677784</code></pre>
 </div>
 </div>
 </section>
@@ -550,15 +550,15 @@ b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost ž
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">Předem alokuejeme vektor hodnot.</span>
+<span data-code-cell="annotated-cell-10" data-code-annotation="1" data-code-lines="1">Předem alokuejeme vektor hodnot.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="2">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
+<span data-code-cell="annotated-cell-10" data-code-annotation="2" data-code-lines="4">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="6,7,8,9,10,11" data-code-annotation="3">Pokud pršelo v předchozím čase</span>
+<span data-code-cell="annotated-cell-10" data-code-annotation="3" data-code-lines="6,7,8,9,10,11">Pokud pršelo v předchozím čase</span>
 </dd>
 </dl>
 </div>
