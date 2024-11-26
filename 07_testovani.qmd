@@ -1,12 +1,25 @@
 # Testování hypotéz {#sec-testovani}
 
-Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících
-z náhodného výběru ověřujeme úsudek o teoretickém souboru.
+::: callout-warning
+## Cíle cvičení 
 
-Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$. 
+- Znát terminologii testování hypotéz.
+- Umět sestavit a vyhodnotit statistický test.
+:::
+
+Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících
+z **náhodného výběru** ověřujeme úsudek o teoretickém souboru. Pomocí testování
+hypotéz řešíme například:
+  - srovnání charakteristiky výběrového odhadu parametru $\theta$ s přepokládanou 
+    hodnotou souboru.
+  - vyhodnotit charakter rozdělení náhodné veličiny
+  - vyhodnocení nezávislosti veličin
+
+Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$ jako 
+vzájemně vylučující se tvrzení.
 
 Pod *testováním hypotéz* potom rozumíme proces, který na základě 
-vlastností datové sady rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.
+vlastností datové sady rozhodne o **zamítnutí**, či **nezamítnutí nulové hypotézy**.
 
 ::: callout-note
 ## Poznámka
@@ -114,7 +127,7 @@ na hladině významnosti $\alpha=0.05$.
 ```{r}
 t.test(xd, mu = 0) #<1>
 ```
-Z výsledku testu vyplývá, že `p-value` $< \alpha$, proto tedy musíme nulovou hypotézu
+Z výsledku testu vyplývá, že `p-value` $< \alpha$, proto tedy musíme nulovou hypotézu `r fitb(c("zamítnout", "zamitnout"))`.
 
 
 

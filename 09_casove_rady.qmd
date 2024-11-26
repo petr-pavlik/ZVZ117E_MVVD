@@ -3,162 +3,500 @@
 ::: callout-warning
 ## Cíle cvičení
 
-  - Definovat časovou řadu s pomocí `ts()`
-  - Detekovat přítomnost trendu, bodu zlomu
-  - Aplikovat klouzavý průměr jako zhlazovací funkci
+  - Umět definovat časovou řadu s pomocí `ts()`.
+  - Detekovat přítomnost trendu, bodu zlomu.
+  - Umět aplikovat klouzavý průměr jako zhlazovací funkci.
 :::
 
+Časové řady jsou chronologicky uspořádané posloupnosti hodnot jednoho nebo více
+statistických ukazatelů.
+
+$$
+Y(t) = f(t)
+$$
+
+Časové řady rozeznáváme deterministické, stochastické s konstantním nebo proměnlivým 
+časovým krokem. Časovou řadu nazýváme **homogenní**, pokud hodnoty jednolivých členů
+pozorované řady odrážejí pouze přirozenou proměnlivost studované veličiny.
+
+
+
 Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`. 
+```{r}
+args(stats::ts)
+```
 
 
 ::: callout-note
 ## Další zdroje
-
-Mnoho dalších nalezneme například studiem příslušného [CRAN Task View](https://cran.r-projecet.org/web/views/TimeSeries.html).
+Zpracování časových řad je jedním ze základních tématických okruhů v R. Stejně 
+jako je tomu u ostatních okruhů, můžeme může být užitečné se zorientovat studiem 
+příslušného [CRAN Task View](https://cran.r-projecet.org/web/views/TimeSeries.html).
 :::
-
-`ts()`
-```{r}
-?ts
-```
-
 
 Budeme pracovat se dvěma datovými sadami:
   
-  1. Naše již připravená data z CAMELS
+  1. Časovou řadou historických měření z pražského Klementina od roku 1776.
   2. Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`
 
-```{r}
-dataset <- readRDS("data/data.rds")[1:15000,]
-data("co2")
+```{r, include=FALSE}
+klementinum <- readRDS("data/klementinum.rds")
+klementinum$date <- as.POSIXct(paste(klementinum$yr, 
+                             sprintf(fmt = "%02d", klementinum$mon),
+                             sprintf(fmt = "%02d", klementinum$day),
+                       sep = "-"), tz = "CET", format = "%Y-%m-%d")
 ```
 
-Využijeme znalostí z @sec-grafy
+## `ts()` objekt
 
-```{r, fig.align='center'}
-hydroplot <- function(srazka, vypar, odtok, ...) {
-  plot(odtok, 
-       ylim = c(-max(odtok), 
-                2*max(odtok)), 
-       yaxt = "n",
-       xlab = "", 
-       ylab = "", 
-       ...)
-  axis(2, 
-       at = round(signif(seq(0, max(odtok), length = 5), 2)))
-  abline(h = 0, lty = 3)
-  par(new = TRUE)
-  plot(x = time(srazka), 
-       y = as.numeric(srazka), 
-       col = "dodgerblue4", 
-       type = "h",
-       ylim = rev(c(0, 3*max(srazka))),
-       xlab = "", 
-       ylab = "", 
-       axes = FALSE, ...)
-  axis(4, 
-       at = round(signif(seq(0, max(odtok), length = 5), 2)))
-  par(new = TRUE)
-  deltaet <- max(vypar) - min(vypar)
-  plot(x = time(vypar), 
-       y = as.numeric(vypar), col = "salmon1", type = "l",
-       ylim = c(min(vypar), max(vypar) + 2.5*deltaet),
-       xlab = "", 
-       ylab = "", 
-       axes = FALSE, ...)
-  axis(4, 
-       at = round(signif(seq(min(vypar), max(vypar), length = 5), 2), 1))
-}
+::: callout-tip
+## Úloha
+  1. Nejprve vhodnou funkcí nahrajte datovou sadu `klementinum.rds`.
+  2. Vytvořte formát datumu (`Date`) sjednocením sloupců `yr`, `mon`, `day`. 
+     U sloupců s denními a měsíčními hodnotami je nutné nejprve doplnit na 
+     dvoumístný formát (napří. `02`  místo `2`). Použijte nápovědu k funkci
+     `sprinft()`.\   
+  Výsledek by měl vypadat takto:
+```{r, echo=FALSE}
+head(klementinum, 7)
+```
+  3. Datovou sadu máme nahranou ověřte, zda se jedná o časovou řadu `is.ts()`
+     a udělejte si základní obrázek o průběhu veličin s pomocí grafů. Inspirujte
+     se v @sec-grafy.
+:::
 
-dframe <- ts(data = data.frame(P = 1:365, EP = 21:385,Q = 31:395), 
-             start = c(2024, 1, 1), 
-             frequency = 525960)
-time(dframe)
 
-hydroplot(srazka = dframe[, "P"], 
-         vypar = dframe[, "EP"], 
-         odtok = dframe[, "Q"], 
-         xlim = as.Date(c("2001-09-01","2001-09-21")))
-         title("rainfall, runoff and potential evaporation (mm/d)", 
-               cex.main = 1.25, 
-               font.main = 1)
+```{r, fig.align='center', fig.width=10, eval=FALSE}
+plot(main = "Klementinum 1776 - 2023, průměrná denní teplota ", 
+     x = klementinum$date, 
+     y = klementinum$tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
 ```
 
-## Autokorelační funkce
 
-Slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodných čísel. Graficky je vyjádřena pomocí *korelogramu*.
-
-```{r, fig.cap="Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"}
-par(mfrow = c(1, 2))
-acf(dataset$R)
-acf(co2)
+```{r, fig.align='center', fig.width=10, eval=FALSE, echo=FALSE}
+png(filename = "./images/chapter_9_fig_1.png", width = 1900, height = 1000, res = 200)
+plot(main = "Klementinum 1776 - 2023, průměrná denní teplota ", 
+     x = klementinum$date, 
+     y = klementinum$tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
+dev.off()
 ```
 
+![](images/chapter_9_fig_1.png)
 
 ## Dekompozice časové řady
 
-Dekompozicí časové řady rozumíme rozklad na složky:
+Proces identifikace trendové, sezónní a cyklické složky v **aditivních** či 
+**multiplikativních** časových řadách. Velmi silné tam, kde je silný trend nebo 
+stabilní sezónní složka.
+
+$$
+\begin{array}{c}
+Y(t)=\mathrm{T} + \mathrm{S} + \mathrm{C} + \mathrm{R}\\ 
+Y(t)=\mathrm{T} \times \mathrm{S}\times \mathrm{C}\times \mathrm{R} 
+\end{array}
+$$
+
+### Trendová složka
+
+Trend je obecná tendence vývoje zkoumaného jevu za delší období; může být lineární
+či nelineární. Může být rostoucí či klesající. Časové řady bez trendu se označují 
+za **stacionární**.
+
+Model trendu můžeme odhadnout pomocí lineárního modelu `lm()`. Můžeme vytvořit rovnou 
+tři varianty trendu: lineární, kvadratický a kubický. Vyhodnotíme pomocí **Akaikeho
+informačního kritéria**.
+
+```{r, eval = FALSE}
+md1 <- lm(tavg ~ I(date), 
+          data = klementinum)
+md2 <- lm(tavg ~ date + I(as.numeric(date)^2), 
+          data = klementinum)
+md3 <- lm(tavg ~ date + I(as.numeric(date)^2) + I(as.numeric(date)^3), 
+          data = klementinum)
+lapply(X = list(md1, md2, md3), FUN = AIC)
+```
+
+
+
+```{r, fig.align='center', fig.width=10, eval=FALSE, include=FALSE}
+png(filename = "./images/chapter_9_fig_2.png", width = 1900, height = 1000, res = 200)
+plot(main = "Klementinum 1776 - 2023, průměrná denní teplota ", 
+     x = klementinum$date, 
+     y = klementinum$tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
+md1 <- lm(tavg ~ I(date), data = klementinum)
+md2 <- lm(tavg ~ date + I(as.numeric(date)^2), data = klementinum)
+md3 <- lm(tavg ~ date + I(as.numeric(date)^2) + I(as.numeric(date)^3), data = klementinum)
+# Generate a smooth sequence of x-values across the full range of dates
+date_seq <- seq(min(klementinum$date), max(klementinum$date), length.out = 1000)
+
+pred_md1 <- predict(md1, newdata = data.frame(date = date_seq))
+pred_md2 <- predict(md2, newdata = data.frame(date = date_seq))
+pred_md3 <- predict(md3, newdata = data.frame(date = date_seq))
+
+lines(date_seq, pred_md3, col = "#660033", lwd = 2.5) # Similar to abline()
+dev.off()
+```
+
+![](images/chapter_9_fig_2.png)
+
+Časovou řadu zbavenou trendu.
+
+```{r, eval=FALSE, echo=FALSE}
+png(filename = "./images/chapter_9_fig_3.png", width = 1900, height = 1000, res = 200)
+detrended_klementinum_tavg <- klementinum$tavg - fitted(md3)
+plot(main = "Řada zbavená trendu", 
+     x = 1:length(detrended_klementinum_tavg), 
+     y = detrended_klementinum_tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
+dev.off()
+```
+![](images/chapter_9_fig_3.png)
+
+Časová řada v R je určena 
+```{r}
+klementinum_ts <- ts(
+  data = klementinum$tavg, 
+  start = c(klementinum$yr[1], klementinum$mon[1], klementinum$day[1]), 
+  deltat = 1/365.25)
+```
+
+### Sezónní a cyklická složka
+
+### Náhodná složka
+
+Pokud z řady odstraníme trend, sezónní a cyklickou složku, získáme řadu, která 
+
+## Box-Jenkins analýza (ARIMA proces)
+
+Tento pohled je založen na přístupu k řadě jako stochastickému procesu, který 
+je možné zachytit kombinací autoregresní složky, integrační složky a klouzavého
+průměru. Využívá se pro simulace časových řad. 
+
+ARIMA(p, d, q)
+
+### Autokorelace
+
+Je korelace sama se sebou. 
+
+```{r, fig.align='center', fig.width=10, results='hide'}
+# Define the time window and subset the data
+okno <- seq(from = as.POSIXct("1990-01-01"), 
+            to = as.POSIXct("2020-12-31"), 
+            by = 3600*24)
+klementinum90_20 <- klementinum[klementinum$date %in% okno, ]
+
+# Set up a multi-panel plotting window
+par(mfrow = c(1, 3))
+
+# Apply the plotting and trend line logic
+sapply(X = c(1, 30, 90), 
+       FUN = function(x) {
+         # Create lagged variables
+         lagged_x <- klementinum90_20$tavg[-c(1:x)]
+         lagged_y <- klementinum90_20$tavg[-c((length(klementinum90_20$tavg) - x + 1):length(klementinum90_20$tavg))]
+         
+         # Scatter plot
+         plot(lagged_x, lagged_y, 
+              cex = 0.5, col = "#00000080", 
+              xlab = paste("Lag", x), ylab = "Tavg",
+              main = paste("Lag =", x))
+         
+         # Fit linear model and add trend line
+         lm_fit <- lm(lagged_y ~ lagged_x)
+         abline(lm_fit, col = "#660033", lwd = 2)
+       }
+)
+```
+
+
+### Parciální autokorelace
+
+Stupeň určujeme pomocí funkce `pacf()`, 
+
+```{r, fig.align='center', fig.width=10, echo=FALSE}
+par(mfrow = c(2, 2))
+# Calculate the ACF without plotting
+acf_result <- acf(klementinum$tavg, plot = FALSE)
+
+# Plot the ACF values manually
+plot(acf_result, main = "ACF", ylim = c(-1, 1))
+
+# Add custom confidence intervals
+abline(h = c(-1.96 / sqrt(length(klementinum$tavg)), 1.96 / sqrt(length(klementinum$tavg))), 
+       col = "#660033", lty = 2)  # Change the color here
+
+pacf_result <- pacf(klementinum$tavg, plot = FALSE)
+
+# Plot the ACF values manually
+plot(pacf_result, main = "PACF", ylim = c(-1, 1))
+
+abline(h = c(-1.96 / sqrt(length(klementinum$tavg)), 1.96 / sqrt(length(klementinum$tavg))), 
+       col = "#660033", lty = 2)  # Change the color here
+
+
+diff_acf_result <- acf(diff(klementinum$tavg), plot = FALSE)
+
+# Plot the ACF values manually
+plot(diff_acf_result, main = "d = 1, ACF", ylim = c(-1, 1))
+
+# Add custom confidence intervals
+abline(h = c(-1.96 / sqrt(length(klementinum$tavg)), 1.96 / sqrt(length(klementinum$tavg))), 
+       col = "#660033", lty = 2)  # Change the color here
+
+diff_pacf_result <- pacf(diff(klementinum$tavg), plot = FALSE)
+
+# Plot the ACF values manually
+plot(diff_pacf_result, main = "d = 1, PACF", ylim = c(-1, 1))
+
+abline(h = c(-1.96 / sqrt(length(klementinum$tavg)), 1.96 / sqrt(length(klementinum$tavg))), 
+       col = "#660033", lty = 2)  # Change the color here
+
+```
+
+### Klouzavé průměry
+
+Klouzavý průměr je zhlazovací funkcí, jejíž využití má prostor například v odhadu
+cyklické složky časové řady
+
+::: callout-tip
+## Úloha
+
+  5. Odfiltrujte posledních 5 let z data frame `klementinum` a uložte do
+     proměnné `klementinum_last_5`.
+:::
+
+
+```{r, echo=FALSE}
+klementinum_last_5 <- klementinum[klementinum$yr %in% max(klementinum$yr):(max(klementinum$yr) - 4), ]
+```
+
+Napíšeme shlazovací funkci pro 30denní okno a vykreslíme do grafu:
+
+```{r}
+ma <- function(x, window = 30) {
+  filtr <- rep(1/window, window)
+  stats::filter(x, filtr)
+}
+```
+
+```{r, fig.width=10}
+plot(klementinum_last_5$tavg, 
+     col = "#00000075", 
+     cex = 0.5, 
+     main = "30denní klouzavý průměr Klementinum 2019 - 2023")
+lines(ma(klementinum_last_5$tavg), col = "#006666", lwd = 3)
+```
+
+### Sezónní složka
+
+Sezónní složku je možné simulovat následující rovnicí
+
+$$
+y = \alpha + \beta\sin(2\pi t) + \gamma\cos(2\pi t)+ \epsilon
+$$
+
+kde $\alpha$ je itne
+
+```{r, eval=FALSE}
+md2 <- lm(tavg ~ sin(as.numeric(klementinum90_20$date)*2*pi) + cos(as.numeric(klementinum90_20$date)*2*pi), data = klementinum90_20)
+plot(klementinum90_20$tavg - fitted.values(md2), type ="l")
+```
+
+
+```{r}
+optimize_arima <- function(ts_data, max_p = 3, max_d = 2, max_q = 3) {
+  # Initialize variables to store the best model and metric
+  best_model <- NULL
+  best_aic <- Inf
+  best_order <- c(0, 0, 0)
   
-  1. Trendovou $T_t$
-  2. Sezónní $S_t$
-  3. Cyklickou $C_t$
-  4. Náhodnou $\epsilon_t$
+  # Iterate over all combinations of p, d, q
+  for (p in 0:max_p) {
+    for (d in 0:max_d) {
+      for (q in 0:max_q) {
+        # Try to fit the model and catch errors
+        try({
+          model <- arima(ts_data, order = c(p, d, q))
+          model_aic <- AIC(model)
+          
+          # Update the best model if the current one is better
+          if (model_aic < best_aic) {
+            best_aic <- model_aic
+            best_model <- model
+            best_order <- c(p, d, q)
+          }
+        }, silent = TRUE)
+      }
+    }
+  }
+  
+  # Return the best model and its order
+  list(model = best_model, order = best_order, aic = best_aic)
+}
 
-### Aditivní dekompozice
+# Example usage
+set.seed(123)
+ts_data <- arima.sim(list(order = c(1, 1, 1), ar = 0.7, ma = -0.5), n = 100)
 
-Předpokládáme, že řadu lze rozložit na součet složek
-
-$$
-Y_t =T_t +S_t +C_t +\epsilon_t,
-$$
-
-```{r}
-dec_co2 <- decompose(co2)
-plot(dec_co2)
-plot(dec_co2$trend)
-```
-
-### Residua
-
-Ověřte, zda po dekompozici `co2` residua $\epsilon_t$ splňují definici *bílého šumu* 
-tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.
-
-```{r}
-shapiro.test(dec_co2$random)
-mean(dec_co2$random, na.rm = TRUE)
-var(dec_co2$random, na.rm = TRUE)
-# ...
-```
-
-## Zhlazovací funkce
-
-```{r}
-par(mfrow = c(1, 2))
-plot(dataset$Tmin, type = "l", 
-     col = "slategray", 
-     lwd = 0.5)
-md1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), 
-             data = dataset, 
-             degree = 1)
-lines(md1$fitted, col = "orangered")
-
-plot(filter(x = dataset$R, 
-             method = "convolution", 
-             filter = c(rep(1/365.25, 365.25)), 
-             sides = 1), 
-      col = "dodgerblue3", 
-     type = "l")
-```
-
-```{r}
-md2 <- lm(Tmin ~ DTM, data = dataset)
-plot(dataset$Tmin, type = "l", 
-     col = "slategray", 
-     lwd = 0.5)
-lines(md1$fitted, col = "darkred")
-abline(coef(md2), col = "orangered")
+result <- optimize_arima(ts_data)
+print(result$order)  # Optimal (p, d, q)
+print(result$aic)    # Corresponding AIC
 
 ```
+
+
+```{r}
+md3 <- arima(x = klementinum_ts, order = c(0, 1, 1))
+md3
+
+```
+
+
+<!-- Využijeme znalostí z -->
+
+<!-- ```{r, fig.align='center'} -->
+<!-- hydroplot <- function(srazka, vypar, odtok, ...) { -->
+<!--   plot(odtok,  -->
+<!--        ylim = c(-max(odtok),  -->
+<!--                 2*max(odtok)),  -->
+<!--        yaxt = "n", -->
+<!--        xlab = "",  -->
+<!--        ylab = "",  -->
+<!--        ...) -->
+<!--   axis(2,  -->
+<!--        at = round(signif(seq(0, max(odtok), length = 5), 2))) -->
+<!--   abline(h = 0, lty = 3) -->
+<!--   par(new = TRUE) -->
+<!--   plot(x = time(srazka),  -->
+<!--        y = as.numeric(srazka),  -->
+<!--        col = "dodgerblue4",  -->
+<!--        type = "h", -->
+<!--        ylim = rev(c(0, 3*max(srazka))), -->
+<!--        xlab = "",  -->
+<!--        ylab = "",  -->
+<!--        axes = FALSE, ...) -->
+<!--   axis(4,  -->
+<!--        at = round(signif(seq(0, max(odtok), length = 5), 2))) -->
+<!--   par(new = TRUE) -->
+<!--   deltaet <- max(vypar) - min(vypar) -->
+<!--   plot(x = time(vypar),  -->
+<!--        y = as.numeric(vypar), col = "salmon1", type = "l", -->
+<!--        ylim = c(min(vypar), max(vypar) + 2.5*deltaet), -->
+<!--        xlab = "",  -->
+<!--        ylab = "",  -->
+<!--        axes = FALSE, ...) -->
+<!--   axis(4,  -->
+<!--        at = round(signif(seq(min(vypar), max(vypar), length = 5), 2), 1)) -->
+<!-- } -->
+
+<!-- dframe <- ts(data = data.frame(P = 1:365, EP = 21:385,Q = 31:395),  -->
+<!--              start = c(2024, 1, 1),  -->
+<!--              frequency = 525960) -->
+<!-- time(dframe) -->
+
+<!-- hydroplot(srazka = dframe[, "P"],  -->
+<!--          vypar = dframe[, "EP"],  -->
+<!--          odtok = dframe[, "Q"],  -->
+<!--          xlim = as.Date(c("2001-09-01","2001-09-21"))) -->
+<!--          title("rainfall, runoff and potential evaporation (mm/d)",  -->
+<!--                cex.main = 1.25,  -->
+<!--                font.main = 1) -->
+<!-- ``` -->
+
+<!-- ## Autokorelační funkce -->
+
+<!-- Slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodných čísel. Graficky je vyjádřena pomocí *korelogramu*. -->
+
+<!-- ```{r, fig.cap="Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"} -->
+<!-- par(mfrow = c(1, 2)) -->
+<!-- acf(dataset$R) -->
+<!-- acf(co2) -->
+<!-- ``` -->
+
+
+<!-- ## Dekompozice časové řady -->
+
+<!-- Dekompozicí časové řady rozumíme rozklad na složky: -->
+
+<!--   1. Trendovou $T_t$ -->
+<!--   2. Sezónní $S_t$ -->
+<!--   3. Cyklickou $C_t$ -->
+<!--   4. Náhodnou $\epsilon_t$ -->
+
+<!-- ### Aditivní dekompozice -->
+
+<!-- Předpokládáme, že řadu lze rozložit na součet složek -->
+
+<!-- $$ -->
+<!-- Y_t =T_t +S_t +C_t +\epsilon_t, -->
+<!-- $$ -->
+
+<!-- ```{r} -->
+<!-- dec_co2 <- decompose(co2) -->
+<!-- plot(dec_co2) -->
+<!-- plot(dec_co2$trend) -->
+<!-- ``` -->
+
+<!-- ### Residua -->
+
+<!-- Ověřte, zda po dekompozici `co2` residua $\epsilon_t$ splňují definici *bílého šumu*  -->
+<!-- tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované. -->
+
+<!-- ```{r} -->
+<!-- shapiro.test(dec_co2$random) -->
+<!-- mean(dec_co2$random, na.rm = TRUE) -->
+<!-- var(dec_co2$random, na.rm = TRUE) -->
+<!-- # ... -->
+<!-- ``` -->
+
+<!-- ## Zhlazovací funkce -->
+
+<!-- ```{r} -->
+<!-- par(mfrow = c(1, 2)) -->
+<!-- plot(dataset$Tmin, type = "l",  -->
+<!--      col = "slategray",  -->
+<!--      lwd = 0.5) -->
+<!-- md1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)),  -->
+<!--              data = dataset,  -->
+<!--              degree = 1) -->
+<!-- lines(md1$fitted, col = "orangered") -->
+
+<!-- plot(filter(x = dataset$R,  -->
+<!--              method = "convolution",  -->
+<!--              filter = c(rep(1/365.25, 365.25)),  -->
+<!--              sides = 1),  -->
+<!--       col = "dodgerblue3",  -->
+<!--      type = "l") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- md2 <- lm(Tmin ~ DTM, data = dataset) -->
+<!-- plot(dataset$Tmin, type = "l",  -->
+<!--      col = "slategray",  -->
+<!--      lwd = 0.5) -->
+<!-- lines(md1$fitted, col = "darkred") -->
+<!-- abline(coef(md2), col = "orangered") -->
+
+<!-- ``` -->
 
 
 

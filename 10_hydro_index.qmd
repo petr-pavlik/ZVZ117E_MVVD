@@ -1,8 +1,10 @@
 # Hydroklimatické indexy {#sec-hydroklimatickeindexy}
 
-Hydroklimatické indexy lze rozdělit na **empirické** a **stochastické**. K výpočtu těch empirických nám poslouží pouze naměřená datová sada resp. data v ní, nějakým způsobem upravená.
+Hydroklimatické indexy lze rozdělit na **empirické** a **stochastické**. 
+K výpočtu těch empirických nám poslouží pouze naměřená datová sada resp. data v ní, 
+nějakým způsobem upravená.
 
-Mezi empirické lze řdit například
+Mezi empirické lze řadit například:
 
 | Index                                 | Popis                            | Výpočet                                                                                                                                     |
 |----------------------------|--------------------------|------------------|
@@ -12,9 +14,9 @@ Mezi empirické lze řdit například
                                                                                                                                                         \phi=\frac{\mathrm{PET}-\mathrm{ET}_\mathrm{a}}{\mathrm{PET}}    
                                                                                                                                                         $$                                                               |
 
-a jim podobné hodnoty získané z dat kombinací filtrace, agregace a volby mezních hodnot. 
+a jim podobné hodnoty získané z dat kombinací úkonů filtrace, agregace a volby mezních hodnot. 
 Za stochastické potom budeme označovat ty, ve kterých je v nějaké míře pracováno se 
-statistickým rozdělením.
+statistickým rozdělením, například:
 
 | Index   | Popis                                      | Výpočet |
 |---------|--------------------------------------------|---------|
@@ -36,10 +38,9 @@ QD165600 <- read.csv("data/QD_165600/QD_165600_Data.csv", header = FALSE)
 names(QD165600) <- c("id", "var", "year", "month", "day" ,"q")
 head(QD165600, 5)
 ```    
-    
 2.  a)  V České republice je definován hydrologický rok od 1. 11. do 31. 10. následujícího roku. 
         Přidejte k datové sadě sloupec "h_year" s pomocí funkce `ifelse()`.
-    c)  
+    c)  aa
 :::
 
 ## Srážko-odtokový součinitel
@@ -64,9 +65,9 @@ Z odtokové řady se identifikuje aplikací statistických filtrů.
 ::: callout-tip
 ## Úloha
 
-2.  Upravte metodu 30denních klouzavých minim pro výpočet základního odtoku tak, 
+4.  Upravte metodu 30denních klouzavých minim pro výpočet základního odtoku tak, 
     aby bylo možné při volání funkce velikost okna upravovat.
-::: vc
+:::
 
 ```{r}
 klouzave_minimum <- function(x) {
@@ -133,7 +134,7 @@ Je definována s pomocí rozpadové konstanty $k$ a $n$ předchozích dní
 ::: callout-tip
 ## Úloha
 
-3.  Napište funkci pro výpočet $\text{API}_n = \sum\limits^{n}_{i=1}\text{ET}_\text{C}(i)\cdot P(i)$
+5.  Napište funkci pro výpočet $\text{API}_n = \sum\limits^{n}_{i=1}\text{ET}_\text{C}(i)\cdot P(i)$
 :::
 
 ## Frekvenční křivky
@@ -159,8 +160,8 @@ Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrn�
 ::: callout-tip
 ## Úloha
 
-1.  Spočítejte $Q_{20}$, $Q_{50}$ a $Q_{100}$.
-2.  Výpočet přetvořte na $N-$letý minimální průtok.
+7.  Spočítejte $Q_{20}$, $Q_{50}$ a $Q_{100}$.
+8.  Výpočet přetvořte na $N-$letý minimální průtok.
 :::
 
 ### $M-$denní průtok
@@ -184,7 +185,7 @@ points(Mdenni, pch = 21, bg = rev(rainbow(13, end = 0.7)))
 ::: callout-tip
 ## Úloha
 
-3.  Spočtete průměrný roční minimální průtok.
+8.  Spočtete průměrný roční minimální průtok.
 :::
 
 <!-- ## SPI -->

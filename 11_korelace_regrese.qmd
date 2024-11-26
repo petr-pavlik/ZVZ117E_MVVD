@@ -1,10 +1,23 @@
 # Závislost dvou veličin {#seq-zavislost}
 
+## Kovariance
+
+Míru těsnosti vztahu dvou proměnných lze vajádřit kovariancí
+
+$$
+\mathrm{cov}_{xy} = \dfrac{1}{n-1}\sum_{i=1}^{n}x_iy_i
+$$
+
+Takový výsledek, produkt, není v praxi dobře interpretovatelný.
+
 ## Korelace {#sec-korelace}
 
-Korelace je vztah mezi dvěma náhodnými veličinami. Zkoumá, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá. Korelace nezkoumá příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
+Standardizovaný sdílený rozptyl dvou veličiny je korelace. Vyjadřuje, zda se jedna 
+ze zkoumaných veličin mění, pokud se zároveň mění i druhá. Korelace neadresuje 
+příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
 
-Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít **Paersonův** korelační koeficient,
+Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality 
+u obou veličin lze použít **Paersonův** korelační koeficient,
 
 $$
 r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}\sqrt{\sum(y_i - \bar{y})^2}}
@@ -48,49 +61,59 @@ cor(_, _, method = "Spearman")
 
 ```{r, echo=FALSE, fig.align='center'}
 par(mfrow = c(2, 2))
-plot(x = sin(seq(-1, 4, length.out = 100) + rnorm(100, sd = 0.4)), 
-     xlab = "", 
-     ylab = "", 
-     axes = FALSE)
-plot(x = sort(c(sin(seq(-1, 4, length.out = 50)), 
+  x1 <- sin(seq(-1, 4, length.out = 100) + rnorm(100, sd = 0.4))
+  x2 <- sort(c(sin(seq(-1, 4, length.out = 50)), 
                 cos(seq(-3, 1, length.out = 50)))) + rnorm(n = 100, 
-                                                           sd = 1.4), 
+                                                           sd = 1.4)
+  x3 <- 1:100/10
+  y3 <- 5 + rnorm(100, sd = 5.5)
+  x4 <- 1:100 * rnorm(100, sd = 500)
+plot(x = x1, 
+     main = "A)",
      xlab = "", 
      ylab = "", 
      axes = FALSE)
-plot(x = 1:100/10, 
-     y = 5 + rnorm(100, sd = 5.5), 
+plot(x = x2, 
+     main = "B)",
+     xlab = "", 
+     ylab = "", 
+     axes = FALSE)
+plot(x = x3, 
+     y = y3, 
+     main = "C)",
      xlab = "", 
      ylab = "", 
      axes = FALSE, 
      xlim = c(-10, 25), 
      ylim = c(-10, 20))
-plot(x = 1:100 * rnorm(100, sd = 500), 
+plot(x = x4, 
      xlab = "", 
      ylab = "", 
+     main = "D)",
      axes = FALSE)
 ```
+
+  s tolerancí 0.05. A) `r fitb(round(cor(1:100, x1), 2), num = TRUE, tol = 0.05)`, 
+  B) `r fitb(round(cor(1:100, x2), 2), num = TRUE, tol = 0.05)`, 
+  C) `r fitb(round(cor(x3, y3), 2), num = TRUE, tol = 0.05)`, 
+  D) `r fitb(round(cor(1:100, x4), 2), num = TRUE, tol = 0.05)`. Pro desetinný rozvoj použijte tečku.
 :::
-
-`pairs()`
-
-## Kovariance
 
 ## Regresní model
 
-Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme **nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí lineárního regresního modelu. Cílem regrese je proložit naměřenými body přímku, která nejlépe vystihuje vztah mezi proměnnými.
+Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme **nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí **lineárního modelu**. 
 
 $$
 y = \beta_0 + \beta_1x
 $$ kde $y$ je závislá proměnná, $x$ je nezávislá proměnná, $\beta_0$ je počátek (intercept) a $\beta_1$ je sklon přímky.
 
-Lineární model regresního typu definujeme v R pomocí funkce `lm()`, které na první pozici dosazujeme výraz ve formátu rovnice `formula`, např. `lm(y ~ x)`. Model vyhodnocujeme funkcí `summary` a mezi sebou porovnáváme pomocí kritérií zohledňující vysvětlenou variabilitu/věrohodnost modelu a jeho komplexnost, např. **Akaikeho informační kritérium**.
+Lineární model regresního typu definujeme v R pomocí funkce `lm()`, které na první pozici dosazujeme výraz ve formátu rovnice `formula`, např. `lm(y ~ x)`. Model pak vyhodnocujeme funkcí `summary()` a mezi sebou porovnáváme pomocí kritérií zohledňující vysvětlenou variabilitu/věrohodnost modelu a jeho komplexnost, např. **Akaikeho** - `AIC()` nebo **Bayesovské informační kritérium** `BIC()`.
 
 $$
 \text{AIC} = 2k - 2\ln(\hat{L})
 $$ kde $k$ je počet volných parametrů modelu a $\hat{L}$ je věrohodnostní funkce modelu.
 
-##### Cvičení {.unnumbered}
+### První regresní model
 
   1. Uvažujme následující data, kde předpokládáme příčinnou závislost $y$ na $x$.
 
@@ -110,7 +133,7 @@ dfr <- data.frame(
 )
 ```
   
-  2. Sestrojme lineární model `md1`
+  2. Sestrojíme lineární model funkcí `lm()` a uložíme do proměnné `md1`.
 
 ```{r}
 md1 <- lm(formula = y ~ x, data = dfr)
@@ -124,20 +147,26 @@ str(md1, 1) #<1>
 1. Vypíšeme strukturu objektu do první hierarchické úrovně
 
 
-```{r}
-with(data = dfr, 
-     expr = plot(x, 
-                 y, 
-                 xlim = c(0, 30), 
-                 ylim = c(md1$coefficients[1], 
-                          max(md1$fitted.values) + 2)))
-abline(md1$coefficients, col = "orangered")
-abline(v = 0, lty = "dashed")
-abline(h = md1$coefficients[1], lty = "dashed")
-
+```{r, fig.align='center'}
+with(data = dfr, #<1>
+     expr = plot(x, #<1>
+                 y, #<1>
+                 xlim = c(0, 30), #<1>
+                 ylim = c(md1$coefficients[1], #<1>
+                          max(md1$fitted.values) + 2))) #<1>
+abline(md1$coefficients, col = "orangered") #<2> 
+abline(v = 0, lty = "dashed") #<3>
+abline(h = md1$coefficients[1], lty = "dashed") #<3>
+text(x = 5,
+     y = md1$coefficients[1] + 4, 
+     labels = expression(paste(beta == round(md1$coefficients[1], 2))))
 ```
+1. Určíme základní proměnné $x$ a $y$ v grafu a nastavíme limity okna.
+2. Z výstupu objektu lineárního modelu vytáhneme hodnoty koeficientů $\hat{\beta_0}$, 
+   $\hat{\beta_1}$ a použijeme jako koeficienty přímky.
+3. Dokreslíme průnik v počátku.
 
-  4. Model vyhodnotíme pomocí `summary`
+  4. Model vyhodnotíme pomocí funkce `summary()`
 
 ```{r}
 summary(md1)

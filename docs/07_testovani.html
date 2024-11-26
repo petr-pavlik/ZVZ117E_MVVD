@@ -275,9 +275,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících z náhodného výběru ověřujeme úsudek o teoretickém souboru.</p>
-<p>Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span>.</p>
-<p>Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady rozhodne o zamítnutí, či nezamítnutí nulové hypotézy.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cíle cvičení
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Znát terminologii testování hypotéz.</li>
+<li>Umět sestavit a vyhodnotit statistický test.</li>
+</ul>
+</div>
+</div>
+<p>Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících z <strong>náhodného výběru</strong> ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například: - srovnání charakteristiky výběrového odhadu parametru <span class="math inline">\(\theta\)</span> s přepokládanou hodnotou souboru. - vyhodnotit charakter rozdělení náhodné veličiny - vyhodnocení nezávislosti veličin</p>
+<p>Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span> jako vzájemně vylučující se tvrzení.</p>
+<p>Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady rozhodne o <strong>zamítnutí</strong>, či <strong>nezamítnutí nulové hypotézy</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -382,7 +398,7 @@ u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme <code>set.seed()</code></span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme <code>set.seed()</code></span>
 </dd>
 </dl>
 </div>
@@ -430,7 +446,7 @@ mean of x
   1.56931 </code></pre>
 </div>
 </div>
-<p>Z výsledku testu vyplývá, že <code>p-value</code> <span class="math inline">\(&lt; \alpha\)</span>, proto tedy musíme nulovou hypotézu</p>
+<p>Z výsledku testu vyplývá, že <code>p-value</code> <span class="math inline">\(&lt; \alpha\)</span>, proto tedy musíme nulovou hypotézu <input class="webex-solveme nospaces" size="9" data-answer="[&quot;zamítnout&quot;,&quot;zamitnout&quot;]">.</p>
 </section>
 <section id="příklad-2" class="level3" data-number="9.4.2">
 <h3 data-number="9.4.2" class="anchored" data-anchor-id="příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</h3>

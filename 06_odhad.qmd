@@ -3,10 +3,10 @@
 ::: callout-warning
 ## Cíle cvičení 
 
-- vlastnosti odhadu
-- zákon velkých čísel
-- bodový a intervalový odhad
-- $t$-test
+- Umět definovat vlastnosti odhadu.
+- Naučit se aplikovat zákon velkých čísel.
+- Provést bodový a intervalový odhad parametru.
+- Užít $t$-test jako pomocný nástroj k sestavení odhadu.
 :::
 
 Obecně je odhadem v matematické statistice nazýváno určení parametru rozdělení hodnoty určitého znaku **základního souboru** s pomocí **výběrového souboru**.
@@ -39,11 +39,9 @@ for (i in 1:nsim) {
   x <- rnorm(n)
   s_unb <- 1/(n-1)
   s_bia <- 1/n
-  s_unb2 <- 1/(n-1)
-  s_bia2 <- 1/n
-  X <- rbind(X, c(s_unb, s_bia, s_unb2, s_bia2))
+  X <- rbind(X, c(s_unb, s_bia))
 }
-names(X) = c('UNB', 'BIA' , 'UNB2' ,'BIA2')
+names(X) = c('UNB', 'BIA')
 ```
   a) Napište funkce pro odhad ropztylu.\
   b) Zamyslete se, které proměnné nejsou určeny a doplňte je.\

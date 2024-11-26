@@ -292,10 +292,10 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>vlastnosti odhadu</li>
-<li>zákon velkých čísel</li>
-<li>bodový a intervalový odhad</li>
-<li><span class="math inline">\(t\)</span>-test</li>
+<li>Umět definovat vlastnosti odhadu.</li>
+<li>Naučit se aplikovat zákon velkých čísel.</li>
+<li>Provést bodový a intervalový odhad parametru.</li>
+<li>Užít <span class="math inline">\(t\)</span>-test jako pomocný nástroj k sestavení odhadu.</li>
 </ul>
 </div>
 </div>
@@ -334,11 +334,9 @@ Cvičení
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  s_unb <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-1</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  s_bia <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>n</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  s_unb2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-1</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  s_bia2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>n</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> <span class="fu">rbind</span>(X, <span class="fu">c</span>(s_unb, s_bia, s_unb2, s_bia2))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(X) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'UNB'</span>, <span class="st">'BIA'</span> , <span class="st">'UNB2'</span> ,<span class="st">'BIA2'</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  X <span class="ot">&lt;-</span> <span class="fu">rbind</span>(X, <span class="fu">c</span>(s_unb, s_bia))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(X) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'UNB'</span>, <span class="st">'BIA'</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol type="a">
@@ -482,27 +480,27 @@ L\left(\mu, \sigma^2; x_1, \ldots, x_n\right) = (2\pi\sigma^2)^{-n/2}\exp\left(-
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1,2">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
+<span data-code-lines="1,2" data-code-annotation="1" data-code-cell="annotated-cell-4">Skutečné parametry <span class="math inline">\(\mu\)</span> a <span class="math inline">\(\sigma\)</span>, které použijeme ke generování náhodných čísel.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="4,5">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
+<span data-code-lines="4,5" data-code-annotation="2" data-code-cell="annotated-cell-4">Získáme pseudonáhodná čísla z Normálního rozdělení.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="7,8,12">Definice věrohodnostní funkce <a href="#eq-05odhad-likelihood">Rovnice&nbsp;<span>8.3</span></a>,</span>
+<span data-code-lines="7,8,12" data-code-annotation="3" data-code-cell="annotated-cell-4">Definice věrohodnostní funkce <a href="#eq-05odhad-likelihood">Rovnice&nbsp;<span>8.3</span></a>,</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-4" data-code-lines="13">je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.</span>
+<span data-code-lines="13" data-code-annotation="4" data-code-cell="annotated-cell-4">je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-4" data-code-lines="17,18,19,20,21">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.</span>
+<span data-code-lines="17,18,19,20,21" data-code-annotation="5" data-code-cell="annotated-cell-4">S použitím funkce <code>optim()</code> hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-4" data-code-lines="23,24">Uložíme získané hodnoty odhadů.</span>
+<span data-code-lines="23,24" data-code-annotation="6" data-code-cell="annotated-cell-4">Uložíme získané hodnoty odhadů.</span>
 </dd>
 </dl>
 </div>

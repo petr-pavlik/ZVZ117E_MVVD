@@ -1,5 +1,13 @@
 # Rozdělení pravděpodobnosti {#sec-rozdeleni}
 
+::: callout-warning
+## Cíle cvičení 
+
+- Vědět kde v R najít rozdělení.
+- Umět vysvětlit vztah mezi jednotlivými funkcemi rozdělení.
+- Umět počítat s náhodnými čísly z rozdělení.
+:::
+
 V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí
 
 Balík `stats` obsahuje mnoho rozdělení. **Alternativní**, **Binomické**, **Multinomické**, **Poissonovo**, **Normální**, **Fischer-Snedecorovo**, $\chi^2$, **Studentovo**, $t$, **Gumbellovo** a mnohá další. \
