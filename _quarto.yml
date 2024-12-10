@@ -27,7 +27,7 @@ book:
   - 05_rozdeleni.qmd
   - 06_odhad.qmd
   - 07_testovani.qmd
-  - 09_casove_rady.qmd
+  # - 09_casove_rady.qmd
   - 10_hydro_index.qmd
   - 11_korelace_regrese.qmd
   - 12_extremalni_rozdeleni.qmd

@@ -8,17 +8,14 @@
   - Umět aplikovat klouzavý průměr jako zhlazovací funkci.
 :::
 
-Časové řady jsou chronologicky uspořádané posloupnosti hodnot jednoho nebo více
-statistických ukazatelů.
-
-$$
-Y(t) = f(t)
-$$
-
+Časové řady jsou chronologicky uspořádané posloupnosti hodnot jedné nebo více
+sledovaných veličin.\
 Časové řady rozeznáváme deterministické, stochastické s konstantním nebo proměnlivým 
-časovým krokem. Časovou řadu nazýváme **homogenní**, pokud hodnoty jednolivých členů
-pozorované řady odrážejí pouze přirozenou proměnlivost studované veličiny.
-
+časovým krokem. Budeme procvičovat řady stochastické. Dále časovou řadu nazýváme 
+**homogenní**, pokud hodnoty jednolivých členů pozorované řady odrážejí pouze 
+přirozenou proměnlivost studované veličiny.\
+Cíli analýzy časové řady je jednak pochopení a určení modelu, generujícího sledovaná
+data, jednak predikce vývoje na základě tohoto modelu.
 
 
 Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`. 
@@ -95,14 +92,14 @@ dev.off()
 
 ## Dekompozice časové řady
 
-Proces identifikace trendové, sezónní a cyklické složky v **aditivních** či 
-**multiplikativních** časových řadách. Velmi silné tam, kde je silný trend nebo 
-stabilní sezónní složka.
+Proces identifikace a rozkladu časové řady na trendovou, sezónní, cyklickou a 
+náhodnou složku buďto v **aditivním** nebo **multiplikativním** typu. 
+Velmi silné tam, kde je silný trend nebo stabilní sezónní složka.
 
 $$
 \begin{array}{c}
-Y(t)=\mathrm{T} + \mathrm{S} + \mathrm{C} + \mathrm{R}\\ 
-Y(t)=\mathrm{T} \times \mathrm{S}\times \mathrm{C}\times \mathrm{R} 
+Y(t)=T_t + S_t + C_t + R_t\\ 
+Y(t)=T_t \times S_t\times C_t\times R_t
 \end{array}
 $$
 
@@ -123,7 +120,9 @@ md2 <- lm(tavg ~ date + I(as.numeric(date)^2),
           data = klementinum)
 md3 <- lm(tavg ~ date + I(as.numeric(date)^2) + I(as.numeric(date)^3), 
           data = klementinum)
-lapply(X = list(md1, md2, md3), FUN = AIC)
+res <- as.numeric(lapply(X = list(md1, md2, md3), FUN = AIC))
+names(res) <- c("md1", "md2", "md3")
+res
 ```
 
 
@@ -179,11 +178,58 @@ klementinum_ts <- ts(
   deltat = 1/365.25)
 ```
 
-### Sezónní a cyklická složka
+### Sezónní složka
+
+Sezónní složka představuje periodickou změnu, která se odehrává v průběhu roku 
+opakovaně.
+
+```{r, eval=FALSE}
+klementinum$detrended_avg <- klementinum$tavg - predict(md3)
+klementinum$doy <- as.numeric(format(klementinum$date, "%j"))
+
+md4 <- lm(
+  detrended_avg ~ sin(2 * pi * doy / 365.25) + cos(2 * pi * doy / 365.25), 
+  data = klementinum)
+
+klementinum$seasonal <- predict(md4)
+
+plot(sin(as.numeric(klementinum90_20$date)*2*pi) + 
+         cos(as.numeric(klementinum90_20$date)*2*pi), type = "l")
+plot(klementinum$seasonal,  
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050")
+
+klementinum$residuals <- klementinum$tavg - predict(md3) - klementinum$seasonal
+```
+
+### Cyklická složka
+
+Cyklická složka je oscialce kolem trendu, která může mít proměnlivou periodu i 
+amplitudu se složitě identifikovatelnou příčinností.
 
 ### Náhodná složka
 
-Pokud z řady odstraníme trend, sezónní a cyklickou složku, získáme řadu, která 
+```{r}
+plot(klementinum$residuals,  
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050")
+
+qqnorm(klementinum$residuals)
+qqline(klementinum$residuals, col = "#660033")
+acf(klementinum$residuals, main = "ACF of Residuals")
+```
+
+
+Zahrnuje nejistoty v měření, zpracování apod. U dobře určeného modelu má tato složka
+charakter bílého šumu
+
+$$
+\mathbb{E}X_t = 0 \mathrm{\:pro\:všechna\:} t\:\text{a var}(X) < \infty
+$$
+*Posloupnost náhodných veličin nazveme bílý šum, pokud jde o posloupnost centrovaných
+nekorelovaných veličin s kladným konečným rozptylem.*\
 
 ## Box-Jenkins analýza (ARIMA proces)
 
@@ -193,46 +239,16 @@ průměru. Využívá se pro simulace časových řad.
 
 ARIMA(p, d, q)
 
-### Autokorelace
-
-Je korelace sama se sebou. 
-
-```{r, fig.align='center', fig.width=10, results='hide'}
-# Define the time window and subset the data
-okno <- seq(from = as.POSIXct("1990-01-01"), 
-            to = as.POSIXct("2020-12-31"), 
-            by = 3600*24)
-klementinum90_20 <- klementinum[klementinum$date %in% okno, ]
-
-# Set up a multi-panel plotting window
-par(mfrow = c(1, 3))
-
-# Apply the plotting and trend line logic
-sapply(X = c(1, 30, 90), 
-       FUN = function(x) {
-         # Create lagged variables
-         lagged_x <- klementinum90_20$tavg[-c(1:x)]
-         lagged_y <- klementinum90_20$tavg[-c((length(klementinum90_20$tavg) - x + 1):length(klementinum90_20$tavg))]
-         
-         # Scatter plot
-         plot(lagged_x, lagged_y, 
-              cex = 0.5, col = "#00000080", 
-              xlab = paste("Lag", x), ylab = "Tavg",
-              main = paste("Lag =", x))
-         
-         # Fit linear model and add trend line
-         lm_fit <- lm(lagged_y ~ lagged_x)
-         abline(lm_fit, col = "#660033", lwd = 2)
-       }
-)
-```
 
 
 ### Parciální autokorelace
 
+Vyjadřuje vztah mezi hodnotou v čase $t$ a hodnotou lag $t$, po ošetření korelace
+Používá se k identifikaci řádu autoregresivního modelu AR($p$).
+
 Stupeň určujeme pomocí funkce `pacf()`, 
 
-```{r, fig.align='center', fig.width=10, echo=FALSE}
+```{r, fig.align='center', fig.height=10, fig.width=10, echo=FALSE}
 par(mfrow = c(2, 2))
 # Calculate the ACF without plotting
 acf_result <- acf(klementinum$tavg, plot = FALSE)
@@ -271,6 +287,41 @@ abline(h = c(-1.96 / sqrt(length(klementinum$tavg)), 1.96 / sqrt(length(klementi
        col = "#660033", lty = 2)  # Change the color here
 
 ```
+
+### Model klouzavého průměru
+
+Určuje se s pomocí autokorelační funkce `acf()` procesu MA($q$) s posunem $q+1$ nebo vyšším.
+
+```{r, fig.align='center', fig.width=10, results='hide'}
+# Define the time window and subset the data
+okno <- seq(from = as.POSIXct("1990-01-01"), 
+            to = as.POSIXct("2020-12-31"), 
+            by = 3600*24)
+klementinum90_20 <- klementinum[klementinum$date %in% okno, ]
+
+# Set up a multi-panel plotting window
+par(mfrow = c(1, 3))
+
+# Apply the plotting and trend line logic
+sapply(X = c(1, 30, 90), 
+       FUN = function(x) {
+         # Create lagged variables
+         lagged_x <- klementinum90_20$tavg[-c(1:x)]
+         lagged_y <- klementinum90_20$tavg[-c((length(klementinum90_20$tavg) - x + 1):length(klementinum90_20$tavg))]
+         
+         # Scatter plot
+         plot(lagged_x, lagged_y, 
+              cex = 0.5, col = "#00000080", 
+              xlab = paste("Lag", x), ylab = "Tavg",
+              main = paste("Lag =", x))
+         
+         # Fit linear model and add trend line
+         lm_fit <- lm(lagged_y ~ lagged_x)
+         abline(lm_fit, col = "#660033", lwd = 2)
+       }
+)
+```
+
 
 ### Klouzavé průměry
 
@@ -316,187 +367,18 @@ $$
 
 kde $\alpha$ je itne
 
-```{r, eval=FALSE}
-md2 <- lm(tavg ~ sin(as.numeric(klementinum90_20$date)*2*pi) + cos(as.numeric(klementinum90_20$date)*2*pi), data = klementinum90_20)
-plot(klementinum90_20$tavg - fitted.values(md2), type ="l")
+```{r, eval=TRUE, fig.width = 10, fig.align='center'}
+md2 <- lm(
+  tavg ~ sin(as.numeric(klementinum90_20$date)*2*pi) + 
+         cos(as.numeric(klementinum90_20$date)*2*pi), 
+  data = klementinum90_20)
+plot(sin(as.numeric(klementinum90_20$date)*2*pi) + 
+         cos(as.numeric(klementinum90_20$date)*2*pi), type = "l")
+plot(klementinum90_20$tavg - fitted.values(md2),  
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050")
 ```
-
-
-```{r}
-optimize_arima <- function(ts_data, max_p = 3, max_d = 2, max_q = 3) {
-  # Initialize variables to store the best model and metric
-  best_model <- NULL
-  best_aic <- Inf
-  best_order <- c(0, 0, 0)
-  
-  # Iterate over all combinations of p, d, q
-  for (p in 0:max_p) {
-    for (d in 0:max_d) {
-      for (q in 0:max_q) {
-        # Try to fit the model and catch errors
-        try({
-          model <- arima(ts_data, order = c(p, d, q))
-          model_aic <- AIC(model)
-          
-          # Update the best model if the current one is better
-          if (model_aic < best_aic) {
-            best_aic <- model_aic
-            best_model <- model
-            best_order <- c(p, d, q)
-          }
-        }, silent = TRUE)
-      }
-    }
-  }
-  
-  # Return the best model and its order
-  list(model = best_model, order = best_order, aic = best_aic)
-}
-
-# Example usage
-set.seed(123)
-ts_data <- arima.sim(list(order = c(1, 1, 1), ar = 0.7, ma = -0.5), n = 100)
-
-result <- optimize_arima(ts_data)
-print(result$order)  # Optimal (p, d, q)
-print(result$aic)    # Corresponding AIC
-
-```
-
-
-```{r}
-md3 <- arima(x = klementinum_ts, order = c(0, 1, 1))
-md3
-
-```
-
-
-<!-- Využijeme znalostí z -->
-
-<!-- ```{r, fig.align='center'} -->
-<!-- hydroplot <- function(srazka, vypar, odtok, ...) { -->
-<!--   plot(odtok,  -->
-<!--        ylim = c(-max(odtok),  -->
-<!--                 2*max(odtok)),  -->
-<!--        yaxt = "n", -->
-<!--        xlab = "",  -->
-<!--        ylab = "",  -->
-<!--        ...) -->
-<!--   axis(2,  -->
-<!--        at = round(signif(seq(0, max(odtok), length = 5), 2))) -->
-<!--   abline(h = 0, lty = 3) -->
-<!--   par(new = TRUE) -->
-<!--   plot(x = time(srazka),  -->
-<!--        y = as.numeric(srazka),  -->
-<!--        col = "dodgerblue4",  -->
-<!--        type = "h", -->
-<!--        ylim = rev(c(0, 3*max(srazka))), -->
-<!--        xlab = "",  -->
-<!--        ylab = "",  -->
-<!--        axes = FALSE, ...) -->
-<!--   axis(4,  -->
-<!--        at = round(signif(seq(0, max(odtok), length = 5), 2))) -->
-<!--   par(new = TRUE) -->
-<!--   deltaet <- max(vypar) - min(vypar) -->
-<!--   plot(x = time(vypar),  -->
-<!--        y = as.numeric(vypar), col = "salmon1", type = "l", -->
-<!--        ylim = c(min(vypar), max(vypar) + 2.5*deltaet), -->
-<!--        xlab = "",  -->
-<!--        ylab = "",  -->
-<!--        axes = FALSE, ...) -->
-<!--   axis(4,  -->
-<!--        at = round(signif(seq(min(vypar), max(vypar), length = 5), 2), 1)) -->
-<!-- } -->
-
-<!-- dframe <- ts(data = data.frame(P = 1:365, EP = 21:385,Q = 31:395),  -->
-<!--              start = c(2024, 1, 1),  -->
-<!--              frequency = 525960) -->
-<!-- time(dframe) -->
-
-<!-- hydroplot(srazka = dframe[, "P"],  -->
-<!--          vypar = dframe[, "EP"],  -->
-<!--          odtok = dframe[, "Q"],  -->
-<!--          xlim = as.Date(c("2001-09-01","2001-09-21"))) -->
-<!--          title("rainfall, runoff and potential evaporation (mm/d)",  -->
-<!--                cex.main = 1.25,  -->
-<!--                font.main = 1) -->
-<!-- ``` -->
-
-<!-- ## Autokorelační funkce -->
-
-<!-- Slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodných čísel. Graficky je vyjádřena pomocí *korelogramu*. -->
-
-<!-- ```{r, fig.cap="Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou"} -->
-<!-- par(mfrow = c(1, 2)) -->
-<!-- acf(dataset$R) -->
-<!-- acf(co2) -->
-<!-- ``` -->
-
-
-<!-- ## Dekompozice časové řady -->
-
-<!-- Dekompozicí časové řady rozumíme rozklad na složky: -->
-
-<!--   1. Trendovou $T_t$ -->
-<!--   2. Sezónní $S_t$ -->
-<!--   3. Cyklickou $C_t$ -->
-<!--   4. Náhodnou $\epsilon_t$ -->
-
-<!-- ### Aditivní dekompozice -->
-
-<!-- Předpokládáme, že řadu lze rozložit na součet složek -->
-
-<!-- $$ -->
-<!-- Y_t =T_t +S_t +C_t +\epsilon_t, -->
-<!-- $$ -->
-
-<!-- ```{r} -->
-<!-- dec_co2 <- decompose(co2) -->
-<!-- plot(dec_co2) -->
-<!-- plot(dec_co2$trend) -->
-<!-- ``` -->
-
-<!-- ### Residua -->
-
-<!-- Ověřte, zda po dekompozici `co2` residua $\epsilon_t$ splňují definici *bílého šumu*  -->
-<!-- tzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované. -->
-
-<!-- ```{r} -->
-<!-- shapiro.test(dec_co2$random) -->
-<!-- mean(dec_co2$random, na.rm = TRUE) -->
-<!-- var(dec_co2$random, na.rm = TRUE) -->
-<!-- # ... -->
-<!-- ``` -->
-
-<!-- ## Zhlazovací funkce -->
-
-<!-- ```{r} -->
-<!-- par(mfrow = c(1, 2)) -->
-<!-- plot(dataset$Tmin, type = "l",  -->
-<!--      col = "slategray",  -->
-<!--      lwd = 0.5) -->
-<!-- md1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)),  -->
-<!--              data = dataset,  -->
-<!--              degree = 1) -->
-<!-- lines(md1$fitted, col = "orangered") -->
-
-<!-- plot(filter(x = dataset$R,  -->
-<!--              method = "convolution",  -->
-<!--              filter = c(rep(1/365.25, 365.25)),  -->
-<!--              sides = 1),  -->
-<!--       col = "dodgerblue3",  -->
-<!--      type = "l") -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- md2 <- lm(Tmin ~ DTM, data = dataset) -->
-<!-- plot(dataset$Tmin, type = "l",  -->
-<!--      col = "slategray",  -->
-<!--      lwd = 0.5) -->
-<!-- lines(md1$fitted, col = "darkred") -->
-<!-- abline(coef(md2), col = "orangered") -->
-
-<!-- ``` -->
 
 
 

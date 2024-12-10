@@ -8,37 +8,41 @@ $$
 \mathrm{cov}_{xy} = \dfrac{1}{n-1}\sum_{i=1}^{n}x_iy_i
 $$
 
-Takový výsledek, produkt, není v praxi dobře interpretovatelný.
+Výsledek v podobě součinu není v praxi dobře interpretovatelný, proto se k porovnání těstnosti vztahu používá výpočtu **korelace** jako standardizované míry v rozmezí $\langle-1;1\rangle$.
 
 ## Korelace {#sec-korelace}
 
-Standardizovaný sdílený rozptyl dvou veličiny je korelace. Vyjadřuje, zda se jedna 
-ze zkoumaných veličin mění, pokud se zároveň mění i druhá. Korelace neadresuje 
-příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
+Standardizovaný sdílený rozptyl dvou veličiny je korelace. Vyjadřuje, zda se jedna ze zkoumaných veličin v průměru mění, pokud se zároveň mění i druhá. Korelace neadresuje příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.
 
-Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality 
-u obou veličin lze použít **Paersonův** korelační koeficient,
+Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít **Paersonův** korelační koeficient,
 
 $$
 r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}\sqrt{\sum(y_i - \bar{y})^2}}
 $$ {#eq-pearson}
 
-přičemž platí $r_{xy}\in\langle-1;1\rangle$. Alternativně můžeme použít neparametrický výpočet **Spearmana**, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako $d_i = x_{ri} - y_{ri}$
+přičemž platí $r_{xy}\in\langle-1;1\rangle$. Alternativně můžeme použít neparametrický výpočet **Spearmanův**, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako $d_i = x_{ri} - y_{ri}$
 
 $$
-\rho = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)} 
+\rho_{xy} = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)} 
 $$ {#eq-spearman}
 
 ::: callout-tip
 ## Cvičení
 
-1. Napište vlastní funkci, které pro dané vektory `x` a `y` spočítá korelační Spearmanův koeficient.\
-  a) Nejprve je nutné identifikovat pořadí,\
-  b) dále spočítat kvadrát vzdáleností,\
-  c) a po dosazení počtu měření $n$ dosadit do rovnice.\
-2. Vyzkoušejte obě funkce na datech
+1.  Napište vlastní funkci, které pro dané vektory `x` a `y` spočítá korelační Spearmanův koeficient.\
+
+<!-- -->
+
+a)  Nejprve je nutné identifikovat pořadí,\
+b)  dále spočítat druhou mocninu vzdáleností,\
+c)  a po dosazení počtu měření $n$ dosadit do rovnice.\
+
+<!-- -->
+
+2.  Vyzkoušejte obě funkce na datech
 
 Řešení:\
+
 ```{r, eval=FALSE}
 #| code-fold: true
 sp_k <- function(x, y) {
@@ -51,13 +55,12 @@ sp_k <- function(x, y) {
 }
 ```
 
-
 ```{r, eval=FALSE}
 sp_k(_, _)
 cor(_, _, method = "Spearman")
 ```
 
-3. Pokuste se odhadnout korelační koeficient následujících veličin
+3.  Pokuste se odhadnout korelační koeficient následujících veličin
 
 ```{r, echo=FALSE, fig.align='center'}
 par(mfrow = c(2, 2))
@@ -93,15 +96,12 @@ plot(x = x4,
      axes = FALSE)
 ```
 
-  s tolerancí 0.05. A) `r fitb(round(cor(1:100, x1), 2), num = TRUE, tol = 0.05)`, 
-  B) `r fitb(round(cor(1:100, x2), 2), num = TRUE, tol = 0.05)`, 
-  C) `r fitb(round(cor(x3, y3), 2), num = TRUE, tol = 0.05)`, 
-  D) `r fitb(round(cor(1:100, x4), 2), num = TRUE, tol = 0.05)`. Pro desetinný rozvoj použijte tečku.
+s tolerancí 0.05. A) `r fitb(round(cor(1:100, x1), 2), num = TRUE, tol = 0.05)`, B) `r fitb(round(cor(1:100, x2), 2), num = TRUE, tol = 0.05)`, C) `r fitb(round(cor(x3, y3), 2), num = TRUE, tol = 0.05)`, D) `r fitb(round(cor(1:100, x4), 2), num = TRUE, tol = 0.05)`. Pro desetinný rozvoj použijte tečku.
 :::
 
 ## Regresní model
 
-Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme **nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí **lineárního modelu**. 
+V regresní analýze posuzujeme příčinnou závislost (narozdíl od korelace). Identifikujeme **nezávislou proměnnou** a **závislou proměnnou**. Míru závislosti posuzujeme pomocí **lineárního modelu**.
 
 $$
 y = \beta_0 + \beta_1x
@@ -115,7 +115,7 @@ $$ kde $k$ je počet volných parametrů modelu a $\hat{L}$ je věrohodnostní f
 
 ### První regresní model
 
-  1. Uvažujme následující data, kde předpokládáme příčinnou závislost $y$ na $x$.
+1.  Uvažujme následující data, kde předpokládáme příčinnou závislost $y$ na $x$.
 
 ```{r}
 dfr <- data.frame(
@@ -132,20 +132,20 @@ dfr <- data.frame(
          52.11, 55.95, 64.02, 65.9 , 53.94, 69.92, 92.1 , 92.78, 99.03, 85.09)
 )
 ```
-  
-  2. Sestrojíme lineární model funkcí `lm()` a uložíme do proměnné `md1`.
+
+2.  Sestrojíme lineární model funkcí `lm()` a uložíme do proměnné `md1`.
 
 ```{r}
 md1 <- lm(formula = y ~ x, data = dfr)
 ```
 
-  3. Struktura objektu `md1` je komplexní, můžeme vybírat jednotlivé proměnné k dalším účelům, například pro tvorbu grafů.
+3.  Struktura objektu `md1` je komplexní, můžeme vybírat jednotlivé proměnné k dalším účelům, například pro tvorbu grafů.
 
 ```{r}
 str(md1, 1) #<1>
 ```
-1. Vypíšeme strukturu objektu do první hierarchické úrovně
 
+1.  Vypíšeme strukturu objektu do první hierarchické úrovně
 
 ```{r, fig.align='center'}
 with(data = dfr, #<1>
@@ -161,25 +161,56 @@ text(x = 5,
      y = md1$coefficients[1] + 4, 
      labels = expression(paste(beta == round(md1$coefficients[1], 2))))
 ```
-1. Určíme základní proměnné $x$ a $y$ v grafu a nastavíme limity okna.
-2. Z výstupu objektu lineárního modelu vytáhneme hodnoty koeficientů $\hat{\beta_0}$, 
-   $\hat{\beta_1}$ a použijeme jako koeficienty přímky.
-3. Dokreslíme průnik v počátku.
 
-  4. Model vyhodnotíme pomocí funkce `summary()`
+1.  Určíme základní proměnné $x$ a $y$ v grafu a nastavíme limity okna.
+
+2.  Z výstupu objektu lineárního modelu vytáhneme hodnoty koeficientů $\hat{\beta_0}$, $\hat{\beta_1}$ a použijeme jako koeficienty přímky.
+
+3.  Dokreslíme průnik v počátku.
+
+4.  Model vyhodnotíme pomocí funkce `summary()`
 
 ```{r}
 summary(md1)
 ```
 
-Souhrn obsahuje původní zadání v podobě rovnice, dále identifikované koeficienty modelu, významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.\
+Souhrn obsahuje několik boduů k interpretaci kvality modelu.\
+  
+  1. `Call:` původní zadání závislosti v podobě rovnice. \
+  2. `Residuals:` popisné statistiky residuí modelu. \
+  3.`Coefficients:` identifikované koeficienty modelu \
+    - `Intercept` odhad $y$, když $x=0$.\
+    - `x` S každým zvýšením $x$ se $y$ zvýší o $3.7816$; statisticky významný odhad `***`\
+  4. `Residual standard error:` Průměrná velikost residuí.\
+  5. `Multiple/Adujsted R-squared:` Podíl vysvětlené variability v $y$. Adjusted 
+  zohledňuje počet prediktorů a penalizuje složitější modely.\
+  6. `F-statistic:` Testuje statistickou významnost modelu.
+  
+  významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.
 
-```{r}
+$R^2 = 1-\dfrac{\mathrm{MSE}}{\mathrm{MST}}$
+
+kde $\mathrm{MSE}$ je střední kvadratická chyba (vzdálenost mezi skutečnými hodnotami a hodnotami predikovanými modelem) a $\mathrm{MST}$ střední kvadratická odchylka (jak moc se jednotlivé hodnoty liší od průměru).
+
+$$
+\mathrm{MSE} = \dfrac{1}{n}\sum\limits_{i=1}^{n}(y_i-\hat{y_i})^2
+$$
+
+$$
+\mathrm{MST} = \dfrac{1}{n}\sum\limits_{i=1}^{n}(y_i-\bar{y})^2
+$$\
+
+```{r, fig.align='center', fig.width=10, fig.height = 7}
 par(mfrow = c(2, 2))
 plot(md1, 1:4)
 ```
 
 R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. Zde nás budou zajímat zejména **residua** modelu. Dle prvního grafu by mohl model se závislostí na polynomu být lepší volbou.\
+
+  1. `Residuals vs. fitted` posuzuje homoskedasticitu (náhodný rozptyl residuí).\
+  2. `Normal Q-Q` vynesení kvantilů residuí oproti kvantilům normálního rozdělení.\
+  3. Zobrazení druhé odmocniny absolutních residuí vůči odhadnutým hodnotám k posouzení homoskedasticity.\
+  4. `Residuals vs. Levarage` identifikuje hodnoty s výrazným pákovým efektem (schopností ovlivnit výslednou shodu modelu).
 
 Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnnou.
 
@@ -188,17 +219,38 @@ md2 <- lm(y ~ poly(x, 2))
 summary(md2)
 ```
 
-```{r}
+
+```{r, echo=FALSE}
+opts1 <- c("Mají normální rozdělení", 
+  "Mají vyšší střední hodnotu než `md1`, což indikuje lepší shodu modelu", 
+  answer = "Mají nižší rozptyl než `md1`, což indikuje lepší shodu modelu")
+```
+
+
+  1. `Call:` ukazuje zadání modelu s přidaným polynomem až do 2. stupně. \
+  2. `Residuals:` `r longmcq(opts1)`. \
+  3.`Coefficients:` identifikované koeficienty modelu \
+    - V $x=0$ má $y$ hodnotu `r fitb(c("42.536", "42,536"))`.\
+    - `poly(x, 1)` S každým zvýšením $x$ se $y$ zvýší o $3.7816$; statisticky významný odhad `***`\
+  4. Průměrná velikost residuí je: `r fitb(c("14.33", "14,33"))`.\
+  5. Model vysvětluje `r mcq(c("méně", answer = "více"))` variability.\
+
+```{r, fig.align='center', fig.width=10, fig.height=7}
 par(mfrow = c(2, 2))
 plot(md2, 1:4)
 ```
 
-```{r}
+```{r, fig.align='center'}
 with(data = dfr, 
      expr = plot(x, y, xlim = c(0, 30)))
 pred <- predict(md2)
 ix <- sort(dfr$x, index.return=T)$ix
 lines(x[ix], pred[ix], col = 'orangered')
+abline(v = 0, lty = "dashed")
+abline(h = md2$coefficients[1], lty = "dashed")
+text(x = 5,
+     y = md2$coefficients[2] + 4, 
+     labels = expression(paste(beta == round(md2$coefficients[2], 2))))
 ```
 
 Srovnejme modely vzájemně
@@ -207,22 +259,21 @@ Srovnejme modely vzájemně
 AIC(md1, md2)
 ```
 
-::: callout-tip
-## Cvičení
+<!-- ::: callout-tip -->
+<!-- ## Cvičení -->
 
-  1. Prozkoumejte závislost odtoku na velikosti povodí\ 
+<!-- 1.  Prozkoumejte závislost odtoku na velikosti povodí -->
 
-| Povodí | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ |      
-|--------|----------------|--------|-------------|--------|--------------|---------|     
-| 1      |                |        |             |        |              |         |     
-| 2      |                |        |             |        |              |         |      
-| 3      |                |        |             |        |              |         |      
-| 4      |                |        |             |        |              |         |      
-| 5      |                |        |             |        |              |         |     
-| 6      |                |        |             |        |              |         |     
-| 7      |                |        |             |        |              |         |     
-| 8      |                |        |             |        |              |         |     
-| 9      |                |        |             |        |              |         |     
-| 10     |                |        |             |        |              |         |     
-  
-:::
+<!-- | Povodí | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ | -->
+<!-- |--------|----------------|--------|-------------|--------|--------------|---------| -->
+<!-- | 1      |                |        |             |        |              |         | -->
+<!-- | 2      |                |        |             |        |              |         | -->
+<!-- | 3      |                |        |             |        |              |         | -->
+<!-- | 4      |                |        |             |        |              |         | -->
+<!-- | 5      |                |        |             |        |              |         | -->
+<!-- | 6      |                |        |             |        |              |         | -->
+<!-- | 7      |                |        |             |        |              |         | -->
+<!-- | 8      |                |        |             |        |              |         | -->
+<!-- | 9      |                |        |             |        |              |         | -->
+<!-- | 10     |                |        |             |        |              |         | -->
+<!-- ::: -->

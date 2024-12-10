@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 11&nbsp; Hydroklimatické indexy</title>
+<title>Metody vyhodnocování vodohospodářských dat - 10&nbsp; Hydroklimatické indexy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./11_korelace_regrese.html" rel="next">
-<link href="./09_casove_rady.html" rel="prev">
+<link href="./07_testovani.html" rel="prev">
 <link href="./images/DALLE_no-bg.webp" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_hydro_index.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_hydro_index.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -212,26 +212,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_extremalni_rozdeleni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
   </div>
 </li>
     </ul>
@@ -244,15 +238,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#srážko-odtokový-součinitel" id="toc-srážko-odtokový-součinitel" class="nav-link active" data-scroll-target="#srážko-odtokový-součinitel"><span class="header-section-number">11.1</span> Srážko-odtokový součinitel</a></li>
-  <li><a href="#základní-odtok" id="toc-základní-odtok" class="nav-link" data-scroll-target="#základní-odtok"><span class="header-section-number">11.2</span> Základní odtok</a></li>
-  <li><a href="#budykova-křivka" id="toc-budykova-křivka" class="nav-link" data-scroll-target="#budykova-křivka"><span class="header-section-number">11.3</span> Budykova křivka</a></li>
-  <li><a href="#pardého-koeficienty" id="toc-pardého-koeficienty" class="nav-link" data-scroll-target="#pardého-koeficienty"><span class="header-section-number">11.4</span> Pardého koeficienty</a></li>
-  <li><a href="#index-předchozích-srážek" id="toc-index-předchozích-srážek" class="nav-link" data-scroll-target="#index-předchozích-srážek"><span class="header-section-number">11.5</span> Index předchozích srážek</a></li>
-  <li><a href="#frekvenční-křivky" id="toc-frekvenční-křivky" class="nav-link" data-scroll-target="#frekvenční-křivky"><span class="header-section-number">11.6</span> Frekvenční křivky</a>
+  <li><a href="#srážko-odtokový-součinitel" id="toc-srážko-odtokový-součinitel" class="nav-link active" data-scroll-target="#srážko-odtokový-součinitel"><span class="header-section-number">10.1</span> Srážko-odtokový součinitel</a></li>
+  <li><a href="#základní-odtok" id="toc-základní-odtok" class="nav-link" data-scroll-target="#základní-odtok"><span class="header-section-number">10.2</span> Základní odtok</a></li>
+  <li><a href="#budykova-křivka" id="toc-budykova-křivka" class="nav-link" data-scroll-target="#budykova-křivka"><span class="header-section-number">10.3</span> Budykova křivka</a></li>
+  <li><a href="#pardého-koeficienty" id="toc-pardého-koeficienty" class="nav-link" data-scroll-target="#pardého-koeficienty"><span class="header-section-number">10.4</span> Pardého koeficienty</a></li>
+  <li><a href="#index-předchozích-srážek" id="toc-index-předchozích-srážek" class="nav-link" data-scroll-target="#index-předchozích-srážek"><span class="header-section-number">10.5</span> Index předchozích srážek</a></li>
+  <li><a href="#frekvenční-křivky" id="toc-frekvenční-křivky" class="nav-link" data-scroll-target="#frekvenční-křivky"><span class="header-section-number">10.6</span> Frekvenční křivky</a>
   <ul class="collapse">
-  <li><a href="#n-letý-maximální-průtok" id="toc-n-letý-maximální-průtok" class="nav-link" data-scroll-target="#n-letý-maximální-průtok"><span class="header-section-number">11.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</a></li>
-  <li><a href="#m-denní-průtok" id="toc-m-denní-průtok" class="nav-link" data-scroll-target="#m-denní-průtok"><span class="header-section-number">11.6.2</span> <span class="math inline">\(M-\)</span>denní průtok</a></li>
+  <li><a href="#n-letý-maximální-průtok" id="toc-n-letý-maximální-průtok" class="nav-link" data-scroll-target="#n-letý-maximální-průtok"><span class="header-section-number">10.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</a></li>
+  <li><a href="#m-denní-průtok" id="toc-m-denní-průtok" class="nav-link" data-scroll-target="#m-denní-průtok"><span class="header-section-number">10.6.2</span> <span class="math inline">\(M-\)</span>denní průtok</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -262,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-hydroklimatickeindexy" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></h1>
+<h1 class="title"><span id="sec-hydroklimatickeindexy" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></h1>
 </div>
 
 
@@ -301,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><span class="math inline">\(\varphi\)</span> [-]</td>
 <td>Součinitel odtoku</td>
-<td><a href="#eq-soucinitelodtoku">Rovnice&nbsp;<span>11.1</span></a></td>
+<td><a href="#eq-soucinitelodtoku">Rovnice&nbsp;<span>10.1</span></a></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(\phi\)</span> [-]</td>
@@ -373,12 +367,12 @@ Výsledek by měl vypadat takto:</li>
 </ol>
 </div>
 </div>
-<section id="srážko-odtokový-součinitel" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="srážko-odtokový-součinitel"><span class="header-section-number">11.1</span> Srážko-odtokový součinitel</h2>
+<section id="srážko-odtokový-součinitel" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="srážko-odtokový-součinitel"><span class="header-section-number">10.1</span> Srážko-odtokový součinitel</h2>
 <p>Vyjadřuje poměr mezi dlouhodobým odtokem a srážkou na povodí</p>
 <p><span id="eq-soucinitelodtoku"><span class="math display">\[
 \varphi\:[\text{mm}] = \dfrac{Q\:[\text{mm}]}{P\:[\text{mm}]}
-\tag{11.1}\]</span></span></p>
+\tag{10.1}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -395,8 +389,8 @@ Výsledek by měl vypadat takto:</li>
 </div>
 </div>
 </section>
-<section id="základní-odtok" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="základní-odtok"><span class="header-section-number">11.2</span> Základní odtok</h2>
+<section id="základní-odtok" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="základní-odtok"><span class="header-section-number">10.2</span> Základní odtok</h2>
 <p>Složka celkového odtoku v hydrologické bilanci, která je tvořená dotací z podzemních vod. Z odtokové řady se identifikuje aplikací statistických filtrů.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -435,12 +429,12 @@ Výsledek by měl vypadat takto:</li>
 </div>
 </div>
 </section>
-<section id="budykova-křivka" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="budykova-křivka"><span class="header-section-number">11.3</span> Budykova křivka</h2>
+<section id="budykova-křivka" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="budykova-křivka"><span class="header-section-number">10.3</span> Budykova křivka</h2>
 <p>Na budykovu křivku jsme narazili už při tvorbě grafického výstupu v <a href="03_grafy.html"><span>Kapitola&nbsp;5</span></a>. Popisuje referenční klimatické podmínky povodí.</p>
 </section>
-<section id="pardého-koeficienty" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="pardého-koeficienty"><span class="header-section-number">11.4</span> Pardého koeficienty</h2>
+<section id="pardého-koeficienty" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="pardého-koeficienty"><span class="header-section-number">10.4</span> Pardého koeficienty</h2>
 <p>Tento ukazatel zobrazuje poměr měsíčního odtoku k celkovému ročnímu odtoku.</p>
 <ol type="a">
 <li>S pomocí funkce <code>aggregate()</code> spočtěte roční odtoky</li>
@@ -470,19 +464,19 @@ Výsledek by měl vypadat takto:</li>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1,2">Nejprve dvakrát aplikujeme funkci <code>aggregate()</code>, abychom dostali součty odtoků za jednotlivé roky a za jednotlivé měsíce v letech.</span>
+<span data-code-lines="1,2" data-code-annotation="1" data-code-cell="annotated-cell-2">Nejprve dvakrát aplikujeme funkci <code>aggregate()</code>, abychom dostali součty odtoků za jednotlivé roky a za jednotlivé měsíce v letech.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="3,4">Výsledné data.frame poté sloučíme do jednoho s pomocí funkce <code>merge()</code>, za příponu zvolíme časové okno, ze kterého jsme hodnoty počítali.</span>
+<span data-code-lines="3,4" data-code-annotation="2" data-code-cell="annotated-cell-2">Výsledné data.frame poté sloučíme do jednoho s pomocí funkce <code>merge()</code>, za příponu zvolíme časové okno, ze kterého jsme hodnoty počítali.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-2" data-code-lines="7,8,9,10">Vytvoříme berevné schéma na základě 50% kvantilu hodnot.</span>
+<span data-code-lines="7,8,9,10" data-code-annotation="3" data-code-cell="annotated-cell-2">Vytvoříme berevné schéma na základě 50% kvantilu hodnot.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-2" data-code-lines="12,13,14,15,16,17">Vyneseme do krabicového grafu.</span>
+<span data-code-lines="12,13,14,15,16,17" data-code-annotation="4" data-code-cell="annotated-cell-2">Vyneseme do krabicového grafu.</span>
 </dd>
 </dl>
 </div>
@@ -495,8 +489,8 @@ Výsledek by měl vypadat takto:</li>
 </div>
 </div>
 </section>
-<section id="index-předchozích-srážek" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="index-předchozích-srážek"><span class="header-section-number">11.5</span> Index předchozích srážek</h2>
+<section id="index-předchozích-srážek" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="index-předchozích-srážek"><span class="header-section-number">10.5</span> Index předchozích srážek</h2>
 <p>Je definována s pomocí rozpadové konstanty <span class="math inline">\(k\)</span> a <span class="math inline">\(n\)</span> předchozích dní</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -514,8 +508,8 @@ Výsledek by měl vypadat takto:</li>
 </div>
 </div>
 </section>
-<section id="frekvenční-křivky" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="frekvenční-křivky"><span class="header-section-number">11.6</span> Frekvenční křivky</h2>
+<section id="frekvenční-křivky" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="frekvenční-křivky"><span class="header-section-number">10.6</span> Frekvenční křivky</h2>
 <p>Pravděpodobnost překročení <span class="math inline">\(P(X\geq x_i)\)</span> <span class="math inline">\(i-\)</span>té hodnoty v souboru lze zapsat <span class="math display">\[
 P = \dfrac{m}{n}, \quad \text{pokud } n\rightarrow \infty
 \]</span> V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je <span class="math inline">\(P(X\geq x_{\min})=1\)</span>. Vzorec byl Čegodajevem upraven na <span class="math display">\[
@@ -523,8 +517,8 @@ P = \dfrac{m-0,3}{n+0,4}
 \]</span> Vztah mezi pravděpodobností překročení <span class="math inline">\(P\)</span> a dobou opakování <span class="math inline">\(T'\)</span> je <span class="math display">\[
 T' = \dfrac{1}{1-P(X\geq x_i)}
 \]</span></p>
-<section id="n-letý-maximální-průtok" class="level3" data-number="11.6.1">
-<h3 data-number="11.6.1" class="anchored" data-anchor-id="n-letý-maximální-průtok"><span class="header-section-number">11.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</h3>
+<section id="n-letý-maximální-průtok" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="n-letý-maximální-průtok"><span class="header-section-number">10.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</h3>
 <p>Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1<span class="math inline">\(\times\)</span> za <span class="math inline">\(N\)</span> let. Určuje se pro doby opakování <span class="math inline">\(N = 1, 2, 5, 10, 20, 50, 100\)</span> let.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -543,8 +537,8 @@ T' = \dfrac{1}{1-P(X\geq x_i)}
 </div>
 </div>
 </section>
-<section id="m-denní-průtok" class="level3" data-number="11.6.2">
-<h3 data-number="11.6.2" class="anchored" data-anchor-id="m-denní-průtok"><span class="header-section-number">11.6.2</span> <span class="math inline">\(M-\)</span>denní průtok</h3>
+<section id="m-denní-průtok" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="m-denní-průtok"><span class="header-section-number">10.6.2</span> <span class="math inline">\(M-\)</span>denní průtok</h3>
 <p>Nejnižší hodnota průtoku, která je dosažena nabo překročena po dobu <span class="math inline">\(M\)</span> dní v roce.</p>
 <div class="cell" data-layout-align="center">
 <details open="">
@@ -1107,13 +1101,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./09_casove_rady.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span>
+      <a href="./07_testovani.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Testování hypotéz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./11_korelace_regrese.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

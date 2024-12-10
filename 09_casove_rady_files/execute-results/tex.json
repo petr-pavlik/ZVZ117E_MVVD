@@ -1,0 +1,20 @@
+{
+  "hash": "04b0c3a7669dc8ba0954449689d594a1",
+  "result": {
+    "markdown": "# Časové řady\n\nFunkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`, jehož jmenný prostor je připojen po otevření R.\n\nBudeme pracovat se dvěma datovými sadami:\n  \n  1. Naše již připravená data z MOPEX\n  2. Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndataset <- readRDS(\"data/data.rds\")[1:15000,]\ndata(\"co2\")\n```\n:::\n\n\n\n## Autokorelační funkce\n\nACF slouží k posouzení, zda časová řada obsahuje cyklickou či periodickou složku a také, zda je či není řadou náhodnýhc čísel. Graficky je vyjádřena pomocí korelogramu.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npar(mfrow = c(1, 2))\nacf(dataset$R)\nacf(co2)\n```\n\n::: {.cell-output-display}\n![Vlevo řada se silnou autokorelací složek bez znatelené periodicity, vpravo dtto s periodickou složkou](09_casove_rady_files/figure-pdf/unnamed-chunk-2-1.pdf){fig-pos='H'}\n:::\n:::\n\n\n\n\n\n## Dekompozice časové řady\n\nDekompozicí časové řady rozumíme rozklad na složky:\n  \n  1. Trendovou $T_t$\n  2. Sezónní $S_t$\n  3. Cyklickou $C_t$\n  4. Náhodnou $\\epsilon_t$\n\n### Aditivní dekompozice\n\nPředpokládáme, že řadu lze rozložit na součet složek\n\n$$\nY_t =T_t +S_t +C_t +\\epsilon_t,\n$$\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndec_co2 <- decompose(co2)\nplot(dec_co2)\n```\n\n::: {.cell-output-display}\n![](09_casove_rady_files/figure-pdf/unnamed-chunk-3-1.pdf){fig-pos='H'}\n:::\n\n```{.r .cell-code}\nplot(dec_co2$trend)\n```\n\n::: {.cell-output-display}\n![](09_casove_rady_files/figure-pdf/unnamed-chunk-3-2.pdf){fig-pos='H'}\n:::\n:::\n\n\n\n### Residua\n\nOvěřte, zda po dekompozici `co2` residua $\\epsilon_t$ splňují definici *bílého šumu* \ntzn. mají nulovou střední hodnotu a konečný rozptyl a jsou nekorelované.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nshapiro.test(dec_co2$random)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\n\tShapiro-Wilk normality test\n\ndata:  dec_co2$random\nW = 0.99506, p-value = 0.1549\n```\n:::\n\n```{.r .cell-code}\nmean(dec_co2$random, na.rm = TRUE)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.001743421\n```\n:::\n\n```{.r .cell-code}\nvar(dec_co2$random, na.rm = TRUE)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 0.07028142\n```\n:::\n\n```{.r .cell-code}\n# ...\n```\n:::\n\n\n\n## Zhlazovací funkce\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npar(mfrow = c(1, 2))\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nmd1 <- loess(Tmin ~ na.omit(1:length(dataset$Tmin)), \n             data = dataset, \n             degree = 1)\nlines(md1$fitted, col = \"orangered\")\n\nplot(filter(x = dataset$R, \n             method = \"convolution\", \n             filter = c(rep(1/365.25, 365.25)), \n             sides = 1), \n      col = \"dodgerblue3\", \n     type = \"l\")\n```\n\n::: {.cell-output-display}\n![](09_casove_rady_files/figure-pdf/unnamed-chunk-5-1.pdf){fig-pos='H'}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nmd2 <- lm(Tmin ~ DTM, data = dataset)\nplot(dataset$Tmin, type = \"l\", \n     col = \"slategray\", \n     lwd = 0.5)\nlines(md1$fitted, col = \"darkred\")\nabline(coef(md2), col = \"orangered\")\n```\n\n::: {.cell-output-display}\n![](09_casove_rady_files/figure-pdf/unnamed-chunk-6-1.pdf){fig-pos='H'}\n:::\n:::\n",
+    "supporting": [
+      "09_casove_rady_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

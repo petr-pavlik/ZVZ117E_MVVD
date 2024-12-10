@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metody vyhodnocování vodohospodářských dat - 12&nbsp; Závislost dvou veličin</title>
+<title>Metody vyhodnocování vodohospodářských dat - 11&nbsp; Závislost dvou veličin</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_korelace_regrese.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_korelace_regrese.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Přepnout postranní panel" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -212,26 +212,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_casove_rady.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Časové řady</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./10_hydro_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11_korelace_regrese.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_extremalni_rozdeleni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span></a>
   </div>
 </li>
     </ul>
@@ -244,11 +238,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Obsah</h2>
    
   <ul>
-  <li><a href="#kovariance" id="toc-kovariance" class="nav-link active" data-scroll-target="#kovariance"><span class="header-section-number">12.1</span> Kovariance</a></li>
-  <li><a href="#sec-korelace" id="toc-sec-korelace" class="nav-link" data-scroll-target="#sec-korelace"><span class="header-section-number">12.2</span> Korelace</a></li>
-  <li><a href="#regresní-model" id="toc-regresní-model" class="nav-link" data-scroll-target="#regresní-model"><span class="header-section-number">12.3</span> Regresní model</a>
+  <li><a href="#kovariance" id="toc-kovariance" class="nav-link active" data-scroll-target="#kovariance"><span class="header-section-number">11.1</span> Kovariance</a></li>
+  <li><a href="#sec-korelace" id="toc-sec-korelace" class="nav-link" data-scroll-target="#sec-korelace"><span class="header-section-number">11.2</span> Korelace</a></li>
+  <li><a href="#regresní-model" id="toc-regresní-model" class="nav-link" data-scroll-target="#regresní-model"><span class="header-section-number">11.3</span> Regresní model</a>
   <ul class="collapse">
-  <li><a href="#první-regresní-model" id="toc-první-regresní-model" class="nav-link" data-scroll-target="#první-regresní-model"><span class="header-section-number">12.3.1</span> První regresní model</a></li>
+  <li><a href="#první-regresní-model" id="toc-první-regresní-model" class="nav-link" data-scroll-target="#první-regresní-model"><span class="header-section-number">11.3.1</span> První regresní model</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -258,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="seq-zavislost" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></h1>
+<h1 class="title"><span id="seq-zavislost" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Závislost dvou veličin</span></span></h1>
 </div>
 
 
@@ -273,25 +267,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="kovariance" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="kovariance"><span class="header-section-number">12.1</span> Kovariance</h2>
+<section id="kovariance" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="kovariance"><span class="header-section-number">11.1</span> Kovariance</h2>
 <p>Míru těsnosti vztahu dvou proměnných lze vajádřit kovariancí</p>
 <p><span class="math display">\[
 \mathrm{cov}_{xy} = \dfrac{1}{n-1}\sum_{i=1}^{n}x_iy_i
 \]</span></p>
-<p>Takový výsledek, produkt, není v praxi dobře interpretovatelný.</p>
+<p>Výsledek v podobě součinu není v praxi dobře interpretovatelný, proto se k porovnání těstnosti vztahu používá výpočtu <strong>korelace</strong> jako standardizované míry v rozmezí <span class="math inline">\(\langle-1;1\rangle\)</span>.</p>
 </section>
-<section id="sec-korelace" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="sec-korelace"><span class="header-section-number">12.2</span> Korelace</h2>
-<p>Standardizovaný sdílený rozptyl dvou veličiny je korelace. Vyjadřuje, zda se jedna ze zkoumaných veličin mění, pokud se zároveň mění i druhá. Korelace neadresuje příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.</p>
+<section id="sec-korelace" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="sec-korelace"><span class="header-section-number">11.2</span> Korelace</h2>
+<p>Standardizovaný sdílený rozptyl dvou veličiny je korelace. Vyjadřuje, zda se jedna ze zkoumaných veličin v průměru mění, pokud se zároveň mění i druhá. Korelace neadresuje příčinnost, nelze tedy jednoznačně určit závislou a nezávislou proměnnou.</p>
 <p>Míru korelace dvou veličin posuzujeme korelačním koeficientem. V případe normality u obou veličin lze použít <strong>Paersonův</strong> korelační koeficient,</p>
 <p><span id="eq-pearson"><span class="math display">\[
 r_{xy} = \dfrac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2}\sqrt{\sum(y_i - \bar{y})^2}}
-\tag{12.1}\]</span></span></p>
-<p>přičemž platí <span class="math inline">\(r_{xy}\in\langle-1;1\rangle\)</span>. Alternativně můžeme použít neparametrický výpočet <strong>Spearmana</strong>, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako <span class="math inline">\(d_i = x_{ri} - y_{ri}\)</span></p>
+\tag{11.1}\]</span></span></p>
+<p>přičemž platí <span class="math inline">\(r_{xy}\in\langle-1;1\rangle\)</span>. Alternativně můžeme použít neparametrický výpočet <strong>Spearmanův</strong>, založený na diferencích pořadí pozorovaných hodnot, které definujeme jako <span class="math inline">\(d_i = x_{ri} - y_{ri}\)</span></p>
 <p><span id="eq-spearman"><span class="math display">\[
-\rho = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)}
-\tag{12.2}\]</span></span></p>
+\rho_{xy} = r_s = 1 - \dfrac{6\sum_{i=1}^{n}d_i^2}{n(n^2-1)}
+\tag{11.2}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -306,14 +300,16 @@ Cvičení
 <li>Napište vlastní funkci, které pro dané vektory <code>x</code> a <code>y</code> spočítá korelační Spearmanův koeficient.<br>
 </li>
 </ol>
+<!-- -->
 <ol type="a">
 <li>Nejprve je nutné identifikovat pořadí,<br>
 </li>
-<li>dále spočítat kvadrát vzdáleností,<br>
+<li>dále spočítat druhou mocninu vzdáleností,<br>
 </li>
 <li>a po dosazení počtu měření <span class="math inline">\(n\)</span> dosadit do rovnice.<br>
 </li>
 </ol>
+<!-- -->
 <ol start="2" type="1">
 <li>Vyzkoušejte obě funkce na datech</li>
 </ol>
@@ -351,13 +347,13 @@ Cvičení
 </div>
 </div>
 </div>
-<p>s tolerancí 0.05. A) <input class="webex-solveme nospaces" data-tol="0.05" size="4" data-answer="[&quot;0.18&quot;,&quot;.18&quot;]">, B) <input class="webex-solveme nospaces" data-tol="0.05" size="4" data-answer="[&quot;0.45&quot;,&quot;.45&quot;]">, C) <input class="webex-solveme nospaces" data-tol="0.05" size="5" data-answer="[&quot;-0.12&quot;,&quot;-.12&quot;]">, D) <input class="webex-solveme nospaces" data-tol="0.05" size="5" data-answer="[&quot;-0.01&quot;,&quot;-.01&quot;]">. Pro desetinný rozvoj použijte tečku.</p>
+<p>s tolerancí 0.05. A) <input class="webex-solveme nospaces" data-tol="0.05" size="5" data-answer="[&quot;-0.07&quot;,&quot;-.07&quot;]">, B) <input class="webex-solveme nospaces" data-tol="0.05" size="4" data-answer="[&quot;0.25&quot;,&quot;.25&quot;]">, C) <input class="webex-solveme nospaces" data-tol="0.05" size="5" data-answer="[&quot;-0.12&quot;,&quot;-.12&quot;]">, D) <input class="webex-solveme nospaces" data-tol="0.05" size="5" data-answer="[&quot;-0.08&quot;,&quot;-.08&quot;]">. Pro desetinný rozvoj použijte tečku.</p>
 </div>
 </div>
 </section>
-<section id="regresní-model" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="regresní-model"><span class="header-section-number">12.3</span> Regresní model</h2>
-<p>Narozdíl od korelace, v regresní analýze sledujeme příčinnou závislost. Identifikujeme <strong>nezávislou proměnnou</strong> a <strong>závislou proměnnou</strong>. Míru závislosti posuzujeme pomocí <strong>lineárního modelu</strong>.</p>
+<section id="regresní-model" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="regresní-model"><span class="header-section-number">11.3</span> Regresní model</h2>
+<p>V regresní analýze posuzujeme příčinnou závislost (narozdíl od korelace). Identifikujeme <strong>nezávislou proměnnou</strong> a <strong>závislou proměnnou</strong>. Míru závislosti posuzujeme pomocí <strong>lineárního modelu</strong>.</p>
 <p><span class="math display">\[
 y = \beta_0 + \beta_1x
 \]</span> kde <span class="math inline">\(y\)</span> je závislá proměnná, <span class="math inline">\(x\)</span> je nezávislá proměnná, <span class="math inline">\(\beta_0\)</span> je počátek (intercept) a <span class="math inline">\(\beta_1\)</span> je sklon přímky.</p>
@@ -365,8 +361,8 @@ y = \beta_0 + \beta_1x
 <p><span class="math display">\[
 \text{AIC} = 2k - 2\ln(\hat{L})
 \]</span> kde <span class="math inline">\(k\)</span> je počet volných parametrů modelu a <span class="math inline">\(\hat{L}\)</span> je věrohodnostní funkce modelu.</p>
-<section id="první-regresní-model" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="první-regresní-model"><span class="header-section-number">12.3.1</span> První regresní model</h3>
+<section id="první-regresní-model" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="první-regresní-model"><span class="header-section-number">11.3.1</span> První regresní model</h3>
 <ol type="1">
 <li>Uvažujme následující data, kde předpokládáme příčinnou závislost <span class="math inline">\(y\)</span> na <span class="math inline">\(x\)</span>.</li>
 </ol>
@@ -409,7 +405,7 @@ y = \beta_0 + \beta_1x
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="1">Vypíšeme strukturu objektu do první hierarchické úrovně</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Vypíšeme strukturu objektu do první hierarchické úrovně</span>
 </dd>
 </dl>
 </div>
@@ -478,15 +474,15 @@ y = \beta_0 + \beta_1x
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="1,2,3,4,5,6">Určíme základní proměnné <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span> v grafu a nastavíme limity okna.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="1,2,3,4,5,6" data-code-annotation="1">Určíme základní proměnné <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span> v grafu a nastavíme limity okna.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="7">Z výstupu objektu lineárního modelu vytáhneme hodnoty koeficientů <span class="math inline">\(\hat{\beta_0}\)</span>, <span class="math inline">\(\hat{\beta_1}\)</span> a použijeme jako koeficienty přímky.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="2">Z výstupu objektu lineárního modelu vytáhneme hodnoty koeficientů <span class="math inline">\(\hat{\beta_0}\)</span>, <span class="math inline">\(\hat{\beta_1}\)</span> a použijeme jako koeficienty přímky.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="8,9">Dokreslíme průnik v počátku.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="8,9" data-code-annotation="3">Dokreslíme průnik v počátku.</span>
 </dd>
 </dl>
 </div>
@@ -524,20 +520,57 @@ Multiple R-squared:  0.6639,    Adjusted R-squared:  0.6568
 F-statistic: 94.79 on 1 and 48 DF,  p-value: 6.032e-13</code></pre>
 </div>
 </div>
-<p>Souhrn obsahuje původní zadání v podobě rovnice, dále identifikované koeficienty modelu, významnost závislosti indikuje přítomnost jedné nebo více <code>*</code> u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy <code>Adjusted R-squared:  0.6417</code>.<br>
+<p>Souhrn obsahuje několik boduů k interpretaci kvality modelu.<br>
 </p>
-<div class="cell">
+<ol type="1">
+<li><code>Call:</code> původní zadání závislosti v podobě rovnice.<br>
+</li>
+<li><code>Residuals:</code> popisné statistiky residuí modelu.<br>
+3.<code>Coefficients:</code> identifikované koeficienty modelu<br>
+- <code>Intercept</code> odhad <span class="math inline">\(y\)</span>, když <span class="math inline">\(x=0\)</span>.<br>
+- <code>x</code> S každým zvýšením <span class="math inline">\(x\)</span> se <span class="math inline">\(y\)</span> zvýší o <span class="math inline">\(3.7816\)</span>; statisticky významný odhad <code>***</code><br>
+</li>
+<li><code>Residual standard error:</code> Průměrná velikost residuí.<br>
+</li>
+<li><code>Multiple/Adujsted R-squared:</code> Podíl vysvětlené variability v <span class="math inline">\(y\)</span>. Adjusted zohledňuje počet prediktorů a penalizuje složitější modely.<br>
+</li>
+<li><code>F-statistic:</code> Testuje statistickou významnost modelu.</li>
+</ol>
+<p>významnost závislosti indikuje přítomnost jedné nebo více <code>*</code> u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy <code>Adjusted R-squared:  0.6417</code>.</p>
+<p><span class="math inline">\(R^2 = 1-\dfrac{\mathrm{MSE}}{\mathrm{MST}}\)</span></p>
+<p>kde <span class="math inline">\(\mathrm{MSE}\)</span> je střední kvadratická chyba (vzdálenost mezi skutečnými hodnotami a hodnotami predikovanými modelem) a <span class="math inline">\(\mathrm{MST}\)</span> střední kvadratická odchylka (jak moc se jednotlivé hodnoty liší od průměru).</p>
+<p><span class="math display">\[
+\mathrm{MSE} = \dfrac{1}{n}\sum\limits_{i=1}^{n}(y_i-\hat{y_i})^2
+\]</span></p>
+<p><span class="math display">\[
+\mathrm{MST} = \dfrac{1}{n}\sum\limits_{i=1}^{n}(y_i-\bar{y})^2
+\]</span><br>
+</p>
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(md1, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-9-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. Zde nás budou zajímat zejména <strong>residua</strong> modelu. Dle prvního grafu by mohl model se závislostí na polynomu být lepší volbou.<br>
 </p>
+<ol type="1">
+<li><code>Residuals vs. fitted</code> posuzuje homoskedasticitu (náhodný rozptyl residuí).<br>
+</li>
+<li><code>Normal Q-Q</code> vynesení kvantilů residuí oproti kvantilům normálního rozdělení.<br>
+</li>
+<li>Zobrazení druhé odmocniny absolutních residuí vůči odhadnutým hodnotám k posouzení homoskedasticity.<br>
+</li>
+<li><code>Residuals vs. Levarage</code> identifikuje hodnoty s výrazným pákovým efektem (schopností ovlivnit výslednou shodu modelu).</li>
+</ol>
 <p>Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnnou.</p>
 <div class="cell">
 <details open="">
@@ -567,27 +600,57 @@ Multiple R-squared:  0.6754,    Adjusted R-squared:  0.6616
 F-statistic: 48.89 on 2 and 47 DF,  p-value: 3.29e-12</code></pre>
 </div>
 </div>
-<div class="cell">
+<ol type="1">
+<li><code>Call:</code> ukazuje zadání modelu s přidaným polynomem až do 2. stupně.<br>
+</li>
+<li><code>Residuals:</code>
+<div id="radio_PQGRIXRMBK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PQGRIXRMBK" value=""> <span>Mají normální rozdělení</span></label><label><input type="radio" autocomplete="off" name="radio_PQGRIXRMBK" value=""> <span>Mají vyšší střední hodnotu než <code>md1</code>, což indikuje lepší shodu modelu</span></label><label><input type="radio" autocomplete="off" name="radio_PQGRIXRMBK" value="answer"> <span>Mají nižší rozptyl než <code>md1</code>, což indikuje lepší shodu modelu</span></label>
+</div>
+.<br>
+3.<code>Coefficients:</code> identifikované koeficienty modelu<br>
+- V <span class="math inline">\(x=0\)</span> má <span class="math inline">\(y\)</span> hodnotu <input class="webex-solveme nospaces" size="6" data-answer="[&quot;42.536&quot;,&quot;42,536&quot;]">.<br>
+- <code>poly(x, 1)</code> S každým zvýšením <span class="math inline">\(x\)</span> se <span class="math inline">\(y\)</span> zvýší o <span class="math inline">\(3.7816\)</span>; statisticky významný odhad <code>***</code><br>
+</li>
+<li>Průměrná velikost residuí je: <input class="webex-solveme nospaces" size="5" data-answer="[&quot;14.33&quot;,&quot;14,33&quot;]">.<br>
+</li>
+<li>Model vysvětluje <select class="webex-select"><option value="blank"></option><option value="">méně</option><option value="answer">více</option></select> variability.<br>
+</li>
+</ol>
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(md2, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
+</div>
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> dfr, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">plot</span>(x, y, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>)))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(md2)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ix <span class="ot">&lt;-</span> <span class="fu">sort</span>(dfr<span class="sc">$</span>x, <span class="at">index.return=</span>T)<span class="sc">$</span>ix</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x[ix], pred[ix], <span class="at">col =</span> <span class="st">'orangered'</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x[ix], pred[ix], <span class="at">col =</span> <span class="st">'orangered'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> md2<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">5</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> md2<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">4</span>, </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(beta <span class="sc">==</span> <span class="fu">round</span>(md2<span class="sc">$</span>coefficients[<span class="dv">2</span>], <span class="dv">2</span>))))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="11_korelace_regrese_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Srovnejme modely vzájemně</p>
@@ -602,135 +665,22 @@ md1  3 412.8013
 md2  4 413.0561</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Cvičení
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Prozkoumejte závislost odtoku na velikosti povodí&nbsp;</li>
-</ol>
-<table class="table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 21%">
-<col style="width: 10%">
-<col style="width: 17%">
-<col style="width: 10%">
-<col style="width: 18%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Povodí</th>
-<th>velikost <span class="math inline">\(x_i\)</span></th>
-<th>pořadí</th>
-<th>odtok <span class="math inline">\(y_i\)</span></th>
-<th>pořadí</th>
-<th>rozdíl <span class="math inline">\(d_i\)</span></th>
-<th><span class="math inline">\(d_i^2\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<!-- ::: callout-tip -->
+<!-- ## Cvičení -->
+<!-- 1.  Prozkoumejte závislost odtoku na velikosti povodí -->
+<!-- | Povodí | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ | -->
+<!-- |--------|----------------|--------|-------------|--------|--------------|---------| -->
+<!-- | 1      |                |        |             |        |              |         | -->
+<!-- | 2      |                |        |             |        |              |         | -->
+<!-- | 3      |                |        |             |        |              |         | -->
+<!-- | 4      |                |        |             |        |              |         | -->
+<!-- | 5      |                |        |             |        |              |         | -->
+<!-- | 6      |                |        |             |        |              |         | -->
+<!-- | 7      |                |        |             |        |              |         | -->
+<!-- | 8      |                |        |             |        |              |         | -->
+<!-- | 9      |                |        |             |        |              |         | -->
+<!-- | 10     |                |        |             |        |              |         | -->
+<!-- ::: -->
 
 
 </section>
@@ -1255,12 +1205,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./10_hydro_index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hydroklimatické indexy</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./12_extremalni_rozdeleni.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Rozdělení extrémních hodnot</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

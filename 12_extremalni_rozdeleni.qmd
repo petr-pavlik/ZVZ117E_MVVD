@@ -10,10 +10,74 @@ Z dat jsou užita pouze pozorování překračující stanovenou mez, napříkla
 ::: callout-tip
 ## Úloha
 
-1.  a) Nahrajte do prostředí data ...
+1.  a) Nahrajte do prostředí data z klementiské řady měření
     b) Metodou blokových maxim stanovte maxima 
 
 :::
+
+
+```{r, echo=FALSE, eval=TRUE}
+klementinum <- readRDS("data/klementinum.rds")
+klementinum$date <- as.POSIXct(paste(klementinum$yr, 
+                             sprintf(fmt = "%02d", klementinum$mon),
+                             sprintf(fmt = "%02d", klementinum$day),
+                       sep = "-"), tz = "CET", format = "%Y-%m-%d")
+
+threshold <- quantile(x = klementinum$tavg, 
+                      probs = c(0.99, 0.05))
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+plot(main = "Klementinum 1776 - 2023", 
+     sub = "Identifikace extrémů s pomocí prahových hodnot",  
+     x = klementinum$date, 
+     y = klementinum$tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
+rect(xleft = min(klementinum$date), 
+     xright = max(klementinum$date), 
+     ytop = threshold[1], 
+     ybottom = threshold[2], 
+     col = "#ffffffee", 
+     border = "#ffffff")
+abline(h = threshold, 
+       col = "#660033", 
+       lwd = 2)
+```
+
+![](images/chapter_9_fig_1.png)
+
+
+```{r}
+klementinum_short <- klementinum |> 
+  dplyr::filter(yr %in% 2000:2020) 
+window <- 2000:2020
+
+
+i <- seq(from = as.Date("2000-01-01"), to = as.Date("2020-12-31"), by = "1 year")
+j <- ifelse(as.numeric(i) %% 2 == 0, "black", "#00000090")
+
+plot(main = "Klementinum 1776 - 2023", 
+     sub = "Identifikace extrémů s pomocí blokových maxim",  
+     x = klementinum_short$date,
+     y = klementinum_short$tavg, 
+     type = "p", 
+     cex = 0.1, 
+     col = "#00000050", 
+     ylab = expression(T[avg]), 
+     xlab = "")
+## draw rectangles with bottom left (100, 300)+i
+## and top right (150, 380)+i
+rect(0+i, 365+i, -10, 20, col = j, 
+     border = j)
+abline(h = threshold, 
+       col = "#660033", 
+       lwd = 2)
+```
 
 
 ## Gumbellovo rozdělení
