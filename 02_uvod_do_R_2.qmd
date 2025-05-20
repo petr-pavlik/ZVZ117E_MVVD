@@ -16,7 +16,6 @@ Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospod�
 
 Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
 
-
 ::: callout-tip
 ## Úloha
 
@@ -28,7 +27,7 @@ Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. 
 
 ## Jmenné konvence
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nelze začínat číslovkou nebo operátorem, nesmít být totžný s žádným klíčovým slovem, obsahovat mezeru.
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nelze začínat číslovkou nebo operátorem, nesmít být totožný s žádným klíčovým slovem, obsahovat mezeru.
 
 ##### Klíčová slova {.unnumbered}
 
@@ -73,16 +72,16 @@ Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednodu
 
 Rozlišujeme operátory aritmetické, relační, přiřazení a patří sem i množinové funkce.
 
-| Znak                                                        | Význam                                                                                                               |
-|--------------------------------|----------------------------------------|
+| Znak | Význam |
+|------------------------------------|------------------------------------|
 | `+` , `-` , `*` , `/` , `%%` , `%/%` , `**` nebo `^`, `%*%` | aritmetické operátory (sčítání, odčítání, násobení, dělení, modulo, celočíselné dělení, mocnění a maticové násobení) |
-| `>` ,`>=` , `<` , `<=` , `==` , `!=`                        | relační operátory (větší/menžší než, rovno, nerovno)                                                                 |
-| `!` , `&` , `&&` , `|` , `||`                               | logické (ne, a soužasně, zdvojené po prvcích vektoru)                                                                |
-| `~`                                                         | zadání funkčního vztahu                                                                                              |
-| `<-` , `=`, `<<-`, `->`                                     | operátory přiřazení                                                                                                  |
-| `$`                                                         | jmenný index v heterogenních strukturách                                                                             |
-| `:`                                                         | rozsah                                                                                                               |
-| `isTRUE()` , `all()` , `any()` , `%in%` , `setdiff()`       | množinové funkce                                                                                                     |
+| `>` ,`>=` , `<` , `<=` , `==` , `!=` | relační operátory (větší/menžší než, rovno, nerovno) |
+| `!` , `&` , `&&` , `|` , `||` | logické (ne, a soužasně, zdvojené po prvcích vektoru) |
+| `~` | zadání funkčního vztahu |
+| `<-` , `=`, `<<-`, `->` | operátory přiřazení |
+| `$` | jmenný index v heterogenních strukturách |
+| `:` | rozsah |
+| `isTRUE()` , `all()` , `any()` , `%in%` , `setdiff()` | množinové funkce |
 
 ```{r, eval = FALSE, collapse = TRUE}
 
@@ -122,32 +121,32 @@ setdiff(x, y)  # <16>
 
 ## Matematické funkce
 
-| Funkce                            | Význam                                                                                                                                                                                                                                      |
-|------------------------|------------------------------------------------|
-| `log(x)`                          | logaritmus $x$ o základu $e$                                                                                                                                                                                                                |
-| `exp(x)`                          | odlogaritmování $x(e^x)$                                                                                                                                                                                                                    |
-| `log(x, n)`                       | logaritmus $x$ o základu $n$                                                                                                                                                                                                                |
-| `log10(x)`                        | logaritmus $x$ o základu $10$                                                                                                                                                                                                               |
-| `sqrt(x)`                         | druhá odmocnina z $x$                                                                                                                                                                                                                       |
-| `factorial`(x)                    | $x!$                                                                                                                                                                                                                                        |
-| `choose(n, x)`                    | binomické koeficienty $$                                                                                                                                                                                                                    
+| Funkce | Význam |
+|------------------------------------|------------------------------------|
+| `log(x)` | logaritmus $x$ o základu $e$ |
+| `exp(x)` | odlogaritmování $x(e^x)$ |
+| `log(x, n)` | logaritmus $x$ o základu $n$ |
+| `log10(x)` | logaritmus $x$ o základu $10$ |
+| `sqrt(x)` | druhá odmocnina z $x$ |
+| `factorial`(x) | $x!$ |
+| `choose(n, x)` | binomické koeficienty $$                                                                                                                                                                                                                    
                                                                                                                                                                                                                                   \binom{n}{k} = \frac{n!}{k!(n-k)!}              
-                                                                                                                                                                                                                               $$                                                 |
-| `ceiling(x)`                      | nejmenší celé číslo větší než $x$                                                                                                                                                                                                           |
-| `floor(x)`                        | největší celé číslo před $x$                                                                                                                                                                                                                |
-| `trunc(x)`                        | nejbliřší celé číslo mez i$x$ a 0                                                                                                                                                                                                           |
-| `round(x, digits)`                | zaokrouhlení $x$ na $n$ desetinných míst                                                                                                                                                                                                    |
-| `signif(x, digits)`               | zaokrouhlení na počet platných číslic                                                                                                                                                                                                       |
-| `cos(x)` , `sin(x)` , `tan(x)`    | funkce kosinus, sinus, tangens v radianech                                                                                                                                                                                                  |
-| `acos(x)` , `asin(x)` , `atan(x)` | inverzní trigonometrické funkce                                                                                                                                                                                                             |
-| `abs(x)`                          | absolutní hodnota                                                                                                                                                                                                                           |
+                                                                                                                                                                                                                               $$ |
+| `ceiling(x)` | nejmenší celé číslo větší než $x$ |
+| `floor(x)` | největší celé číslo před $x$ |
+| `trunc(x)` | nejbliřší celé číslo mez i$x$ a 0 |
+| `round(x, digits)` | zaokrouhlení $x$ na $n$ desetinných míst |
+| `signif(x, digits)` | zaokrouhlení na počet platných číslic |
+| `cos(x)` , `sin(x)` , `tan(x)` | funkce kosinus, sinus, tangens v radianech |
+| `acos(x)` , `asin(x)` , `atan(x)` | inverzní trigonometrické funkce |
+| `abs(x)` | absolutní hodnota |
 
 ::: callout-tip
 ## Úloha
 
 5.  Vyhodnoťte s pomocí R následující výrazy:\
-    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3=$  `r fitb(answer = 3)`\
-    b)  $\dfrac{\sin(2.3)}{\cos(\pi)}=$  `r fitb(answer = -0.7457052)`\
+    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3=$ `r fitb(answer = 3)`\
+    b)  $\dfrac{\sin(2.3)}{\cos(\pi)}=$ `r fitb(answer = -0.7457052)`\
     c)  $\sum\limits_{i = 1}^{53}i=$ `r fitb(answer = 1431)`\
     d)  $\dfrac{-\infty}{0}=$ `r fitb(-Inf)`, $\dfrac{-\infty}{\infty}=$ `r fitb(NaN)`, $\dfrac{0}{0}=$ `r fitb(NaN)`\
     e)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)=$ `r fitb(0.4780914)`\
@@ -162,12 +161,12 @@ setdiff(x, y)  # <16>
 
 Tvoří prvky struktur. R je dynamicky typovaný jazyk, nepožaduje před zavedením proměnné její deklaraci.
 
-|               | logical      | integer                | numeric                | complex                | character   |
+|   | logical | integer | numeric | complex | character |
 |------------|------------|------------|------------|------------|------------|
-| **logical**   | `logical`    | `integer`              | `numeric`              | `complex`              | `character` |
-| **integer**   | `logical`    | `integer`              | `numeric`              | `complex`              | `character` |
-| **numeric**   | `logical`    | `numeric`              | `numeric`              | `complex`              | `character` |
-| **complex**   | `logical`    | `integer` + warning    | `numeric` + warning    | `complex`              | `character` |
+| **logical** | `logical` | `integer` | `numeric` | `complex` | `character` |
+| **integer** | `logical` | `integer` | `numeric` | `complex` | `character` |
+| **numeric** | `logical` | `numeric` | `numeric` | `complex` | `character` |
+| **complex** | `logical` | `integer` + warning | `numeric` + warning | `complex` | `character` |
 | **character** | `NA_logical` | `NA_integer` + warning | `NA_numeric` + warning | `NA_complex` + warning | `character` |
 
 : Základní datové typy a nucené převody mezi nimi.
@@ -287,17 +286,17 @@ x
 
 1.  Převod na rozměr $2\times 2$
 
-| Funkce            | Úkon                                   |
-|-------------------|----------------------------------------|
+| Funkce             | Úkon                                   |
+|--------------------|----------------------------------------|
 | `nrow()`, `ncol()` | počet řádků, sloupců matice            |
-| `dim()`           | řádky $\times$ sloupce matice          |
-| `det()`           | deteminant matice                      |
-| `eigen()`         | vlastní čísla a vlastní vektory matice |
-| `colnames()`      | jména sloupců v matici                 |
-| `rowSums()`       | řádkové součty matice                  |
-| `colMeans()`      | sloupcové průměry matice               |
-| `M[m, ]`          | Výběr $m$-tého řádku matice            |
-| `M[ ,n]`          | Výběr $n$-tého sloupce matice          |
+| `dim()`            | řádky $\times$ sloupce matice          |
+| `det()`            | deteminant matice                      |
+| `eigen()`          | vlastní čísla a vlastní vektory matice |
+| `colnames()`       | jména sloupců v matici                 |
+| `rowSums()`        | řádkové součty matice                  |
+| `colMeans()`       | sloupcové průměry matice               |
+| `M[m, ]`           | Výběr $m$-tého řádku matice            |
+| `M[ ,n]`           | Výběr $n$-tého sloupce matice          |
 
 Stejně jako u vektoru opět platí typová homogenita
 
@@ -325,7 +324,9 @@ diag(A) # <4>
 ::: callout-tip
 ## Úloha
 
-7.  a)  S pomocí nápovědy k funkci `rnorm()` vytvořte matici $\boldsymbol{\mathrm{M}}; h(\boldsymbol{\mathrm{M}}) = 8$ náhodných čísel.
+7.  
+
+    a)  S pomocí nápovědy k funkci `rnorm()` vytvořte matici $\boldsymbol{\mathrm{M}}; h(\boldsymbol{\mathrm{M}}) = 8$ náhodných čísel.
     b)  Vytvořte vektor hodnot od $100$ do $1$ sestupně, využijte nápovědu k funkci `seq()`.\
     c)  Spočtěte rozdíl, matic $\boldsymbol{\mathrm{A}}$, $\boldsymbol{\mathrm{B}}$. $$\boldsymbol{\mathrm{A}} = \left(
           \begin{matrix}
@@ -344,95 +345,13 @@ diag(A) # <4>
           $$\
     d)  Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
     e)  S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?\
-    f)  Vyřešte s pomocí R soustavu lineárních rovnic:
-    $$\begin{array}
-      -3x & +2y& +z&=1\\
-      -2x & -y& +z&=2\\
-      2x & +y& -4z&=0
-      \end{array}
-    $$
+    f)  Vyřešte s pomocí R soustavu lineárních rovnic: $$\begin{array}
+          -3x & +2y& +z&=1\\
+          -2x & -y& +z&=2\\
+          2x & +y& -4z&=0
+          \end{array}
+        $$
 :::
-
-````{=html}
-<!-- 
-```{r include=FALSE}
-Sys.setenv(LIBGS = "/usr/local/share/ghostscript/10.03.0/lib/")
-font_opts <- list(dvisvgm.opts = "--font-format=woff")
-```
-
-```{tikz, engine.opts=font_opts}
-#| echo: false
-#| fig-cap: "N-dimenzionální pole"
-#| fig-align: center
-#| out-width: 30%
-\usetikzlibrary{matrix}
-\begin{tikzpicture}[auto matrix/.style={matrix of nodes,
-  draw,thick,inner sep=0pt,
-  nodes in empty cells,column sep=-0.2pt,row sep=-0.2pt,
-  cells={nodes={minimum width=1.9em,minimum height=1.9em,
-   draw,very thin,anchor=center,fill=white,
-   execute at begin node={%
-   $\vphantom{x_|}\ifnum\the\pgfmatrixcurrentrow<4
-     \ifnum\the\pgfmatrixcurrentcolumn<4
-      {#1}^{\the\pgfmatrixcurrentrow}_{\the\pgfmatrixcurrentcolumn}
-     \else 
-      \ifnum\the\pgfmatrixcurrentcolumn=5
-       {#1}^{\the\pgfmatrixcurrentrow}_{N}
-      \fi
-     \fi
-    \else
-     \ifnum\the\pgfmatrixcurrentrow=5
-      \ifnum\the\pgfmatrixcurrentcolumn<4
-       {#1}^{T}_{\the\pgfmatrixcurrentcolumn}
-      \else
-       \ifnum\the\pgfmatrixcurrentcolumn=5
-        {#1}^{T}_{N}
-       \fi 
-      \fi
-     \fi
-    \fi  
-    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=14
-     \cdots
-    \fi
-    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=41
-     \vdots
-    \fi
-    \ifnum\the\pgfmatrixcurrentrow\the\pgfmatrixcurrentcolumn=44
-     \ddots
-    \fi$
-    }
-  }}}]
- \matrix[auto matrix=z,xshift=3em,yshift=3em](matz){
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
- };
- \matrix[auto matrix=y,xshift=1.5em,yshift=1.5em](maty){
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
- };
- \matrix[auto matrix=x](matx){
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
-  & & & & \\
- };
- \draw[thick,-stealth] ([xshift=1ex]matx.south east) -- ([xshift=1ex]matz.south east)
-  node[midway,below,rotate=45] {dimenze};
- \draw[thick,-stealth] ([yshift=-1ex]matx.south west) -- 
-  ([yshift=-1ex]matx.south east) node[midway,below] {sloupce};
- \draw[thick,-stealth] ([xshift=-1ex]matx.north west)
-   -- ([xshift=-1ex]matx.south west) node[midway,above,rotate=90] {řádky};
-\end{tikzpicture}
-```
--->
-````
 
 ### Heterogenní datové struktury
 
@@ -467,7 +386,7 @@ ncol(DF)
 
 ## Řídící struktury
 
-Zajišťují obecný průběh programu, tvoří základní prvky algoritmů. Mezi řídící strukury řadíme podmínky a cykly. Mohli bychom přidat i složené závorky, něboť pro struktury uvozují bloky kódu.
+Zajišťují obecný průběh programu, tvoří základní prvky algoritmů. Mezi řídící strukury řadíme *podmínky* a *cykly*. Mohli bychom přidat i složené závorky, něboť pro struktury uvozují bloky kódu.
 
 ### Podmínky
 
@@ -513,20 +432,20 @@ varianta <- "B"
 1.  Varianta "A nenastala,
 2.  nastala varianta "B", tzn. výraz je vyhodnocen ve tvaru $2\cdot 3 = 6$
 
-
 ::: callout-tip
 ## Úloha
 
-8.  a)  Vytvořte s pomocí podmínek známkovací schéma:
+8.  
 
-| Známka  | Rozmezí     |  
-|---------|-------------|
-| 1       | 90 - 100 \% | 
-| 2       | 75 - 89 \%  | 
-| 3       | 60 - 74 \%  | 
-| 4       |  < 60 \%    |
+    a)  Vytvořte s pomocí podmínek známkovací schéma:
+
+| Známka | Rozmezí    |
+|--------|------------|
+| 1      | 90 - 100 % |
+| 2      | 75 - 89 %  |
+| 3      | 60 - 74 %  |
+| 4      | \< 60 %    |
 :::
-
 
 ### Cykly
 
@@ -556,7 +475,7 @@ while(i < 5) {
 
 #### `repeat` s únikovou sekvencí
 
-Počet opakování neni předem znám. Nicméně lze definovat případ, kdy má cyklus skončit.
+Počet opakování není znám. Nicméně lze definovat případ, kdy má cyklus skončit.
 
 ```{r}
 i <- 1
@@ -570,16 +489,17 @@ repeat { #<1>
 1.  Prováděj
 2.  Vnořenou podmínkou následovanou klíčovým slovem `break` definujeme konec cyklu.
 
-Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`.
+Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`. Je dobré si uvědomit, že cyklus typu `while` se nemusí provést ani jednou. Což právě použití `repeat` ošetřuje.
 
 ::: callout-tip
 ## Úloha
 
-8.  a) Vytvořte cyklus, který pro čísla $1, 2, 3, 4, 5$ vypíše jejich třetí mocniny
-    b) Pro stejná čísla provede kumulativní součet.
-    c) Pro číslo `n` provede výpočet faktorialu.
-    d) S pomocí funkce `readline()` od uživatele požaduje číslo, které vždy vypíše.
-       Pokud je číslo záporné, skončí smyčku.
+8.  
+
+    a)  Vytvořte cyklus, který pro čísla $1, 2, 3, 4, 5$ vypíše jejich třetí mocniny
+    b)  Pro stejná čísla provede kumulativní součet.
+    c)  Pro číslo `n` provede výpočet faktorialu.
+    d)  S pomocí funkce `readline()` od uživatele požaduje číslo, které vždy vypíše. Pokud je číslo záporné, skončí smyčku.
 :::
 
 ## Vlastní funkce
@@ -598,7 +518,6 @@ cat("Hodnota nejblíže 0 z vektoru x je:" ,
 
 1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
 
-
 ## Rekapitulace
 
 Vyplňte následující formulář bez použití R.\
@@ -613,15 +532,16 @@ opts2 <- c("Počet sloupců i řádků musí být shodný",
            answer = "Je možné do něj rekurzivně vniřit další objekt typu list")
 ```
 
-  1. Zvolte platné tvrzení pro `data.frame`: `r longmcq(opts = opts1)`
-  2. Matici je možné vytvořit z vektoru přidáním dimenze: `r torf(answer = TRUE)`\
-  3. Co je výsledkem výrazu: $\sin(\frac{0}{0})$ `r fitb(answer = "NaN")`\
-  4. Vyberte, platné tvrzení pro list: `r longmcq(opts = opts2)`
-  5. Napište výraz pro nepřiřazenou číselnou hodnotu : `r fitb(answer = "NA_real_")`\
-  6. Dolňte chybějící zápis cyklu: `r fitb(answer = "6-i")`\
-  ```
-    for(i in 1:5) {
-      cat(___)    
-    }
-    > 54321
-  ```
+1.  Zvolte platné tvrzení pro `data.frame`: `r longmcq(opts = opts1)`
+2.  Matici je možné vytvořit z vektoru přidáním dimenze: `r torf(answer = TRUE)`\
+3.  Co je výsledkem výrazu: $\sin(\frac{0}{0})$ `r fitb(answer = "NaN")`\
+4.  Vyberte, platné tvrzení pro list: `r longmcq(opts = opts2)`
+5.  Napište výraz pro nepřiřazenou číselnou hodnotu : `r fitb(answer = "NA_real_")`\
+6.  Dolňte chybějící zápis cyklu: `r fitb(answer = "6-i")`\
+
+```         
+  for(i in 1:5) {
+    cat(___)    
+  }
+  > 54321
+```

@@ -2,9 +2,9 @@
 
 # Úvodem
 
-<h2><span style="color:red;">!PRACOVNÍ VERZE TEXTU!</span></h2>
+<h2>[!PRACOVNÍ VERZE TEXTU!]{style="color:red;"}</h2>
 
-Na těchto stránkách se nachází průvodce ke cvičením z kurzu ZVZ117E Metody vyhodnocování vodohospodářských dat, vyuřovaném na Fakultě životního prostředí České zemědělské univerzity. Jeho obsahem jsou materiály ke všem cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici komplexní teoretický výklad látky - nenahrazuje ani přednášky ani skripta. Jedná se o **průvodce cvičeními**, nicméně pro potřeby cvičení teorii ve zkrácené podobě připomene.\
+Na těchto stránkách se nachází průvodce ke cvičením z kurzu ZVZ117E Metody vyhodnocování vodohospodářských dat, vyučovaném na Fakultě životního prostředí České zemědělské univerzity. Jeho obsahem jsou materiály ke všem cvičením spolu se zkrácenou teoretickou částí. Text nemá za ambici komplexní teoretický výklad látky - nenahrazuje ani přednášky ani skripta. Jedná se o **průvodce cvičeními**, nicméně pro potřeby cvičení teorii ve zkrácené podobě připomene.\
 Vzhledem k tomu, že je tento text orientován na osvojení základních postupů při statistickém zpracování dat, jednotlivé postupy jsou voleny jako nejjednodušší možné. Obecně tedy platí, že veškeré úkony jsou prováděny se zvoleným didaktickým cílem, který je vytyčen na začátku každého cvičení. Tentýž kód je často možné zapsat elegantněji, nebo efektivněji s pomocí pokročilejších nástrojů, na jejichž existenci je čtenář občas doplňkově upozorněn.
 
 ## Doporučená literatura

@@ -3,38 +3,31 @@
 ::: callout-warning
 ## Cíle cvičení
 
-  - Umět definovat časovou řadu s pomocí `ts()`.
-  - Detekovat přítomnost trendu, bodu zlomu.
-  - Umět aplikovat klouzavý průměr jako zhlazovací funkci.
+-   Umět definovat časovou řadu s pomocí `ts()`.
+-   Detekovat přítomnost trendu, bodu zlomu.
+-   Umět aplikovat klouzavý průměr jako zhlazovací funkci.
 :::
 
-Časové řady jsou chronologicky uspořádané posloupnosti hodnot jedné nebo více
-sledovaných veličin.\
-Časové řady rozeznáváme deterministické, stochastické s konstantním nebo proměnlivým 
-časovým krokem. Budeme procvičovat řady stochastické. Dále časovou řadu nazýváme 
-**homogenní**, pokud hodnoty jednolivých členů pozorované řady odrážejí pouze 
-přirozenou proměnlivost studované veličiny.\
-Cíli analýzy časové řady je jednak pochopení a určení modelu, generujícího sledovaná
-data, jednak predikce vývoje na základě tohoto modelu.
+Časové řady jsou chronologicky uspořádané posloupnosti hodnot jedné nebo více sledovaných veličin.\
+Časové řady rozeznáváme deterministické, stochastické s konstantním nebo proměnlivým časovým krokem. Budeme procvičovat řady stochastické. Dále časovou řadu nazýváme **homogenní**, pokud hodnoty jednolivých členů pozorované řady odrážejí pouze přirozenou proměnlivost studované veličiny.\
+Cíli analýzy časové řady je jednak pochopení a určení modelu, generujícího sledovaná data, jednak predikce vývoje na základě tohoto modelu.
 
+Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`.
 
-Funkce pro základní statistické zpracování časových řad opět nalezneme v balíčku `stats`. 
 ```{r}
 args(stats::ts)
 ```
 
-
 ::: callout-note
 ## Další zdroje
-Zpracování časových řad je jedním ze základních tématických okruhů v R. Stejně 
-jako je tomu u ostatních okruhů, můžeme může být užitečné se zorientovat studiem 
-příslušného [CRAN Task View](https://cran.r-projecet.org/web/views/TimeSeries.html).
+
+Zpracování časových řad je jedním ze základních tématických okruhů v R. Stejně jako je tomu u ostatních okruhů, můžeme může být užitečné se zorientovat studiem příslušného [CRAN Task View](https://cran.r-projecet.org/web/views/TimeSeries.html).
 :::
 
 Budeme pracovat se dvěma datovými sadami:
-  
-  1. Časovou řadou historických měření z pražského Klementina od roku 1776.
-  2. Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`
+
+1.  Časovou řadou historických měření z pražského Klementina od roku 1776.
+2.  Vnitřní datová sada R `co2`, kterou nahrajete pomocí funkce `data()`
 
 ```{r, include=FALSE}
 klementinum <- readRDS("data/klementinum.rds")
@@ -48,20 +41,17 @@ klementinum$date <- as.POSIXct(paste(klementinum$yr,
 
 ::: callout-tip
 ## Úloha
-  1. Nejprve vhodnou funkcí nahrajte datovou sadu `klementinum.rds`.
-  2. Vytvořte formát datumu (`Date`) sjednocením sloupců `yr`, `mon`, `day`. 
-     U sloupců s denními a měsíčními hodnotami je nutné nejprve doplnit na 
-     dvoumístný formát (napří. `02`  místo `2`). Použijte nápovědu k funkci
-     `sprinft()`.\   
-  Výsledek by měl vypadat takto:
+
+1.  Nejprve vhodnou funkcí nahrajte datovou sadu `klementinum.rds`.
+2.  Vytvořte formát datumu (`Date`) sjednocením sloupců `yr`, `mon`, `day`. U sloupců s denními a měsíčními hodnotami je nutné nejprve doplnit na dvoumístný formát (napří. `02` místo `2`). Použijte nápovědu k funkci `sprinft()`. \
+    Výsledek by měl vypadat takto:
+
 ```{r, echo=FALSE}
 head(klementinum, 7)
 ```
-  3. Datovou sadu máme nahranou ověřte, zda se jedná o časovou řadu `is.ts()`
-     a udělejte si základní obrázek o průběhu veličin s pomocí grafů. Inspirujte
-     se v @sec-grafy.
-:::
 
+3.  Datovou sadu máme nahranou. Ověřte, zda se jedná o časovou řadu `is.ts()` a udělejte si základní obrázek o průběhu veličin s pomocí grafů. Inspirujte se v @sec-grafy.
+:::
 
 ```{r, fig.align='center', fig.width=10, eval=FALSE}
 plot(main = "Klementinum 1776 - 2023, průměrná denní teplota ", 
@@ -73,7 +63,6 @@ plot(main = "Klementinum 1776 - 2023, průměrná denní teplota ",
      ylab = expression(T[avg]), 
      xlab = "")
 ```
-
 
 ```{r, fig.align='center', fig.width=10, eval=FALSE, echo=FALSE}
 png(filename = "./images/chapter_9_fig_1.png", width = 1900, height = 1000, res = 200)
@@ -92,9 +81,7 @@ dev.off()
 
 ## Dekompozice časové řady
 
-Proces identifikace a rozkladu časové řady na trendovou, sezónní, cyklickou a 
-náhodnou složku buďto v **aditivním** nebo **multiplikativním** typu. 
-Velmi silné tam, kde je silný trend nebo stabilní sezónní složka.
+Proces identifikace a rozkladu časové řady na trendovou, sezónní, cyklickou a náhodnou složku buďto v **aditivním** nebo **multiplikativním** typu. Velmi silné tam, kde je silný trend nebo stabilní sezónní složka.
 
 $$
 \begin{array}{c}
@@ -105,13 +92,9 @@ $$
 
 ### Trendová složka
 
-Trend je obecná tendence vývoje zkoumaného jevu za delší období; může být lineární
-či nelineární. Může být rostoucí či klesající. Časové řady bez trendu se označují 
-za **stacionární**.
+Trend je obecná tendence vývoje zkoumaného jevu za delší období; může být lineární či nelineární. Může být rostoucí či klesající. Časové řady bez trendu se označují za **stacionární**.
 
-Model trendu můžeme odhadnout pomocí lineárního modelu `lm()`. Můžeme vytvořit rovnou 
-tři varianty trendu: lineární, kvadratický a kubický. Vyhodnotíme pomocí **Akaikeho
-informačního kritéria**.
+Model trendu můžeme odhadnout pomocí lineárního modelu `lm()`. Můžeme vytvořit rovnou tři varianty trendu: lineární, kvadratický a kubický. Vyhodnotíme pomocí **Akaikeho informačního kritéria**.
 
 ```{r, eval = FALSE}
 md1 <- lm(tavg ~ I(date), 
@@ -124,8 +107,6 @@ res <- as.numeric(lapply(X = list(md1, md2, md3), FUN = AIC))
 names(res) <- c("md1", "md2", "md3")
 res
 ```
-
-
 
 ```{r, fig.align='center', fig.width=10, eval=FALSE, include=FALSE}
 png(filename = "./images/chapter_9_fig_2.png", width = 1900, height = 1000, res = 200)
@@ -168,9 +149,11 @@ plot(main = "Řada zbavená trendu",
      xlab = "")
 dev.off()
 ```
+
 ![](images/chapter_9_fig_3.png)
 
-Časová řada v R je určena 
+Časová řada v R je určena
+
 ```{r}
 klementinum_ts <- ts(
   data = klementinum$tavg, 
@@ -180,8 +163,7 @@ klementinum_ts <- ts(
 
 ### Sezónní složka
 
-Sezónní složka představuje periodickou změnu, která se odehrává v průběhu roku 
-opakovaně.
+Sezónní složka představuje periodickou změnu, která se odehrává v průběhu roku opakovaně.
 
 ```{r, eval=FALSE}
 klementinum$detrended_avg <- klementinum$tavg - predict(md3)
@@ -205,8 +187,7 @@ klementinum$residuals <- klementinum$tavg - predict(md3) - klementinum$seasonal
 
 ### Cyklická složka
 
-Cyklická složka je oscialce kolem trendu, která může mít proměnlivou periodu i 
-amplitudu se složitě identifikovatelnou příčinností.
+Cyklická složka je oscialce kolem trendu, která může mít proměnlivou periodu i amplitudu se složitě identifikovatelnou příčinností.
 
 ### Náhodná složka
 
@@ -221,32 +202,23 @@ qqline(klementinum$residuals, col = "#660033")
 acf(klementinum$residuals, main = "ACF of Residuals")
 ```
 
-
-Zahrnuje nejistoty v měření, zpracování apod. U dobře určeného modelu má tato složka
-charakter bílého šumu
+Zahrnuje nejistoty v měření, zpracování apod. U dobře určeného modelu má tato složka charakter bílého šumu
 
 $$
 \mathbb{E}X_t = 0 \mathrm{\:pro\:všechna\:} t\:\text{a var}(X) < \infty
-$$
-*Posloupnost náhodných veličin nazveme bílý šum, pokud jde o posloupnost centrovaných
-nekorelovaných veličin s kladným konečným rozptylem.*\
+$$ *Posloupnost náhodných veličin nazveme bílý šum, pokud jde o posloupnost centrovaných nekorelovaných veličin s kladným konečným rozptylem.*\
 
 ## Box-Jenkins analýza (ARIMA proces)
 
-Tento pohled je založen na přístupu k řadě jako stochastickému procesu, který 
-je možné zachytit kombinací autoregresní složky, integrační složky a klouzavého
-průměru. Využívá se pro simulace časových řad. 
+Tento pohled je založen na přístupu k řadě jako stochastickému procesu, který je možné zachytit kombinací autoregresní složky, integrační složky a klouzavého průměru. Využívá se pro simulace časových řad.
 
 ARIMA(p, d, q)
 
-
-
 ### Parciální autokorelace
 
-Vyjadřuje vztah mezi hodnotou v čase $t$ a hodnotou lag $t$, po ošetření korelace
-Používá se k identifikaci řádu autoregresivního modelu AR($p$).
+Vyjadřuje vztah mezi hodnotou v čase $t$ a hodnotou lag $t$, po ošetření korelace Používá se k identifikaci řádu autoregresivního modelu AR($p$).
 
-Stupeň určujeme pomocí funkce `pacf()`, 
+Stupeň určujeme pomocí funkce `pacf()`,
 
 ```{r, fig.align='center', fig.height=10, fig.width=10, echo=FALSE}
 par(mfrow = c(2, 2))
@@ -322,19 +294,15 @@ sapply(X = c(1, 30, 90),
 )
 ```
 
-
 ### Klouzavé průměry
 
-Klouzavý průměr je zhlazovací funkcí, jejíž využití má prostor například v odhadu
-cyklické složky časové řady
+Klouzavý průměr je zhlazovací funkcí, jejíž využití má prostor například v odhadu cyklické složky časové řady.
 
 ::: callout-tip
 ## Úloha
 
-  5. Odfiltrujte posledních 5 let z data frame `klementinum` a uložte do
-     proměnné `klementinum_last_5`.
+5.  Použijte filtr na poslendích posledních 5 let z data frame `klementinum` a uložte do proměnné `klementinum_last_5`.
 :::
-
 
 ```{r, echo=FALSE}
 klementinum_last_5 <- klementinum[klementinum$yr %in% max(klementinum$yr):(max(klementinum$yr) - 4), ]
@@ -379,9 +347,3 @@ plot(klementinum90_20$tavg - fitted.values(md2),
      cex = 0.1, 
      col = "#00000050")
 ```
-
-
-
-
-
-

@@ -51,7 +51,6 @@ book:
     - 11_korelace_regrese.qmd
     - 12_extremalni_rozdeleni.qmd
   downloads:
-  - pdf
   - epub
 bibliography: references.bib
 format:
