@@ -10,7 +10,7 @@
 
 V software R jsou všechna základní rozdělení součástí balíku `stats`. A jejich výčet získáme vyvoláním nápovědy `?distributions`. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí
 
-Balík `stats` obsahuje mnoho rozdělení. **Alternativní**, **Binomické**, **Multinomické**, **Poissonovo**, **Normální**, **Fischer-Snedecorovo**, $\chi^2$, **Studentovo**, $t$, **Gumbellovo** a mnohá další. \
+Balík `stats` obsahuje mnoho rozdělení. **Alternativní**, **Binomické**, **Multinomické**, **Poissonovo**, **Normální**, **Fischer-Snedecorovo**, $\chi^2$, **Studentovo** $t$, **Gumbellovo** a mnohá další. \
 Podívejte se na `?Distributions`.
 
 ## Funkce rozdělení
@@ -23,6 +23,7 @@ d___() # funkce hustoty rozdělení
 p___() # Pravděpodobnostní funkce 
 q___() # Kvantilová funkce rozdělení
 ```
+
 
 
 Pro úplnost jsou zde uvedeny funkce pro permutace `factorial()` a kombinace `choose()`.
@@ -154,8 +155,14 @@ plot(.Random.seed)
 
 <!-- ### Alternativní rozdělení -->
 <!-- ### Rovnoměrné rozdělení -->
-<!-- ### Binomické rozdělení -->
+### Binomické rozdělení
+Popisuje počet $m$ úspěchů v posloupnosti $N$ nezávislých 0/1 pokusů. 
+
 ### Poissonovo rozdělení
+
+Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací 
+binomického rozdělení v případech, kdy počet pozorování se limitně blíží k
+nekonečnu ($N\rightarrow \infty$)
 
 ```{r, fig.align='center'}
 # par(mfrow = c(2, 2))
@@ -215,7 +222,7 @@ Během počítání s rozděleními se snažíme nalézt odpovědi na podobné o
 
 ### Normální rozdělení
 
-Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace $X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)$ bude menší než 5,5. Početně je úkon řešen standardizací a určením nového 
+Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace $X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)$ bude menší než $5,5$. Početně je úkon řešen standardizací a určením nového 
 
 ::: {layout-ncol=2}
 ```{r,echo=FALSE, fig.cap="Pravděpodobnost, že $x$ je menší nebo rovno 2."}
@@ -341,8 +348,8 @@ simulacích chemické konncentrace.
 ::: callout-note
 ## Poznámka
 
-ČHMÚ používá pro odhad a konstrukci $m-$denních průtoků logaritmicko-normální 
-rodzdělení s pěti parametry.     \
+Pro odhad a konstrukci $m-$denních průtoků používá Český hydrometeorologický ústav logaritmicko-normální 
+rodzdělení s pěti parametry.    \
 
 tvar transformace se třemi, s pěti a ve standardizovaném tvaru pro průtoky
 <!-- $$ -->
