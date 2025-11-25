@@ -3,14 +3,12 @@
 ::: callout-warning
 ## Cíle cvičení
 
-  - Naučit se tvorbu základních typů grafů.
-  - Definovat rozdělení sazby výstupu do polí.
-  - Uložit výstupy do souboru.
+-   Naučit se tvorbu základních typů grafů.
+-   Definovat rozdělení sazby výstupu do polí.
+-   Uložit výstupy do souboru.
 :::
 
-V R dnes existují dva rúzné systémy pro tvorbu diagramů. První je obsažen v balíčku
-`base` a druhý staví na funkcionalitě obsažené v `grid`. V tomto kurzu budeme pracovat
-s `base`.
+V R dnes existují dva rúzné systémy pro tvorbu diagramů. První je obsažen v balíčku `base` a druhý staví na funkcionalitě obsažené v `grid`. V tomto kurzu budeme pracovat s `base`.
 
 Opět připravíme datovou sadu, tentokrát umístíme do `data.frame` jménem `dfr`.
 
@@ -20,21 +18,21 @@ dfr <- data.frame(
   Y = rnorm(100) # <1>
 )
 ```
-1. K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v @sec-rozdeleni. Velká písmena jsou zvolena pro odlišnost od argumentů funkce.
 
+1.  K vytvoření proměnné $Y$ použijeme generování čísel z náhodného rozdělení s parametry $\mu = 0$ a $\sigma = 1$; více v @sec-rozdeleni. Velká písmena jsou zvolena pro odlišnost od argumentů funkce.
 
 ::: callout-tip
 ## Úloha
 
-1.  a) Zadejte do konzole `demo(graphics)` a projeďte až na konec ukázky. Potom vyčistěte
-       panely **Environment**, **Plots** a **Console**. \
-    b) Pročtěte si nápovědu `?par`
+1.  
+
+    a)  Zadejte do konzole `demo(graphics)` a projeďte až na konec ukázky. Potom vyčistěte panely **Environment**, **Plots** a **Console**.\
+    b)  Pročtěte si nápovědu `?par`
 :::
 
 ## Jednorozměrná data
 
 Jednorozměrná data nejčastěji kreslíme pomocí **boxplotu**, **histogramu** a **sloupcového grafu**.
-
 
 ```{r ,fig.align='center', fig.width=10}
 
@@ -43,23 +41,22 @@ boxplot(dfr$Y) #<2>
 hist(dfr$Y) #<2>
 barplot(dfr$Y) #<2>
 ```
-1. Rozdělení grafického okna na tři sloupce (viz níže).
-2. Funkce pro jednorozměrné grafy v základní parametrizaci. 
+
+1.  Rozdělení grafického okna na tři sloupce (viz níže).
+2.  Funkce pro jednorozměrné grafy v základní parametrizaci.
 
 ::: callout-tip
 ## Úloha
 
-2.  a) Podívejte se na oba krajní grafy předchozího výstupu a popište, rozdíl mezi
-       histogramem a sloupcovým grafem.
-    b) Podívejte se do nápovědy k funkci `hist()` a doplňte následující kód tak, 
-       aby koše měly hranice od $-4$ do $4$ s krokem $0,5$.
-`hist(dfr$Y, breaks =` `r fitb("seq(from = -4, to = 4, by = 0.5)")` `)`
+2.  
+
+    a)  Podívejte se na oba krajní grafy předchozího výstupu a popište, rozdíl mezi histogramem a sloupcovým grafem.
+    b)  Podívejte se do nápovědy k funkci `hist()` a doplňte následující kód tak, aby koše měly hranice od $-4$ do $4$ s krokem $0,5$. `hist(dfr$Y, breaks =` `r fitb("seq(from = -4, to = 4, by = 0.5)")` `)`
 :::
 
 ## Funkce `curve()`
 
-Curve je funkce, která se uplatní při tvorbě symbolických grafů matematických funkcí, kdy není třeba parametrizovat argument `x`. 
-Další argumenty `?par` jsou stejné jako u `plot()`.
+Curve je funkce, která se uplatní při tvorbě symbolických grafů matematických funkcí, kdy není třeba parametrizovat argument `x`. Další argumenty `?par` jsou stejné jako u `plot()`.
 
 ```{r, fig.align='center'}
 curve(expr = tanh(x),
@@ -73,15 +70,14 @@ curve(expr = tanh(2*x),
 
 ## Funkce `plot()`
 
-`plot(x, y, ...)` je základní **S3 generická** funkce, jejíž metody umožňují použití na široké množství objektů.
-Začneme s použitím na vektor z datasetu `dfr`.
+`plot(x, y, ...)` je tzv. **S3 generická** funkce, jejíž metody umožňují použití na široké množství objektů. Začneme s použitím na vektor z datasetu `dfr`.
 
 ```{r, fig.align='center'}
 plot(dfr$X, dfr$Y) # <1> 
 ```
-1. Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa $y$ je pojmenována po vstupním parametru.
 
-Zkusíme více parametrizovat výstup a 
+1.  Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od poskytnutých argumentů. Pro lepší představu o parametrech
+se podívejte na `plot.default()`.
 
 ```{r, fig.align='center'}
 plot(x = dfr$X, # <1>
@@ -104,15 +100,16 @@ legend(x = "topright", # <10>
        lty = 1, # <15>
        col = "gray10") # <16>
 ```
-1. Základní proměnné $X$ a $Y$ pro typ grafu.
-2. Volba typu grafu `"b"` označuje body protnuté spojnicí.
-3. Volba barvy popředí znaku bod/přímka.
-4. Volba charakteru bodového znaku.
-5. Volba barvy pozadí znaku umožňujícího výplň - bod.
-6. Změna rozsahu osy $y$.
-7. Změna názvu os.
-8. Znění hlavního nadpisu.
-9. Podnadpis *dtto*.
+
+1.  Základní proměnné $X$ a $Y$ pro typ grafu.
+2.  Volba typu grafu `"b"` označuje body protnuté spojnicí.
+3.  Volba barvy popředí znaku bod/přímka.
+4.  Volba charakteru bodového znaku.
+5.  Volba barvy pozadí znaku umožňujícího výplň - bod.
+6.  Změna rozsahu osy $y$.
+7.  Změna názvu os.
+8.  Znění hlavního nadpisu.
+9.  Podnadpis *dtto*.
 10. Pokračujeme nastavením umístění legendy.
 11. Výplň prvku v legendě.
 12. Typ prvku v legendě.
@@ -121,10 +118,7 @@ legend(x = "topright", # <10>
 15. Volba typu spojnice (1 = plná čára)
 16. Volba barvy popředí prvku legendy
 
-
-U funkcí, do kterých vstupuje více proměnných z jednoho datasetu je možné z důvodu 
-přehledonosti použít obalovací funkci `with()`, s níž pak není třeba provádět opakovaně
-podvýběr.
+U funkcí, do kterých vstupuje více proměnných z jednoho datasetu je možné z důvodu přehledonosti použít obalovací funkci `with()`, s níž pak není třeba provádět opakovaně podvýběr.
 
 ```{r, fig.align='center'}
 with(data = dfr, # <1>
@@ -134,33 +128,42 @@ with(data = dfr, # <1>
        }# <2>
      ) 
 ```
-1. Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
-2. Argument `expr` může obsahovat i blok kódu `{...}`, jako je tomu v tomto případě.
 
-
+1.  Funkce `with()` umožňuje zavolání funkce uvedené v arugmentu `expr` na proměnných v `data.frame`. Odpadá opakované psaní prefixu datové sady (zde `dfr$___`)
+2.  Argument `expr` může obsahovat i blok kódu `{...}`, jako je tomu v tomto případě.
 
 <!-- ### Transformace souřadnic -->
 
 <!-- S polárními souřadnicemi se setkáváme poměrně často.  -->
 
 <!-- Polární souřadnice -->
+
 <!-- $$ -->
+
 <!-- \begin{array}{rl} -->
+
 <!-- x =& \sqrt{t}\cdot\cos(2\pi t)\\ -->
+
 <!-- y =& \sqrt{t}\cdot\sin(2\pi t) -->
+
 <!-- \end{array} -->
+
 <!-- $$ -->
 
 <!-- ```{r} -->
+
 <!-- x <- sqrt -->
+
 <!-- ``` -->
 
+::: callout-tip
+## Úloha
+
+2.  Funkcí `plot(x, y)`
 
 ## Volba barev
 
-Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů,
-například `"white"`, `"orange"` použít funkci `rgb()` a nebo hexadecimální zápis `"#FFF000"`.
-Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
+Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů, například `"white"`, `"orange"` použít funkci `rgb()` a nebo hexadecimální zápis `"#FFF000"`. Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
 
 [^03_grafy-1]: Předdefinovaných barev je celkem 657.
 
@@ -190,7 +193,6 @@ rbind(
 )
 ```
 
-
 ```{r}
 palette.pals()
 palette.colors(palette = "Okabe-Ito")
@@ -201,37 +203,33 @@ fcol <- colorRampPalette(colors = c("black", "white"))
 palette("Classic Tableau")
 ```
 
-
 ::: callout-note
 ## Poznámka
 
-Správná volba barev v grafech odborných publikací je velmi důležitá. V ideálním 
-případě by grafické škály měly být stejné čitelné jak pro lidi s poruchou barevného
-spektra, tak v černobílem tisku. Obojí je řešeno například pomocí balíčku `scico` @pedersen2021package. 
-Ve zkratce je problematika vysvětlena  například ve [vignette](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) balíčku `viridis`.
+Správná volba barev v grafech odborných publikací je velmi důležitá. V ideálním případě by grafické škály měly být stejné čitelné jak pro lidi s poruchou barevného spektra, tak v černobílem tisku. Obojí je řešeno například pomocí balíčku `scico` @pedersen2021package. Ve zkratce je problematika vysvětlena například ve [vignette](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) balíčku `viridis`.
 :::
 
 ::: callout-tip
 ## Úloha
 
-3.  následujícím příkladu vytvoříte graf **Budykovy křivky**. \
-Postup:\
-    a) Nahrajte do prostředí data ze souboru **./data/budyko_dfr**.\           
-    b) Začněte tvorbu grafu s funkcí `plot.new()`\           
-    c) Nejjednodušší vztah popsal Schreiber v roce 1902\           
-$$
-  \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
-$$
-    d) Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$ a uložte do proměnné `phi`.\
-    e) Pro posloupnost `phi` spočítejte Schreiberovu rovnici a uložte do `schreiber`.
-    g) S pomocí následujícího příkazu vytvořte barevné schéma `paleta <- rev(rainbow(20, start = 0, end = 0.6))`
-    h) Vyneste body `x = budyko_dfr$PET_over_P` a `y = budyko_dfr$ET_over_P`.
-    i) Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$.\           
-    j) Vyneste do plotu liniové segmenty $(0;0)$ -- $(1;1)$ a $(1;1)$ -- $(2;1)$.
-    k) Funkcí `grid()` přidejte tečkovanou mřížku.
-    
-  
-  Pokuste se výsledkem přiblížit následovnému grafu, použijte nápovědy:
+3.  V následujícím příkladu vytvoříte graf **Budykovy křivky**.\
+    Postup:\
+    a)  Nahrajte do prostředí data ze souboru **./data/budyko_dfr**. \
+    b)  Začněte tvorbu grafu s funkcí `plot.new()` \
+    c)  Nejjednodušší vztah popsal Schreiber v roce 1902 \
+        $$
+          \dfrac{\textrm{Ea}}{\textrm{P}_a} = 1-\exp(-\phi)
+        $$
+    d)  Vytvořte posloupnost \phi od $0$ do $2$ s krokem $10e^{-3}$ a uložte do proměnné `phi`.\
+    e)  Pro posloupnost `phi` spočítejte Schreiberovu rovnici a uložte do `schreiber`.
+    f)  S pomocí následujícího příkazu vytvořte barevné schéma `paleta <- rev(rainbow(20, start = 0, end = 0.6))`
+    g)  Vyneste body `x = budyko_dfr$PET_over_P` a `y = budyko_dfr$ET_over_P`.
+    h)  Nastavte `xlab = "Ep/P"`, `ylab = "P/Er"`, `xlim` v rozsahu $\phi$ a `ylim` od $0$ do $1,2$. \
+    i)  Vyneste do plotu liniové segmenty $(0;0)$ -- $(1;1)$ a $(1;1)$ -- $(2;1)$.
+    j)  Funkcí `grid()` přidejte tečkovanou mřížku.
+
+Pokuste se výsledkem přiblížit následovnému grafu, použijte nápovědy:
+
 ```{r, echo=FALSE, fig.align='center'}
 budyko_dfr <- readRDS("./data/budyko_dfr.rds")
 phi <- seq(0, 2, 10e-3)
@@ -289,14 +287,11 @@ segments(x0 = 1, x1 = 2, y0 = 1, y1 = 1, lwd = 2, col = "gray60")
 ```
 :::
 
-
-
 ## Matematická sazba v grafech
 
 Dá se použít v místě textu, nadpisu nebo jiného popisku.
 
-`?plotmath`
-demo(plotmath)
+`?plotmath` demo(plotmath)
 
 ```{r}
 plot(x = dfr$X, 
@@ -304,7 +299,6 @@ plot(x = dfr$X,
      main = expression(paste("graf ", y == x^2)), 
      ylab = expression(paste(y == x^2)))
 ```
-
 
 ## Layout
 
@@ -317,8 +311,9 @@ par(mfrow = c(1, 2)) #<1>
 hist(dfr$X, main = "X", xlab = "") # <2>
 hist(dfr$Y, main = "Y", xlab = "") # <2>
 ```
-1. Okno výstupu rozdělíme do dvou sloupců na jednom řádku.
-2. Posléze voláme dva grafy, které postupně vyplní pole v daném okně.
+
+1.  Okno výstupu rozdělíme do dvou sloupců na jednom řádku.
+2.  Posléze voláme dva grafy, které postupně vyplní pole v daném okně.
 
 ### Sazba do matice s funkcí `layout()`
 
@@ -335,11 +330,10 @@ layout.show(
       byrow = TRUE))
 )
 ```
-1. Zde sdělujeme, že celkově bude pole rozděleno v poměru $3\times 3$ a $4\over9$ 
-(levá dolní část) vyplní 1. graf.
 
-Nyní vynecháme `layout.show()`, zavolámem jen layout() a postupně přiřadíme grafy 
-k jednotlivým polím.
+1.  Zde sdělujeme, že celkově bude pole rozděleno v poměru $3\times 3$ a $4\over9$ (levá dolní část) vyplní 1. graf.
+
+Nyní vynecháme `layout.show()`, zavolámem jen layout() a postupně přiřadíme grafy k jednotlivým polím.
 
 ```{r}
 layout(
@@ -355,19 +349,17 @@ layout(
 ::: callout-tip
 ## Úloha
 
-4. Vytvořte layout dle následujícího nákresu a vyplňte libovolnými rúznými typy grafů.
+4.  Vytvořte layout dle následujícího nákresu a vyplňte libovolnými rúznými typy grafů.
+
 ```{r, echo=FALSE, fig.align='center'}
 layout.show(layout(mat = matrix(c(0, 1, 1,
                                 2, 2, 3), nrow = 2, byrow = TRUE)))
 ```
-
 :::
 
 ## Uložení do souboru
 
-Grafy je možné uložit externě, at už prostřednictvím dialogu v ***Plots*** > ***Export***,
-nebo přímo ve skriptu. Formát lze volit mezi rastrovými \*.png, \*.jpeg, \*.tiff, \*.bmp, 
-či vektorovými \*.eps, \*.svg, \*.pdf. 
+Grafy je možné uložit externě, at už prostřednictvím dialogu v ***Plots*** \> ***Export***, nebo přímo ve skriptu. Formát lze volit mezi rastrovými \*.png, \*.jpeg, \*.tiff, \*.bmp, či vektorovými \*.eps, \*.svg, \*.pdf.
 
 ```{r, eval=FALSE}
 png("./budyko_kompozit.png", 
@@ -378,12 +370,14 @@ png("./budyko_kompozit.png",
 ...  #<1>
 dev.off()
 ```
-1. Standardním způsobem vytvořený diagram či layout.
+
+1.  Standardním způsobem vytvořený diagram či layout.
 
 ::: callout-tip
 ## Úloha
 
-5.  a) Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom
-       do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
-    b) Vytvořte layout ze 4. úlohy a uložte předchozí graf a dva další do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
+5.  
+
+    a)  Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
+    b)  Vytvořte layout ze 4. úlohy a uložte předchozí graf a dva další do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
 :::

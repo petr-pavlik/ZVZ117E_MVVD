@@ -14,47 +14,54 @@ Základy jazyka jsou vyučovány již v prvním semestru studia Vodního hospod�
 
 ## Nápověda
 
-Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jmeno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jmeno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
+Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jméno funkce>`. Pokud bychom se chtěli podívat přímo do kódu funkce, také je to možné, jméno funkce pouze vepíšeme do konzole bez závorek, případně použijeme příkazu `View(<jméno funkce>)`. Kromě toho existuje v R také `help.search(<jméno funkce>)` pod zkratkou `??`, jež hledá fulltextovou nápovědu napříč nainstalovanými balíčky. Dále je ještě možné prohledat mailing list jazyka R pomocí funkce `RSiteSearch()`, která otevře nové okno předdefinovaného prohlížeče. Dále jsou velmi užitečné tematicky ucelené karty nápověd: `?Logical`, `?Constants`, `?Control`, `?Arithmetic`, `?Syntax`, `?Special` a další.
 
 ::: callout-tip
 ## Úloha
 
 1.  Vyhledejte nápovědu k `DateTimeClasses`.\
-    a)  Co reprezentují třídy `POSIXct` a `POSIXlt`?\
-    b)  Jaký je mezi nimi rozdíl?\
-    c)  Nalezněte funkci pro výpočet $5!$\
+    a)  Co reprezentují třídy `POSIXct` a `POSIXlt`? Jaký je mezi nimi rozdíl?\
+    b)  V nápovědě k funkci `min` najděte a spustťte příklady užití.\
+    c)  Nalezněte funkci pro výpočet $5!$.\
 :::
 
 ## Jmenné konvence
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. Název objektu nelze začínat číslovkou nebo operátorem, nesmít být totožný s žádným klíčovým slovem, obsahovat mezeru.
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. 
+
+  -   Název objektu nelze začínat číslovkou nebo operátorem, 
+  -   nesmít být totožný s žádným klíčovým slovem, 
+  -   ani obsahovat mezeru.
 
 ##### Klíčová slova {.unnumbered}
 
+Klíčová slova jsou rezervována pro správnou funkci interpretru jazyka. Pokus o
+Jejich přepis vyvolá chybovou hlášku. Vyzkoušejte například zápisem `TRUE <- 1`.
+
 `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`, a speciální znak: `_`
 
-Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`, a pojmenovávat shodně s běžně používanou funkcí. R je "case-sensitive" jazyk tzn., že proměnná `X` se nerovná `x`.
+Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`, a pojmenovávat shodně s běžně používanou funkcí. R je *case-sensitive* jazyk tzn., že proměnná `X` není ekvivalentní s proměnnou `x`.
 
 ::: callout-tip
 ## Úloha
 
-2.  Intuitivně by nás mohlo vést nahrát data do proměnné `data`. Je to chybný postup, neboť `data()` je funkce zpřístupňující datové sady, kterou jsou součástí instalace. Vyzkoušejte.
+2.  Intuitivně by nás mohlo vést nahrát data do proměnné `data`. Je to chybný postup, neboť `data()` je funkce zpřístupňující různé datové sady, například ty, které jsou běžnou součástí instalace (v balíčku `datasets`). Vyzkoušejte s pomocí nápovědy `library(help = datasets)`.
 :::
 
 ##### Příklady nevhodných proměnných {.unnumbered}
 
 `aaa`, `Morávka průtok [m/s]`, `moje.proměnná`\
-Žádné z těchto jmen proměnných není proti
+Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není vhodný.  
 
 ## Uvozovky a závorky
 
 Představují párové znaky jazyka R. Závorky se používají trojího typu: kulaté, hranaté a složené a všechny mají jasně vymezné pole působnosti.
 
--   `()` **se používají vždy se jménem funkce** a uvozují prostor ve kterém se parametrizují argumenty funkce.\
--   `[]` se **vždy pojí se jménem objektu** (vektoru, pole, listu, ...) a vymezují výběr z daného objektu.\
--   `{}` **ohraničují blok kódu**, který se má vykonat v celku.\
+-   Kromě matematického zápisu `()` **se používají vždy se jménem funkce** a uvozují prostor ve kterém se specifikují parametry funkce.\
+-   `[]` se **vždy pojí se jménem objektu** (vektoru, pole, listu, ...) a vymezují výběr z daného objektu,\
+-   `{}` **ohraničují blok kódu**, který se má celý vykonat (sekvenčně).\
 
-Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře.
+Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře. 
 
 ```{r,eval=FALSE}
 "Správně"
@@ -66,6 +73,8 @@ Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednodu
 ## Úloha
 
 3.  Zadejte špatnou variantu z kódu výše do konzole a sledujte chování prostředí. Co vyjadřuje znak `+`?
+4.  Pomocí funkce `cat()` se pokuste vypsat na konzoli tento text:\ 
+Říkám: "Mám rád R!". 
 :::
 
 ## Operátory
@@ -113,7 +122,7 @@ setdiff(x, y)  # <16>
 ::: callout-tip
 ## Úloha
 
-4.  Použite k výpočtu operátory či množinové funkce:\
+5.  Použite k výpočtu operátory či množinové funkce:\
     a)  Zjistěte, zda je číslo 1109388 dělitelné 7.\
     b)  Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí\
     c)  Vypište hodnoty\
@@ -144,7 +153,7 @@ setdiff(x, y)  # <16>
 ::: callout-tip
 ## Úloha
 
-5.  Vyhodnoťte s pomocí R následující výrazy:\
+6.  Vyhodnoťte s pomocí R následující výrazy:\
     a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3=$ `r fitb(answer = 3)`\
     b)  $\dfrac{\sin(2.3)}{\cos(\pi)}=$ `r fitb(answer = -0.7457052)`\
     c)  $\sum\limits_{i = 1}^{53}i=$ `r fitb(answer = 1431)`\
@@ -153,8 +162,8 @@ setdiff(x, y)  # <16>
     f)  $20!=$ `r fitb(2.432902e+18)`\
     g)  $\int_{0}^{3\pi} \sin(x) dx=$ `r fitb(c(2, "2 with absolute error < 1.7e-12"))`\
     h)  $\sqrt[3]{561}=$ `r fitb(8.247474)`\
-    i)  $\mathrm{diag}\left( \pmatrix{5\\ 3}\cdot \pmatrix{6 & 5}\right)=$ `r fitb(c("30 15", "30, 15"))`\
-    j)  $y=x^2 + 3\sqrt{x};\:y^\prime=$ `r fitb("2 * x + x^((3/2) - 1) * (3/2)")`
+    i)  $\mathrm{diag}\left( \pmatrix{5\\ 3}\cdot \pmatrix{6 & 5}\right)=$ `r fitb(c("30"))`\
+    j)  $y=x^2 + \sqrt[3]{x};\:y^\prime=$ `r fitb("2 * x + x^((1/3) - 1) * (1/3)")`
 :::
 
 ## Datové typy
@@ -190,7 +199,7 @@ Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole
 
 #### Atomický vektor `vector`
 
-Vektor je v jazyce R základní stavební strukturou, nic jaká skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot.
+Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot.
 
 $$
 \mathbf{\mathrm{u}} = 
@@ -254,7 +263,7 @@ x[1:3] #<5>
 ::: callout-tip
 ## Úloha
 
-6.  
+7.  
 
     a)  Vytvořte libovolným způsobem vektor `x` 10 různých číselných hodnot, kde $x\in\mathbb{R}$.
     b)  Zapište výraz pro výběr čísel v rozmezí -5 a 5 z tohoto vektoru.
@@ -324,7 +333,7 @@ diag(A) # <4>
 ::: callout-tip
 ## Úloha
 
-7.  
+8.  
 
     a)  S pomocí nápovědy k funkci `rnorm()` vytvořte matici $\boldsymbol{\mathrm{M}}; h(\boldsymbol{\mathrm{M}}) = 8$ náhodných čísel.
     b)  Vytvořte vektor hodnot od $100$ do $1$ sestupně, využijte nápovědu k funkci `seq()`.\
@@ -345,7 +354,7 @@ diag(A) # <4>
           $$\
     d)  Spočítejte inverzní matici k matici $\boldsymbol{\mathrm{A}}$. Najděte vhodnou funkci s pomocí nápovědy.\
     e)  S pomocí hodnot `TRUE`/`FALSE` vytvořte matici $\boldsymbol{\mathrm{M}}(3,3)$, změňte typ prvku na pozici $\boldsymbol{\mathrm{M}}[1, 1]$ na textový řetězec. Ovlivní tato změna ostatní prvky v matici?\
-    f)  Vyřešte s pomocí R soustavu lineárních rovnic: $$\begin{array}
+    f)  Vyřešte s pomocí funkce `solve()` soustavu lineárních rovnic: $$\begin{array}
           -3x & +2y& +z&=1\\
           -2x & -y& +z&=2\\
           2x & +y& -4z&=0
@@ -386,9 +395,11 @@ ncol(DF)
 
 ## Řídící struktury
 
-Zajišťují obecný průběh programu, tvoří základní prvky algoritmů. Mezi řídící strukury řadíme *podmínky* a *cykly*. Mohli bychom přidat i složené závorky, něboť pro struktury uvozují bloky kódu.
+Směrují běh programu, tvoří základní stavební prvky algoritmů. Mezi řídící strukury řadíme *podmínky* a *cykly*. Mohli bychom přidat i složené závorky, neboť pro struktury uvozují bloky kódu.
 
 ### Podmínky
+
+Podmínkami vytváříme v kódu větvení.
 
 #### `if()`
 
@@ -412,21 +423,41 @@ if(A >= 2) { #<1>
 
 #### `ifelse()`
 
-Vektorizovaný tvar podmínky, který lze volat na prvky struktur.
+Vektorizovaný tvar podmínky, který lze volat přes prvky struktur. 
 
 ```{r}
 x <- -5:5
 cat("Prvek x + 3 je více než 0: ", ifelse(x - 3 > 0, yes = "Ano", no = "Ne"))
 ```
 
+Hojně používaný například při tvorbě nových sloupců uvnitř data.frame.
+
+```{r}
+
+random_data <- data.frame(
+  date = seq(from = as.Date("2025-01-01"), to = as.Date("2025-12-31"), by = "1 day")
+)
+random_data$h_year <- ifelse(test = format(random_data$date, "%m") > 10, 
+                             yes = 2026, 
+                             no = 2025)
+rbind(
+  head(random_data, 3),
+  tail(random_data, 3)
+)
+```
+
 #### `switch()`
+
+Konstrukcí `switch` vytváříme větvení na základě stavu objektu. K jednotlivým 
+stavům, kterých může nebýt, přiřazujeme větve (bloky kódu), které se mají 
+vykonat.
 
 ```{r}
 varianta <- "B"
-2 * (switch(
+2 * switch(
       varianta,
         "A" = 2,  # <1> 
-        "B" = 3)) # <2> 
+        "B" = 3) # <2> 
 ```
 
 1.  Varianta "A nenastala,
@@ -435,7 +466,7 @@ varianta <- "B"
 ::: callout-tip
 ## Úloha
 
-8.  
+9.  
 
     a)  Vytvořte s pomocí podmínek známkovací schéma:
 
@@ -453,11 +484,12 @@ Zajištují, že se část kódu provede opakovaně.
 
 #### `for()` z definovaného rozsahu
 
-Pokud je předem znám počet opakování cyklu (nebo je i jinak implicitně určen), používá se `for` cyklu.
+Pokud je předem znám počet opakování cyklu (nebo je jinak implicitně určen), 
+lze použít `for` cyklu.
 
 ```{r}
 for(i in 1:4) {
-  cat("Iterace ", i, "\n")
+  cat("Iterace: ", i, "\n")
 }
 ```
 
@@ -468,7 +500,7 @@ V případech, kdy počet opakování není předem znám, ale je známa podmín
 ```{r}
 i <- 1
 while(i < 5) {
-  cat("Iterace ", i, "\n")
+  cat("Iterace: ", i, "\n")
   i <- i + 1
 }
 ```
@@ -480,7 +512,7 @@ Počet opakování není znám. Nicméně lze definovat případ, kdy má cyklus
 ```{r}
 i <- 1
 repeat { #<1>
-  cat("Iterace ", i, "\n") #<1>
+  cat("Iterace: ", i, "\n") #<1>
   i <- i + 1 #<1>
   if(i >= 5) break #<1> # <2>
 } #<1>
@@ -489,7 +521,8 @@ repeat { #<1>
 1.  Prováděj
 2.  Vnořenou podmínkou následovanou klíčovým slovem `break` definujeme konec cyklu.
 
-Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`. Je dobré si uvědomit, že cyklus typu `while` se nemusí provést ani jednou. Což právě použití `repeat` ošetřuje.
+Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`. Je dobré si uvědomit, že cyklus typu `while` se nemusí provést ani jednou, k čemuž dojde,
+když výsledkem prvního vyhodnocení podmínky je FALSE. Což právě použití `repeat` ošetřuje.
 
 ::: callout-tip
 ## Úloha
@@ -519,15 +552,17 @@ cat("Hodnota nejblíže 0 z vektoru x je:" ,
 1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
 
 ## Rekapitulace
+::: callout-tip
+## Úloha
 
 Vyplňte následující formulář bez použití R.\
 
 ```{r, include=FALSE}
 opts1 <- c("Počet sloupců i řádků musí být shodný", 
-           answer = "Proměnnná musí mít uvedenou hodnotu v každém řádku", 
+           answer = "Proměnná musí mít uvedenou hodnotu v každém řádku", 
            "Všechny proměnné musí být stejného typu")
 opts2 <- c("Počet sloupců i řádků musí být shodný", 
-           "Proměnnná musí mít uvedenou hodnotu v každém řádku", 
+           "Proměnná musí mít uvedenou hodnotu v každém řádku", 
            "Všechny proměnné musí být stejného typu", 
            answer = "Je možné do něj rekurzivně vniřit další objekt typu list")
 ```
@@ -535,8 +570,8 @@ opts2 <- c("Počet sloupců i řádků musí být shodný",
 1.  Zvolte platné tvrzení pro `data.frame`: `r longmcq(opts = opts1)`
 2.  Matici je možné vytvořit z vektoru přidáním dimenze: `r torf(answer = TRUE)`\
 3.  Co je výsledkem výrazu: $\sin(\frac{0}{0})$ `r fitb(answer = "NaN")`\
-4.  Vyberte, platné tvrzení pro list: `r longmcq(opts = opts2)`
-5.  Napište výraz pro nepřiřazenou číselnou hodnotu : `r fitb(answer = "NA_real_")`\
+4.  Vyberte, platné tvrzení pro datovou strukturu list: `r longmcq(opts = opts2)`
+5.  Napište výraz pro nepřiřazenou *celočíselnou* hodnotu : `r fitb(answer = "NA_integer_")`\
 6.  Dolňte chybějící zápis cyklu: `r fitb(answer = "6-i")`\
 
 ```         
@@ -545,3 +580,6 @@ opts2 <- c("Počet sloupců i řádků musí být shodný",
   }
   > 54321
 ```
+7.  Vytvořte funkci `FD0(x)` s parameterm `x`, který bude reprezentovat teplotu.
+    Funkce `FD0(x)` bude vracet počet hodnot nižších než 0.
+:::

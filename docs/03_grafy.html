@@ -279,17 +279,6 @@ window.Quarto = {
   <li><a href="#jednorozměrná-data" id="toc-jednorozměrná-data" class="nav-link active" data-scroll-target="#jednorozměrná-data"><span class="header-section-number">5.1</span> Jednorozměrná data</a></li>
   <li><a href="#funkce-curve" id="toc-funkce-curve" class="nav-link" data-scroll-target="#funkce-curve"><span class="header-section-number">5.2</span> Funkce <code>curve()</code></a></li>
   <li><a href="#funkce-plot" id="toc-funkce-plot" class="nav-link" data-scroll-target="#funkce-plot"><span class="header-section-number">5.3</span> Funkce <code>plot()</code></a></li>
-  <li><a href="#volba-barev" id="toc-volba-barev" class="nav-link" data-scroll-target="#volba-barev"><span class="header-section-number">5.4</span> Volba barev</a>
-  <ul class="collapse">
-  <li><a href="#palety-a-rcolorbrewer" id="toc-palety-a-rcolorbrewer" class="nav-link" data-scroll-target="#palety-a-rcolorbrewer"><span class="header-section-number">5.4.1</span> Palety a <code>RColorBrewer</code></a></li>
-  </ul></li>
-  <li><a href="#matematická-sazba-v-grafech" id="toc-matematická-sazba-v-grafech" class="nav-link" data-scroll-target="#matematická-sazba-v-grafech"><span class="header-section-number">5.5</span> Matematická sazba v grafech</a></li>
-  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">5.6</span> Layout</a>
-  <ul class="collapse">
-  <li><a href="#sazba-pomocí-par" id="toc-sazba-pomocí-par" class="nav-link" data-scroll-target="#sazba-pomocí-par"><span class="header-section-number">5.6.1</span> Sazba pomocí <code>par()</code></a></li>
-  <li><a href="#sazba-do-matice-s-funkcí-layout" id="toc-sazba-do-matice-s-funkcí-layout" class="nav-link" data-scroll-target="#sazba-do-matice-s-funkcí-layout"><span class="header-section-number">5.6.2</span> Sazba do matice s funkcí <code>layout()</code></a></li>
-  </ul></li>
-  <li><a href="#uložení-do-souboru" id="toc-uložení-do-souboru" class="nav-link" data-scroll-target="#uložení-do-souboru"><span class="header-section-number">5.7</span> Uložení do souboru</a></li>
   </ul>
 </nav>
     </div>
@@ -445,7 +434,7 @@ Cíle cvičení
 </section>
 <section id="funkce-plot" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="funkce-plot"><span class="header-section-number">5.3</span> Funkce <code>plot()</code></h2>
-<p><code>plot(x, y, ...)</code> je základní <strong>S3 generická</strong> funkce, jejíž metody umožňují použití na široké množství objektů. Začneme s použitím na vektor z datasetu <code>dfr</code>.</p>
+<p><code>plot(x, y, ...)</code> je tzv. <strong>S3 generická</strong> funkce, jejíž metody umožňují použití na široké množství objektů. Začneme s použitím na vektor z datasetu <code>dfr</code>.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -455,7 +444,7 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od parametru. Vidíme tak, že osa <span class="math inline">\(y\)</span> je pojmenována po vstupním parametru.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od poskytnutých argumentů. Pro lepší představu o parametrech se podívejte na <code>plot.default()</code>.</span>
 </dd>
 </dl>
 </div>
@@ -467,7 +456,6 @@ Cíle cvičení
 </div>
 </div>
 </div>
-<p>Zkusíme více parametrizovat výstup a</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -610,7 +598,19 @@ Cíle cvičení
 <!-- ```{r} -->
 <!-- x <- sqrt -->
 <!-- ``` -->
-</section>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol start="2" type="1">
+<li>Funkcí <code>plot(x, y)</code></li>
+</ol>
 <section id="volba-barev" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="volba-barev"><span class="header-section-number">5.4</span> Volba barev</h2>
 <p>Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů, například <code>"white"</code>, <code>"orange"</code> použít funkci <code>rgb()</code> a nebo hexadecimální zápis <code>"#FFF000"</code>. Výpis všech předdefinovaných barev<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> lze získat příkazem <code>colors()</code>.</p>
@@ -733,7 +733,7 @@ Poznámka
 </div>
 <div class="callout-body-container callout-body">
 <ol start="3" type="1">
-<li>následujícím příkladu vytvoříte graf <strong>Budykovy křivky</strong>.<br>
+<li>V následujícím příkladu vytvoříte graf <strong>Budykovy křivky</strong>.<br>
 Postup:<br>
 
 <ol type="a">
@@ -940,6 +940,9 @@ Postup:<br>
 </div>
 
 
+</section>
+</div>
+</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-pedersen2021package" class="csl-entry" role="listitem">
 Pedersen, Thomas Lin, a Fabio Crameri. 2021. <span>„Package ’scico’"</span>.

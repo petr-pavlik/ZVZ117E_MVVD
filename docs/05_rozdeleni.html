@@ -264,7 +264,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#diskrétní-rozdělení" id="toc-diskrétní-rozdělení" class="nav-link" data-scroll-target="#diskrétní-rozdělení"><span class="header-section-number">7.2</span> Diskrétní rozdělení</a>
   <ul class="collapse">
-  <li><a href="#poissonovo-rozdělení" id="toc-poissonovo-rozdělení" class="nav-link" data-scroll-target="#poissonovo-rozdělení"><span class="header-section-number">7.2.1</span> Poissonovo rozdělení</a></li>
+  <li><a href="#binomické-rozdělení" id="toc-binomické-rozdělení" class="nav-link" data-scroll-target="#binomické-rozdělení"><span class="header-section-number">7.2.1</span> Binomické rozdělení</a></li>
+  <li><a href="#poissonovo-rozdělení" id="toc-poissonovo-rozdělení" class="nav-link" data-scroll-target="#poissonovo-rozdělení"><span class="header-section-number">7.2.2</span> Poissonovo rozdělení</a></li>
   </ul></li>
   <li><a href="#spojitá-rozdělení" id="toc-spojitá-rozdělení" class="nav-link" data-scroll-target="#spojitá-rozdělení"><span class="header-section-number">7.3</span> Spojitá rozdělení</a>
   <ul class="collapse">
@@ -317,7 +318,7 @@ Cíle cvičení
 </div>
 </div>
 <p>V software R jsou všechna základní rozdělení součástí balíku <code>stats</code>. A jejich výčet získáme vyvoláním nápovědy <code>?distributions</code>. Pracovat s rozděleními budeme čtyřmi způsoby: - budeme generovat náhodná čísla z rozdělení - budeme pracovat s kvantilovou funkcí daného rozdělení - počítat s hustotou a pravděpododobnostní funkcí</p>
-<p>Balík <code>stats</code> obsahuje mnoho rozdělení. <strong>Alternativní</strong>, <strong>Binomické</strong>, <strong>Multinomické</strong>, <strong>Poissonovo</strong>, <strong>Normální</strong>, <strong>Fischer-Snedecorovo</strong>, <span class="math inline">\(\chi^2\)</span>, <strong>Studentovo</strong>, <span class="math inline">\(t\)</span>, <strong>Gumbellovo</strong> a mnohá další.<br>
+<p>Balík <code>stats</code> obsahuje mnoho rozdělení. <strong>Alternativní</strong>, <strong>Binomické</strong>, <strong>Multinomické</strong>, <strong>Poissonovo</strong>, <strong>Normální</strong>, <strong>Fischer-Snedecorovo</strong>, <span class="math inline">\(\chi^2\)</span>, <strong>Studentovo</strong> <span class="math inline">\(t\)</span>, <strong>Gumbellovo</strong> a mnohá další.<br>
 Podívejte se na <code>?Distributions</code>.</p>
 <section id="funkce-rozdělení" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="funkce-rozdělení"><span class="header-section-number">7.1</span> Funkce rozdělení</h2>
@@ -473,8 +474,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seed, <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]       10403           2 -1708141412  1704738463  -824830731    46486924
- [7]  -813215646  1721483325 -1047872841  -176578210</code></pre>
+<pre><code> [1]       10403           2  1720120320   582581571   763621601  1312590416
+ [7]   466400942  -843120039   881076843 -1418879014</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -501,8 +502,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7801315
-[1] 0.7801315 0.6604101</code></pre>
+<pre><code>[1] 0.2609321
+[1] 0.2609321 0.6904154</code></pre>
 </div>
 </div>
 </section>
@@ -511,9 +512,13 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <h2 data-number="7.2" class="anchored" data-anchor-id="diskrétní-rozdělení"><span class="header-section-number">7.2</span> Diskrétní rozdělení</h2>
 <!-- ### Alternativní rozdělení -->
 <!-- ### Rovnoměrné rozdělení -->
-<!-- ### Binomické rozdělení -->
-<section id="poissonovo-rozdělení" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="poissonovo-rozdělení"><span class="header-section-number">7.2.1</span> Poissonovo rozdělení</h3>
+<section id="binomické-rozdělení" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="binomické-rozdělení"><span class="header-section-number">7.2.1</span> Binomické rozdělení</h3>
+<p>Popisuje počet <span class="math inline">\(m\)</span> úspěchů v posloupnosti <span class="math inline">\(N\)</span> nezávislých 0/1 pokusů.</p>
+</section>
+<section id="poissonovo-rozdělení" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="poissonovo-rozdělení"><span class="header-section-number">7.2.2</span> Poissonovo rozdělení</h3>
+<p>Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací binomického rozdělení v případech, kdy počet pozorování se limitně blíží k nekonečnu (<span class="math inline">\(N\rightarrow \infty\)</span>)</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -545,8 +550,12 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <div class="callout-body-container callout-body">
 <ol start="8" type="1">
 <li>Vytvořte jednoduchý simulátor deště pro jeden rok podle následujícího zadání<br>
-a) Buď prší, nebo ne. Prvděpodobnost že neprší, je 90 %.<br>
-b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost že prší dnes na 25 %.</li>
+
+<ol type="a">
+<li>Buď prší, nebo ne. Prvděpodobnost že neprší, je 90 %.<br>
+</li>
+<li>Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost že prší dnes na 25 %.</li>
+</ol></li>
 </ol>
 </div>
 </div>
@@ -609,7 +618,7 @@ b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost ž
 “Jaká je pravděpodobnost, že veličina <span class="math inline">\(X\)</span> je menší než 7.5?”</p>
 <section id="normální-rozdělení" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="normální-rozdělení"><span class="header-section-number">7.3.1</span> Normální rozdělení</h3>
-<p>Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace <span class="math inline">\(X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)\)</span> bude menší než 5,5. Početně je úkon řešen standardizací a určením nového</p>
+<p>Chceme spočítat pravědpodobnost, že náhodná hodnota, vybraná z populace <span class="math inline">\(X\sim \mathsf{N}(\mu = 3; \sigma^2 = 2,2)\)</span> bude menší než <span class="math inline">\(5,5\)</span>. Početně je úkon řešen standardizací a určením nového</p>
 <div>
 
 </div>
@@ -706,20 +715,26 @@ f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 \]</span></li>
 <li>Máme náhodnou veličinu <span class="math inline">\(X\)</span>, jež sleduje Normální rozdělení s parametry <span class="math inline">\(\mu = 5\)</span> a <span class="math inline">\(\sigma^2 = 4,13\)</span>, nebo-li <span class="math inline">\(X\sim \mathsf{N}(5; 4,13)\)</span>. Určete pravděpodobnost:&nbsp;
 <ul>
-<li><span class="math inline">\(P(X &lt; 8)=\)</span> <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.7662008&quot;,&quot;0,7662008&quot;]">&nbsp;<br>
+<li><span class="math inline">\(P(X &gt; 8)=\)</span> <input class="webex-solveme nospaces" size="10" data-answer="[&quot;0.06994464&quot;,&quot;0,06994464&quot;]">&nbsp;<br>
 </li>
-<li><span class="math inline">\(P(X \leq 8)=\)</span> <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.7662008&quot;,&quot;0,7662008&quot;]">&nbsp;<br>
+<li><span class="math inline">\(P(X \leq 8)=\)</span> <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.9300554&quot;,&quot;0.9300554&quot;]">&nbsp;<br>
 </li>
-<li><span class="math inline">\(P(X &gt; 12,4)=\)</span> <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.0365851&quot;,&quot;0,0365851&quot;]">&nbsp;<br>
+<li><span class="math inline">\(P(X &gt; 26,4)=\)</span> <input class="webex-solveme nospaces" size="12" data-answer="[&quot;3.133338e-26&quot;,&quot;3,133338e-26&quot;]">&nbsp;<br>
 </li>
 </ul></li>
 <li>Pro jakou hodnotu <span class="math inline">\(\gamma\)</span> je pravděpodobnost přibližně:
 <ul>
-<li><span class="math inline">\(P(X &lt; \gamma) = 0,76\quad\gamma=\)</span> <input class="webex-solveme nospaces" size="4" data-answer="[&quot;7.92&quot;,&quot;7,92&quot;]">&nbsp;<br>
+<li><span class="math inline">\(P(X &lt; \gamma) = 0,76\quad\gamma=\)</span> <input class="webex-solveme nospaces" size="4" data-answer="[&quot;7.91&quot;,&quot;7,91&quot;]">&nbsp;<br>
 </li>
-<li><span class="math inline">\(P(X &gt; \gamma) = 0,16\quad\gamma=\)</span> <input class="webex-solveme nospaces" size="4" data-answer="[&quot;9.10&quot;,&quot;9,10&quot;]"><br>
+<li><span class="math inline">\(P(X &gt; \gamma) = 0,16\quad\gamma=\)</span> <input class="webex-solveme nospaces" size="4" data-answer="[&quot;9.35&quot;,&quot;9,36&quot;]"><br>
 </li>
 </ul></li>
+</ol></li>
+<li><ol type="a">
+<li>V <a href="03_grafy.html" class="quarto-xref"><span>Kapitola 5</span></a> jsme si představovali funkci <code>curve()</code>. Pro praktické počítání s Normální rozdělením je užitečné si pamatovat pravděpodobnosti vybraných intervalů <span class="math inline">\(\mu\pm\{1,2,3\}\sigma\)</span>.&nbsp; S pomocí funkce <code>integrate()</code><br>
+<span class="math display">\[
+    \int^{\mu+2\sigma}_{\mu-2\sigma}\dfrac{1}{\sigma\sqrt{2\pi}}\exp\left(-\dfrac{(x-\mu)^2}{2\pi^2}\right)dx \approx 0.95
+  \]</span></li>
 </ol></li>
 </ol>
 </div>
@@ -757,7 +772,7 @@ Poznámka
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ČHMÚ používá pro odhad a konstrukci <span class="math inline">\(m-\)</span>denních průtoků logaritmicko-normální rodzdělení s pěti parametry.<br>
+<p>Pro odhad a konstrukci <span class="math inline">\(m-\)</span>denních průtoků používá Český hydrometeorologický ústav logaritmicko-normální rodzdělení s pěti parametry.<br>
 </p>
 <p>tvar transformace se třemi, s pěti a ve standardizovaném tvaru pro průtoky <!-- $$ --> <!-- y = e^x + y_o\\ --> <!-- y = a\cdot e^{sign(x)\cdot|x|^b}+y_0\\ --> <!-- q_{norm} = \alpha\cdot e^{sign(x)\cdot|x|^\beta}+q_{100\%} --> <!-- $$ --></p>
 <ul>
@@ -817,7 +832,7 @@ Cvičení
 <li>Předpokládejme, že <span class="math inline">\(s_x^2=8,6\)</span> při <span class="math inline">\(15\)</span> stupních volnosti. Doplňte následující výraz k určení 95% intervalu spolehlivosti pro <span class="math inline">\(\sigma_x^2\)</span> (viz <a href="#eq-odhad-chisq-rozptyl" class="quarto-xref">Rovnice&nbsp;<span>7.2</span></a>).&nbsp;<br>
 <code>c(15*</code> <input class="webex-solveme nospaces" size="3" data-answer="[&quot;8.6&quot;,&quot;8,6&quot;]"> <code>/qchisq(</code> <input class="webex-solveme nospaces" size="5" data-answer="[&quot;0.975&quot;,&quot;0,975&quot;]">, <input class="webex-solveme nospaces" size="2" data-answer="[&quot;15&quot;]"> <code>),</code> <code>15*</code> <input class="webex-solveme nospaces" size="3" data-answer="[&quot;8.6&quot;,&quot;8,6&quot;]"> <code>/qchisq(</code> <input class="webex-solveme nospaces" size="5" data-answer="[&quot;0.025&quot;,&quot;0,025&quot;]">, <code>15</code> <code>))</code><br>
 </li>
-<li>Najděte následující hodnoty: - t_{0,95}(10), <em>{0,1}^2(8), F</em>{0,01}(13;4)&nbsp;<br>
+<li>Najděte následující hodnoty: - t_{0,95}(10), ^2(8), F*{0,01}(13;4)&nbsp;<br>
 </li>
 </ol>
 </div>
