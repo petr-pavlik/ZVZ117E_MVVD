@@ -162,9 +162,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -183,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -258,9 +255,10 @@ window.Quarto = {
   <ul>
   <li><a href="#funkce-rozdělení" id="toc-funkce-rozdělení" class="nav-link active" data-scroll-target="#funkce-rozdělení"><span class="header-section-number">7.1</span> Funkce rozdělení</a>
   <ul class="collapse">
-  <li><a href="#distribuční-funkce-rozdělení" id="toc-distribuční-funkce-rozdělení" class="nav-link" data-scroll-target="#distribuční-funkce-rozdělení"><span class="header-section-number">7.1.1</span> Distribuční funkce rozdělení</a></li>
-  <li><a href="#kvantilová-funkce" id="toc-kvantilová-funkce" class="nav-link" data-scroll-target="#kvantilová-funkce"><span class="header-section-number">7.1.2</span> Kvantilová funkce</a></li>
-  <li><a href="#náhodná-čísla-z-rozdělení" id="toc-náhodná-čísla-z-rozdělení" class="nav-link" data-scroll-target="#náhodná-čísla-z-rozdělení"><span class="header-section-number">7.1.3</span> Náhodná čísla z rozdělení</a></li>
+  <li><a href="#hustota-pravděpodobnosti" id="toc-hustota-pravděpodobnosti" class="nav-link" data-scroll-target="#hustota-pravděpodobnosti"><span class="header-section-number">7.1.1</span> Hustota pravděpodobnosti</a></li>
+  <li><a href="#distribuční-funkce-rozdělení" id="toc-distribuční-funkce-rozdělení" class="nav-link" data-scroll-target="#distribuční-funkce-rozdělení"><span class="header-section-number">7.1.2</span> Distribuční funkce rozdělení</a></li>
+  <li><a href="#kvantilová-funkce" id="toc-kvantilová-funkce" class="nav-link" data-scroll-target="#kvantilová-funkce"><span class="header-section-number">7.1.3</span> Kvantilová funkce</a></li>
+  <li><a href="#náhodná-čísla-z-rozdělení" id="toc-náhodná-čísla-z-rozdělení" class="nav-link" data-scroll-target="#náhodná-čísla-z-rozdělení"><span class="header-section-number">7.1.4</span> Náhodná čísla z rozdělení</a></li>
   </ul></li>
   <li><a href="#diskrétní-rozdělení" id="toc-diskrétní-rozdělení" class="nav-link" data-scroll-target="#diskrétní-rozdělení"><span class="header-section-number">7.2</span> Diskrétní rozdělení</a>
   <ul class="collapse">
@@ -322,7 +320,7 @@ Cíle cvičení
 Podívejte se na <code>?Distributions</code>.</p>
 <section id="funkce-rozdělení" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="funkce-rozdělení"><span class="header-section-number">7.1</span> Funkce rozdělení</h2>
-<p>Pro práci s rozděleními jsou k dispozici obecně tři funkce:</p>
+<p>Pro práci s rozděleními jsou k dispozici obecně čtyři funkce:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -332,6 +330,17 @@ Podívejte se na <code>?Distributions</code>.</p>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">q___</span>() <span class="co"># Kvantilová funkce rozdělení</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="hustota-pravděpodobnosti" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="hustota-pravděpodobnosti"><span class="header-section-number">7.1.1</span> Hustota pravděpodobnosti</h3>
+<p><em>Probability density function (PDF)</em><br>
+</p>
+<p>Hustota pravděpodobnosti je funkce, které popisuje <em>rozložení</em> pravděpodobnosti u spojitě rozdělené náhodné veličiny, tz. vyjadřuje, jak je pravděpodobnost rozprostřena kolem dané hodnoty <span class="math inline">\(x\)</span>.</p>
+<ol type="1">
+<li>Pravděpodobnost je nezáporná <span class="math display">\[f(x)&gt;0;\forall x\]</span></li>
+<li>Celková pravděpodobnost je rovna 1 <span class="math display">\[\int\limits_{-\infty}^\infty f(x)dx=1\]</span></li>
+<li>Pravděpodobnost, že veličina spadne do intervalu <span class="math inline">\([a,b]\)</span> je <span class="math display">\[P(a \leq X \leq b) = \int\limits_a^bf(x)dx\]</span></li>
+<li>Pro spojité rozdělení platí <span class="math display">\[P(X=x)=0\]</span></li>
+</ol>
 <p>Pro úplnost jsou zde uvedeny funkce pro permutace <code>factorial()</code> a kombinace <code>choose()</code>.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -370,14 +379,15 @@ Podívejte se na <code>?Distributions</code>.</p>
 </div>
 </div>
 </div>
-<section id="distribuční-funkce-rozdělení" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="distribuční-funkce-rozdělení"><span class="header-section-number">7.1.1</span> Distribuční funkce rozdělení</h3>
+</section>
+<section id="distribuční-funkce-rozdělení" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="distribuční-funkce-rozdělení"><span class="header-section-number">7.1.2</span> Distribuční funkce rozdělení</h3>
 <p>Rozdělení pravděpodobnosti náhodné veličiny lze jednoznačně popsat tzv. distribuční funkcí <a href="#eq-distribucni-funkce" class="quarto-xref">Rovnice&nbsp;<span>7.1</span></a>.</p>
 <p><span id="eq-distribucni-funkce"><span class="math display">\[
 F(x) = P(X\leq x) = P(\omega_i\in\Omega : X(\omega_i)\leq x)
 \tag{7.1}\]</span></span></p>
-<section id="sec-rozdeleni-empiricka" class="level4" data-number="7.1.1.1">
-<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="sec-rozdeleni-empiricka"><span class="header-section-number">7.1.1.1</span> Empirická distribuční funkce</h4>
+<section id="sec-rozdeleni-empiricka" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="sec-rozdeleni-empiricka"><span class="header-section-number">7.1.2.1</span> Empirická distribuční funkce</h4>
 <p>Sestavuje se na základě sesbíraného vzorku dat, sděluje jak velký podíl dat je stejných nebo menších než konkrétní hodnota. K jejímu vytvoření potřebujeme data seřazená.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
@@ -423,9 +433,9 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 </div>
 </section>
 </section>
-<section id="kvantilová-funkce" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="kvantilová-funkce"><span class="header-section-number">7.1.2</span> Kvantilová funkce</h3>
-<p>Kvantilová funkce je inverzní funkcí k distribuční. Pokud distribuční funkce udává s jakou pravděpodobností bude hodnota náhodného pokusu menší nebo rovna <span class="math inline">\(x\)</span>, kvantilová funkce udává, pro jaké <span class="math inline">\(x\)</span> bude výsledek náhodného pokusu s danou pravděpodobností <span class="math inline">\(y\)</span> měnší nebo roven <span class="math inline">\(x\)</span>.</p>
+<section id="kvantilová-funkce" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="kvantilová-funkce"><span class="header-section-number">7.1.3</span> Kvantilová funkce</h3>
+<p>Kvantilová funkce je <em>inverzní</em> k funkci distribuční. Pokud distribuční funkce udává s jakou pravděpodobností bude hodnota náhodného pokusu menší nebo rovna <span class="math inline">\(x\)</span>, kvantilová funkce udává, pro jaké <span class="math inline">\(x\)</span> bude výsledek náhodného pokusu s danou pravděpodobností <span class="math inline">\(y\)</span> měnší nebo roven <span class="math inline">\(x\)</span>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -444,8 +454,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 </div>
 </div>
 </section>
-<section id="náhodná-čísla-z-rozdělení" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="náhodná-čísla-z-rozdělení"><span class="header-section-number">7.1.3</span> Náhodná čísla z rozdělení</h3>
+<section id="náhodná-čísla-z-rozdělení" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="náhodná-čísla-z-rozdělení"><span class="header-section-number">7.1.4</span> Náhodná čísla z rozdělení</h3>
 <p>Pro generování náhodných čísel lze použít rozdělení.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -466,7 +476,7 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 </dl>
 </div>
 </div>
-<p>Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako <em>pseudonáhodná</em>, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna funkcí <code>set.seed()</code> volanou před každou vygenerovanou sekvencí.</p>
+<p>Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako <em>pseudonáhodná</em>, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna funkcí <code>set.seed()</code> volanou před každou vytvořenou množinou čísel.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -474,8 +484,8 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(seed, <span class="dv">10</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]       10403           2  1720120320   582581571   763621601  1312590416
- [7]   466400942  -843120039   881076843 -1418879014</code></pre>
+<pre><code> [1]       10403           2   806251806  -931655720 -1683062469 -1981524263
+ [7] -1181955480  1632508822   246218513  -805279549</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -502,38 +512,263 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2609321
-[1] 0.2609321 0.6904154</code></pre>
+<pre><code>[1] 0.1959858
+[1] 0.1959858 0.4781090</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rozdělení</th>
+<th>Typ / vlastnosti</th>
+<th>Typické použití</th>
+<th>Funkce v R (balík <em>stats</em>)</th>
+<th>Příklad použití</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Normální (Gaussovo)</strong></td>
+<td>Symetrické, definované střední hodnotou a směrodatnou odchylkou</td>
+<td>Měřící chyby, přirozená variabilita, CLT</td>
+<td><code>dnorm</code>, <code>pnorm</code>, <code>qnorm</code>, <code>rnorm</code></td>
+<td><code>rnorm(1000, mean=0, sd=1)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Lognormální</strong></td>
+<td>Kládně vymezené, silně pravostranné</td>
+<td>Intenzita srážek, ekonomické veličiny, multiplikativní procesy</td>
+<td><code>dlnorm</code>, <code>plnorm</code>, <code>qlnorm</code>, <code>rlnorm</code></td>
+<td><code>rlnorm(1000, meanlog=0, sdlog=1)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Exponenciální</strong></td>
+<td>Paměťově bezstarostné, kladná osa</td>
+<td>Čekací doby, doby mezi událostmi (Poissonův proces)</td>
+<td><code>dexp</code>, <code>pexp</code>, <code>qexp</code>, <code>rexp</code></td>
+<td><code>rexp(1000, rate=0.2)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Gamma</strong></td>
+<td>Kladné, flexibilní tvar (shape–rate)</td>
+<td>Modelování srážek, nízkých průtoků, hydrologické extrémy</td>
+<td><code>dgamma</code>, <code>pgamma</code>, <code>qgamma</code>, <code>rgamma</code></td>
+<td><code>rgamma(1000, shape=2, rate=0.5)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Chí-kvadrát (χ²)</strong></td>
+<td>Kladné, zvláštní případ gamma</td>
+<td>Testy rozptylu, LRT testy</td>
+<td><code>dchisq</code>, <code>pchisq</code>, <code>qchisq</code>, <code>rchisq</code></td>
+<td><code>rchisq(1000, df=10)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Studentovo t</strong></td>
+<td>Těžké ocasy, symetrické</td>
+<td>Odhady střední hodnoty při malých vzorcích</td>
+<td><code>dt</code>, <code>pt</code>, <code>qt</code>, <code>rt</code></td>
+<td><code>rt(1000, df=5)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>F-rozdělení</strong></td>
+<td>Poměr dvou rozptylů</td>
+<td>ANOVA, testy poměru rozptylů</td>
+<td><code>df</code>, <code>pf</code>, <code>qf</code>, <code>rf</code></td>
+<td><code>rf(1000, df1=5, df2=20)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Rovnoměrné (Uniform)</strong></td>
+<td>Konstantní hustota</td>
+<td>Náhodné vzorkování v intervalu, neinformativní předpoklady</td>
+<td><code>dunif</code>, <code>punif</code>, <code>qunif</code>, <code>runif</code></td>
+<td><code>runif(1000, 0, 1)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Weibullovo</strong></td>
+<td>Kladné, flexibilní</td>
+<td>Spolehlivost, doby selhání, délky suchých období</td>
+<td><code>dweibull</code>, <code>pweibull</code>, <code>qweibull</code>, <code>rweibull</code></td>
+<td><code>rweibull(1000, shape=2, scale=5)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Beta</strong></td>
+<td>Omezené na (0, 1)</td>
+<td>Poměry, pravděpodobnosti, Bayesovské prior distribuce</td>
+<td><code>dbeta</code>, <code>pbeta</code>, <code>qbeta</code>, <code>rbeta</code></td>
+<td><code>rbeta(1000, 2, 5)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Cauchyho</strong></td>
+<td>Extrémně těžké ocasy, bez střední hodnoty a rozptylu</td>
+<td>Robustní modelování, odlehlé hodnoty</td>
+<td><code>dcauchy</code>, <code>pcauchy</code>, <code>qcauchy</code>, <code>rcauchy</code></td>
+<td><code>rcauchy(1000)</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
 </section>
 <section id="diskrétní-rozdělení" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="diskrétní-rozdělení"><span class="header-section-number">7.2</span> Diskrétní rozdělení</h2>
-<!-- ### Alternativní rozdělení -->
-<!-- ### Rovnoměrné rozdělení -->
+<p>Diskrétní rozdělení jsou určena výčtem hodnot spolu s pravděpodobností jejich nabytí.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rozdělení</th>
+<th>Typ / vlastnosti</th>
+<th>Typické použití</th>
+<th>Funkce v R (balík <em>stats</em>)</th>
+<th>Příklad použití</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Poissonovo</strong></td>
+<td>Počty událostí v čase/prostoru</td>
+<td>Počty srážkových událostí, příchody, počet výskytů</td>
+<td><code>dpois</code>, <code>ppois</code>, <code>qpois</code>, <code>rpois</code></td>
+<td><code>rpois(1000, lambda=3)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Binomické</strong></td>
+<td>Počet úspěchů v pevně daném počtu pokusů</td>
+<td>Pravděpodobnost výskytu jevu (např. déšť/bez deště)</td>
+<td><code>dbinom</code>, <code>pbinom</code>, <code>qbinom</code>, <code>rbinom</code></td>
+<td><code>rbinom(1000, size=10, prob=0.4)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Negativně binomické</strong></td>
+<td>Počet neúspěchů do dosažení k úspěchů, nebo overdisperzní Poisson</td>
+<td>Nadpoissonovská variabilita srážek, počet epizod</td>
+<td><code>dnbinom</code>, <code>pnbinom</code>, <code>qnbinom</code>, <code>rnbinom</code></td>
+<td><code>rnbinom(1000, size=5, mu=2)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Geometrické</strong></td>
+<td>Počet neúspěchů do prvního úspěchu</td>
+<td>První výskyt jevu, jednoduché čekací doby</td>
+<td><code>dgeom</code>, <code>pgeom</code>, <code>qgeom</code>, <code>rgeom</code></td>
+<td><code>rgeom(1000, prob=0.3)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Hypergeometrické</strong></td>
+<td>Výběr bez vracení</td>
+<td>Losování, ekologické vzorkování, bez-náhrady</td>
+<td><code>dhyper</code>, <code>phyper</code>, <code>qhyper</code>, <code>rhyper</code></td>
+<td><code>rhyper(1000, m=25, n=75, k=10)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Multinomické</strong></td>
+<td>Více kategorií, opakované pokusy</td>
+<td>Simulace kategoriální volby, více-třídní jevy</td>
+<td><code>rmultinom</code></td>
+<td><code>rmultinom(10, size=20, prob=c(.2,.5,.3))</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="binomické-rozdělení" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="binomické-rozdělení"><span class="header-section-number">7.2.1</span> Binomické rozdělení</h3>
 <p>Popisuje počet <span class="math inline">\(m\)</span> úspěchů v posloupnosti <span class="math inline">\(N\)</span> nezávislých 0/1 pokusů.</p>
+<p><span class="math display">\[
+X\sim\mathsf{Bi}(n,p)
+\]</span> ::: callout-tip ## Úloha</p>
+<ol type="1">
+<li>V prosinci je pravděpodobnost sněhově srážkového dne <span class="math inline">\(p=0.15\)</span>. Spočítejte pravděpodobnost, že počet takových dnů bude 20.</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Kód</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">20</span><span class="sc">/</span><span class="dv">31</span>, <span class="at">size =</span> <span class="dv">31</span>, <span class="at">prob =</span> <span class="fl">0.15</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.006486146</code></pre>
+</div>
+</div>
+<p>:::</p>
 </section>
 <section id="poissonovo-rozdělení" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="poissonovo-rozdělení"><span class="header-section-number">7.2.2</span> Poissonovo rozdělení</h3>
-<p>Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací binomického rozdělení v případech, kdy počet pozorování se limitně blíží k nekonečnu (<span class="math inline">\(N\rightarrow \infty\)</span>)</p>
+<p>Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací binomického rozdělení v případech, kdy počet pozorování se limitně blíží k nekonečnu (<span class="math inline">\(N\rightarrow \infty\)</span>). Rozdělení popisuje počet událostí, v daném časovém nebo prostorovém intervalu, pokud tyto nastávají nezávisle a střední doba (intenzita) výskytu je konstantní.</p>
+<section id="hustota-pravděpodobnosti-1" class="level4" data-number="7.2.2.1">
+<h4 data-number="7.2.2.1" class="anchored" data-anchor-id="hustota-pravděpodobnosti-1"><span class="header-section-number">7.2.2.1</span> Hustota pravděpodobnosti</h4>
+<p>kde <span class="math inline">\(k\)</span> je počet výskytů jevu a <span class="math inline">\(\lambda\)</span> je střední počet výskytů v intervalu. <span class="math display">\[
+P(X = k) = \dfrac{\lambda^ke^{-k}}{k!}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Průměrně se vyskytuje během zimy 5 výrazných sněhových epizod za měsíc. Jaká je pravděpodobnost, že v daném zimním měsící se vyskytnou přesne 3 epizody?</p>
+<p><span class="math display">\[
+\begin{align}
+P(X = 3) = \dfrac{5^3e^{-5}}{3!}\\
+P(X = 3) = \dfrac{125}{6}e^{-5}\approx 20,83\cdot 0,006738 = 0,1404
+\end{align}
+\]</span></p></li>
+<li><p>Pravděpodobnost, že teplotní senzor během měření selže během jakéhokoliv dne je</p></li>
+</ol>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(2, 2))</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>), <span class="at">type =</span> <span class="st">"n"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(l <span class="cf">in</span> lambda) {</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">lambda =</span> l), <span class="at">lty =</span> l)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(<span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">lambda =</span> l), <span class="at">col =</span> l)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(2, 2))</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>), <span class="at">type =</span> <span class="st">"n"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(l <span class="cf">in</span> lambda) {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">lambda =</span> l), <span class="at">lty =</span> l)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(<span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">lambda =</span> l), <span class="at">col =</span> l)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-10-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -564,52 +799,53 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> <span class="dv">365</span>)</span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">1</span>) <span class="cf">next</span></span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">test =</span> x[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">yes =</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">size =</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">prob =</span> <span class="fl">0.10</span>) <span class="sc">*</span> <span class="fu">rchisq</span>(<span class="at">n =</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">df =</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">ncp =</span> <span class="dv">0</span>),</span>
-<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">no =</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, </span>
-<span id="annotated-cell-10-13"><a href="#annotated-cell-10-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span>, </span>
-<span id="annotated-cell-10-14"><a href="#annotated-cell-10-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">prob =</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="fu">rchisq</span>(<span class="at">n =</span> <span class="dv">1</span>, </span>
-<span id="annotated-cell-10-15"><a href="#annotated-cell-10-15" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">df =</span> <span class="dv">3</span>, </span>
-<span id="annotated-cell-10-16"><a href="#annotated-cell-10-16" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">ncp =</span> <span class="dv">1</span>)) </span>
-<span id="annotated-cell-10-17"><a href="#annotated-cell-10-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="annotated-cell-10-18"><a href="#annotated-cell-10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x, </span>
-<span id="annotated-cell-10-19"><a href="#annotated-cell-10-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fl">1.5</span><span class="sc">*</span><span class="fu">c</span>(<span class="fu">max</span>(x), <span class="dv">0</span>), </span>
-<span id="annotated-cell-10-20"><a href="#annotated-cell-10-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"dodgerblue4"</span>, </span>
-<span id="annotated-cell-10-21"><a href="#annotated-cell-10-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"dodgerblue4"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> <span class="dv">365</span>)</span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">1</span>) <span class="cf">next</span></span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-6" class="code-annotation-target"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">test =</span> x[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">yes =</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">size =</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">prob =</span> <span class="fl">0.10</span>) <span class="sc">*</span> <span class="fu">rchisq</span>(<span class="at">n =</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">df =</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">ncp =</span> <span class="dv">0</span>),</span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">no =</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">prob =</span> <span class="fl">0.25</span>) <span class="sc">*</span> <span class="fu">rchisq</span>(<span class="at">n =</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-11-15"><a href="#annotated-cell-11-15" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">df =</span> <span class="dv">3</span>, </span>
+<span id="annotated-cell-11-16"><a href="#annotated-cell-11-16" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">ncp =</span> <span class="dv">1</span>)) </span>
+<span id="annotated-cell-11-17"><a href="#annotated-cell-11-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-11-18"><a href="#annotated-cell-11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x, </span>
+<span id="annotated-cell-11-19"><a href="#annotated-cell-11-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fl">1.5</span><span class="sc">*</span><span class="fu">c</span>(<span class="fu">max</span>(x), <span class="dv">0</span>), </span>
+<span id="annotated-cell-11-20"><a href="#annotated-cell-11-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"dodgerblue4"</span>, </span>
+<span id="annotated-cell-11-21"><a href="#annotated-cell-11-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"dodgerblue4"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">Předem alokuejeme vektor hodnot.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Předem alokuejeme vektor hodnot.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="2">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="2">Je třeba ošetřit případ, kdy začínáme a neexistuje úsek <span class="math inline">\(x(t-1)\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="6,7,8,9,10,11" data-code-annotation="3">Pokud pršelo v předchozím čase</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="6,7,8,9,10,11" data-code-annotation="3">Pokud pršelo v předchozím čase</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="spojitá-rozdělení" class="level2" data-number="7.3">
@@ -628,7 +864,7 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid figure-img"></p>
 <figcaption>Pravděpodobnost, že <span class="math inline">\(x\)</span> je menší nebo rovno 2.</figcaption>
 </figure>
 </div>
@@ -638,7 +874,7 @@ P(X\leq x_k) \approx \dfrac{k - 0.3}{n + 0.4}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-14-1.svg" class="img-fluid figure-img"></p>
 <figcaption>Pravděpodobnost, že <span class="math inline">\(x\)</span> je menší nebo rovno 2.</figcaption>
 </figure>
 </div>
@@ -652,10 +888,10 @@ Z = \dfrac{X - \mu}{\sigma} \approx \dfrac{5,5 - 3}{1,48324} \approx 1,6855
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Z =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Z =</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>             N         Z
@@ -677,20 +913,20 @@ Poznámka
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Mean relative difference: 3.473763e-08"</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">tolerance =</span> <span class="fl">0.005</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.6855</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">5.5</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">2.2</span>), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>), <span class="at">tolerance =</span> <span class="fl">0.005</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
@@ -748,11 +984,11 @@ f(x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
 </section>
 <section id="studentovo-t-rozdělení" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="studentovo-t-rozdělení"><span class="header-section-number">7.3.2</span> Studentovo-<span class="math inline">\(t\)</span> rozdělení</h3>
-<p>Používá se pro odhad střední hodnoty souboru pocházejícího z normálního rozdělení s neznámým parametrem <span class="math inline">\(\sigma\)</span>. Více v <a href="07_testovani.html" class="quarto-xref"><span>Kapitola 9</span></a>.</p>
+<p>Používá se pro odhad střední hodnoty souboru pocházejícího z normálního rozdělení s neznámým parametrem <span class="math inline">\(\sigma\)</span>. Více v <a href="07_testovani.html" class="quarto-xref"><span>Kapitola 10</span></a>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.95</span>, <span class="at">df =</span> <span class="dv">100</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.95</span>, <span class="at">df =</span> <span class="dv">100</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.660234</code></pre>
@@ -794,7 +1030,7 @@ f(x;\mu, \sigma, \gamma, \alpha, \beta) = \dfrac{\beta}{(x-\gamma)\sigma\sqrt{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-17-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="05_rozdeleni_files/figure-html/unnamed-chunk-18-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -808,7 +1044,7 @@ f(x;\mu, \sigma, \gamma, \alpha, \beta) = \dfrac{\beta}{(x-\gamma)\sigma\sqrt{2\
 </section>
 <section id="chi2-rozdělení" class="level3" data-number="7.3.5">
 <h3 data-number="7.3.5" class="anchored" data-anchor-id="chi2-rozdělení"><span class="header-section-number">7.3.5</span> <span class="math inline">\(\chi^2\)</span> rozdělení</h3>
-<p>Narozdíl od předchozích zde uvedených rozdělení není <span class="math inline">\(\chi^2\)</span> rozdělení u pozorovaných veličin příliš časté. Nicméně je to významné rozdělení z hlediska testování statistických hypotéz (<a href="07_testovani.html" class="quarto-xref"><span>Kapitola 9</span></a>) při porovnávání rozdělení vzájemně. Používá se při stanovení intervalů spolehlivosti výběrový rozptyl.</p>
+<p>Narozdíl od předchozích zde uvedených rozdělení není <span class="math inline">\(\chi^2\)</span> rozdělení u pozorovaných veličin příliš časté. Nicméně je to významné rozdělení z hlediska testování statistických hypotéz (<a href="07_testovani.html" class="quarto-xref"><span>Kapitola 10</span></a>) při porovnávání rozdělení vzájemně. Používá se při stanovení intervalů spolehlivosti výběrový rozptyl.</p>
 <p><span id="eq-odhad-chisq-rozptyl"><span class="math display">\[
 \dfrac{(n-1)s_x^2}{\chi^2_{1-\alpha/2}} \leq \sigma_x^2\leq \dfrac{(n-1)s_x^2}{\chi^2_{\alpha/2}}
 \tag{7.2}\]</span></span></p>

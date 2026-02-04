@@ -161,9 +161,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -182,7 +179,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -312,6 +309,15 @@ window.Quarto = {
 </ol>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><img src="images/chapter_9_fig_1.png" class="img-fluid"></p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -324,27 +330,26 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2000-01-01"</span>), <span class="at">to =</span> <span class="fu">as.Date</span>(<span class="st">"2020-12-31"</span>), <span class="at">by =</span> <span class="st">"1 year"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">as.numeric</span>(i) <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"black"</span>, <span class="st">"#00000090"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">main =</span> <span class="st">"Klementinum 1776 - 2023"</span>, </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">"Identifikace extrémů s pomocí blokových maxim"</span>,  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> klementinum_short<span class="sc">$</span>date,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> klementinum_short<span class="sc">$</span>tavg, </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"p"</span>, </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.1</span>, </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#00000050"</span>, </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(T[avg]), </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">## draw rectangles with bottom left (100, 300)+i</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">## and top right (150, 380)+i</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span>i, <span class="dv">365</span><span class="sc">+</span>i, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="at">col =</span> j, </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> j)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> threshold, </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#660033"</span>, </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> klementinum_short<span class="sc">$</span>date,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> klementinum_short<span class="sc">$</span>tavg, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"p"</span>, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.1</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#00000050"</span>, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(T)[avg]<span class="sc">*</span>degree<span class="sc">*</span>C), </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## draw rectangles with bottom left (100, 300)+i</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">## and top right (150, 380)+i</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span>i, <span class="dv">365</span><span class="sc">+</span>i, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="at">col =</span> j, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> j)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> threshold, </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>, </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="12_extremalni_rozdeleni_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid figure-img"></p>
+<figcaption>Klementinum 2000-2020. Identifikace extrémů s pomocí ‘Peak-over-threshold’.</figcaption>
 </figure>
 </div>
 </div>

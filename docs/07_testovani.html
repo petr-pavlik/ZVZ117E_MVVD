@@ -162,9 +162,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -183,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -257,12 +254,16 @@ window.Quarto = {
    
   <ul>
   <li><a href="#postup-testování-statistické-hypotézy" id="toc-postup-testování-statistické-hypotézy" class="nav-link active" data-scroll-target="#postup-testování-statistické-hypotézy"><span class="header-section-number">9.1</span> Postup testování statistické hypotézy:</a></li>
-  <li><a href="#p-hodnota" id="toc-p-hodnota" class="nav-link" data-scroll-target="#p-hodnota"><span class="header-section-number">9.2</span> <span class="math inline">\(p-\)</span>hodnota</a></li>
-  <li><a href="#jednovýběrové-testy" id="toc-jednovýběrové-testy" class="nav-link" data-scroll-target="#jednovýběrové-testy"><span class="header-section-number">9.3</span> Jednovýběrové testy</a></li>
-  <li><a href="#alpha-interval-spolehlivosti" id="toc-alpha-interval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-interval-spolehlivosti"><span class="header-section-number">9.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</a>
+  <li><a href="#sec-testovani" id="toc-sec-testovani" class="nav-link" data-scroll-target="#sec-testovani"><span class="header-section-number">10</span> Testování hypotéz</a>
   <ul class="collapse">
-  <li><a href="#příklad-1" id="toc-příklad-1" class="nav-link" data-scroll-target="#příklad-1"><span class="header-section-number">9.4.1</span> Příklad 1</a></li>
-  <li><a href="#příklad-2" id="toc-příklad-2" class="nav-link" data-scroll-target="#příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</a></li>
+  <li><a href="#postup-testování-statistické-hypotézy-1" id="toc-postup-testování-statistické-hypotézy-1" class="nav-link" data-scroll-target="#postup-testování-statistické-hypotézy-1"><span class="header-section-number">10.1</span> Postup testování statistické hypotézy</a></li>
+  <li><a href="#p-hodnota" id="toc-p-hodnota" class="nav-link" data-scroll-target="#p-hodnota"><span class="header-section-number">10.2</span> <span class="math inline">\(p-\)</span>hodnota</a></li>
+  <li><a href="#jednovýběrové-testy" id="toc-jednovýběrové-testy" class="nav-link" data-scroll-target="#jednovýběrové-testy"><span class="header-section-number">10.3</span> Jednovýběrové testy</a></li>
+  <li><a href="#alpha-interval-spolehlivosti" id="toc-alpha-interval-spolehlivosti" class="nav-link" data-scroll-target="#alpha-interval-spolehlivosti"><span class="header-section-number">10.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</a>
+  <ul class="collapse">
+  <li><a href="#příklad-1" id="toc-příklad-1" class="nav-link" data-scroll-target="#příklad-1"><span class="header-section-number">10.4.1</span> Příklad 1</a></li>
+  <li><a href="#příklad-2" id="toc-příklad-2" class="nav-link" data-scroll-target="#příklad-2"><span class="header-section-number">10.4.2</span> Příklad 2</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -305,7 +306,7 @@ Cíle cvičení
 </ul>
 </div>
 </div>
-<p>Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících z <strong>náhodného výběru</strong> ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například: - srovnání charakteristiky výběrového odhadu parametru <span class="math inline">\(\theta\)</span> s přepokládanou hodnotou souboru. - vyhodnotit charakter rozdělení náhodné veličiny - vyhodnocení nezávislosti veličin</p>
+<p>Testování statistické hypotézy je proces, při kterém na základě dat pocházejících z <strong>náhodného výběru</strong> ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například: - srovnání charakteristiky výběrového odhadu parametru <span class="math inline">\(\theta\)</span> s předpokládanou hodnotou souboru. - vyhodnotit charakter rozdělení náhodné veličiny - vyhodnocení nezávislosti veličin</p>
 <p>Zavádíme pojmy nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní hypotézy <span class="math inline">\(\mathrm{H}_a\)</span> jako vzájemně vylučující se tvrzení.</p>
 <p>Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady rozhodne o <strong>zamítnutí</strong>, či <strong>nezamítnutí nulové hypotézy</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -318,7 +319,7 @@ Poznámka
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nulová hypotéza má ve většině případů neutrání až trochu negativní znění. Například “neexistuje rozdíl mezi středními hodnotami”, “testované rozdělení není odlišné od normálního” apod. Její konstrukce víceméně odráží opak toho, co se na sesbíraných datech snažíme vysledovat.</p>
+<p>Nulová hypotéza má ve většině případů neutrální až trochu negativní znění. Například “neexistuje rozdíl mezi středními hodnotami”, “testované rozdělení není odlišné od normálního” apod. Její konstrukce víceméně odráží opak toho, co se na sesbíraných datech snažíme vysledovat.</p>
 </div>
 </div>
 <section id="postup-testování-statistické-hypotézy" class="level2" data-number="9.1">
@@ -335,6 +336,61 @@ Poznámka
 <li>vyhodnocení testu s pomocí p-hodnoty.</li>
 </ol>
 <p>Výsledkem testování je buď a) zamítnutní nulové hypotézy<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> b) nezamítnutní nulové hypotézy.</p>
+</section>
+<section id="sec-testovani" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Testování hypotéz</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cíle cvičení
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Znát terminologii testování hypotéz.</li>
+<li>Umět sestavit a vyhodnotit statistický test.</li>
+</ul>
+</div>
+</div>
+<p>Testování <strong>statistické hypotézy</strong> je proces, při kterém na základě dat pocházejících z <strong>náhodného výběru</strong> ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například:</p>
+<ul>
+<li>srovnání výběrového odhadu parametru <span class="math inline">\(\theta\)</span> s předpokládanou hodnotou v souboru,</li>
+<li>posouzení charakteru rozdělení náhodné veličiny,</li>
+<li>vyhodnocení nezávislosti náhodných veličin.</li>
+</ul>
+<p>Zavádíme pojmy <strong>nulové hypotézy</strong> <span class="math inline">\(\mathrm{H}_0\)</span> a <strong>alternativní hypotézy</strong> <span class="math inline">\(\mathrm{H}_a\)</span> jako vzájemně se vylučující tvrzení.</p>
+<p>Pod <em>testováním hypotéz</em> potom rozumíme proces, který na základě vlastností datové sady rozhoduje o <strong>zamítnutí</strong>, nebo <strong>nezamítnutí nulové hypotézy</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nulová hypotéza má ve většině případů neutrální až mírně „negativní“ znění. Například:<br>
+„neexistuje rozdíl mezi středními hodnotami“,<br>
+„testované rozdělení není odlišné od normálního“ apod.</p>
+<p>Její formulace obvykle odráží opak toho, co se na základě dat snažíme prokázat.</p>
+</div>
+</div>
+<section id="postup-testování-statistické-hypotézy-1" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="postup-testování-statistické-hypotézy-1"><span class="header-section-number">10.1</span> Postup testování statistické hypotézy</h2>
+<ol type="1">
+<li>formulace nulové <span class="math inline">\(\mathrm{H}_0\)</span> a alternativní <span class="math inline">\(\mathrm{H}_a\)</span> hypotézy,</li>
+<li>volba hladiny významnosti <span class="math inline">\(\alpha\)</span>,</li>
+<li>volba testovací statistiky,</li>
+<li>určení kritického oboru testové statistiky,</li>
+<li>vyhodnocení testu pomocí p-hodnoty.</li>
+</ol>
+<p>Výsledkem testování je buď<br>
+a) <strong>zamítnutí nulové hypotézy</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>,<br>
+b) <strong>nezamítnutí nulové hypotézy</strong>.</p>
 <hr>
 
 <table class="caption-top table" data-quarto-postprocess="true">
@@ -348,29 +404,30 @@ Poznámka
 <td>$$\neg \mathrm{H}_0$$</td>
 </tr>
 <tr class="odd">
-<td>Nazamítáme $$\mathrm{H}_0$$</td>
+<td>Nezamítáme $$\mathrm{H}_0$$</td>
 <td>Správné rozhodnutí: $$P = 1 - \alpha$$</td>
-<td>Nastává chyba II. druhu: $$P = \beta$$</td>
+<td>Chyba II. druhu: $$P = \beta$$</td>
 </tr>
 <tr class="even">
 <td>Zamítáme $$\mathrm{H}_0$$</td>
 <td>Chyba I. druhu: $$P = \alpha$$</td>
-<td>Správné rozhodnutí: $$P = 1- \beta$$</td>
+<td>Správné rozhodnutí: $$P = 1 - \beta$$</td>
 </tr>
 </tbody>
 </table>
-<p>Síla testu <span class="math inline">\(\beta\)</span> je pravěpodobnost, že je testem zamítnuta nulová hypotéza, která je skutečně neplatná. <span class="math inline">\(P(\mathrm{H}_A|\mathrm{H}_A) = 1-\beta\)</span></p>
+<p>Síla testu je pravděpodobnost, že je testem zamítnuta nulová hypotéza, která je skutečně neplatná. <span class="math inline">\(P(\mathrm{zamítneme\:H}_0|\mathrm{H}_0\: \mathrm{neplatí}) = 1-\beta\)</span></p>
 </section>
-<section id="p-hodnota" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="p-hodnota"><span class="header-section-number">9.2</span> <span class="math inline">\(p-\)</span>hodnota</h2>
-<p>Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. <em><span class="math inline">\(p-\)</span>hodnotu</em> (anglicky p-value). Definice <span class="math inline">\(p-\)</span>hodnoty je poněkud obšírná - <em>jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá</em>.</p>
+<section id="p-hodnota" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="p-hodnota"><span class="header-section-number">10.2</span> <span class="math inline">\(p-\)</span>hodnota</h2>
+<p>Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. <span class="math inline">\(p-\)</span>hodnotu (anglicky p-value). Definice <span class="math inline">\(p-\)</span>hodnoty není zcela triviální.</p>
+<p><em><span class="math inline">\(p-\)</span>hodnota je pravděpodobnost, že bychom za předpokladu platnosti nulové hypotézy pozorovali výsledek <strong>alespoň tak extrémní</strong>, jako je výsledek skutečně naměřený.</em>.</p>
 </section>
-<section id="jednovýběrové-testy" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="jednovýběrové-testy"><span class="header-section-number">9.3</span> Jednovýběrové testy</h2>
-<p>Představme si, že hledáme odpověď na otázky typu: “Jaká je střední hodnota souboru?”, “Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)”? “Jaká je mír nejistoty odhadu této střední hodnoty?”.</p>
+<section id="jednovýběrové-testy" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="jednovýběrové-testy"><span class="header-section-number">10.3</span> Jednovýběrové testy</h2>
+<p>Představme si, že hledáme odpověď na otázky typu: “Jaká je střední hodnota souboru?”, “Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)”? “Jaká je míra nejistoty odhadu této střední hodnoty?”.</p>
 </section>
-<section id="alpha-interval-spolehlivosti" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="alpha-interval-spolehlivosti"><span class="header-section-number">9.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</h2>
+<section id="alpha-interval-spolehlivosti" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="alpha-interval-spolehlivosti"><span class="header-section-number">10.4</span> <span class="math inline">\(100(1-\alpha)\%\)</span> interval spolehlivosti</h2>
 <p>Vrátíme se krátce k intervalu spolehlivosti z předchozí hodiny.</p>
 <p><span class="math display">\[
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
@@ -387,8 +444,8 @@ Poznámka
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> (<span class="dv">1</span> <span class="sc">-</span> alpha)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> nu)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="příklad-1" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="příklad-1"><span class="header-section-number">9.4.1</span> Příklad 1</h3>
+<section id="příklad-1" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="příklad-1"><span class="header-section-number">10.4.1</span> Příklad 1</h3>
 <p>V tomto příkladu si ukážeme, jak to vypadá, když <strong>dojde k chybě 1. druhu</strong>. Dejme tomu, že jsme v průběhu práce sesbírali následující hodnoty:&nbsp;<br>
 2.7012729, 1.948016, 1.8352938, 3.1679424, 0.526072, 2.1859689, 1.065823, 3.3036902, -0.3457034, -0.6952718&nbsp;<br>
 u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
@@ -425,7 +482,7 @@ u procesu <span class="math inline">\(X\sim\mathsf{N}(0; 1)\)</span></p>
 </div>
 </div>
 <p>Data jsme získali s pomocí generátoru pro náhodné rozdělení, budeme předpokládat, že teoretický soubor má náhodné rozdělení s parametry <span class="math inline">\(\mu=0\)</span> a <span class="math inline">\(\sigma^2=1\)</span> a ověříme na hladině významnosti <span class="math inline">\(\alpha=0.05\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -462,10 +519,10 @@ mean of x
 </div>
 <p>Z výsledku testu vyplývá, že <code>p-value</code> <span class="math inline">\(&lt; \alpha\)</span>, proto tedy musíme nulovou hypotézu <input class="webex-solveme nospaces" size="9" data-answer="[&quot;zamítnout&quot;,&quot;zamitnout&quot;]">.</p>
 </section>
-<section id="příklad-2" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="příklad-2"><span class="header-section-number">9.4.2</span> Příklad 2</h3>
+<section id="příklad-2" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="příklad-2"><span class="header-section-number">10.4.2</span> Příklad 2</h3>
 <p>V předchozím příkladu jsme testovali nulovou hypotézu oproti oboustranné alternativě, tzn. neřešili jsme, zda je střední hodnota menší či větší.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -478,7 +535,7 @@ mean of x
 <ol type="1">
 <li>S pomocí nápovědy nastavte argumenty funkce <code>t.test()</code> tak, aby byla test proběhl oproti jednostranné alternativě, že je skutečná střední hodnota nižší než 2.</li>
 <li>Studentův <span class="math inline">\(t-\)</span>test lze použít za předpokladu, že data splňují tzv. normalitu. tu lze pro tento soubor snadno ověřit jiným testem - <code>shapiro.test()</code>. <span class="math inline">\(\mathrm{H}_0\)</span>: rozdělení není odlišné od normálního. Zamítneme <span class="math inline">\(\mathrm{H}_0\)</span> na hladině významnosti <span class="math inline">\(\alpha=0,1\)</span>?</li>
-<li>Zatím jsme použili jedovýběrový <span class="math inline">\(t-\)</span>test na data pocházející z Normálního rozdělení. V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední hodnotě lze využít neparametrický <em>Wilcoxonův test</em> - <code>wilcox.test()</code>. Rozhodněte o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů z datové sady <strong>temp.csv</strong>.</li>
+<li>Zatím jsme použili jednovýběrový <span class="math inline">\(t-\)</span>test na data pocházející z Normálního rozdělení. V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední hodnotě lze využít neparametrický <em>Wilcoxonův test</em> - <code>wilcox.test()</code>. Rozhodněte o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů z datové sady <strong>temp.csv</strong>.</li>
 </ol>
 </div>
 </div>
@@ -486,10 +543,12 @@ mean of x
 
 </section>
 </section>
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Zamítnutí nulové hypotézy <strong>neznamená, že nulová hypotéza ve skutečnosti nemůže platit</strong>, ale získaná data nevykazují objektivní důvody k jejímu přijetí.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Zamítnutí nulové hypotézy <strong>neznamená, že nulová hypotéza ve skutečnosti nemůže platit</strong>, ale že získaná data neposkytují dostatečné důkazy pro její platnost.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Zamítnutí nulové hypotézy <strong>neznamená, že nulová hypotéza ve skutečnosti nemůže platit</strong>, ale že získaná data neposkytují dostatečné důkazy pro její platnost.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

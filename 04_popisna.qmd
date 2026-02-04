@@ -5,75 +5,96 @@ Popisná statistika má za cíle **souhrnně popsat soubor** (spíše než použ
 ::: callout-warning
 ## Cíle cvičení
 
--   Provést import datové sady
--   Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik\
+-   Provést import datové sady ze souborů typu CSV a RDS.
+-   Být schopen popsat charakterizovat proměnné v datech popsat číselné proměnné pomocí uvedených statistik.\
 :::
 
 ## Import dat {#sec-popisna-importdat}
 
-V hydrologii pracujeme s datovými sadami, které mají rúznou podobu. Nejběžnějším výměnným formát jsou stále obecné \*.xls/\*.xlsx, \*.txt, \*.csv (*comma separated values*). S pomocí těchto formátů jsou často katalogizována data z automatických měření. Dále méně časté formáty \*.json (*javascript object notation*), \*.shp (*shapefile*), \*.laz, \*.nc (*NetCDF file*), \*.parquet (*Apache parqet*). A jako poslední doménově specifické \*.RData, nebo \*.rds. Formátů je velké množství, nicméně je velmi obtížné narazit na některý, pro který neexistuje v R možnost importu ať už v základní konfiguraci nebo s pomocí externích balíčků.
+V hydrologii pracujeme s datovými sadami, které mají různou podobu. Nejčastěji se zpracovávají tabelární a obrazová data. Asi nejběžnější typy souborů s tabelárními daty jsou \*.csv (*comma separated values*), \*.txt, případně \*.xls/\*.xlsx. Takto jsou například katalogizována data z automatických měření, nebo výstupy hydrologických modelů. Dále méně časté formáty \*.json (*javascript object notation*), \*.shp (*shapefile*), *.laz (bodová pole*), \*.nc (*NetCDF file*), \*.parquet (*Apache parqet*). A jako poslední doménově specifické \*.RData, nebo \*.rds. Formátů je velké množství, nicméně je velmi obtížné narazit na některý, pro který neexistuje v R možnost importu ať už v základní konfiguraci nebo s pomocí externích balíčků.
 
-V RStudio se nachází poměrně propracovaný průvodce importem dat, který naklikneme pod záložkou **Environment** \> **Import Dataset**.
+V RStudio se nachází poměrně propracovaný průvodce importem dat z textového souboru, který naklikneme pod záložkou **Environment** \> **Import Dataset**.
 
 ![](images/data-import.png){fig-align="center" width="624"}
 
 ```{r}
-global_temperatures <- read.csv(file = "./data/JonesGlobalT.csv", 
-                                row.names = 1)
-head(x = global_temperatures, n = 5)
+global_temperatures <- read.csv(
+  file = "./data/JonesGlobalT.csv", 
+  row.names = 1
+)
+head(
+  x = global_temperatures, 
+  n = 5
+)
 ```
 
 ```{r}
-global_temperature_yr <- aggregate(x = . ~ YEAR, # <1>
-                                   FUN = mean,  # <1>
-                                   data = global_temperatures) # <1>
-head(x = global_temperature_yr, n = 5)
+global_temperature_yr <- aggregate(
+  x = . ~ YEAR, # <1>
+  FUN = mean,  # <1>
+  data = global_temperatures # <1>
+) 
+head(
+  x = global_temperature_yr, # <2>
+  n = 5 # <2>
+)
 ```
 
+1.  Agregace dat do průměrů (`mean`) za roční období (`YEAR`).
+2.  Vypíšeme si prvních 5 hodnot z datové sady.
 
-1.  Agregace dat do průměrů za roční období.
+```{r}
+#| fig.cap: 'a) Časový průběh teplot. b) boxplot hodnot dle příslušností měření v měsících.'
+#| fig.align: 'center'
 
-```{r, fig.align='center'}
 par(mfrow = c(1, 2))
-with(data = global_temperature_yr, expr = plot(YEAR, JAN, type = "l"))
-with(data = global_temperature_yr, 
-     expr = boxplot(ANNUAL, horizontal = TRUE))
+with(
+  data = global_temperature_yr, 
+  expr = plot(
+    x = YEAR, 
+    y = JAN, 
+    type = "l", 
+    sub ="a)"
+  )
+)
+with(
+  data = global_temperature_yr, 
+  expr = boxplot(
+    ANNUAL, 
+    horizontal = TRUE, 
+    sub = "b)"
+  )
+)
 ```
 
 ::: callout-tip
 ## Úloha
 
-1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce.\
-2.  Doplňte hydrologický rok.\
+1.  Nahrajte data do prostředí s pomocí vhodně parametrizované `read.___()` funkce. Pomožte si nastavením, které generuje záložka \*\*Import Dataset\*\*\
+2.  Přidejte proměnnou `hyear` pro hydrologický rok. V podmínkách ČR je hydrologický rok od 1. 11. předchozího roku do 31. 10. roku aktuálního.\
 3.  Proveďte agregaci dat průměrem pro jednotlivé měsíce.\
 4.  Vyneste do grafu pomocí funkce `plot()`.
 :::
 
-
 ## Statistický soubor {#sec-popisna-statistickysoubor}
 
-Je základní jednotkou popisné statistiky, skládá se z množiny všech objektů, které
-jsou nositely určitého znaku.
+Je základní jednotkou popisné statistiky, skládá se z množiny všech objektů, které jsou nositely určitého znaku.
 
 ### Základní soubor (populace)
 
-Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.
+Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku. Bývá zřídkakdy k dispozici.
 
-<!-- #### Soubor se známým rozsahem {#sec-popisna-statistickysoubor-souborseznamymrozsahem} -->
-
-<!-- V případě, kdy  -->
-
-<!-- #### Soubor s neznámým rozsahem {#sec-popisna-statistickysoubor-souborsneznamymrozsahem} -->
-
-### Výběrový soubor (výběr) {#sec-popisna-statistickysoubor-vyberovysoubor}
+### Výběrový soubor (výběr z populace) {#sec-popisna-statistickysoubor-vyberovysoubor}
 
 Je soubor o konečném počtu $n$ prvků základního souboru, u kterého je prováděno měření charakteristik.
 
-Výběrový soubor vzniká realizací **náhodného výběru**.
+Výběrový soubor vzniká ideálně realizací **náhodného výběru**.
 
 Níže uvedené funkce jsou počítané s pomocí následujícího vektoru
 
-```{r, collapse=TRUE, echo=TRUE}
+```{r}
+#| collapse: true
+#| echo: true
 set.seed(1)
 x <- round(rnorm(50), 4)
 x
@@ -83,19 +104,20 @@ x
 
 Pro obě extrémní polohy ($\min$ a $\max$) jsou v R stejnojmenné funkce.
 
-| Název              | Funkce          | Vzorec                             |
-|--------------------|-----------------|------------------------------------|
-| minimum/maximum    | `min(x)/max(x))`| $\max(x) - \min(x)$                |
-| výběrový kvantil   | `quantile(x)`   | -                                  |
-| aritmetický průměr | `mean(x)`       | $\dfrac{1}{n}\sum_{i=1}^{n}x_i$    |
-| medián             | `median(x)`     |  -                                 |
-| modus              |  -              |  -                                 |
+| Název              | Funkce           | Vzorec                          |
+|--------------------|------------------|---------------------------------|
+| minimum/maximum    | `min(x)/max(x))` | $\max(x) - \min(x)$             |
+| výběrový kvantil   | `quantile(x)`    | \-                              |
+| aritmetický průměr | `mean(x)`        | $\dfrac{1}{n}\sum_{i=1}^{n}x_i$ |
+| medián             | `median(x)`      | \-                              |
+| modus              | \-               | \-                              |
 
 ### Výběrový kvantil
 
 ```{r}
 t(sapply(X = 1:7, FUN = function(i) quantile(x, type = i))) #<1>
 ```
+
 1.  Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci `quantile()`
 
 #### Medián
@@ -118,14 +140,13 @@ segments(x0 = dens$x[max_dens],
          y1 = dens$y[max_dens], 
          lwd = 1.5) #<3>
 ```
+
 1.  Funkce `table()` provede součty speficikovaných hodnot. V tomto případě po zaokrouhlení na celá čísla.
 2.  Nyní s pomocí funkce `cut()` rozlišíme četnosti do 10 intervalů a následně spočteme počet hodnot v těchto intervalech.
-3.  Jádrový odhad hustoty. 
-$$
-  \hat{f}(x)=\dfrac{1}{nh}\sum_{i=1}^{n}\mathsf{K}\left(\dfrac{x-x_i}{h}\right)
-$$
-kde $\mathsf{K}$ je jádrová funkce, $h$ je šířka pásma (zhlazovací funkce) a $x_i$ jsou hodnoty.
-4. Modus je nahrazen argumentačním maximem z tohoto odhadu $$\arg \max_x \hat{f}(x)$$
+3.  Jádrový odhad hustoty. $$
+      \hat{f}(x)=\dfrac{1}{nh}\sum_{i=1}^{n}\mathsf{K}\left(\dfrac{x-x_i}{h}\right)
+    $$ kde $\mathsf{K}$ je jádrová funkce, $h$ je šířka pásma (zhlazovací funkce) a $x_i$ jsou hodnoty.
+4.  Modus je nahrazen argumentačním maximem z tohoto odhadu $$\arg \max_x \hat{f}(x)$$
 
 ### Harmonický průměr
 
@@ -143,7 +164,6 @@ $$
 \bar{x}_\alpha(x_1, x_2, \ldots, x_n) = \left(\dfrac{1}{n}\sum_{i=1}^{n}x_i^\alpha\right)^\frac{1}{\alpha}
 $$
 
-
 ```{r, collapse=TRUE}
 min(x) #<1>
 max(x) #<1>
@@ -151,28 +171,26 @@ max(x) - min(x) #<2>
 range(x) #<2>
 ```
 
-1.  Statistiky minimum & maximum
-2.  Rozpětí
+1.  Statistiky minimum & maximum.
+2.  Rozpětí hodnot.
 
 ::: callout-tip
 ## Úloha
 
-5.    Napište funkci pro výpočet obecného vzorce průměru $\alpha$ a srovnejte s výstupem funkce `mean`.
-
+5.  Napište funkci pro výpočet obecného vzorce průměru stupně $\alpha$ a srovnejte s výstupem funkce `mean` pro $\alpha = 1$.
 :::
 
 ## Míry variability
 
-Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()` (*variance*) a `sd()` *standard deviation*. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené $Q3$ a $Q1$ neboli $q_{75}$ a $q_{25}$.
+Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí `var()` angl. *variance* a `sd()` angl. *standard deviation*. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené $Q3$ a $Q1$ neboli $q_{75}$ a $q_{25}$.
 
-| Název                  | Funkce          | Vzorec                                                               |
-|------------------------|-----------------|----------------------------------------------------------------------|
-| rozptyl                | `var(x)`        | $\sum\limits_{i=1}^{n}\dfrac{(x_i - \bar{x})^2}{n-1}$                |
-| směrodatná odchylka    | `sd(x)`         | $\dfrac{1}{n-1}\sum\limits_{i=1}^{n}\sqrt{(x_i - \bar{x})^2}$        |
-| variační rozpětí       | `range(x)`      | $\max(x) - \min(x)$                                                  |
-| mezikvartilové rozpětí | `IQR(x)`        |  $\mathrm{Q}3 - \mathrm{Q}_1$                                        |
-| variační koeficient    | `mean(x)/sd(x)` |  $\dfrac{s_x}{\bar{x}}$                                              |
-
+| Název | Funkce | Vzorec |
+|-----------------|-----------------|--------------------------------------|
+| rozptyl | `var(x)` | $\sum\limits_{i=1}^{n}\dfrac{(x_i - \bar{x})^2}{n-1}$ |
+| směrodatná odchylka | `sd(x)` | $\dfrac{1}{n-1}\sum\limits_{i=1}^{n}\sqrt{(x_i - \bar{x})^2}$ |
+| variační rozpětí | `range(x)` | $\max(x) - \min(x)$ |
+| mezikvartilové rozpětí | `IQR(x)` | $\mathrm{Q}3 - \mathrm{Q}_1$ |
+| variační koeficient | `mean(x)/sd(x)` | $\dfrac{s_x}{\bar{x}}$ |
 
 ### Střední chyba aritmetického průměru
 
@@ -180,10 +198,9 @@ $$
 s_x = \dfrac{s}{\sqrt{n}}
 $$
 
+### `fivenum()` & `summary()`
 
-### `fivenum()` \& `summary()`
-
-Pokud nás nezajímá pouze konkrétní statistika, jsou k dispozici funkce vracející více hodnot najednou.
+Pokud nás nezajímá vybraná konkrétní statistika, jsou k dispozici funkce vracející více hodnot najednou.
 
 ```{r}
 fivenum(x)
@@ -193,18 +210,30 @@ summary(x)
 ::: callout-note
 ## Poznámka
 
-Funkce `summary()` je tzv. *S3 generic*, to znamená, že její chování je definované v závislosti na
-objekt, na který je volána. Podívejte se na výstup `methods(summary)`. Pokud volána funkci na numerický vektor, tak je vybrána metoda `summary.numeric()`.
-
+Funkce `summary()` je tzv. *S3 generic*, to znamená, že její chování je definované v závislosti na objekt, na který je volána. Podívejte se na výstup `methods(summary)`. Pokud volána funkci na numerický vektor, tak je vybrána metoda `summary.numeric()`.
 :::
-
 
 ## Rekapitulace
 
-1.  Máte vektor hodnot: $0.64$, $0.98$, $-0.49$, $0.75$, $-1.35$, $1.65$, $1.12$, $-1.04$, $1.05$, $0.29$, $-0.6$, $-0.08$, $1.45$, $-1.87$, $-0.07$, $-0.02$, $0.62$, $0.01$, $-0.26$. Nalezněte s pomocí R:\
-  a) průměr `r fitb(0.1463158)`\     
-  b) $q_{10\textrm{p}}$ `r fitb(-1.102)`\      
-  c) medián `r fitb(0.01)`. \        
-2.  Doplňte funkci `read.___()` aby výsledek byl
-3.  Z datové sady vyberte sloupce 
+::: callout-tip
+## Úloha
 
+  1.  Máte vektor hodnot $\boldsymbol{x}$:\
+    0.64, 0.98, -0.49, 0.75, -1.35, 1.65, 1.12, -1.04, 1.05, 0.29,
+    -0.6, -0.08, 1.45, -1.87, -0.07, -0.02, 0.62, 0.01, -0.26.\
+
+      Nalezněte s pomocí R:\
+        
+        a)  minimum: `r fitb(-1.87)` \ 
+        b)  maximum: `r fitb(1.65)` \ 
+        c)  aritmetický průměr: `r fitb(0.1463158)` \ 
+        d)  harmonický průměr: `r fitb(0.7830245)` \ 
+        d)  $q_{10\textrm{p}}$: `r fitb(-1.102)` \
+        e)  medián `r fitb(0.01)`.  \
+        f)  mezikvartilové rozpětí `r fitb(1.24)` -\
+
+
+  2.  Doplňte funkci `read.___()` aby výsledek byl
+  3.  K číselnému vektoru $\boldsymbol{x}$. přidejte takovou hodnotu, aby průměr byl roven 0.15: `r fitb(0.2238684)`.
+
+<!-- 20x+ y = 21*0.15 -->

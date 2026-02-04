@@ -162,9 +162,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -183,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -260,7 +257,7 @@ window.Quarto = {
   <li><a href="#sec-popisna-statistickysoubor" id="toc-sec-popisna-statistickysoubor" class="nav-link" data-scroll-target="#sec-popisna-statistickysoubor"><span class="header-section-number">6.2</span> Statistický soubor</a>
   <ul class="collapse">
   <li><a href="#základní-soubor-populace" id="toc-základní-soubor-populace" class="nav-link" data-scroll-target="#základní-soubor-populace"><span class="header-section-number">6.2.1</span> Základní soubor (populace)</a></li>
-  <li><a href="#sec-popisna-statistickysoubor-vyberovysoubor" id="toc-sec-popisna-statistickysoubor-vyberovysoubor" class="nav-link" data-scroll-target="#sec-popisna-statistickysoubor-vyberovysoubor"><span class="header-section-number">6.2.2</span> Výběrový soubor (výběr)</a></li>
+  <li><a href="#sec-popisna-statistickysoubor-vyberovysoubor" id="toc-sec-popisna-statistickysoubor-vyberovysoubor" class="nav-link" data-scroll-target="#sec-popisna-statistickysoubor-vyberovysoubor"><span class="header-section-number">6.2.2</span> Výběrový soubor (výběr z populace)</a></li>
   </ul></li>
   <li><a href="#míry-polohy" id="toc-míry-polohy" class="nav-link" data-scroll-target="#míry-polohy"><span class="header-section-number">6.3</span> Míry polohy</a>
   <ul class="collapse">
@@ -312,16 +309,16 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Provést import datové sady</li>
-<li>Být schopen popsat číselné proměnné v datech popsat s pomocí uvedených statistik<br>
+<li>Provést import datové sady ze souborů typu CSV a RDS.</li>
+<li>Být schopen popsat charakterizovat proměnné v datech popsat číselné proměnné pomocí uvedených statistik.<br>
 </li>
 </ul>
 </div>
 </div>
 <section id="sec-popisna-importdat" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-popisna-importdat"><span class="header-section-number">6.1</span> Import dat</h2>
-<p>V hydrologii pracujeme s datovými sadami, které mají rúznou podobu. Nejběžnějším výměnným formát jsou stále obecné *.xls/*.xlsx, *.txt, *.csv (<em>comma separated values</em>). S pomocí těchto formátů jsou často katalogizována data z automatických měření. Dále méně časté formáty *.json (<em>javascript object notation</em>), *.shp (<em>shapefile</em>), *.laz, *.nc (<em>NetCDF file</em>), *.parquet (<em>Apache parqet</em>). A jako poslední doménově specifické *.RData, nebo *.rds. Formátů je velké množství, nicméně je velmi obtížné narazit na některý, pro který neexistuje v R možnost importu ať už v základní konfiguraci nebo s pomocí externích balíčků.</p>
-<p>V RStudio se nachází poměrně propracovaný průvodce importem dat, který naklikneme pod záložkou <strong>Environment</strong> &gt; <strong>Import Dataset</strong>.</p>
+<p>V hydrologii pracujeme s datovými sadami, které mají různou podobu. Nejčastěji se zpracovávají tabelární a obrazová data. Asi nejběžnější typy souborů s tabelárními daty jsou *.csv (<em>comma separated values</em>), *.txt, případně *.xls/*.xlsx. Takto jsou například katalogizována data z automatických měření, nebo výstupy hydrologických modelů. Dále méně časté formáty *.json (<em>javascript object notation</em>), *.shp (<em>shapefile</em>), <em>.laz (bodová pole</em>), *.nc (<em>NetCDF file</em>), *.parquet (<em>Apache parqet</em>). A jako poslední doménově specifické *.RData, nebo *.rds. Formátů je velké množství, nicméně je velmi obtížné narazit na některý, pro který neexistuje v R možnost importu ať už v základní konfiguraci nebo s pomocí externích balíčků.</p>
+<p>V RStudio se nachází poměrně propracovaný průvodce importem dat z textového souboru, který naklikneme pod záložkou <strong>Environment</strong> &gt; <strong>Import Dataset</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/data-import.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="624"></p>
@@ -330,9 +327,14 @@ Cíle cvičení
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>global_temperatures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"./data/JonesGlobalT.csv"</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperatures, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>global_temperatures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"./data/JonesGlobalT.csv"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> global_temperatures, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">5</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  YEAR    JAN    FEB    MAR    APR    MAY    JUN    JUL    AUG    SEP    OCT
@@ -352,16 +354,25 @@ Cíle cvičení
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>global_temperature_yr <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="at">x =</span> . <span class="sc">~</span> YEAR,</span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">FUN =</span> mean,</span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">data =</span> global_temperatures)</span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="at">x =</span> global_temperature_yr, <span class="at">n =</span> <span class="dv">5</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>global_temperature_yr <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> . <span class="sc">~</span> YEAR,</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> global_temperatures</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> global_temperature_yr,</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">5</span></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1,2,3" data-code-annotation="1">Agregace dat do průměrů za roční období.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2,3,4" data-code-annotation="1">Agregace dat do průměrů (<code>mean</code>) za roční období (<code>YEAR</code>).</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="7,8" data-code-annotation="2">Vypíšeme si prvních 5 hodnot z datové sady.</span>
 </dd>
 </dl>
 </div>
@@ -384,14 +395,29 @@ Cíle cvičení
 <details open="" class="code-fold">
 <summary>Kód</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, <span class="at">expr =</span> <span class="fu">plot</span>(YEAR, JAN, <span class="at">type =</span> <span class="st">"l"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> global_temperature_yr, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">expr =</span> <span class="fu">boxplot</span>(ANNUAL, <span class="at">horizontal =</span> <span class="cn">TRUE</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> global_temperature_yr, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">expr =</span> <span class="fu">plot</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> YEAR, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> JAN, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sub =</span><span class="st">"a)"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> global_temperature_yr, </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">expr =</span> <span class="fu">boxplot</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    ANNUAL, </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">horizontal =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">sub =</span> <span class="st">"b)"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_popisna_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="04_popisna_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid figure-img"></p>
+<figcaption>a) Časový průběh teplot. b) boxplot hodnot dle příslušností měření v měsících.</figcaption>
 </figure>
 </div>
 </div>
@@ -407,9 +433,9 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Nahrajte data do prostředí s pomocí vhodně parametrizované <code>read.___()</code> funkce.<br>
+<li>Nahrajte data do prostředí s pomocí vhodně parametrizované <code>read.___()</code> funkce. Pomožte si nastavením, které generuje záložka **Import Dataset**<br>
 </li>
-<li>Doplňte hydrologický rok.<br>
+<li>Přidejte proměnnou <code>hyear</code> pro hydrologický rok. V podmínkách ČR je hydrologický rok od 1. 11. předchozího roku do 31. 10. roku aktuálního.<br>
 </li>
 <li>Proveďte agregaci dat průměrem pro jednotlivé měsíce.<br>
 </li>
@@ -423,15 +449,12 @@ Cíle cvičení
 <p>Je základní jednotkou popisné statistiky, skládá se z množiny všech objektů, které jsou nositely určitého znaku.</p>
 <section id="základní-soubor-populace" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="základní-soubor-populace"><span class="header-section-number">6.2.1</span> Základní soubor (populace)</h3>
-<p>Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku.</p>
-<!-- #### Soubor se známým rozsahem {#sec-popisna-statistickysoubor-souborseznamymrozsahem} -->
-<!-- V případě, kdy  -->
-<!-- #### Soubor s neznámým rozsahem {#sec-popisna-statistickysoubor-souborsneznamymrozsahem} -->
+<p>Soubor všech jedinců, u nichž být zaznamenán výskyt sledovaného znaku. Bývá zřídkakdy k dispozici.</p>
 </section>
 <section id="sec-popisna-statistickysoubor-vyberovysoubor" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-popisna-statistickysoubor-vyberovysoubor"><span class="header-section-number">6.2.2</span> Výběrový soubor (výběr)</h3>
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-popisna-statistickysoubor-vyberovysoubor"><span class="header-section-number">6.2.2</span> Výběrový soubor (výběr z populace)</h3>
 <p>Je soubor o konečném počtu <span class="math inline">\(n\)</span> prvků základního souboru, u kterého je prováděno měření charakteristik.</p>
-<p>Výběrový soubor vzniká realizací <strong>náhodného výběru</strong>.</p>
+<p>Výběrový soubor vzniká ideálně realizací <strong>náhodného výběru</strong>.</p>
 <p>Níže uvedené funkce jsou počítané s pomocí následujícího vektoru</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -454,9 +477,9 @@ Cíle cvičení
 <p>Pro obě extrémní polohy (<span class="math inline">\(\min\)</span> a <span class="math inline">\(\max\)</span>) jsou v R stejnojmenné funkce.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 23%">
-<col style="width: 49%">
+<col style="width: 28%">
+<col style="width: 25%">
+<col style="width: 46%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -607,11 +630,11 @@ Cíle cvičení
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="1">Statistiky minimum &amp; maximum</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="1">Statistiky minimum &amp; maximum.</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="3,4" data-code-annotation="2">Rozpětí</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="3,4" data-code-annotation="2">Rozpětí hodnot.</span>
 </dd>
 </dl>
 </div>
@@ -627,7 +650,7 @@ Cíle cvičení
 </div>
 <div class="callout-body-container callout-body">
 <ol start="5" type="1">
-<li>Napište funkci pro výpočet obecného vzorce průměru <span class="math inline">\(\alpha\)</span> a srovnejte s výstupem funkce <code>mean</code>.</li>
+<li>Napište funkci pro výpočet obecného vzorce průměru stupně <span class="math inline">\(\alpha\)</span> a srovnejte s výstupem funkce <code>mean</code> pro <span class="math inline">\(\alpha = 1\)</span>.</li>
 </ol>
 </div>
 </div>
@@ -635,12 +658,12 @@ Cíle cvičení
 </section>
 <section id="míry-variability" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="míry-variability"><span class="header-section-number">6.4</span> Míry variability</h2>
-<p>Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí <code>var()</code> (<em>variance</em>) a <code>sd()</code> <em>standard deviation</em>. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené <span class="math inline">\(Q3\)</span> a <span class="math inline">\(Q1\)</span> neboli <span class="math inline">\(q_{75}\)</span> a <span class="math inline">\(q_{25}\)</span>.</p>
+<p>Výběrový rozptyl a směrodatnou odchylku spočteme v R pomocí funkcí <code>var()</code> angl. <em>variance</em> a <code>sd()</code> angl. <em>standard deviation</em>. Zatímco variační rozpětí popisuje rozpětí celého souboru, mezikvartilové rozpětí se omezuje na rozpětí poloviny hodnot, omezené <span class="math inline">\(Q3\)</span> a <span class="math inline">\(Q1\)</span> neboli <span class="math inline">\(q_{75}\)</span> a <span class="math inline">\(q_{25}\)</span>.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 15%">
-<col style="width: 63%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 52%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -685,7 +708,7 @@ s_x = \dfrac{s}{\sqrt{n}}
 </section>
 <section id="fivenum-summary" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="fivenum-summary"><span class="header-section-number">6.4.2</span> <code>fivenum()</code> &amp; <code>summary()</code></h3>
-<p>Pokud nás nezajímá pouze konkrétní statistika, jsou k dispozici funkce vracející více hodnot najednou.</p>
+<p>Pokud nás nezajímá vybraná konkrétní statistika, jsou k dispozici funkce vracející více hodnot najednou.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -720,24 +743,42 @@ Poznámka
 </section>
 <section id="rekapitulace" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="rekapitulace"><span class="header-section-number">6.5</span> Rekapitulace</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>Máte vektor hodnot: <span class="math inline">\(0.64\)</span>, <span class="math inline">\(0.98\)</span>, <span class="math inline">\(-0.49\)</span>, <span class="math inline">\(0.75\)</span>, <span class="math inline">\(-1.35\)</span>, <span class="math inline">\(1.65\)</span>, <span class="math inline">\(1.12\)</span>, <span class="math inline">\(-1.04\)</span>, <span class="math inline">\(1.05\)</span>, <span class="math inline">\(0.29\)</span>, <span class="math inline">\(-0.6\)</span>, <span class="math inline">\(-0.08\)</span>, <span class="math inline">\(1.45\)</span>, <span class="math inline">\(-1.87\)</span>, <span class="math inline">\(-0.07\)</span>, <span class="math inline">\(-0.02\)</span>, <span class="math inline">\(0.62\)</span>, <span class="math inline">\(0.01\)</span>, <span class="math inline">\(-0.26\)</span>. Nalezněte s pomocí R:<br>
-</li>
-</ol>
+<li><p>Máte vektor hodnot <span class="math inline">\(\boldsymbol{x}\)</span>:<br>
+0.64, 0.98, -0.49, 0.75, -1.35, 1.65, 1.12, -1.04, 1.05, 0.29, -0.6, -0.08, 1.45, -1.87, -0.07, -0.02, 0.62, 0.01, -0.26.<br>
+</p>
+<p>Nalezněte s pomocí R:<br>
+</p>
 <ol type="a">
-<li>průměr <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.1463158&quot;,&quot;.1463158&quot;]">&nbsp;<br>
-</li>
-<li><span class="math inline">\(q_{10\textrm{p}}\)</span> <input class="webex-solveme nospaces" size="6" data-answer="[&quot;-1.102&quot;]">&nbsp;<br>
+<li>minimum: <input class="webex-solveme nospaces" size="5" data-answer="[&quot;-1.87&quot;]">&nbsp;&nbsp;</li>
+<li>maximum: <input class="webex-solveme nospaces" size="4" data-answer="[&quot;1.65&quot;]">&nbsp;&nbsp;</li>
+<li>aritmetický průměr: <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.1463158&quot;,&quot;.1463158&quot;]">&nbsp;&nbsp;</li>
+<li>harmonický průměr: <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.7830245&quot;,&quot;.7830245&quot;]">&nbsp;&nbsp;</li>
+<li><span class="math inline">\(q_{10\textrm{p}}\)</span>: <input class="webex-solveme nospaces" size="6" data-answer="[&quot;-1.102&quot;]">&nbsp;<br>
 </li>
 <li>medián <input class="webex-solveme nospaces" size="4" data-answer="[&quot;0.01&quot;,&quot;.01&quot;]">. &nbsp;<br>
 </li>
+<li>mezikvartilové rozpětí <input class="webex-solveme nospaces" size="4" data-answer="[&quot;1.24&quot;]"> -<br>
+</li>
+</ol></li>
+<li><p>Doplňte funkci <code>read.___()</code> aby výsledek byl</p></li>
+<li><p>K číselnému vektoru <span class="math inline">\(\boldsymbol{x}\)</span>. přidejte takovou hodnotu, aby průměr byl roven 0.15: <input class="webex-solveme nospaces" size="9" data-answer="[&quot;0.2238684&quot;,&quot;.2238684&quot;]">.</p></li>
 </ol>
-<ol start="2" type="1">
-<li>Doplňte funkci <code>read.___()</code> aby výsledek byl</li>
-<li>Z datové sady vyberte sloupce</li>
-</ol>
+<!-- 20x+ y = 21*0.15 -->
 
 
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

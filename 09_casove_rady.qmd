@@ -122,7 +122,7 @@ md1 <- lm(tavg ~ I(date), data = klementinum)
 md2 <- lm(tavg ~ date + I(as.numeric(date)^2), data = klementinum)
 md3 <- lm(tavg ~ date + I(as.numeric(date)^2) + I(as.numeric(date)^3), data = klementinum)
 # Generate a smooth sequence of x-values across the full range of dates
-date_seq <- seq(min(klementinum$date), max(klementinum$date), length.out = 1000)
+date_seq <- seq(min(klementinum$date, na.rm = TRUE), max(klementinum$date, na.rm = TRUE), length.out = 1000)
 
 pred_md1 <- predict(md1, newdata = data.frame(date = date_seq))
 pred_md2 <- predict(md2, newdata = data.frame(date = date_seq))

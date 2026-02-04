@@ -1,12 +1,12 @@
 # Bodový a intervalový odhad {#sec-odhad}
 
 ::: callout-warning
-## Cíle cvičení 
+## Cíle cvičení
 
-- Umět definovat vlastnosti odhadu.
-- Naučit se aplikovat zákon velkých čísel.
-- Provést bodový a intervalový odhad parametru.
-- Užít $t$-test jako pomocný nástroj k sestavení odhadu.
+-   Umět definovat vlastnosti odhadu.
+-   Naučit se aplikovat zákon velkých čísel.
+-   Provést bodový a intervalový odhad parametru.
+-   Užít $t$-test jako pomocný nástroj k sestavení odhadu.
 :::
 
 Obecně je odhadem v matematické statistice nazýváno určení parametru rozdělení hodnoty určitého znaku **základního souboru** s pomocí **výběrového souboru**.
@@ -32,7 +32,8 @@ $$
 ::: callout-tip
 ## Cvičení
 
-  1. Doplňte následující kód.\
+1.  Doplňte následující kód.\
+
 ```{r, eval=FALSE}
 X <- data.frame()
 for (i in 1:nsim) {
@@ -43,12 +44,12 @@ for (i in 1:nsim) {
 }
 names(X) = c('UNB', 'BIA')
 ```
-  a) Napište funkce pro odhad ropztylu.\
-  b) Zamyslete se, které proměnné nejsou určeny a doplňte je.\
-  c) Spočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.\
-  d) Který odhad je nejméně vychýlený a v jaké situaci?\
-:::
 
+a)  Napište funkce pro odhad ropztylu.\
+b)  Zamyslete se, které proměnné nejsou určeny a doplňte je.\
+c)  Spočtěte pro každou metodu průměrný odhad a systematickou chybu tohoto odhadu.\
+d)  Který odhad je nejméně vychýlený a v jaké situaci?\
+:::
 
 ### Zákon velkých čísel
 
@@ -57,8 +58,8 @@ Zákon velkých čísel popisuje skutečnost, že s rostoucím počtem opakován
 ::: callout-tip
 ## Úloha
 
-  1. Generujte s pomocí funkce `rnorm` postupně $10$, $10^2$, $10^3$ čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte $\bar{x}$ a ${s^2}$, použijte nápovědu.
-Okomentujte výsledky. 
+1.  Generujte s pomocí funkce `rnorm` postupně $10$, $10^2$, $10^3$ čísel se shodnou střední hodnotou a shodným rozptylem. Spočítejte $\bar{x}$ a ${s^2}$, použijte nápovědu. Okomentujte výsledky.
+
 ```{r, echo=FALSE, fig.align='center', fig.width=10}
 par(mfrow = c(1, 3))
 set.seed(13)
@@ -67,17 +68,17 @@ set.seed(13)
 x100 <- rnorm(100, 0, 1)
 set.seed(13)
 x1000 <- rnorm(1000, 0, 1)
-curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "A)", cex.main = 2)
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", sub = "A)", cex.main = 2)
 rug(x10, lwd = 2, col = "#00000025")
 rug(mean(x10), lwd = 2, col = "orangered")
 segments(x0 = mean(x10), y0 = 0, x1 = mean(x10), y1 = dnorm(mean(x10), 0, 1), col = "orangered")
 segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0, 0, 1), lty = "dashed", col = "gray25")
-curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "B)", cex.main = 2)
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", sub = "B)", cex.main = 2)
 rug(x100, lwd = 2, col = "#00000025")
 rug(mean(x100), lwd = 2, col = "orangered")
 segments(x0 = mean(x100), y0 = 0, x1 = mean(x100), y1 = dnorm(mean(x100), 0, 1), col = "orangered")
 segments(x0 = 0, y0 = 0, x1 = 0, y1 = dnorm(0, 0, 1), lty = "dashed", col = "gray25")
-curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", main = "C)", cex.main = 2)
+curve(dnorm(x, mean = 0 , sd = 1), from = -4, to = 4, xlab = "", ylab = "", sub = "C)", cex.main = 2)
 rug(x1000, lwd = 2, col = "#00000025")
 rug(mean(x1000), lwd = 2, col = "orangered")
 segments(x0 = mean(x1000), y0 = 0, x1 = mean(x1000), y1 = dnorm(mean(x1000), 0, 1), col = "orangered")
@@ -96,7 +97,6 @@ mean(x)
 var(x)
 ```
 
-
 ### Odhad parametru $\mu$, neboli střední hodnoty normálního rozdělení s neznámým rozptylem
 
 Takto formulovaný bodový a intervalový je jednou z nejčastěji prováděných úloh. Nejprve bodovým odhadem zjistíme **výběrový průměr** souboru.
@@ -111,13 +111,11 @@ Vidíme, že $x =$ `r mean(x)`. Pro tento průmer následně spočítáme interv
 
 V případech, kdy chceme znát polohu bodového odhadu s nějakou danou pravděpodobností, můžeme se pokusit zkonstruovat tzv. **intervalový odhad**. @eq-odhad-intervalovyodhad je rovnice pro intervalový odhad střední hodnoty při neznámém rozptylu.
 
-
 $$ 
 \bar{X} \pm \dfrac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1)
 $$ {#eq-odhad-intervalovyodhad}
 
-$100(1-\alpha)\%$ interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností. Je tomu tak současně za předpokladu, že samotná poloha
-hledaného parametru je konstantní.
+$100(1-\alpha)\%$ interval spolehlivosti je rozmezí, ve kterém se usuzovaná hodnota základního souboru bude nacházet s určitou pravěděpodobností. Je tomu tak současně za předpokladu, že samotná poloha hledaného parametru je konstantní.
 
 ```{r}
 alpha <- 0.05
@@ -137,7 +135,7 @@ $$ Konstrukce věrohodnostní funkce
 
 ### Maximálně věrohodný odhad pro normální rozdělení
 
-Vjděme z pravděpodobnostní funkce normálního rozdělení s předpisem @eq-maxlike-normalni-rozdeleni, který 
+Vjděme z pravděpodobnostní funkce normálního rozdělení s předpisem @eq-maxlike-normalni-rozdeleni, který
 
 $$
 f(y|\mu, \sigma) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(y-\mu)^2}{2\sigma^2}\right]
@@ -177,24 +175,20 @@ result <- optim(par = c(0.1, 2), #<5>
 mle_mean <- result$par[1] #<6>
 mle_sigma2 <- result$par[2] #<6>
 ```
-1. Skutečné parametry $\mu$ a $\sigma$, které použijeme ke generování náhodných čísel.
-2. Získáme pseudonáhodná čísla z Normálního rozdělení.
-3. Definice věrohodnostní funkce @eq-05odhad-likelihood,
-4. je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.
-5. S použitím funkce `optim()` hledáme maximálně věrohodný odhad. Je potřeba zadat
-počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud 
-bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant
-Hessovy matice.
-6. Uložíme získané hodnoty odhadů.
 
-MLE pro střední hodnotu: `r mle_mean`\     
+1.  Skutečné parametry $\mu$ a $\sigma$, které použijeme ke generování náhodných čísel.
+2.  Získáme pseudonáhodná čísla z Normálního rozdělení.
+3.  Definice věrohodnostní funkce @eq-05odhad-likelihood,
+4.  je nutné pro optimalizační algoritmus vrátit v záporné hodnotě.
+5.  S použitím funkce `optim()` hledáme maximálně věrohodný odhad. Je potřeba zadat počáteční parametry, optimalizovanou funkci, vektor měření a methodu řešení. Pokud bychom chtěli i intervalový odhad, je nutné nechat spočítat hessián, neboli determinant Hessovy matice.
+6.  Uložíme získané hodnoty odhadů.
+
+MLE pro střední hodnotu: `r mle_mean` \
 MLE pro rozptyl: `r mle_sigma2`.
 
 ## $t$-test {#ttest}
-Testování hypotéz podrobněji probereme v @sec-testovani. Nyní si nicméně ukážeme, 
-že výstupem funkce `t.test()` je rovněž intervalový odhad pro střední hodnotu Normálního
-rozdělení při neznámém rozptylu.
-Testovací statistika pro oboustrannou alternativu má hodnotu
+
+Testování hypotéz podrobněji probereme v @sec-testovani. Nyní si nicméně ukážeme, že výstupem funkce `t.test()` je rovněž intervalový odhad pro střední hodnotu Normálního rozdělení při neznámém rozptylu. Testovací statistika pro oboustrannou alternativu má hodnotu
 
 $$
 \dfrac{|\bar{x} - \mu_0|}{s}\sqrt{n} > t_{\alpha/2}(n-1)
@@ -211,6 +205,5 @@ $$ pro $\mu < \mu_0$. $n-1$ je počet stupňů volnosti.
 ::: callout-tip
 ## Úloha
 
-  1. Spočítejte pomocí funkce `t.test` intervalový odhad pro `x = rnorm(100)` a `set.seed(100)`.\
+1.  Spočítejte pomocí funkce `t.test` intervalový odhad pro `x = rnorm(100)` a `set.seed(100)`.\
 :::
-

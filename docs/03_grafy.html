@@ -182,9 +182,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -203,7 +200,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -279,6 +276,17 @@ window.Quarto = {
   <li><a href="#jednorozměrná-data" id="toc-jednorozměrná-data" class="nav-link active" data-scroll-target="#jednorozměrná-data"><span class="header-section-number">5.1</span> Jednorozměrná data</a></li>
   <li><a href="#funkce-curve" id="toc-funkce-curve" class="nav-link" data-scroll-target="#funkce-curve"><span class="header-section-number">5.2</span> Funkce <code>curve()</code></a></li>
   <li><a href="#funkce-plot" id="toc-funkce-plot" class="nav-link" data-scroll-target="#funkce-plot"><span class="header-section-number">5.3</span> Funkce <code>plot()</code></a></li>
+  <li><a href="#volba-barev" id="toc-volba-barev" class="nav-link" data-scroll-target="#volba-barev"><span class="header-section-number">5.4</span> Volba barev</a>
+  <ul class="collapse">
+  <li><a href="#palety-a-rcolorbrewer" id="toc-palety-a-rcolorbrewer" class="nav-link" data-scroll-target="#palety-a-rcolorbrewer"><span class="header-section-number">5.4.1</span> Palety a <code>RColorBrewer</code></a></li>
+  </ul></li>
+  <li><a href="#matematická-sazba-v-grafech" id="toc-matematická-sazba-v-grafech" class="nav-link" data-scroll-target="#matematická-sazba-v-grafech"><span class="header-section-number">5.5</span> Matematická sazba v grafech</a></li>
+  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">5.6</span> Layout</a>
+  <ul class="collapse">
+  <li><a href="#sazba-pomocí-par" id="toc-sazba-pomocí-par" class="nav-link" data-scroll-target="#sazba-pomocí-par"><span class="header-section-number">5.6.1</span> Sazba pomocí <code>par()</code></a></li>
+  <li><a href="#sazba-do-matice-s-funkcí-layout" id="toc-sazba-do-matice-s-funkcí-layout" class="nav-link" data-scroll-target="#sazba-do-matice-s-funkcí-layout"><span class="header-section-number">5.6.2</span> Sazba do matice s funkcí <code>layout()</code></a></li>
+  </ul></li>
+  <li><a href="#uložení-do-souboru" id="toc-uložení-do-souboru" class="nav-link" data-scroll-target="#uložení-do-souboru"><span class="header-section-number">5.7</span> Uložení do souboru</a></li>
   </ul>
 </nav>
     </div>
@@ -472,7 +480,7 @@ Cíle cvičení
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="8">8</button><span id="annotated-cell-5-11" class="code-annotation-target"><a href="#annotated-cell-5-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Y~X vztah"</span>,</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="9">9</button><span id="annotated-cell-5-12" class="code-annotation-target"><a href="#annotated-cell-5-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="fu">Sys.Date</span>())</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="10">10</button><span id="annotated-cell-5-13" class="code-annotation-target"><a href="#annotated-cell-5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="11">11</button><span id="annotated-cell-5-14" class="code-annotation-target"><a href="#annotated-cell-5-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"#4a6777"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="11">11</button><span id="annotated-cell-5-14" class="code-annotation-target"><a href="#annotated-cell-5-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.bg =</span> <span class="st">"#4a6777"</span>,</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="12">12</button><span id="annotated-cell-5-15" class="code-annotation-target"><a href="#annotated-cell-5-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>,</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="13">13</button><span id="annotated-cell-5-16" class="code-annotation-target"><a href="#annotated-cell-5-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Y"</span>),</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="14">14</button><span id="annotated-cell-5-17" class="code-annotation-target"><a href="#annotated-cell-5-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">box.col =</span> <span class="cn">NA</span>,</span>
@@ -611,6 +619,9 @@ Cíle cvičení
 <ol start="2" type="1">
 <li>Funkcí <code>plot(x, y)</code></li>
 </ol>
+</div>
+</div>
+</section>
 <section id="volba-barev" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="volba-barev"><span class="header-section-number">5.4</span> Volba barev</h2>
 <p>Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů, například <code>"white"</code>, <code>"orange"</code> použít funkci <code>rgb()</code> a nebo hexadecimální zápis <code>"#FFF000"</code>. Výpis všech předdefinovaných barev<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> lze získat příkazem <code>colors()</code>.</p>
@@ -895,11 +906,24 @@ Postup:<br>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Poznámka
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>V prostředí R jsou dva systémy pro tvorbu grafických výstupů. V tomto textu se cíleně držíme postupů, které je možné aplikovat bez instalace jakýchkoliv dodatečných balíčků. Je zde ale vhodné zmínit, že k funkcím <code>plot()</code>, <code>layout()</code>, <code>image()</code> existují alternativy v balíčcích <code>ggplot2</code>, <code>cowplot</code>, <code>rgl</code> a dalších.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="uložení-do-souboru" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="uložení-do-souboru"><span class="header-section-number">5.7</span> Uložení do souboru</h2>
-<p>Grafy je možné uložit externě, at už prostřednictvím dialogu v <strong><em>Plots</em></strong> &gt; <strong><em>Export</em></strong>, nebo přímo ve skriptu. Formát lze volit mezi rastrovými *.png, *.jpeg, *.tiff, *.bmp, či vektorovými *.eps, *.svg, *.pdf.</p>
+<p>Grafy je možné uložit externě, at už prostřednictvím dialogu v <strong>Plots</strong> &gt; <strong>Export</strong>, nebo přímo ve skriptu. Formát lze volit mezi rastrovými *.png, *.jpeg, *.tiff, *.bmp, či vektorovými *.eps, *.svg, *.pdf.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
@@ -940,9 +964,6 @@ Postup:<br>
 </div>
 
 
-</section>
-</div>
-</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-pedersen2021package" class="csl-entry" role="listitem">
 Pedersen, Thomas Lin, a Fabio Crameri. 2021. <span>„Package ’scico’"</span>.

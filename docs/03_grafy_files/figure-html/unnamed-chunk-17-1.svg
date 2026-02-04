@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="504" height="360" viewBox="0 0 504 360">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="648" height="360" viewBox="0 0 648 360">
 <defs>
 <g>
 <g id="glyph-0-0">
@@ -13,17 +13,17 @@
 </g>
 </g>
 </defs>
-<rect x="-50.4" y="-36" width="604.8" height="432" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
-<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 168 180 L 504 180 L 504 0 L 168 0 Z M 168 180 "/>
+<rect x="-64.8" y="-36" width="777.6" height="432" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 216 180 L 648 180 L 648 0 L 216 0 Z M 216 180 "/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="333.796875" y="92.847656"/>
+<use xlink:href="#glyph-0-0" x="429.796875" y="92.847656"/>
 </g>
-<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0 360 L 336 360 L 336 180 L 0 180 Z M 0 360 "/>
+<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0 360 L 432 360 L 432 180 L 0 180 Z M 0 360 "/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-1" x="165.796875" y="272.847656"/>
+<use xlink:href="#glyph-0-1" x="213.796875" y="272.847656"/>
 </g>
-<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 336 360 L 504 360 L 504 180 L 336 180 Z M 336 360 "/>
+<path fill="none" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 432 360 L 648 360 L 648 180 L 432 180 Z M 432 360 "/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-2" x="417.796875" y="272.796875"/>
+<use xlink:href="#glyph-0-2" x="537.796875" y="272.796875"/>
 </g>
 </svg>

@@ -162,9 +162,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -183,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -840,14 +837,16 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]     [,2]     [,3]     [,4]     [,5]    [,6]     [,7]     [,8]
-[1,] 386.7648 1457.213 52.01813 584.0477 62.82809 83.4891 27.89627 70.74835
+<pre><code>         [,1]     [,2]     [,3]     [,4]    [,5]     [,6]     [,7]     [,8]
+[1,] 2108.099 46.37051 27.63602 701.9507 445.513 227.4054 1715.606 189.7511
          [,9]    [,10]
-[1,] 448.9558 264.7829
-        A         B         D         E         F         I         J 
-19.666337 38.173463 24.167079  7.926417  9.137237 21.188577 16.272151 
+[1,] 256.8627 57.95322
+        A         B         C         D         E         F         G         I 
+45.914035  6.809589  5.256997 26.494352 21.107180 15.079966 41.419868 16.026938 
+        J 
+ 7.612701 
         A         B         C 
-19.666337 38.173463 -7.212359 </code></pre>
+45.914035  6.809589  5.256997 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1077,11 +1076,11 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>DF</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name      value</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -0.2071337</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b  0.3253010</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c -0.4467706</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d  0.5647221</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e  0.9838482</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -1.6418069</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b  0.2197351</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  1.5430403</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d  0.7776836</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e  1.6600860</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
@@ -1107,7 +1106,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  -0.546 0.641 0.124 0.887 -1.284 ...</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  0.182 -1.684 1.057 -1.616 -0.437 ...</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
@@ -1395,7 +1394,7 @@ Iterace:  4 </code></pre>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.01265622</code></pre>
+<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.002289361</code></pre>
 </div>
 </div>
 </section>
@@ -1415,16 +1414,16 @@ Iterace:  4 </code></pre>
 </p>
 <ol type="1">
 <li>Zvolte platné tvrzení pro <code>data.frame</code>:
-<div id="radio_FXRUWQJAHM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FXRUWQJAHM" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_FXRUWQJAHM" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_FXRUWQJAHM" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
+<div id="radio_ZHOYVBRDCQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZHOYVBRDCQ" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_ZHOYVBRDCQ" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_ZHOYVBRDCQ" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
 </div></li>
 <li>Matici je možné vytvořit z vektoru přidáním dimenze: <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select><br>
 </li>
 <li>Co je výsledkem výrazu: <span class="math inline">\(\sin(\frac{0}{0})\)</span> <input class="webex-solveme nospaces" size="3" data-answer="[&quot;NaN&quot;]"><br>
 </li>
 <li>Vyberte, platné tvrzení pro datovou strukturu list:
-<div id="radio_FKELAJAEPM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FKELAJAEPM" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_FKELAJAEPM" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_FKELAJAEPM" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_FKELAJAEPM" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
+<div id="radio_QRMGFAVXBJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QRMGFAVXBJ" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_QRMGFAVXBJ" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_QRMGFAVXBJ" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_QRMGFAVXBJ" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
 </div></li>
 <li>Napište výraz pro nepřiřazenou <em>celočíselnou</em> hodnotu : <input class="webex-solveme nospaces" size="11" data-answer="[&quot;NA_integer_&quot;]"><br>
 </li>

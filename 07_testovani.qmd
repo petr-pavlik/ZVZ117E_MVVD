@@ -1,33 +1,22 @@
 # Testování hypotéz {#sec-testovani}
 
 ::: callout-warning
-## Cíle cvičení 
+## Cíle cvičení
 
-- Znát terminologii testování hypotéz.
-- Umět sestavit a vyhodnotit statistický test.
+-   Znát terminologii testování hypotéz.
+-   Umět sestavit a vyhodnotit statistický test.
 :::
 
-Testování statistikcké hypotézy je proces, při kterém na základě dat pocházejících
-z **náhodného výběru** ověřujeme úsudek o teoretickém souboru. Pomocí testování
-hypotéz řešíme například:
-  - srovnání charakteristiky výběrového odhadu parametru $\theta$ s přepokládanou 
-    hodnotou souboru.
-  - vyhodnotit charakter rozdělení náhodné veličiny
-  - vyhodnocení nezávislosti veličin
+Testování statistické hypotézy je proces, při kterém na základě dat pocházejících z **náhodného výběru** ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například: - srovnání charakteristiky výběrového odhadu parametru $\theta$ s předpokládanou hodnotou souboru. - vyhodnotit charakter rozdělení náhodné veličiny - vyhodnocení nezávislosti veličin
 
-Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$ jako 
-vzájemně vylučující se tvrzení.
+Zavádíme pojmy nulové $\mathrm{H}_0$ a alternativní hypotézy $\mathrm{H}_a$ jako vzájemně vylučující se tvrzení.
 
-Pod *testováním hypotéz* potom rozumíme proces, který na základě 
-vlastností datové sady rozhodne o **zamítnutí**, či **nezamítnutí nulové hypotézy**.
+Pod *testováním hypotéz* potom rozumíme proces, který na základě vlastností datové sady rozhodne o **zamítnutí**, či **nezamítnutí nulové hypotézy**.
 
 ::: callout-note
 ## Poznámka
 
-Nulová hypotéza má ve většině případů neutrání až trochu negativní znění. 
-Například "neexistuje rozdíl mezi středními hodnotami", "testované rozdělení 
-není odlišné od normálního" apod. Její konstrukce víceméně odráží opak toho, 
-co se na sesbíraných datech snažíme vysledovat.
+Nulová hypotéza má ve většině případů neutrální až trochu negativní znění. Například "neexistuje rozdíl mezi středními hodnotami", "testované rozdělení není odlišné od normálního" apod. Její konstrukce víceméně odráží opak toho, co se na sesbíraných datech snažíme vysledovat.
 :::
 
 ## Postup testování statistické hypotézy:
@@ -42,40 +31,88 @@ Výsledkem testování je buď a) zamítnutní nulové hypotézy[^07_testovani-1
 
 [^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza ve skutečnosti nemůže platit**, ale získaná data nevykazují objektivní důvody k jejímu přijetí.
 
+# Testování hypotéz {#sec-testovani}
+
+::: callout-warning
+## Cíle cvičení
+
+- Znát terminologii testování hypotéz.
+- Umět sestavit a vyhodnotit statistický test.
+:::
+
+Testování **statistické hypotézy** je proces, při kterém na základě dat pocházejících z **náhodného výběru** ověřujeme úsudek o teoretickém souboru. Pomocí testování hypotéz řešíme například:
+
+- srovnání výběrového odhadu parametru $\theta$ s předpokládanou hodnotou v souboru,
+- posouzení charakteru rozdělení náhodné veličiny,
+- vyhodnocení nezávislosti náhodných veličin.
+
+Zavádíme pojmy **nulové hypotézy** $\mathrm{H}_0$ a **alternativní hypotézy** $\mathrm{H}_a$ jako vzájemně se vylučující tvrzení.
+
+Pod *testováním hypotéz* potom rozumíme proces, který na základě vlastností datové sady rozhoduje o **zamítnutí**, nebo **nezamítnutí nulové hypotézy**.
+
+::: callout-note
+## Poznámka
+
+Nulová hypotéza má ve většině případů neutrální až mírně „negativní“ znění. Například:  
+„neexistuje rozdíl mezi středními hodnotami“,  
+„testované rozdělení není odlišné od normálního“ apod.
+
+Její formulace obvykle odráží opak toho, co se na základě dat snažíme prokázat.
+:::
+
+## Postup testování statistické hypotézy
+
+1. formulace nulové $\mathrm{H}_0$ a alternativní $\mathrm{H}_a$ hypotézy,
+2. volba hladiny významnosti $\alpha$,
+3. volba testovací statistiky,
+4. určení kritického oboru testové statistiky,
+5. vyhodnocení testu pomocí p-hodnoty.
+
+Výsledkem testování je buď  
+a) **zamítnutí nulové hypotézy**[^07_testovani-1],  
+b) **nezamítnutí nulové hypotézy**.
+
+[^07_testovani-1]: Zamítnutí nulové hypotézy **neznamená, že nulová hypotéza ve skutečnosti nemůže platit**, ale že získaná data neposkytují dostatečné důkazy pro její platnost.
+
 ```{=html}
 <hr>
 <table>
   <tr>
-    <td rowspan="2"><b>Rozhodnutí</b></td><td colspan="2"><b>Skutečnost</b></td>
+    <td rowspan="2"><b>Rozhodnutí</b></td>
+    <td colspan="2"><b>Skutečnost</b></td>
   </tr>
   <tr>
-    <td>$$\mathrm{H}_0$$</td><td>$$\neg \mathrm{H}_0$$</td>
+    <td>$$\mathrm{H}_0$$</td>
+    <td>$$\neg \mathrm{H}_0$$</td>
   </tr>
   <tr>
-    <td>Nazamítáme $$\mathrm{H}_0$$</td><td>Správné rozhodnutí: $$P = 1 - \alpha$$</td><td>Nastává chyba II. druhu: $$P = \beta$$</td>
+    <td>Nezamítáme $$\mathrm{H}_0$$</td>
+    <td>Správné rozhodnutí: $$P = 1 - \alpha$$</td>
+    <td>Chyba II. druhu: $$P = \beta$$</td>
   </tr>
   <tr>
-    <td>Zamítáme $$\mathrm{H}_0$$</td><td>Chyba I. druhu: $$P = \alpha$$</td><td>Správné rozhodnutí: $$P = 1- \beta$$</td>
+    <td>Zamítáme $$\mathrm{H}_0$$</td>
+    <td>Chyba I. druhu: $$P = \alpha$$</td>
+    <td>Správné rozhodnutí: $$P = 1 - \beta$$</td>
   </tr>
 </table>
 ```
 
-Síla testu $\beta$ je pravěpodobnost, že je testem zamítnuta nulová hypotéza, 
-která je skutečně neplatná. $P(\mathrm{H}_A|\mathrm{H}_A) = 1-\beta$
+Síla testu je pravděpodobnost, že je testem zamítnuta nulová hypotéza, která je skutečně neplatná. $P(\mathrm{zamítneme\:H}_0|\mathrm{H}_0\: \mathrm{neplatí}) = 1-\beta$
 
 ## $p-$hodnota
 
-Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. *$p-$hodnotu* (anglicky p-value). Definice $p-$hodnoty je poněkud obšírná - *jedná se o odhad pravděpodobnosti, že daný výsledek nebo výsledek, který je ještě extrémnější než ten pozorovaný, mohl nastat náhodou, za předpokladu, že nulová hypotéza je pravdivá*.
+Místo porovnání hodnoty testovacího kritéria s kritickými hodnotami lze pro rozhodování o platnosti či neplatnosti nulové hypotézy použít i tzv. $p-$hodnotu (anglicky p-value). Definice $p-$hodnoty není zcela triviální.
+
+*$p-$hodnota je pravděpodobnost, že bychom za předpokladu platnosti nulové hypotézy pozorovali výsledek **alespoň tak extrémní**, jako je výsledek skutečně naměřený.*.
 
 ## Jednovýběrové testy
 
-Představme si, že hledáme odpověď na otázky typu: "Jaká je střední hodnota souboru?", 
-"Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)"?
-"Jaká je mír nejistoty odhadu této střední hodnoty?".
+Představme si, že hledáme odpověď na otázky typu: "Jaká je střední hodnota souboru?", "Je střední hodnota souboru výrazně odlišná od očekávání (například na základě teoretického poznání)"? "Jaká je míra nejistoty odhadu této střední hodnoty?".
 
 ## $100(1-\alpha)\%$ interval spolehlivosti
 
-Vrátíme se krátce k intervalu spolehlivosti z předchozí hodiny. 
+Vrátíme se krátce k intervalu spolehlivosti z předchozí hodiny.
 
 $$
 \bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}}\leq\mu\leq \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}
@@ -86,6 +123,7 @@ $$
 $$
 
 kde $\nu=n-1$ je počet stupňů volnosti. Kvantil $t_{\alpha/2}$ lze získat následovně
+
 ```{r, eval=FALSE}
 alpha <- 0.05
 nu <- n - 1
@@ -93,10 +131,11 @@ qt(p = (1 - alpha)/2, df = nu)
 ```
 
 ### Příklad 1
-V tomto příkladu si ukážeme, jak to vypadá, když **dojde k chybě 1. druhu**.
-Dejme tomu, že jsme v průběhu práce sesbírali následující hodnoty:\    
-`r set.seed(1450070); rnorm(10)`\      
+
+V tomto příkladu si ukážeme, jak to vypadá, když **dojde k chybě 1. druhu**. Dejme tomu, že jsme v průběhu práce sesbírali následující hodnoty: \
+`r set.seed(1450070); rnorm(10)` \
 u procesu $X\sim\mathsf{N}(0; 1)$
+
 ```{r, fig.align='center'}
 set.seed(1450070) #<1>
 xd <- rnorm(10)
@@ -111,45 +150,32 @@ segments(x0 = mean(xd),
          xlab = "", 
          ylab = "")
 ```
-1. V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme `set.seed()` 
 
-Data jsme získali s pomocí generátoru pro náhodné rozdělení, budeme předpokládat, 
-že teoretický soubor má náhodné rozdělení s parametry $\mu=0$ a $\sigma^2=1$ a ověříme
-na hladině významnosti $\alpha=0.05$.
+1.  V tomto příkladu potřebujeme vygenerovat specifické hodnoty, proto si určíme `set.seed()`
 
-::: callout-note
+Data jsme získali s pomocí generátoru pro náhodné rozdělení, budeme předpokládat, že teoretický soubor má náhodné rozdělení s parametry $\mu=0$ a $\sigma^2=1$ a ověříme na hladině významnosti $\alpha=0.05$.
+
+::: callout-tip
 ## Úloha
-  
-  1. Stanovte znění $\mathrm{H}_0$ a $\mathrm{H}_a$.
-  2. Kolik bude stupňů volnosti?
+
+1.  Stanovte znění $\mathrm{H}_0$ a $\mathrm{H}_a$.
+2.  Kolik bude stupňů volnosti?
 :::
 
 ```{r}
 t.test(xd, mu = 0) #<1>
 ```
+
 Z výsledku testu vyplývá, že `p-value` $< \alpha$, proto tedy musíme nulovou hypotézu `r fitb(c("zamítnout", "zamitnout"))`.
-
-
 
 ### Příklad 2
 
-V předchozím příkladu jsme testovali nulovou hypotézu oproti oboustranné alternativě, 
-tzn. neřešili jsme, zda je střední hodnota menší či větší.
+V předchozím příkladu jsme testovali nulovou hypotézu oproti oboustranné alternativě, tzn. neřešili jsme, zda je střední hodnota menší či větší.
 
-::: callout-note
-## Úloha 
+::: callout-tip
+## Úloha
 
-  1. S pomocí nápovědy nastavte argumenty funkce `t.test()` tak, aby byla test proběhl
-  oproti jednostranné alternativě, že je skutečná střední hodnota nižší než 2.
-  2. Studentův $t-$test lze použít za předpokladu, že data splňují tzv. normalitu.
-  tu lze pro tento soubor snadno ověřit jiným testem - `shapiro.test()`. $\mathrm{H}_0$:
-  rozdělení není odlišné od normálního. Zamítneme $\mathrm{H}_0$ na hladině významnosti $\alpha=0,1$?
-  3. Zatím jsme použili jedovýběrový $t-$test na data pocházející z Normálního rozdělení. 
-  V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, 
-  museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední 
-  hodnotě lze využít neparametrický *Wilcoxonův test* - `wilcox.test()`. Rozhodněte 
-  o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů
-  z datové sady **temp.csv**.
-  
+1.  S pomocí nápovědy nastavte argumenty funkce `t.test()` tak, aby byla test proběhl oproti jednostranné alternativě, že je skutečná střední hodnota nižší než 2.
+2.  Studentův $t-$test lze použít za předpokladu, že data splňují tzv. normalitu. tu lze pro tento soubor snadno ověřit jiným testem - `shapiro.test()`. $\mathrm{H}_0$: rozdělení není odlišné od normálního. Zamítneme $\mathrm{H}_0$ na hladině významnosti $\alpha=0,1$?
+3.  Zatím jsme použili jednovýběrový $t-$test na data pocházející z Normálního rozdělení. V případě, že by naše data nesplňovala předpoklady kladené na tento parametrický test, museli bychom volit neparametrickou variantu testu. Pro test hypotézy o střední hodnotě lze využít neparametrický *Wilcoxonův test* - `wilcox.test()`. Rozhodněte o volbě testu a proveďte s pomocí nápovědy test o rovnosti středních hodnot souborů z datové sady **temp.csv**.
 :::
-

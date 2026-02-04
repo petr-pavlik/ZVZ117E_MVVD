@@ -50,8 +50,8 @@ book:
     - 10_hydro_index.qmd
     - 11_korelace_regrese.qmd
     - 12_extremalni_rozdeleni.qmd
-  downloads:
-  - epub
+  # downloads:
+  # - epub
 bibliography: references.bib
 format:
   html:
@@ -70,10 +70,16 @@ format:
     linkcolor: '#006666'
     highlight-style: syntax.theme
     code-annotations: hover
-    fig-align: center
+    fig-align: "center"
     fig-format: svg
+    fig-width: 9
+    fig-height: 5
     fig-dpi: 400
     fig-cap-location: bottom
+
+execute:
+  out-width: "100%"
+  
   # pdf:
   #   documentclass: scrreprt
 editor: visual

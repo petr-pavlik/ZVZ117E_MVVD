@@ -76,8 +76,7 @@ curve(expr = tanh(2*x),
 plot(dfr$X, dfr$Y) # <1> 
 ```
 
-1.  Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od poskytnutých argumentů. Pro lepší představu o parametrech
-se podívejte na `plot.default()`.
+1.  Funkce má věšinu svých argumentů parametrizovaných v přednastavenými hodnotami, nebo hodnotami novodvozenými od poskytnutých argumentů. Pro lepší představu o parametrech se podívejte na `plot.default()`.
 
 ```{r, fig.align='center'}
 plot(x = dfr$X, # <1>
@@ -93,7 +92,7 @@ plot(x = dfr$X, # <1>
      main = "Y~X vztah",  # <8>
      sub = Sys.Date()) # <9>
 legend(x = "topright", # <10> 
-       fill = "#4a6777", # <11>
+       pt.bg = "#4a6777", # <11>
        pch = 21, # <12>
        legend = c("Y"), # <13> 
        box.col = NA, # <14>
@@ -156,16 +155,17 @@ with(data = dfr, # <1>
 
 <!-- ``` -->
 
+
 ::: callout-tip
 ## Úloha
 
 2.  Funkcí `plot(x, y)`
 
+:::
+
 ## Volba barev
 
 Barvy je možné aplikovat na všechny prvrky grafu. Buď je možné psát barvy dle názvů, například `"white"`, `"orange"` použít funkci `rgb()` a nebo hexadecimální zápis `"#FFF000"`. Výpis všech předdefinovaných barev[^03_grafy-1] lze získat příkazem `colors()`.
-
-[^03_grafy-1]: Předdefinovaných barev je celkem 657.
 
 ```{r}
 colors()[1:10]
@@ -237,11 +237,11 @@ schreiber <- 1 - exp(-phi)
 paleta <- rev(rainbow(20, start = 0, end = 0.6))
 
 plot(x = phi, 
-     xlab = "Ep/P", 
-     ylab = "P/Er", 
+     xlab = expression(italic(E)*p/italic(P)), 
+     ylab = expression(italic(P)/ETr), 
      xlim = c(0, 2), 
      ylim = c(0, 1.2), 
-     # bty = "n",
+     main = "Budyko curve",
      type = "n", 
      xaxt = "n",
      yaxt = "n"
@@ -251,8 +251,6 @@ points(x = budyko_dfr$PET_over_P,
      y = budyko_dfr$ET_over_P,
      xlim = c(0, 2), 
      ylim = c(0, 1), 
-     xlab = "PET/P", 
-     ylab = "ET/P",
      pch = 21, 
      bg = paleta[round(10*budyko_dfr$PET_over_P)])
 
@@ -357,9 +355,17 @@ layout.show(layout(mat = matrix(c(0, 1, 1,
 ```
 :::
 
+::: callout-note
+## Poznámka
+
+V prostředí R jsou dva systémy pro tvorbu grafických výstupů. V tomto textu se cíleně držíme postupů, které je možné aplikovat bez instalace jakýchkoliv dodatečných balíčků. Je zde ale
+vhodné zmínit, že k funkcím `plot()`, `layout()`, `image()` existují alternativy v balíčcích `ggplot2`, `cowplot`, `rgl` a dalších. 
+
+:::
+
 ## Uložení do souboru
 
-Grafy je možné uložit externě, at už prostřednictvím dialogu v ***Plots*** \> ***Export***, nebo přímo ve skriptu. Formát lze volit mezi rastrovými \*.png, \*.jpeg, \*.tiff, \*.bmp, či vektorovými \*.eps, \*.svg, \*.pdf.
+Grafy je možné uložit externě, at už prostřednictvím dialogu v **Plots** \> **Export**, nebo přímo ve skriptu. Formát lze volit mezi rastrovými \*.png, \*.jpeg, \*.tiff, \*.bmp, či vektorovými \*.eps, \*.svg, \*.pdf.
 
 ```{r, eval=FALSE}
 png("./budyko_kompozit.png", 
@@ -381,3 +387,6 @@ dev.off()
     a)  Vytvořte poslouponost `t <- seq(from = 2010, to = 2020, length = 200))` a potom do stejného grafu vyneste $\sin(2\pi(t - 1))$ a $\cos^2(2\pi t)$.
     b)  Vytvořte layout ze 4. úlohy a uložte předchozí graf a dva další do souboru s pomocí funkce `pdf()`. Využijte naápovědy.
 :::
+
+
+[^03_grafy-1]: Předdefinovaných barev je celkem 657.

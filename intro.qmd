@@ -1,6 +1,19 @@
-# Organizace textu
+# Organizace
 
-Text je členěn do kapitol podle náplně jednotlivých cvičení. Na začátku každé kapitoly jsou vypsány **Cíle cvičení**, k jejichž osvojení daná kapitola míří. Na konci každé kapitoly jsou vždy cvičení, které mají za cíl ověřit splnění cílů. V případech jednodušších úloh jsou cvičení uvedena v prostřed textu blíže látce.
+Předmět MVVD navazuje na předmět *Počítačové zpracování dat*, který je zaměřen na obecnou práci s R. 
+Kapitoly 3-5 jsou zde řazeny pouze pro potřeby opakování a jejich obsah je na cvičení brán v rychlém tempu. \
+
+**Předpokládá se, že na cvičení se student dopředu připaví jednak účastí na přednášce a dále samostudiem.**
+
+## Členění textu
+
+Text je členěn do "kapitol" podle náplně jednotlivých cvičení. Na začátku každé kapitoly jsou vypsány **Cíle cvičení**, k jejichž osvojení daná kapitola míří. V textu i na konci každé kapitoly jsou cvičení s aktivní kontrolou správného řešení. V **Poznámce** jsou doplňující informace nad rámec cvičení.
+
+::: callout-note
+## Poznámka
+
+...
+:::
 
 ::: callout-warning
 ## Cíle cvičení
@@ -14,13 +27,7 @@ Text je členěn do kapitol podle náplně jednotlivých cvičení. Na začátku
 ...
 :::
 
-::: callout-note
-## Poznámka
-
-...
-:::
-
-## Typografické konvence
+### Typografické konvence
 
 Zdrojový kód v textu je barevně odlišen a jednotlivé úkony jsou v kódu doprovozeny číslovanými komentáři v kroužku, které se aktivují najetím kurzoru myši. V případě, že zdrojový kód obsahuje pouze jeden výraz k vyhodnocení, je vždy výstup uveden přímo pod ním.
 
@@ -30,7 +37,7 @@ cat("Příklad výrazu a jeho vyhodnocení") # <1>
 
 1.  Toto je komentář.
 
-Někdy je nutné provést vyhodnocení více po sobě jdoucích výrazů a text byl zbytečně nafukován. V takovém případě je výstup zachován přímo v okně zdrojového kódu a je uvozen dvěma po sobě jdoucími znaky $\#\#$.
+Někdy je nutné provést vyhodnocení více po sobě jdoucích výrazů a text byl zbytečně nafukován. V takovém případě je výstup zachován přímo v okně zdrojového kódu a je uvozen dvěma po sobě jdoucími znaky `##`.
 
 ```{r, collapse=TRUE}
 mean(1:10) # <1>

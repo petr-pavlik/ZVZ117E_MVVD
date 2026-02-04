@@ -15,7 +15,7 @@ Podívejte se na `?Distributions`.
 
 ## Funkce rozdělení
 
-Pro práci s rozděleními jsou k dispozici obecně tři funkce:
+Pro práci s rozděleními jsou k dispozici obecně čtyři funkce:
 
 ```{r eval=FALSE}
 r___() # generování náhodných čísel z rozdělení
@@ -23,6 +23,17 @@ d___() # funkce hustoty rozdělení
 p___() # Pravděpodobnostní funkce 
 q___() # Kvantilová funkce rozdělení
 ```
+
+### Hustota pravděpodobnosti
+
+*Probability density function (PDF)*\
+
+Hustota pravděpodobnosti je funkce, které popisuje *rozložení* pravděpodobnosti u spojitě rozdělené náhodné veličiny, tz. vyjadřuje, jak je pravděpodobnost rozprostřena kolem dané hodnoty $x$.
+
+1.  Pravděpodobnost je nezáporná $$f(x)>0;\forall x$$
+2.  Celková pravděpodobnost je rovna 1 $$\int\limits_{-\infty}^\infty f(x)dx=1$$
+3.  Pravděpodobnost, že veličina spadne do intervalu $[a,b]$ je $$P(a \leq X \leq b) = \int\limits_a^bf(x)dx$$
+4.  Pro spojité rozdělení platí $$P(X=x)=0$$
 
 Pro úplnost jsou zde uvedeny funkce pro permutace `factorial()` a kombinace `choose()`.
 
@@ -104,7 +115,7 @@ plot(x = dat$Qd, # <2>
 
 ### Kvantilová funkce
 
-Kvantilová funkce je inverzní funkcí k distribuční. Pokud distribuční funkce udává s jakou pravděpodobností bude hodnota náhodného pokusu menší nebo rovna $x$, kvantilová funkce udává, pro jaké $x$ bude výsledek náhodného pokusu s danou pravděpodobností $y$ měnší nebo roven $x$.
+Kvantilová funkce je *inverzní* k funkci distribuční. Pokud distribuční funkce udává s jakou pravděpodobností bude hodnota náhodného pokusu menší nebo rovna $x$, kvantilová funkce udává, pro jaké $x$ bude výsledek náhodného pokusu s danou pravděpodobností $y$ měnší nebo roven $x$.
 
 ```{r}
 qnorm(p = 0.8, mean = 2, sd = 1) #<1>
@@ -124,7 +135,7 @@ rpois(n = 15, lambda = 2.4) # <2>
 1.  Generování 10 čísel z rovnoměrného rozdělení z intervalu $(0;1)$
 2.  Generování 15 čísel z Poisonova rozdělení z intervalu $(0;1)$
 
-Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako *pseudonáhodná*, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna funkcí `set.seed()` volanou před každou vygenerovanou sekvencí.
+Generovaná čísla nejsou náhodná v pravém slova smyslu, ale označují se jako *pseudonáhodná*, neboť při jejich tvorbě se vychází z jiste sekvence čísel. Tuto sekvenci je možné přímo zvolit, čímž je zajištěna funkcí `set.seed()` volanou před každou vytvořenou množinou čísel.
 
 ```{r}
 x <- sample(x = 1:1e3, size = 1) # <1>
@@ -144,19 +155,84 @@ head(seed, 10)
 plot(.Random.seed)
 ```
 
+::: callout-note
+# Poznámka
+
+| Rozdělení | Typ / vlastnosti | Typické použití | Funkce v R (balík *stats*) | Příklad použití |
+|--------------|----------------|---------------|--------------|--------------|
+| **Normální (Gaussovo)** | Symetrické, definované střední hodnotou a směrodatnou odchylkou | Měřící chyby, přirozená variabilita, CLT | `dnorm`, `pnorm`, `qnorm`, `rnorm` | `rnorm(1000, mean=0, sd=1)` |
+| **Lognormální** | Kládně vymezené, silně pravostranné | Intenzita srážek, ekonomické veličiny, multiplikativní procesy | `dlnorm`, `plnorm`, `qlnorm`, `rlnorm` | `rlnorm(1000, meanlog=0, sdlog=1)` |
+| **Exponenciální** | Paměťově bezstarostné, kladná osa | Čekací doby, doby mezi událostmi (Poissonův proces) | `dexp`, `pexp`, `qexp`, `rexp` | `rexp(1000, rate=0.2)` |
+| **Gamma** | Kladné, flexibilní tvar (shape–rate) | Modelování srážek, nízkých průtoků, hydrologické extrémy | `dgamma`, `pgamma`, `qgamma`, `rgamma` | `rgamma(1000, shape=2, rate=0.5)` |
+| **Chí-kvadrát (χ²)** | Kladné, zvláštní případ gamma | Testy rozptylu, LRT testy | `dchisq`, `pchisq`, `qchisq`, `rchisq` | `rchisq(1000, df=10)` |
+| **Studentovo t** | Těžké ocasy, symetrické | Odhady střední hodnoty při malých vzorcích | `dt`, `pt`, `qt`, `rt` | `rt(1000, df=5)` |
+| **F-rozdělení** | Poměr dvou rozptylů | ANOVA, testy poměru rozptylů | `df`, `pf`, `qf`, `rf` | `rf(1000, df1=5, df2=20)` |
+| **Rovnoměrné (Uniform)** | Konstantní hustota | Náhodné vzorkování v intervalu, neinformativní předpoklady | `dunif`, `punif`, `qunif`, `runif` | `runif(1000, 0, 1)` |
+| **Weibullovo** | Kladné, flexibilní | Spolehlivost, doby selhání, délky suchých období | `dweibull`, `pweibull`, `qweibull`, `rweibull` | `rweibull(1000, shape=2, scale=5)` |
+| **Beta** | Omezené na (0, 1) | Poměry, pravděpodobnosti, Bayesovské prior distribuce | `dbeta`, `pbeta`, `qbeta`, `rbeta` | `rbeta(1000, 2, 5)` |
+| **Cauchyho** | Extrémně těžké ocasy, bez střední hodnoty a rozptylu | Robustní modelování, odlehlé hodnoty | `dcauchy`, `pcauchy`, `qcauchy`, `rcauchy` | `rcauchy(1000)` |
+:::
+
 ## Diskrétní rozdělení
 
-<!-- ### Alternativní rozdělení -->
+Diskrétní rozdělení jsou určena výčtem hodnot spolu s pravděpodobností jejich nabytí.
 
-<!-- ### Rovnoměrné rozdělení -->
+::: callout-note
+# Poznámka
+
+| Rozdělení | Typ / vlastnosti | Typické použití | Funkce v R (balík *stats*) | Příklad použití |
+|--------------|-----------------|--------------|--------------|--------------|
+| **Poissonovo** | Počty událostí v čase/prostoru | Počty srážkových událostí, příchody, počet výskytů | `dpois`, `ppois`, `qpois`, `rpois` | `rpois(1000, lambda=3)` |
+| **Binomické** | Počet úspěchů v pevně daném počtu pokusů | Pravděpodobnost výskytu jevu (např. déšť/bez deště) | `dbinom`, `pbinom`, `qbinom`, `rbinom` | `rbinom(1000, size=10, prob=0.4)` |
+| **Negativně binomické** | Počet neúspěchů do dosažení k úspěchů, nebo overdisperzní Poisson | Nadpoissonovská variabilita srážek, počet epizod | `dnbinom`, `pnbinom`, `qnbinom`, `rnbinom` | `rnbinom(1000, size=5, mu=2)` |
+| **Geometrické** | Počet neúspěchů do prvního úspěchu | První výskyt jevu, jednoduché čekací doby | `dgeom`, `pgeom`, `qgeom`, `rgeom` | `rgeom(1000, prob=0.3)` |
+| **Hypergeometrické** | Výběr bez vracení | Losování, ekologické vzorkování, bez-náhrady | `dhyper`, `phyper`, `qhyper`, `rhyper` | `rhyper(1000, m=25, n=75, k=10)` |
+| **Multinomické** | Více kategorií, opakované pokusy | Simulace kategoriální volby, více-třídní jevy | `rmultinom` | `rmultinom(10, size=20, prob=c(.2,.5,.3))` |
+:::
 
 ### Binomické rozdělení
 
 Popisuje počet $m$ úspěchů v posloupnosti $N$ nezávislých 0/1 pokusů.
 
+$$
+X\sim\mathsf{Bi}(n,p)
+$$
+::: callout-tip
+## Úloha
+
+1. V prosinci je pravděpodobnost sněhově srážkového dne $p=0.15$. Spočítejte pravděpodobnost, že počet takových dnů bude 20.
+
+```{r}
+pbinom(q = 20/31, size = 31, prob = 0.15)
+```
+  
+:::
+
+
 ### Poissonovo rozdělení
 
-Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací binomického rozdělení v případech, kdy počet pozorování se limitně blíží k nekonečnu ($N\rightarrow \infty$)
+Poissonovo rozdělení (jinak také rozdělení vzácných jevů) je získáno aproximací binomického rozdělení v případech, kdy počet pozorování se limitně blíží k nekonečnu ($N\rightarrow \infty$). Rozdělení popisuje počet událostí, v daném časovém nebo prostorovém intervalu, pokud tyto nastávají nezávisle a střední doba (intenzita) výskytu je konstantní.
+
+#### Hustota pravděpodobnosti
+
+kde $k$ je počet výskytů jevu a $\lambda$ je střední počet výskytů v intervalu. $$
+P(X = k) = \dfrac{\lambda^ke^{-k}}{k!}
+$$
+
+::: callout-tip
+# Úloha
+
+1.  Průměrně se vyskytuje během zimy 5 výrazných sněhových epizod za měsíc. Jaká je pravděpodobnost, že v daném zimním měsící se vyskytnou přesne 3 epizody?
+
+    $$
+    \begin{align}
+    P(X = 3) = \dfrac{5^3e^{-5}}{3!}\\
+    P(X = 3) = \dfrac{125}{6}e^{-5}\approx 20,83\cdot 0,006738 = 0,1404
+    \end{align}
+    $$
+
+2.  Pravděpodobnost, že teplotní senzor během měření selže během jakéhokoliv dne je
+:::
 
 ```{r, fig.align='center'}
 # par(mfrow = c(2, 2))
@@ -172,8 +248,8 @@ for(l in lambda) {
 ## Úloha
 
 8.  Vytvořte jednoduchý simulátor deště pro jeden rok podle následujícího zadání\
-    a) Buď prší, nebo ne. Prvděpodobnost že neprší, je 90 %.\
-    b) Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost že prší dnes na 25 %.
+    a)  Buď prší, nebo ne. Prvděpodobnost že neprší, je 90 %.\
+    b)  Pokud pršelo předchozí časový úsek, tak se zvyšuje pravděpodobnost že prší dnes na 25 %.
 :::
 
 Řešení:\
@@ -305,15 +381,13 @@ all.equal(
     c)  Pro jakou hodnotu $\gamma$ je pravděpodobnost přibližně:
         -   $P(X < \gamma) = 0,76\quad\gamma=$ `r fitb(c("7.91", "7,91"))` \
         -   $P(X > \gamma) = 0,16\quad\gamma=$ `r fitb(c("9.35", "9,36"))`\
-2.
-    
-    a)  V @sec-grafy jsme si představovali funkci `curve()`. Pro praktické 
-    počítání s Normální rozdělením je užitečné si pamatovat pravděpodobnosti
-    vybraných intervalů $\mu\pm\{1,2,3\}\sigma$.\ 
-    S pomocí funkce `integrate()`  
-    $$
-      \int^{\mu+2\sigma}_{\mu-2\sigma}\dfrac{1}{\sigma\sqrt{2\pi}}\exp\left(-\dfrac{(x-\mu)^2}{2\pi^2}\right)dx \approx 0.95
-    $$
+
+2.  
+
+    a)  V @sec-grafy jsme si představovali funkci `curve()`. Pro praktické počítání s Normální rozdělením je užitečné si pamatovat pravděpodobnosti vybraných intervalů $\mu\pm\{1,2,3\}\sigma$.  S pomocí funkce `integrate()`\
+        $$
+            \int^{\mu+2\sigma}_{\mu-2\sigma}\dfrac{1}{\sigma\sqrt{2\pi}}\exp\left(-\dfrac{(x-\mu)^2}{2\pi^2}\right)dx \approx 0.95
+          $$
 :::
 
 <!-- Řešení: -->
@@ -398,5 +472,5 @@ $$ {#eq-odhad-chisq-rozptyl}
 3.  Jaká je pravděpodobnost, že veličina $X\sim\mathsf{N}(1.3, 4)$, bude nabývat hodnot menších než 6?\
 4.  Předpokládejme, že $s_x^2=8,6$ při $15$ stupních volnosti. Doplňte následující výraz k určení 95% intervalu spolehlivosti pro $\sigma_x^2$ (viz @eq-odhad-chisq-rozptyl). \
     `c(15*` `r fitb(c("8.6", "8,6"))` `/qchisq(` `r fitb(c("0.975", "0,975"))`, `r fitb(15)` `),` `15*` `r fitb(c("8.6", "8,6"))` `/qchisq(` `r fitb(c("0.025", "0,025"))`, `15` `))`\
-5.  Najděte následující hodnoty: - t\_{0,95}(10), \chi*{0,1}\^2(8), F*{0,01}(13;4) \
+5.  Najděte následující hodnoty: - t\_{0,95}(10), \chi*{0,1}\^2(8), F\*{0,01}(13;4) \
 :::

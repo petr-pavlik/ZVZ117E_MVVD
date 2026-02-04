@@ -162,9 +162,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Metody vyhodnocování VH dat</a> 
-        <div class="sidebar-tools-main">
-    <a href="./Metody-vyhodnocování-vodohospodářských-dat.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -183,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace textu</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Organizace</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -533,13 +530,34 @@ Výsledek by měl vypadat takto:</li>
 <p>Pravděpodobnost překročení <span class="math inline">\(P(X\geq x_i)\)</span> <span class="math inline">\(i-\)</span>té hodnoty v souboru lze zapsat <span class="math display">\[
 P = \dfrac{m}{n}, \quad \text{pokud } n\rightarrow \infty
 \]</span> V praxi je tento vzorec nepoužitelný, protože nereflektuje možnost výskytu nižšího člena souboru než měřeného u kterého je <span class="math inline">\(P(X\geq x_{\min})=1\)</span>. Vzorec byl Čegodajevem upraven na <span class="math display">\[
-P = \dfrac{m-0,3}{n+0,4}
+P = \dfrac{m-0.3}{n+0.4}
 \]</span> Vztah mezi pravděpodobností překročení <span class="math inline">\(P\)</span> a dobou opakování <span class="math inline">\(T'\)</span> je <span class="math display">\[
 T' = \dfrac{1}{1-P(X\geq x_i)}
 \]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Úloha
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol start="7" type="1">
+<li>Čegodajevova rovnice není jediná, které je v praxi používána. Spočítejte pravděpodobnost <span class="math inline">\(P\)</span> těmito dvěma dalšími způsoby a rozdíly diskutujte.</li>
+</ol>
+<p><span class="math display">\[
+\begin{align}
+P &amp;=\dfrac{m-0.5}{n}\qquad\qquad&amp;\mathrm{Hazen}\\
+P &amp;=\dfrac{m-0.44}{n+0.12}\qquad\qquad&amp;\mathrm{Gringorten}\\
+\end{align}
+\]</span></p>
+</div>
+</div>
 <section id="n-letý-maximální-průtok" class="level3" data-number="10.6.1">
 <h3 data-number="10.6.1" class="anchored" data-anchor-id="n-letý-maximální-průtok"><span class="header-section-number">10.6.1</span> <span class="math inline">\(N-\)</span>letý (maximální) průtok</h3>
-<p>Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně 1<span class="math inline">\(\times\)</span> za <span class="math inline">\(N\)</span> let. Určuje se pro doby opakování <span class="math inline">\(N = 1, 2, 5, 10, 20, 50, 100\)</span> let.</p>
+<p>Nejvyšší hodnoty průtoku, kterých je dosaženo nebo překročeno průměrně <span class="math inline">\(1\times\)</span> za <span class="math inline">\(N\)</span> let. Určuje se pro doby opakování <span class="math inline">\(N = 1, 2, 5, 10, 20, 50, 100\)</span> let.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -593,7 +611,14 @@ T' = \dfrac{1}{1-P(X\geq x_i)}
 </div>
 <div class="callout-body-container callout-body">
 <ol start="8" type="1">
-<li>Spočtete průměrný roční minimální průtok.</li>
+<li>Nahrajte do prostředí data ze souboru.</li>
+<li>Spočítejte:
+<ol type="a">
+<li>průměrný roční minimální průtok.</li>
+<li>počet dnů s denní minimální teplotou <span class="math inline">\(&lt; 20\:^\circ\mathrm{C}\)</span>.</li>
+<li>měsíce, kdy je denní teplotní rozsah více než <span class="math inline">\(&gt; 20\:^\circ\mathrm{C}\)</span></li>
+<li>počet dní, kdy byla srážka vyšší než <span class="math inline">\(20\: \mathrm{mm}\)</span></li>
+</ol></li>
 </ol>
 </div>
 </div>

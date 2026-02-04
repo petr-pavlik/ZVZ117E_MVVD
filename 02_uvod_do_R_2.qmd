@@ -27,16 +27,15 @@ Zadává se do konzole ve tvaru `help(<jméno funkce>)`, nebo `<jméno funkce>`.
 
 ## Jmenné konvence
 
-Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence. 
+Objekty, které vznikají při práci s R musí splňovat následující jmenné konvence.
 
-  -   Název objektu nelze začínat číslovkou nebo operátorem, 
-  -   nesmít být totožný s žádným klíčovým slovem, 
-  -   ani obsahovat mezeru.
+-   Název objektu nelze začínat číslovkou nebo operátorem,
+-   nesmít být totožný s žádným klíčovým slovem,
+-   ani obsahovat mezeru.
 
 ##### Klíčová slova {.unnumbered}
 
-Klíčová slova jsou rezervována pro správnou funkci interpretru jazyka. Pokus o
-Jejich přepis vyvolá chybovou hlášku. Vyzkoušejte například zápisem `TRUE <- 1`.
+Klíčová slova jsou rezervována pro správnou funkci interpretru jazyka. Pokus o Jejich přepis vyvolá chybovou hlášku. Vyzkoušejte například zápisem `TRUE <- 1`.
 
 `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `repeat`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, `NA_character_`, a speciální znak: `_`
 
@@ -51,7 +50,7 @@ Nedoporučuje se vkládat do názvu proměnné tečku, např. `morava.prutoky`, 
 ##### Příklady nevhodných proměnných {.unnumbered}
 
 `aaa`, `Morávka průtok [m/s]`, `moje.proměnná`\
-Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není vhodný.  
+Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není vhodný.
 
 ## Uvozovky a závorky
 
@@ -61,7 +60,7 @@ Představují párové znaky jazyka R. Závorky se používají trojího typu: k
 -   `[]` se **vždy pojí se jménem objektu** (vektoru, pole, listu, ...) a vymezují výběr z daného objektu,\
 -   `{}` **ohraničují blok kódu**, který se má celý vykonat (sekvenčně).\
 
-Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře. 
+Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednoduché `'` uvozovky zcela zástupně, je pouze třeba uzavírat shodným typem. Hojně se lze setkat se zpětnými uvozovkami, které se například použijí pro ohraničení nestandardního názvu sloupce ve struktuře.
 
 ```{r,eval=FALSE}
 "Správně"
@@ -73,8 +72,7 @@ Uvozovky uvozují textové řetězce. Lze používat jak dvojté `"` tak jednodu
 ## Úloha
 
 3.  Zadejte špatnou variantu z kódu výše do konzole a sledujte chování prostředí. Co vyjadřuje znak `+`?
-4.  Pomocí funkce `cat()` se pokuste vypsat na konzoli tento text:\ 
-Říkám: "Mám rád R!". 
+4.  Pomocí funkce `cat()` se pokuste vypsat na konzoli tento text:  Říkám: "Mám rád R!".
 :::
 
 ## Operátory
@@ -423,7 +421,7 @@ if(A >= 2) { #<1>
 
 #### `ifelse()`
 
-Vektorizovaný tvar podmínky, který lze volat přes prvky struktur. 
+Vektorizovaný tvar podmínky, který lze volat přes prvky struktur.
 
 ```{r}
 x <- -5:5
@@ -448,9 +446,7 @@ rbind(
 
 #### `switch()`
 
-Konstrukcí `switch` vytváříme větvení na základě stavu objektu. K jednotlivým 
-stavům, kterých může nebýt, přiřazujeme větve (bloky kódu), které se mají 
-vykonat.
+Konstrukcí `switch` vytváříme větvení na základě stavu objektu. K jednotlivým stavům, kterých může nebýt, přiřazujeme větve (bloky kódu), které se mají vykonat.
 
 ```{r}
 varianta <- "B"
@@ -484,8 +480,7 @@ Zajištují, že se část kódu provede opakovaně.
 
 #### `for()` z definovaného rozsahu
 
-Pokud je předem znám počet opakování cyklu (nebo je jinak implicitně určen), 
-lze použít `for` cyklu.
+Pokud je předem znám počet opakování cyklu (nebo je jinak implicitně určen), lze použít `for` cyklu.
 
 ```{r}
 for(i in 1:4) {
@@ -521,8 +516,7 @@ repeat { #<1>
 1.  Prováděj
 2.  Vnořenou podmínkou následovanou klíčovým slovem `break` definujeme konec cyklu.
 
-Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`. Je dobré si uvědomit, že cyklus typu `while` se nemusí provést ani jednou, k čemuž dojde,
-když výsledkem prvního vyhodnocení podmínky je FALSE. Což právě použití `repeat` ošetřuje.
+Kromě únikového klíčového slova `break` po němž cyklus okamžitě skončí je k využití příkaz `next`, po němž se zbytek příkazů v dané iteraci přeskočí a operátor `%||%`. Je dobré si uvědomit, že cyklus typu `while` se nemusí provést ani jednou, k čemuž dojde, když výsledkem prvního vyhodnocení podmínky je FALSE. Což právě použití `repeat` ošetřuje.
 
 ::: callout-tip
 ## Úloha
@@ -552,6 +546,7 @@ cat("Hodnota nejblíže 0 z vektoru x je:" ,
 1.  Příklad funkce, která vyhledá nejbližší z hodnot vektoru `x` k referenční hodnotě `value`.
 
 ## Rekapitulace
+
 ::: callout-tip
 ## Úloha
 
@@ -580,6 +575,6 @@ opts2 <- c("Počet sloupců i řádků musí být shodný",
   }
   > 54321
 ```
-7.  Vytvořte funkci `FD0(x)` s parameterm `x`, který bude reprezentovat teplotu.
-    Funkce `FD0(x)` bude vracet počet hodnot nižších než 0.
+
+7.  Vytvořte funkci `FD0(x)` s parameterm `x`, který bude reprezentovat teplotu. Funkce `FD0(x)` bude vracet počet hodnot nižších než 0.
 :::

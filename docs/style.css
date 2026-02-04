@@ -13,7 +13,7 @@
 }
 
 a {
-  color: #4a6776;
+  color: #14213D;
 }
 
 a:hover {
@@ -36,7 +36,7 @@ div.sourceCode {
 
 .sourceCode {
   border-radius: 2.5pt; 
-  background-color: #d7cdb520; 
+  background-color: #aaaaaa11; 
   padding: 10px; 
 }
 
@@ -60,6 +60,9 @@ div.sourceCode {
  color: #4a6776 !important; 
 }
 
+div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, div.sidebar-item-container .sidebar-link>code {
+    color: #012A4A;
+}
 
 .platform-table td {
   vertical-align: middle;
