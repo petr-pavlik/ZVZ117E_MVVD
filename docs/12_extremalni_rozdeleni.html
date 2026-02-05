@@ -283,6 +283,8 @@ window.Quarto = {
 </header>
 
 
+<p>V hydrologii a klimatologii se často nezajímáme o „běžné“ hodnoty náhodné proměnné, ale o její extrémy – například maximální roční průtoky, nejvyšší denní úhrny srážek nebo minimální průtoky v období sucha. K jejich popisu se používá teorie rozdělení extrémních hodnot (Extreme Value Theory, EVT).</p>
+<p>Základní myšlenkou je studium chování maxim (případně minim) náhodného výběru místo samotné distribuční funkce původních dat.</p>
 <section id="vymezení-extrémní-hodnoty" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="vymezení-extrémní-hodnoty"><span class="header-section-number">12.1</span> Vymezení extrémní hodnoty</h2>
 <section id="bloková-maxima" class="level3" data-number="12.1.1">
@@ -360,7 +362,7 @@ window.Quarto = {
 <h2 data-number="12.2" class="anchored" data-anchor-id="gumbellovo-rozdělení"><span class="header-section-number">12.2</span> Gumbellovo rozdělení</h2>
 <p>Hustota funkce Gumbellova rozdělení je dána předpisem</p>
 <p><span class="math display">\[
-f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-exp\left(-\dfrac{x-c}{d}\right)\right]
+f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-\exp\left(-\dfrac{x-c}{d}\right)\right]
 \]</span> kde <span class="math inline">\(c\)</span> a <span class="math inline">\(d\)</span> jsou parametry. Kvantilová funkce je pak <span class="math display">\[
 x_T = c - d\cdot\ln\left[-\ln\left(1-\dfrac{1}{T}\right)\right]
 \]</span></p>

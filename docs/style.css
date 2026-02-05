@@ -390,6 +390,17 @@ iframe.reveal-demo {
 }
 */
 
+.svg-scale {
+  display: flex;
+  justify-content: center;   /* horizontal centering */
+  margin: 2rem 0;            /* vertical breathing room */
+}
+
+.svg-scale svg {
+  transform: scale(1.15);
+  transform-origin: center center;
+  max-width: 100%;
+}
 
 .download-text {
   font-size: 1.1em;

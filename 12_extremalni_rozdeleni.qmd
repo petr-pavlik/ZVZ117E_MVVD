@@ -1,5 +1,9 @@
 # Rozdělení extrémních hodnot {#sec-rozdeleniextremnichhodnota}
 
+V hydrologii a klimatologii se často nezajímáme o „běžné“ hodnoty náhodné proměnné, ale o její extrémy – například maximální roční průtoky, nejvyšší denní úhrny srážek nebo minimální průtoky v období sucha. K jejich popisu se používá teorie rozdělení extrémních hodnot (Extreme Value Theory, EVT).
+
+Základní myšlenkou je studium chování maxim (případně minim) náhodného výběru místo samotné distribuční funkce původních dat.
+
 ## Vymezení extrémní hodnoty
 
 ### Bloková maxima
@@ -83,7 +87,7 @@ abline(h = threshold,
 Hustota funkce Gumbellova rozdělení je dána předpisem
 
 $$
-f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-exp\left(-\dfrac{x-c}{d}\right)\right]
+f(x) = \dfrac{1}{d}\exp\left(-\dfrac{x-c}{d}\right)\cdot\exp\left[-\exp\left(-\dfrac{x-c}{d}\right)\right]
 $$ kde $c$ a $d$ jsou parametry. Kvantilová funkce je pak $$
 x_T = c - d\cdot\ln\left[-\ln\left(1-\dfrac{1}{T}\right)\right]
 $$
