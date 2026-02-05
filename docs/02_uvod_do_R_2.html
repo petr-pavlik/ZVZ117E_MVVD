@@ -266,7 +266,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#řídící-struktury" id="toc-řídící-struktury" class="nav-link" data-scroll-target="#řídící-struktury"><span class="header-section-number">4.8</span> Řídící struktury</a>
   <ul class="collapse">
-  <li><a href="#podmínky" id="toc-podmínky" class="nav-link" data-scroll-target="#podmínky"><span class="header-section-number">4.8.1</span> Podmínky</a></li>
+  <li><a href="#podmínky-a-přepínače" id="toc-podmínky-a-přepínače" class="nav-link" data-scroll-target="#podmínky-a-přepínače"><span class="header-section-number">4.8.1</span> Podmínky a přepínače</a></li>
   <li><a href="#cykly" id="toc-cykly" class="nav-link" data-scroll-target="#cykly"><span class="header-section-number">4.8.2</span> Cykly</a></li>
   </ul></li>
   <li><a href="#vlastní-funkce" id="toc-vlastní-funkce" class="nav-link" data-scroll-target="#vlastní-funkce"><span class="header-section-number">4.9</span> Vlastní funkce</a></li>
@@ -741,7 +741,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <p>Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole. Název je odvozen od jejich omezení v podvýběru obsahovat pouze typ sebe sama tzn. podvýběr matice může být opět pouze matice.</p>
 <section id="atomický-vektor-vector" class="level4" data-number="4.7.1.1">
 <h4 data-number="4.7.1.1" class="anchored" data-anchor-id="atomický-vektor-vector"><span class="header-section-number">4.7.1.1</span> Atomický vektor <code>vector</code></h4>
-<p>Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice <span class="math inline">\(\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}\)</span> hodnot.</p>
+<p>Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. <!-- Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot. --></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mvvd_vector.svg" class="img-fluid figure-img"></p>
@@ -843,14 +843,14 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
-[1,] 148.8003 347.4367 21.80768 18.94785 100.9761 3.687042 215.5363 30.23881
-         [,9]       [,10]
-[1,] 284.8832 0.005137347
-        B         C         F         G         H 
-18.639654  4.669869  1.920167 14.681156  5.498982 
-         A          B          C 
--12.198372  18.639654   4.669869 </code></pre>
+<pre><code>          [,1]     [,2]     [,3]     [,4]     [,5]    [,6]     [,7]   [,8]
+[1,] 0.0533233 776.9135 3320.662 511.4057 874.8575 237.153 265.3945 32.259
+         [,9]    [,10]
+[1,] 39.96496 223.1028
+         A          C          E          H          I 
+ 0.2309184 57.6251871 29.5779899  5.6797003  6.3217849 
+          A           B           C 
+  0.2309184 -27.8731690  57.6251871 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1079,12 +1079,12 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>DF</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name        value</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a  2.024854383</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b -0.003330769</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  0.555686207</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -0.228170736</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -1.200570472</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name      value</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -1.3834871</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b -0.2585118</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  0.1336865</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -1.0552590</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -1.3130664</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
@@ -1112,7 +1112,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  -0.579 0.682 0.14 -0.636 1.115 ...</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  1.5448 -0.0984 0.0652 -0.0756 0.6676 ...</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
@@ -1128,11 +1128,12 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <section id="řídící-struktury" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="řídící-struktury"><span class="header-section-number">4.8</span> Řídící struktury</h2>
 <p>Směrují běh programu, tvoří základní stavební prvky algoritmů. Mezi řídící strukury řadíme <em>podmínky</em> a <em>cykly</em>. Mohli bychom přidat i složené závorky, neboť pro struktury uvozují bloky kódu.</p>
-<section id="podmínky" class="level3" data-number="4.8.1">
-<h3 data-number="4.8.1" class="anchored" data-anchor-id="podmínky"><span class="header-section-number">4.8.1</span> Podmínky</h3>
-<p>Podmínkami vytváříme v kódu větvení.</p>
+<section id="podmínky-a-přepínače" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="podmínky-a-přepínače"><span class="header-section-number">4.8.1</span> Podmínky a přepínače</h3>
+<p>Oběma konstrukty vytváříme v kódu větvení. V R je třeba aby proměnné definující <code>switch()</code> nebyla číselná. <code>if()</code> se staví za pomocí relačních operátorů a míří na vyhodnocení <code>TRUE/FALSE</code>.</p>
 <section id="if" class="level4" data-number="4.8.1.1">
 <h4 data-number="4.8.1.1" class="anchored" data-anchor-id="if"><span class="header-section-number">4.8.1.1</span> <code>if()</code></h4>
+<p>Nejjednodušší, ale ne nejbezpečnější, příklad bez dodefinování druhé větve.</p>
 <div class="svg-scale">
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <!-- Do not edit this file with editors other than draw.io -->
@@ -1876,7 +1877,7 @@ Iterace:  4 </code></pre>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.009162177</code></pre>
+<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.008371524</code></pre>
 </div>
 </div>
 </section>
@@ -1896,16 +1897,16 @@ Iterace:  4 </code></pre>
 </p>
 <ol type="1">
 <li>Zvolte platné tvrzení pro <code>data.frame</code>:
-<div id="radio_BIJQPFVYRW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BIJQPFVYRW" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_BIJQPFVYRW" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_BIJQPFVYRW" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
+<div id="radio_BTGPLTHTKJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
 </div></li>
 <li>Matici je možné vytvořit z vektoru přidáním dimenze: <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select><br>
 </li>
 <li>Co je výsledkem výrazu: <span class="math inline">\(\sin(\frac{0}{0})\)</span> <input class="webex-solveme nospaces" size="3" data-answer="[&quot;NaN&quot;]"><br>
 </li>
 <li>Vyberte, platné tvrzení pro datovou strukturu list:
-<div id="radio_EVBIAFYHAY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EVBIAFYHAY" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_EVBIAFYHAY" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_EVBIAFYHAY" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_EVBIAFYHAY" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
+<div id="radio_HXYCXXXMRX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
 </div></li>
 <li>Napište výraz pro nepřiřazenou <em>celočíselnou</em> hodnotu : <input class="webex-solveme nospaces" size="11" data-answer="[&quot;NA_integer_&quot;]"><br>
 </li>
