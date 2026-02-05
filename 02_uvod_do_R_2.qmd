@@ -197,7 +197,8 @@ Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole
 
 #### Atomický vektor `vector`
 
-Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot.
+Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. 
+<!-- Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot. -->
 
 ![Vektor je 1D kontejner, složený z prvků stejného typu.](images/mvvd_vector.svg)
 
@@ -398,11 +399,14 @@ ncol(DF)
 
 Směrují běh programu, tvoří základní stavební prvky algoritmů. Mezi řídící strukury řadíme *podmínky* a *cykly*. Mohli bychom přidat i složené závorky, neboť pro struktury uvozují bloky kódu.
 
-### Podmínky
+### Podmínky a přepínače
 
-Podmínkami vytváříme v kódu větvení.
+Oběma konstrukty vytváříme v kódu větvení. V R je třeba aby proměnné definující `switch()` nebyla
+číselná. `if()` se staví za pomocí relačních operátorů a míří na vyhodnocení `TRUE/FALSE`.  
 
 #### `if()`
+
+Nejjednodušší, ale ne nejbezpečnější, příklad bez dodefinování druhé větve.  
 
 ::: {.svg-scale}
 ```{=html}
