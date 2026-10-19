@@ -1,10 +1,31 @@
 # Rozdělení extrémních hodnot {#sec-rozdeleniextremnichhodnota}
 
-V hydrologii a klimatologii se často nezajímáme o „běžné“ hodnoty náhodné proměnné, ale o její extrémy – například maximální roční průtoky, nejvyšší denní úhrny srážek nebo minimální průtoky v období sucha. K jejich popisu se používá teorie rozdělení extrémních hodnot (Extreme Value Theory, EVT).
+V hydrologii a klimatologii se často nezajímáme o „běžné“ hodnoty nějaké veličiny, ale o její extrémy – například *maximální* měsíční teploty, *nejvyšší* intenzitu srážek nebo *minimální* průtok v letním období. K jejich popisu se používá teorie rozdělení extrémních hodnot (*Extreme Value Theory*, zkr. EVT).
 
 Základní myšlenkou je studium chování maxim (případně minim) náhodného výběru místo samotné distribuční funkce původních dat.
 
+K podchycení výskytu extrémních hodnot je třeba 
+
+```{r, echo=FALSE, eval=TRUE}
+klementinum <- readRDS("data/klementinum.rds")
+klementinum$date <- as.POSIXct(paste(klementinum$yr, 
+                             sprintf(fmt = "%02d", klementinum$mon),
+                             sprintf(fmt = "%02d", klementinum$day),
+                       sep = "-"), tz = "CET", format = "%Y-%m-%d")
+
+threshold <- quantile(x = klementinum$tavg, 
+                      probs = c(0.98, 0.02))
+
+klementinum_plot <- subset(klementinum, yr > 1899 & yr < 2001)
+```
+
+
 ## Vymezení extrémní hodnoty
+
+Jak poznat jaká hodnota je extrémní? Ne každá vysoká či nízká hodnota je extrém. Extrém je definován výběrem, není to tedy vlastnost hodnoty, ale způsobu stanovení.\
+
+Na výskyt extrémních hodnot už jsme narazili u Poissonova či Binomického rozdělění.
+Vzhledem k tomu, že návratové hodnoty $Q_{1000}$, $Q_{10\:000}$, nepřekvapí, že zcela zásadní jsou data. 
 
 ### Bloková maxima
 
@@ -21,42 +42,59 @@ Z dat jsou užita pouze pozorování překračující stanovenou mez, napříkla
     b)  Metodou blokových maxim stanovte maxima
 :::
 
-```{r, echo=FALSE, eval=TRUE}
-klementinum <- readRDS("data/klementinum.rds")
-klementinum$date <- as.POSIXct(paste(klementinum$yr, 
-                             sprintf(fmt = "%02d", klementinum$mon),
-                             sprintf(fmt = "%02d", klementinum$day),
-                       sep = "-"), tz = "CET", format = "%Y-%m-%d")
-
-threshold <- quantile(x = klementinum$tavg, 
-                      probs = c(0.99, 0.05))
-```
 
 ```{r, echo=FALSE, eval=TRUE}
-plot(main = "Klementinum 1776 - 2023", 
-     sub = "Identifikace extrémů s pomocí prahových hodnot",  
-     x = klementinum$date, 
-     y = klementinum$tavg, 
+#| fig.cap: "Časová řada měřených průměrných denních teplot v pražském Klementinu v rozsahu let 1900-2000."
+#| out.align: "center"
+plot(x = klementinum_plot$date, 
+     y = klementinum_plot$tavg, 
      type = "p", 
      cex = 0.1, 
      col = "#00000050", 
-     ylab = expression(T[avg]), 
+     ylab = expression(italic(T)[avg]), 
      xlab = "")
-rect(xleft = min(klementinum$date), 
-     xright = max(klementinum$date), 
-     ytop = threshold[1], 
-     ybottom = threshold[2], 
-     col = "#ffffffee", 
-     border = "#ffffff")
-abline(h = threshold, 
-       col = "red", 
-       lwd = 2)
+# rect(xleft = min(klementinum$date), 
+#      xright = max(klementinum$date), 
+#      ytop = threshold[1], 
+#      ybottom = threshold[2], 
+#      col = "#ffffffee", 
+#      border = "#ffffff")
+# abline(h = threshold, 
+#        col = "red", 
+#        lwd = 2)
 ```
 
 ![](images/chapter_9_fig_1.png)
 
 ```{r}
-#| fig.cap="Klementinum 2000-2020. Identifikace extrémů s pomocí 'Peak-over-threshold'."
+#| out.align: "center"
+#| echo: false
+blocks <- subset(klementinum_plot, yr %in% 1991:1995 & mon %in% c(6, 7, 8))
+
+block_xmin <- aggregate(date ~ mon + yr, FUN = min, data = subset(blocks, mon == 6))$date
+block_xmax <- aggregate(date ~ mon + yr, FUN = max, data = subset(blocks, mon == 8))$date
+
+
+
+plot(x = subset(klementinum_plot, yr %in% 1991:1995)$date, 
+     y = subset(klementinum_plot, yr %in% 1991:1995)$tavg, 
+     type = "p", 
+     cex = 0.25, 
+     col = "#00000090", 
+     ylab = expression(italic(T)[avg]), 
+     xlab = "")
+rect(xleft = block_xmin,
+     xright = block_xmax,
+     ytop = max(klementinum_plot$tavg),
+     ybottom = min(klementinum_plot$tavg),
+     col = NA,
+     border = "red")
+
+```
+
+
+```{r}
+#| fig.cap: "Klementinum 2000-2020. Identifikace extrémů s pomocí 'Peak-over-threshold'."
 
 klementinum_short <- klementinum |> 
   dplyr::filter(yr %in% 2000:2020) 

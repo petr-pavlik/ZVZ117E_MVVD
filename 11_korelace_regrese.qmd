@@ -175,18 +175,17 @@ summary(md1)
 ```
 
 Souhrn obsahuje několik boduů k interpretaci kvality modelu.\
-  
-  1. `Call:` původní zadání závislosti v podobě rovnice. \
-  2. `Residuals:` popisné statistiky residuí modelu. \
-  3.`Coefficients:` identifikované koeficienty modelu \
+
+1.  `Call:` původní zadání závislosti v podobě rovnice.\
+2.  `Residuals:` popisné statistiky residuí modelu.\
+    3.`Coefficients:` identifikované koeficienty modelu\
     - `Intercept` odhad $y$, když $x=0$.\
     - `x` S každým zvýšením $x$ se $y$ zvýší o $3.7816$; statisticky významný odhad `***`\
-  4. `Residual standard error:` Průměrná velikost residuí.\
-  5. `Multiple/Adujsted R-squared:` Podíl vysvětlené variability v $y$. Adjusted 
-  zohledňuje počet prediktorů a penalizuje složitější modely.\
-  6. `F-statistic:` Testuje statistickou významnost modelu.
-  
-  významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.
+3.  `Residual standard error:` Průměrná velikost residuí.\
+4.  `Multiple/Adujsted R-squared:` Podíl vysvětlené variability v $y$. Adjusted zohledňuje počet prediktorů a penalizuje složitější modely.\
+5.  `F-statistic:` Testuje statistickou významnost modelu.
+
+významnost závislosti indikuje přítomnost jedné nebo více `*` u vysvětlující proměnné; dále lze vyčíst podíl vysvětlené variabiltiy `Adjusted R-squared:  0.6417`.
 
 $R^2 = 1-\dfrac{\mathrm{MSE}}{\mathrm{MST}}$
 
@@ -207,10 +206,10 @@ plot(md1, 1:4)
 
 R dále poskytuje grafické nástroje k posouzení vhodnosti zvoleného modelu. Zde nás budou zajímat zejména **residua** modelu. Dle prvního grafu by mohl model se závislostí na polynomu být lepší volbou.\
 
-  1. `Residuals vs. fitted` posuzuje homoskedasticitu (náhodný rozptyl residuí).\
-  2. `Normal Q-Q` vynesení kvantilů residuí oproti kvantilům normálního rozdělení.\
-  3. Zobrazení druhé odmocniny absolutních residuí vůči odhadnutým hodnotám k posouzení homoskedasticity.\
-  4. `Residuals vs. Levarage` identifikuje hodnoty s výrazným pákovým efektem (schopností ovlivnit výslednou shodu modelu).
+1.  `Residuals vs. fitted` posuzuje homoskedasticitu (náhodný rozptyl residuí).\
+2.  `Normal Q-Q` vynesení kvantilů residuí oproti kvantilům normálního rozdělení.\
+3.  Zobrazení druhé odmocniny absolutních residuí vůči odhadnutým hodnotám k posouzení homoskedasticity.\
+4.  `Residuals vs. Levarage` identifikuje hodnoty s výrazným pákovým efektem (schopností ovlivnit výslednou shodu modelu).
 
 Pokusme se sestavit alternativní model s kvadratickou vysvětlující proměnnou.
 
@@ -219,21 +218,19 @@ md2 <- lm(y ~ poly(x, 2))
 summary(md2)
 ```
 
-
 ```{r, echo=FALSE}
 opts1 <- c("Mají normální rozdělení", 
   "Mají vyšší střední hodnotu než `md1`, což indikuje lepší shodu modelu", 
   answer = "Mají nižší rozptyl než `md1`, což indikuje lepší shodu modelu")
 ```
 
-
-  1. `Call:` ukazuje zadání modelu s přidaným polynomem až do 2. stupně. \
-  2. `Residuals:` `r longmcq(opts1)`. \
-  3.`Coefficients:` identifikované koeficienty modelu \
+1.  `Call:` ukazuje zadání modelu s přidaným polynomem až do 2. stupně.\
+2.  `Residuals:` `r longmcq(opts1)`.\
+    3.`Coefficients:` identifikované koeficienty modelu\
     - V $x=0$ má $y$ hodnotu `r fitb(c("42.536", "42,536"))`.\
     - `poly(x, 1)` S každým zvýšením $x$ se $y$ zvýší o $3.7816$; statisticky významný odhad `***`\
-  4. Průměrná velikost residuí je: `r fitb(c("14.33", "14,33"))`.\
-  5. Model vysvětluje `r mcq(c("méně", answer = "více"))` variability.\
+3.  Průměrná velikost residuí je: `r fitb(c("14.33", "14,33"))`.\
+4.  Model vysvětluje `r mcq(c("méně", answer = "více"))` variability.\
 
 ```{r, fig.align='center', fig.width=10, fig.height=7}
 par(mfrow = c(2, 2))
@@ -260,20 +257,33 @@ AIC(md1, md2)
 ```
 
 <!-- ::: callout-tip -->
+
 <!-- ## Cvičení -->
 
 <!-- 1.  Prozkoumejte závislost odtoku na velikosti povodí -->
 
 <!-- | Povodí | velikost $x_i$ | pořadí | odtok $y_i$ | pořadí | rozdíl $d_i$ | $d_i^2$ | -->
+
 <!-- |--------|----------------|--------|-------------|--------|--------------|---------| -->
+
 <!-- | 1      |                |        |             |        |              |         | -->
+
 <!-- | 2      |                |        |             |        |              |         | -->
+
 <!-- | 3      |                |        |             |        |              |         | -->
+
 <!-- | 4      |                |        |             |        |              |         | -->
+
 <!-- | 5      |                |        |             |        |              |         | -->
+
 <!-- | 6      |                |        |             |        |              |         | -->
+
 <!-- | 7      |                |        |             |        |              |         | -->
+
 <!-- | 8      |                |        |             |        |              |         | -->
+
 <!-- | 9      |                |        |             |        |              |         | -->
+
 <!-- | 10     |                |        |             |        |              |         | -->
+
 <!-- ::: -->

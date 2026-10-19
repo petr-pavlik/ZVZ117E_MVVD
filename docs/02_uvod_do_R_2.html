@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="cs-CZ" xml:lang="cs-CZ"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>4&nbsp; Opakovaní R – Metody vyhodnocování vodohospodářských dat</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +37,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +70,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./03_grafy.html" rel="next">
 <link href="./01_uvod_do_R_1.html" rel="prev">
 <link href="./images/DALLE_no-bg.webp" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1bdb090332f57d0ae3bda32c3b3ef872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ae83df6a7d47b8ac76139013f675e52c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -117,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -137,7 +142,7 @@ window.Quarto = {
 <link rel="stylesheet" href="include/webex.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -302,7 +307,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Cíle cvičení
+<span class="screen-reader-only">Varování</span>Cíle cvičení
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -325,7 +330,7 @@ Cíle cvičení
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -363,7 +368,7 @@ Cíle cvičení
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -394,8 +399,8 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Správně"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Špatně'</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Správně"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Špatně'</span></span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -404,7 +409,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -467,13 +472,13 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="11">11</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(x)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="12">12</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(x)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="13">13</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>()</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="14">14</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>()</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="15">15</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">%in%</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="16">16</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="16">16</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(x, y)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -510,20 +515,17 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol start="5" type="1">
-<li>Použite k výpočtu operátory či množinové funkce:<br>
+<li>Použijte k výpočtu operátory či množinové funkce:<br>
 
 <ol type="a">
 <li>Zjistěte, zda je číslo 1109388 dělitelné 7.<br>
 </li>
-<li>Do vektoru <span class="math inline">\(\mathbf{\mathrm{a}}\)</span> uložte násobky 3 v rozsahu <span class="math inline">\(\langle-121;30\rangle\)</span> a <span class="math inline">\(\mathbf{\mathrm{b}}\)</span> násobky 7 v rozmezí<br>
-</li>
-<li>Vypište hodnoty<br>
-</li>
+<li>Do vektoru <code>a</code> uložte násobky 3 v rozsahu <span class="math inline">\(\langle-121;30\rangle\)</span></li>
 </ol></li>
 </ol>
 </div>
@@ -613,7 +615,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -715,14 +717,14 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(<span class="st">"ABC"</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(<span class="st">"ABC"</span>)</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="dv">11</span> <span class="sc">+</span> <span class="dv">1</span>i)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="dv">11</span> <span class="sc">+</span> <span class="dv">1</span>i)</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: imaginary parts discarded in coercion</code></pre>
@@ -745,7 +747,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mvvd_vector.svg" class="img-fluid figure-img"></p>
-<figcaption>Vektor je 1D kontejner, složený z prvků stejného typu.</figcaption>
+<figcaption>Vektor je 1D kontejner, složený z prvků stejného typu. Dafultně, zejména pro numerické počty je uvažován jako vektor sloupcový. Jeho tranformaci na řádkový provádí funkce <code>t()</code></figcaption>
 </figure>
 </div>
 <p><span class="math display">\[
@@ -773,11 +775,11 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fl">2.0</span>, <span class="fl">6.1</span>, <span class="fl">2.7</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fl">2.0</span>, <span class="fl">6.1</span>, <span class="fl">2.7</span>)</span>
 <span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.0</span>, <span class="fl">1.3</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> v</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>u <span class="sc">*</span> v</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>u <span class="sc">*</span> <span class="fl">2.3</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>u <span class="sc">*</span> <span class="fl">2.3</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -806,7 +808,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
 <span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"numeric"</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
 <span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">expr =</span> <span class="fu">eval</span>(<span class="dv">2</span>))</span>
@@ -816,7 +818,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(x) <span class="sc">*</span> x</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-9" class="code-annotation-target"><a href="#annotated-cell-6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)]</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-11" class="code-annotation-target"><a href="#annotated-cell-6-11" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-11" class="code-annotation-target"><a href="#annotated-cell-6-11" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -843,14 +845,16 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          [,1]     [,2]     [,3]     [,4]     [,5]    [,6]     [,7]   [,8]
-[1,] 0.0533233 776.9135 3320.662 511.4057 874.8575 237.153 265.3945 32.259
+<pre><code>         [,1]     [,2]     [,3]   [,4]       [,5]     [,6]     [,7]     [,8]
+[1,] 281.6935 11.84982 210.7469 400.95 0.04534241 374.5485 107.8615 99.13381
          [,9]    [,10]
-[1,] 39.96496 223.1028
-         A          C          E          H          I 
- 0.2309184 57.6251871 29.5779899  5.6797003  6.3217849 
-          A           B           C 
-  0.2309184 -27.8731690  57.6251871 </code></pre>
+[1,] 140.1064 9.841585
+         B          C          D          E          G          H          I 
+ 3.4423571 14.5171243 20.0237358  0.2129376 10.3856380  9.9565961 11.8366540 
+         J 
+ 3.1371301 
+         A          B          C 
+-16.783726   3.442357  14.517124 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -859,7 +863,7 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -881,9 +885,9 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>trida <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>trida <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="st">". třída"</span>, <span class="at">sep =</span> <span class="st">""</span>)), </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -893,9 +897,9 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>x</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>x</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -961,10 +965,10 @@ Všechny tyto názvy proměnných jsou tzv. validní, nicméně žádný není v
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>i, <span class="fl">5.4</span>, <span class="dv">4</span>, <span class="dv">5</span>), </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in matrix(data = c(1, 2 + (0+3i), 5.4, 4, 5), nrow = 2, ncol = 3): data
@@ -974,7 +978,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">16</span>, <span class="at">by =</span> <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">16</span>, <span class="at">by =</span> <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">4</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(A)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(A)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">svd</span>(A)</span>
@@ -997,7 +1001,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="annotated-cell-10-21"><a href="#annotated-cell-10-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,] -0.3389761  0.9407950</span></span>
 <span id="annotated-cell-10-22"><a href="#annotated-cell-10-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,] -0.9407950 -0.3389761</span></span>
 <span id="annotated-cell-10-23"><a href="#annotated-cell-10-23" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="annotated-cell-10-24"><a href="#annotated-cell-10-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1 11</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-10-24"><a href="#annotated-cell-10-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1 11</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1026,7 +1030,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1076,15 +1080,15 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>DF</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   name      value</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -1.3834871</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b -0.2585118</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c  0.1336865</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -1.0552590</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e -1.3130664</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a -0.2457182</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    b -0.1908255</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    c -0.2481000</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4    d -1.5253873</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5    e  0.9363897</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>DF[<span class="st">"name"</span>]        <span class="co"># podvýběr do data.frame</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   name</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    a</span></span>
@@ -1097,14 +1101,14 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>DF[, <span class="st">"name"</span>]      <span class="co"># podvýběr do vektoru</span></span>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>DF<span class="sc">$</span>name           <span class="co"># podvýběr do vektoru</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "a" "b" "c" "d" "e"</span></span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Práce uvnitř <code>data.frame</code></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mon =</span> <span class="fu">rep</span>(month.abb, </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>)), </span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">365</span>), </span>
@@ -1112,14 +1116,14 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(DF)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    365 obs. of  3 variables:</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ mon  : chr  "Jan" "Jan" "Jan" "Jan" ...</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  1.5448 -0.0984 0.0652 -0.0756 0.6676 ...</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ value: num  0.0668 -0.2595 0.6378 -1.483 0.2792 ...</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ yr   : num  2001 2001 2001 2001 2001 ...</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DF)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "mon"   "value" "yr"</span></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(DF)</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 365</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(DF)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1138,9 +1142,9 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <!-- Do not edit this file with editors other than draw.io -->
 
-<svg xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent; color-scheme: light dark;" xlink="http://www.w3.org/1999/xlink" version="1.1" width="276px" height="122px" viewbox="-0.5 -0.5 276 122" content="<mxfile host=&quot;app.diagrams.net&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&quot; version=&quot;26.2.13&quot; scale=&quot;1&quot; border=&quot;0&quot;>
-  <diagram name=&quot;Stránka-1&quot; id=&quot;6_Bb8MSx6Bf5EXYdYsgy&quot;>
-    <mxGraphModel dx=&quot;476&quot; dy=&quot;248&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;3300&quot; pageHeight=&quot;4681&quot; math=&quot;0&quot; shadow=&quot;0&quot;>
+<svg xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent; color-scheme: light dark;" xlink="http://www.w3.org/1999/xlink" version="1.1" width="283px" height="123px" viewbox="-0.5 -0.5 283 123" content="<mxfile host=&quot;app.diagrams.net&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36&quot; version=&quot;26.2.13&quot; scale=&quot;1&quot; border=&quot;0&quot;>
+  <diagram name=&quot;Stránka-1&quot; id=&quot;YF_MSN8L51MPzxcVa729&quot;>
+    <mxGraphModel dx=&quot;1190&quot; dy=&quot;619&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;3300&quot; pageHeight=&quot;4681&quot; math=&quot;0&quot; shadow=&quot;0&quot;>
       <root>
         <mxCell id=&quot;0&quot; />
         <mxCell id=&quot;1&quot; parent=&quot;0&quot; />
@@ -1160,7 +1164,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
           <mxGeometry x=&quot;530&quot; y=&quot;680&quot; width=&quot;90&quot; height=&quot;40&quot; as=&quot;geometry&quot; />
         </mxCell>
         <mxCell id=&quot;5&quot; value=&quot;&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=2;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
-          <mxGeometry x=&quot;350&quot; y=&quot;680&quot; width=&quot;90&quot; height=&quot;40&quot; as=&quot;geometry&quot; />
+          <mxGeometry x=&quot;339&quot; y=&quot;680&quot; width=&quot;100&quot; height=&quot;40&quot; as=&quot;geometry&quot; />
         </mxCell>
         <mxCell id=&quot;6&quot; value=&quot;&quot; style=&quot;curved=1;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;>
           <mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;>
@@ -1177,10 +1181,10 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
         <mxCell id=&quot;8&quot; value=&quot;ne&quot; style=&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Source Sans Pro;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSource%2BSans%2BPro;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
           <mxGeometry x=&quot;480&quot; y=&quot;650&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; />
         </mxCell>
-        <mxCell id=&quot;9&quot; value=&quot;&amp;quot;A je větší, nebo shodné s 2.&amp;quot;&quot; style=&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
-          <mxGeometry x=&quot;345&quot; y=&quot;685&quot; width=&quot;100&quot; height=&quot;30&quot; as=&quot;geometry&quot; />
+        <mxCell id=&quot;9&quot; value=&quot;&amp;quot;A je větší, nebo shodné s 2.&amp;quot;&quot; style=&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Source Sans Pro;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSource%2BSans%2BPro;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
+          <mxGeometry x=&quot;342&quot; y=&quot;685&quot; width=&quot;95&quot; height=&quot;30&quot; as=&quot;geometry&quot; />
         </mxCell>
-        <mxCell id=&quot;10&quot; value=&quot;&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=2;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
+        <mxCell id=&quot;10&quot; value=&quot;&quot; style=&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=2;fontFamily=Source Sans Pro;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSource%2BSans%2BPro;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;>
           <mxGeometry x=&quot;440&quot; y=&quot;600&quot; width=&quot;90&quot; height=&quot;40&quot; as=&quot;geometry&quot; />
         </mxCell>
       </root>
@@ -1607,16 +1611,16 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-</style></defs><g><g data-cell-id="0"><g data-cell-id="1"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-8"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-1"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-3"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-4"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-5"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-6"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-7"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-10"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-11"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-13"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-12"></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-14"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-15"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-16"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-17"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-18"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-19"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-20"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-21"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-22"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-23"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-24"></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-25"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-26"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-28"><g><rect x="100" y="11" width="80" height="20" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 21px; margin-left: 101px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">Je A větší/rovno&nbsp; 2?</div></div></div></foreignobject><image x="101" y="7" width="78" height="32" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-29"><g><path d="M 142 41 Q 142 81 179.23 98.31" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path><path d="M 183.99 100.53 L 176.16 100.75 L 179.23 98.31 L 179.12 94.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-32"><g><rect x="185" y="81" width="90" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-dasharray="1 1" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-33"><g><rect x="5" y="81" width="90" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-width="2" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-34"><g><path d="M 138 41 Q 138 81 100.77 98.31" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path><path d="M 96.01 100.53 L 100.88 94.4 L 100.77 98.31 L 103.84 100.75 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-35"><g><rect x="85" y="51" width="60" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 66px; margin-left: 86px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">ano</div></div></div></foreignobject><image x="86" y="59.5" width="58" height="17" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-37"><g><rect x="135" y="51" width="60" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 66px; margin-left: 136px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">ne</div></div></div></foreignobject><image x="136" y="59.5" width="58" height="17" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-38"><g><rect x="0" y="86" width="100" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 101px; margin-left: 1px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">"A je větší, nebo shodné s 2."</div></div></div></foreignobject><image x="1" y="87" width="98" height="32" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-41"><g><rect x="95" y="1" width="90" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-width="2" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g></g></g></g></svg>
+</style></defs><g><g data-cell-id="0"><g data-cell-id="1"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-8"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-1"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-3"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-4"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-5"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-6"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-7"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-10"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-11"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-13"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-12"></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-14"><g data-cell-id="iFbFrFjTxFXl0Krx99aG-15"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-16"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-17"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-18"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-19"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-20"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-21"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-22"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-23"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-24"></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-25"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-26"></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-28"><g><rect x="107" y="11" width="80" height="20" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 21px; margin-left: 108px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">Je A větší/rovno&nbsp; 2?</div></div></div></foreignobject><image x="108" y="7" width="78" height="32" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-29"><g><path d="M 149 41 Q 149 81 186.23 98.31" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path><path d="M 190.99 100.53 L 183.16 100.75 L 186.23 98.31 L 186.12 94.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-32"><g><rect x="192" y="81" width="90" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-dasharray="1 1" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-33"><g><rect x="1" y="81" width="100" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-width="2" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-34"><g><path d="M 145 41 Q 145 81 107.77 98.31" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path><path d="M 103.01 100.53 L 107.88 94.4 L 107.77 98.31 L 110.84 100.75 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></path></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-35"><g><rect x="92" y="51" width="60" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 66px; margin-left: 93px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">ano</div></div></div></foreignobject><image x="93" y="59.5" width="58" height="17" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-37"><g><rect x="142" y="51" width="60" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 66px; margin-left: 143px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">ne</div></div></div></foreignobject><image x="143" y="59.5" width="58" height="17" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-38"><g><rect x="4" y="86" width="95" height="30" fill="none" stroke="none" pointer-events="all"></rect></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignobject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredfeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 93px; height: 1px; padding-top: 101px; margin-left: 5px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Source Sans Pro&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">"A je větší, nebo shodné s 2."</div></div></div></foreignobject><image x="5" y="87" width="93" height="32" href="data:image/png;base64,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"></image></switch></g></g></g><g data-cell-id="iFbFrFjTxFXl0Krx99aG-41"><g><rect x="102" y="1" width="90" height="40" rx="6" ry="6" fill="none" stroke="#000000" stroke-width="2" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"></rect></g></g></g></g></g></svg>
 
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(A <span class="sc">&gt;=</span> <span class="dv">1</span>) {</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"A je větší nebo shodné s 1."</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>A je větší nebo shodné s 1.</code></pre>
@@ -1625,12 +1629,12 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(A <span class="sc">&gt;=</span> <span class="dv">2</span>) {</span>
 <span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"A je větší nebo shodné s 2."</span>)</span>
 <span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(A <span class="sc">&gt;</span> <span class="dv">2</span>) {</span>
 <span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"A je větší než 2."</span>)</span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1651,8 +1655,8 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Prvek x + 3 je více než 0: "</span>, <span class="fu">ifelse</span>(x <span class="sc">-</span> <span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">yes =</span> <span class="st">"Ano"</span>, <span class="at">no =</span> <span class="st">"Ne"</span>))</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Prvek x + 3 je více než 0: "</span>, <span class="fu">ifelse</span>(x <span class="sc">-</span> <span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">yes =</span> <span class="st">"Ano"</span>, <span class="at">no =</span> <span class="st">"Ne"</span>))</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Prvek x + 3 je více než 0:  Ne Ne Ne Ne Ne Ne Ne Ne Ne Ano Ano</code></pre>
@@ -1662,7 +1666,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2025-01-01"</span>), <span class="at">to =</span> <span class="fu">as.Date</span>(<span class="st">"2025-12-31"</span>), <span class="at">by =</span> <span class="st">"1 day"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>random_data<span class="sc">$</span>h_year <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="at">test =</span> <span class="fu">format</span>(random_data<span class="sc">$</span>date, <span class="st">"%m"</span>) <span class="sc">&gt;</span> <span class="dv">10</span>, </span>
@@ -1671,7 +1675,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(random_data, <span class="dv">3</span>),</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(random_data, <span class="dv">3</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          date h_year
@@ -1690,11 +1694,11 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>varianta <span class="ot">&lt;-</span> <span class="st">"B"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>varianta <span class="ot">&lt;-</span> <span class="st">"B"</span></span>
 <span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="cf">switch</span>(</span>
 <span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>      varianta,</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"A"</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B"</span> <span class="ot">=</span> <span class="dv">3</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B"</span> <span class="ot">=</span> <span class="dv">3</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1718,7 +1722,7 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1766,9 +1770,9 @@ length [5] is not a sub-multiple or multiple of the number of rows [2]</code></p
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace: "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Iterace:  1 
@@ -1784,11 +1788,11 @@ Iterace:  4 </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace: "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Iterace:  1 
@@ -1804,12 +1808,12 @@ Iterace:  4 </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
 <span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Iterace: "</span>, i, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2">2</button><span id="annotated-cell-20-5" class="code-annotation-target"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="cf">break</span> <span class="co">#&lt;1&gt;</span></span>
-<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1837,7 +1841,7 @@ Iterace:  4 </code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1860,13 +1864,13 @@ Iterace:  4 </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Kód</summary>
-<div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2" aria-hidden="true" tabindex="-1"></a>nejblizsi_hodnota <span class="ot">&lt;-</span> <span class="cf">function</span>(x, value) {</span>
 <span id="annotated-cell-21-3"><a href="#annotated-cell-21-3" aria-hidden="true" tabindex="-1"></a>  x[<span class="fu">which</span>(<span class="fu">abs</span>(x <span class="sc">-</span> value) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> value)))]</span>
 <span id="annotated-cell-21-4"><a href="#annotated-cell-21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="annotated-cell-21-5"><a href="#annotated-cell-21-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-21-6"><a href="#annotated-cell-21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hodnota nejblíže 0 z vektoru x je:"</span> , </span>
-<span id="annotated-cell-21-7"><a href="#annotated-cell-21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nejblizsi_hodnota</span>(<span class="at">x =</span> x, <span class="at">value =</span> <span class="dv">0</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-21-7"><a href="#annotated-cell-21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nejblizsi_hodnota</span>(<span class="at">x =</span> x, <span class="at">value =</span> <span class="dv">0</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Zkopírovat do schránky" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1877,7 +1881,7 @@ Iterace:  4 </code></pre>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.008371524</code></pre>
+<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.002733252</code></pre>
 </div>
 </div>
 </section>
@@ -1889,7 +1893,7 @@ Iterace:  4 </code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Úloha
+<span class="screen-reader-only">Tip</span>Úloha
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1897,16 +1901,16 @@ Iterace:  4 </code></pre>
 </p>
 <ol type="1">
 <li>Zvolte platné tvrzení pro <code>data.frame</code>:
-<div id="radio_BTGPLTHTKJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_BTGPLTHTKJ" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
+<div id="radio_XVRHQRIZAO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XVRHQRIZAO" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_XVRHQRIZAO" value="answer"> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_XVRHQRIZAO" value=""> <span>Všechny proměnné musí být stejného typu</span></label>
 </div></li>
-<li>Matici je možné vytvořit z vektoru přidáním dimenze: <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select><br>
+<li>Matici je možné vytvořit z vektoru přidáním dimenze: <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="NA">FALSE</option></select><br>
 </li>
 <li>Co je výsledkem výrazu: <span class="math inline">\(\sin(\frac{0}{0})\)</span> <input class="webex-solveme nospaces" size="3" data-answer="[&quot;NaN&quot;]"><br>
 </li>
 <li>Vyberte, platné tvrzení pro datovou strukturu list:
-<div id="radio_HXYCXXXMRX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_HXYCXXXMRX" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
+<div id="radio_HHMITENVZW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HHMITENVZW" value=""> <span>Počet sloupců i řádků musí být shodný</span></label><label><input type="radio" autocomplete="off" name="radio_HHMITENVZW" value=""> <span>Proměnná musí mít uvedenou hodnotu v každém řádku</span></label><label><input type="radio" autocomplete="off" name="radio_HHMITENVZW" value=""> <span>Všechny proměnné musí být stejného typu</span></label><label><input type="radio" autocomplete="off" name="radio_HHMITENVZW" value="answer"> <span>Je možné do něj rekurzivně vniřit další objekt typu list</span></label>
 </div></li>
 <li>Napište výraz pro nepřiřazenou <em>celočíselnou</em> hodnotu : <input class="webex-solveme nospaces" size="11" data-answer="[&quot;NA_integer_&quot;]"><br>
 </li>
@@ -2361,239 +2365,243 @@ window.onload = function() {
 </script>
 
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Zkopírováno!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Zkopírováno!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Zkopírováno!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Zkopírováno!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2601,224 +2609,200 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-      for (let i=0; i<annoteTargets.length; i++) {
-        const annoteTarget = annoteTargets[i];
-        const targetCell = annoteTarget.getAttribute("data-target-cell");
-        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-        const contentFn = () => {
-          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          if (content) {
-            const tipContent = content.cloneNode(true);
-            tipContent.classList.add("code-annotation-tip-content");
-            return tipContent.outerHTML;
-          }
-        }
-        const config = {
-          allowHTML: true,
-          content: contentFn,
-          onShow: (instance) => {
-            selectCodeLines(instance.reference);
-            instance.reference.classList.add('code-annotation-active');
-            window.tippy.hideAll();
-          },
-          onHide: (instance) => {
-            unselectCodeLines();
-            instance.reference.classList.remove('code-annotation-active');
-          },
-          maxWidth: 300,
-          delay: [50, 0],
-          duration: [200, 0],
-          offset: [5, 10],
-          arrow: true,
-          appendTo: function(el) {
-            return el.parentElement.parentElement.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'quarto',
-          placement: 'right',
-          popperOptions: {
-            modifiers: [
-            {
-              name: 'flip',
-              options: {
-                flipVariations: false, // true by default
-                allowedAutoPlacements: ['right'],
-                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-              },
-            },
-            {
-              name: 'preventOverflow',
-              options: {
-                mainAxis: false,
-                altAxis: false
-              }
-            }
-            ]        
-          }      
-        };
-        window.tippy(annoteTarget, config); 
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./01_uvod_do_R_1.html" class="pagination-link" aria-label="R &amp; RStudio">

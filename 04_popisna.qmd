@@ -118,11 +118,11 @@ Pro obě extrémní polohy ($\min$ a $\max$) jsou v R stejnojmenné funkce.
 t(sapply(X = 1:7, FUN = function(i) quantile(x, type = i))) #<1>
 ```
 
-1.  Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici type ve funkci `quantile()`
+1.  Využití anonymní funkce `function(i)` vektorizované pro rozsah hodnot 1:7 na pozici `type` ve funkci `quantile()`. Výpočet kvantilové funkce je možné provést různými metodami viz nápověda. 
 
 #### Medián
 
-Aritmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2+1}$ v seřazeném souboru.
+Aritmetický průměr hodnot na pozicích $\frac{n}{2}$ a $\frac{n}{2}+1$ v seřazeném souboru.
 
 ### Modus
 
@@ -234,6 +234,18 @@ Funkce `summary()` je tzv. *S3 generic*, to znamená, že její chování je def
 
 
   2.  Doplňte funkci `read.___()` aby výsledek byl
-  3.  K číselnému vektoru $\boldsymbol{x}$. přidejte takovou hodnotu, aby průměr byl roven 0.15: `r fitb(0.2238684)`.
+  3.  K číselnému vektoru $\boldsymbol{x}$. přidejte takovou hodnotu, aby aritmetický průměr byl roven 0.15: `r fitb(0.2238684)`.
+:::
 
 <!-- 20x+ y = 21*0.15 -->
+
+::: callout-note
+## Poznámka
+
+Poslední úloha je zajímavá pro pochopení konceptu *stupňů volnosti*. S tím se 
+setkáme během testování hypotéz, kdy bude třeba na základě použít charakteristiky 
+náhodného výběru k tomu, abychom mohli usuzovat na vlastnosti celku. Zde je třeba 
+si uvědomit, že aby průměr (coby těžiště souboru) mohl být konkrétní číslo, potom 
+za předpokladu, že máme k dispozici $n$ hodnot, je možné libovolně zvolit pouze $n-1$ hodnot.
+
+:::

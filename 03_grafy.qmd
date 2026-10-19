@@ -230,15 +230,15 @@ Správná volba barev v grafech odborných publikací je velmi důležitá. V id
 
 Pokuste se výsledkem přiblížit následovnému grafu, použijte nápovědy:
 
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center', fig.asp=1}
 budyko_dfr <- readRDS("./data/budyko_dfr.rds")
 phi <- seq(0, 2, 10e-3)
 schreiber <- 1 - exp(-phi)
 paleta <- rev(rainbow(20, start = 0, end = 0.6))
 
 plot(x = phi, 
-     xlab = expression(italic(E)*p/italic(P)), 
-     ylab = expression(italic(P)/ETr), 
+     xlab = expression(E[p] / P),
+     ylab = expression(ET[r] / P), 
      xlim = c(0, 2), 
      ylim = c(0, 1.2), 
      main = "Budyko curve",
@@ -252,6 +252,7 @@ points(x = budyko_dfr$PET_over_P,
      xlim = c(0, 2), 
      ylim = c(0, 1), 
      pch = 21, 
+     cex = 2,
      bg = paleta[round(10*budyko_dfr$PET_over_P)])
 
 # Add grid lines similar to gnuplot

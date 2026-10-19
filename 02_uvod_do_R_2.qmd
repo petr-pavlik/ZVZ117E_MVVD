@@ -120,10 +120,9 @@ setdiff(x, y)  # <16>
 ::: callout-tip
 ## Úloha
 
-5.  Použite k výpočtu operátory či množinové funkce:\
+5.  Použijte k výpočtu operátory či množinové funkce:\
     a)  Zjistěte, zda je číslo 1109388 dělitelné 7.\
-    b)  Do vektoru $\mathbf{\mathrm{a}}$ uložte násobky 3 v rozsahu $\langle-121;30\rangle$ a $\mathbf{\mathrm{b}}$ násobky 7 v rozmezí\
-    c)  Vypište hodnoty\
+    b)  Do vektoru `a` uložte násobky 3 v rozsahu $\langle-121;30\rangle$ 
 :::
 
 ## Matematické funkce
@@ -200,7 +199,7 @@ Homogenní datové struktury obsahují atomické vektory, faktory, matice a pole
 Vektor je v jazyce R základní stavební strukturou, nic jako skalární veličina zde není. 
 <!-- Koncept vektoru je zde chápán v matematickém smyslu jako jednosloupcová matice $\boldsymbol{\mathrm{A}} = (a_{ij})_{m1}$ hodnot. -->
 
-![Vektor je 1D kontejner, složený z prvků stejného typu.](images/mvvd_vector.svg)
+![Vektor je 1D kontejner, složený z prvků stejného typu. Dafultně, zejména pro numerické počty je uvažován jako vektor sloupcový. Jeho tranformaci na řádkový provádí funkce `t()`](images/mvvd_vector.svg)
 
 $$
 \mathbf{\mathrm{u}} = 
